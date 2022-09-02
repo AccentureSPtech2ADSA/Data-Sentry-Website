@@ -7,23 +7,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Sentry</title>
   <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="./js/index.js"></script>
 </head>
 
 <body>
+  <!-- Navbar -->
   <div class="header">
     <div class="container">
-      <a href="index.html"><img src="./assets/svg/logo-escudo-texto-esquerda.svg" /></a>
+      <a href="index.html"><img src="./assets/logo-texto.png" /></a>
       <ul class="navbar">
         <li class="active">Inicio</li>
-        <li><a href="Calculadora/Calculadora.html">Inicio</a></li>
-        <li><a href="Suporte/suporte.html">Funcionalidades</a></li>
-        <li><a href="Cadastro/cadastro.html">Sobre</a></li>
-        <li><a href="Login/login.html">Contato</a></li>
-        <li><a href="Login/login.html">Entrar</a></li>
-        <li><a href="Login/login.html">Cadastre-se</a></li>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Funcionalidades</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="#" onclick="popup_login()">Entrar</a></li>
+        <li><a href="./cadastro.html">Cadastre-se</a></li>
       </ul>
     </div>
   </div>
+
+  <!-- Hero -->
+  
+
+    <!-- pop-up tela de login -->
+    <div id="div_login">
+      <div class="conteudo_login">
+        <div class="box">
+          <div id="btn_fechar_login" onclick="fechar_popup_login()">X</div>
+  
+          <div class="box_container">
+            <div id="login_center">
+              <p id='texto_bemvindo'>BEM VINDO(A) DE VOLTA</p>
+              <p id='texto_login'>Entrar na sua conta</p>
+            </div>
+  
+            <div>
+              <p class="texto_inputs">E-mail</p>
+              <input id="input_email_login" class="input_texto" type="text" placeholder="Exemplo@hotmail.com" />
+            </div>
+  
+            <div class="senha">
+              <p class="texto_inputs">Senha</p>
+              <input id="input_senha_login" class="input_texto" type="password" placeholder="Inserir Senha" />
+            </div>
+  
+            <div id="validacao">
+              <span id="span_validacao"></span>
+              <img id="span_gif" src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif">
+            </div>
+  
+            <div class="LembrarUsuario_EsqueceuSenha">
+              <span id="span_lembrarUsuario"><input type="checkbox"> Lembrar Usuário</span>
+              <span id="span_esqueceuSenha"><a id="esqueceu_senha" href="#">Esqueceu sua senha?</a></span>
+            </div>
+  
+            <div>
+              <button id="btn_entrar" onclick="validLogin()">Entrar</button>
+            </div>
+  
+            <div class="div_cadastrar">
+              <p id="nao_possui_conta">Não possui uma conta ainda?</p> <a href="cadastro.html" id="a_cadastrar">Faça parte
+                da jornada →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 
 </html>
