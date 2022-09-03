@@ -14,6 +14,67 @@ body {
   position: fixed;
 }
 
+/* Hero */
+.hero {
+  background-image: url("../assets/background-hero.jpg");
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .container1 {
+  color: white;
+  width: 78%;
+  height: 70%;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
+  text-shadow: 4px 4px 6px black;
+}
+
+.hero .container2 {
+  width: 48%;
+  height: 100%;
+}
+
+.hero .container2 .titulo {
+  font-size: 40px;
+}
+
+.hero .container2 .texto {
+  font-size: 20px;
+  list-style-type: none;
+  margin-top: 50px;
+}
+
+.texto li {
+  margin-top: 15px;
+}
+
+.hero .container3 {
+  width: 40%;
+  height: 100%;
+  font-size: 22px;
+}
+
+.container3 .bloco1 {
+  font-size: 28px;
+}
+
+.container3 .btn_experimentar {
+  background-color: #1b8a8a;
+  border: 0;
+  padding: 15px 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 60px;
+  color: #0a3131;
+  font-weight: bolder;
+}
+
 /* Tela de login */
 .conteudo_login {
   height: 100%;

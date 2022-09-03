@@ -1,80 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Sentry</title>
+    <link rel="stylesheet" href="./css/estilo.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="./js/index.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Sentry</title>
-  <link rel="stylesheet" href="./css/estilo.css">
-  <link rel="stylesheet" href="./css/index.css">
-  <script src="./js/index.js"></script>
-</head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <a class="logo" href="/"
+        ><img id="img_logo" src="./assets/logo-texto.png" alt="logo"
+      /></a>
+      <nav>
+        <ul class="nav__links">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Funcionalidades</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#" onclick="popup_login()">Entrar</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="cadastro.html">Cadastrar-se</a>
+    </header>
 
-<body>
-  <!-- Navbar -->
-  <div class="header">
-    <div class="container">
-      <a href="index.html"><img src="./assets/logo-texto.png" /></a>
-      <ul class="navbar">
-        <li class="active">Inicio</li>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Funcionalidades</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Contato</a></li>
-        <li><a href="#" onclick="popup_login()">Entrar</a></li>
-        <li><a href="./cadastro.html">Cadastre-se</a></li>
-      </ul>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="container1">
+        <div class="container2">
+          <span class="titulo">Seu Data Center tem essas caracteristicas?</span>
+          <div>
+            <ul class="texto">
+              <li>Servidor Lento</li>
+              <li>Dificuldade em encontrar o problema</li>
+              <li>Sente falta de relatório dos processos</li>
+              <li>Acha o problema em cima da hora</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="container3">
+          <div class="bloco1">Você deveria usar o nosso sistema!</div><br>
+          <div class="bloco2">Com ele você pode monitorar seu Data Center com facilidade, precisão e segurança</div>
+          <button class="btn_experimentar">Experimentar!</button>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Hero -->
-  
 
     <!-- pop-up tela de login -->
     <div id="div_login">
       <div class="conteudo_login">
         <div class="box">
           <div id="btn_fechar_login" onclick="fechar_popup_login()">X</div>
-  
+
           <div class="box_container">
             <div id="login_center">
-              <p id='texto_bemvindo'>BEM VINDO(A) DE VOLTA</p>
-              <p id='texto_login'>Entrar na sua conta</p>
+              <p id="texto_bemvindo">BEM VINDO(A) DE VOLTA</p>
+              <p id="texto_login">Entrar na sua conta</p>
             </div>
-  
+
             <div>
               <p class="texto_inputs">E-mail</p>
-              <input id="input_email_login" class="input_texto" type="text" placeholder="Exemplo@hotmail.com" />
+              <input
+                id="input_email_login"
+                class="input_texto"
+                type="text"
+                placeholder="Exemplo@hotmail.com"
+              />
             </div>
-  
+
             <div class="senha">
               <p class="texto_inputs">Senha</p>
-              <input id="input_senha_login" class="input_texto" type="password" placeholder="Inserir Senha" />
+              <input
+                id="input_senha_login"
+                class="input_texto"
+                type="password"
+                placeholder="Inserir Senha"
+              />
             </div>
-  
+
             <div id="validacao">
               <span id="span_validacao"></span>
-              <img id="span_gif" src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif">
+              <img
+                id="span_gif"
+                src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif"
+              />
             </div>
-  
+
             <div class="LembrarUsuario_EsqueceuSenha">
-              <span id="span_lembrarUsuario"><input type="checkbox"> Lembrar Usuário</span>
-              <span id="span_esqueceuSenha"><a id="esqueceu_senha" href="#">Esqueceu sua senha?</a></span>
+              <span id="span_lembrarUsuario"
+                ><input type="checkbox" /> Lembrar Usuário</span
+              >
+              <span id="span_esqueceuSenha"
+                ><a id="esqueceu_senha" href="#">Esqueceu sua senha?</a></span
+              >
             </div>
-  
+
             <div>
               <button id="btn_entrar" onclick="validLogin()">Entrar</button>
             </div>
-  
+
             <div class="div_cadastrar">
-              <p id="nao_possui_conta">Não possui uma conta ainda?</p> <a href="cadastro.html" id="a_cadastrar">Faça parte
-                da jornada →</a>
+              <p id="nao_possui_conta">Não possui uma conta ainda?</p>
+              <a href="cadastro.html" id="a_cadastrar"
+                >Faça parte da jornada →</a
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
-</body>
-
+  </body>
 </html>
