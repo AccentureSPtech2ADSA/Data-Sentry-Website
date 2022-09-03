@@ -1,7 +1,3 @@
-body {
-    margin: 0;
-  }
-
 /* Div modelo pop-up com display none*/
 #div_login {
   background-color: rgba(0, 0, 0, 0.7);
@@ -27,7 +23,7 @@ body {
 .hero .container1 {
   color: white;
   width: 78%;
-  height: 70%;
+  height: 60%;
   display: flex;
   justify-content: space-between;
   font-family: "Montserrat", sans-serif;
@@ -37,6 +33,9 @@ body {
 .hero .container2 {
   width: 48%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hero .container2 .titulo {
@@ -57,6 +56,9 @@ body {
   width: 40%;
   height: 100%;
   font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .container3 .bloco1 {
@@ -72,8 +74,89 @@ body {
   font-size: 14px;
   margin-top: 60px;
   color: #0a3131;
+  width: auto;
   font-weight: bolder;
+  transition: all 0.3s ease 0s;
 }
+
+.btn_experimentar:hover {
+  background-color: #23AFAE;
+}
+
+/* Bloco de conteúdo superior */
+ .bloco-sup {
+  margin: 50px 10%;
+  display: flex;
+  justify-content: space-between;
+ }
+
+ .bloco-sup .bloco-esq {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+ }
+
+ .bloco-esq img {
+  width: 300px;
+ }
+
+ .bloco-sup .bloco-dir {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ }
+
+ /* Bloco de conteúdo inferior */
+ .bloco-inf {
+  margin: 50px 10%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+ }
+
+ .bloco-inf .card-titulo {
+  font-size: 18px;
+  color: #1b8a8a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+ }
+
+ .bloco-inf h2 {
+  color: #1b8a8a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+ }
+
+ .conjunto1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 300px;
+  margin: 10px;
+ }
+
+ .conjunto2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 300px;
+  margin: 10px;
+ }
+
+ .bloco-inf .card {
+  width: 250px;
+  height: 90%;
+  box-shadow: 2px 2px 10px #adadad;
+  border-radius: 5px;
+  text-align: center;
+  background-color: white;
+  margin: 30px;
+  padding: 0 15px;
+ }
 
 /* Tela de login */
 .conteudo_login {
@@ -272,7 +355,7 @@ align-items: center;
 }
 
 /* -------------------------------------------  Cards */
-.title-group-cards{display:flex; width:900px; align-items:flex-start; color: #23AFAE;}
+.title-group-cards{display:flex; width:900px; align-items:flex-start; color: #1b8a8a; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 20px; font-weight: 400;}
 .group-cards{width: 100%;}
 .group-cards{color: #22252A;}
 .group-cards h4{color: #23AFAE; font-weight: 800;}
@@ -281,11 +364,17 @@ align-items: center;
   flex-direction: column;
   align-items: center;
 }
-.card{
+
+.group-cards {
+  margin-bottom: 50px;
+}
+
+.group-cards .card{
   display: flex;
   width: 900px;
   height: 300px;
-  background-color: #ccc;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 10px #adadad;
   align-items: center;
   margin: 20px 0px 20px 0px;
   border-radius: 5px;
@@ -295,7 +384,8 @@ align-items: center;
   flex-direction:row-reverse;
   width: 900px;
   height: 300px;
-  background-color: #ccc;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 10px #adadad;
   align-items: center;
   margin: 20px 0px 20px 0px;
   border-radius: 5px;
@@ -304,7 +394,8 @@ align-items: center;
 .img-card{padding: 0px 30px 0px 30px;}
 .img-illustration{width: 200px;}
 
-@media screen and (max-width: 915px) { /*---MOBILE--*/
+/*---MOBILE--*/
+@media screen and (max-width: 915px) { 
   .title-group-cards{display:flex; width:80vw; align-items:flex-start; color: #23AFAE;}
   .group-cards{width: 90vw;}
   .group-cards{color: #22252A;}
