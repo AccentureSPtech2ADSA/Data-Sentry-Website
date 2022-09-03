@@ -357,7 +357,7 @@ align-items: center;
 /* -------------------------------------------  Cards */
 .title-group-cards{
   display:flex; 
-  width:900px; 
+  width:75%; 
   align-items:flex-start; 
   color: #1b8a8a; 
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
@@ -366,7 +366,7 @@ align-items: center;
 }
 .group-cards{width: 100%;}
 .group-cards{color: #22252A;}
-.group-cards h4{color: #23AFAE; font-weight: 800;}
+.group-cards h4{color: #23AFAE; font-weight: 800; font-size: 25px;}
 .group-cards .container{
   display: flex;
   flex-direction: column;
