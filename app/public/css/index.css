@@ -355,7 +355,15 @@ align-items: center;
 }
 
 /* -------------------------------------------  Cards */
-.title-group-cards{display:flex; width:900px; align-items:flex-start; color: #1b8a8a; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 20px; font-weight: 400;}
+.title-group-cards{
+  display:flex; 
+  width:900px; 
+  align-items:flex-start; 
+  color: #1b8a8a; 
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+  font-size: 20px; 
+  font-weight: 400;
+}
 .group-cards{width: 100%;}
 .group-cards{color: #22252A;}
 .group-cards h4{color: #23AFAE; font-weight: 800;}
@@ -364,11 +372,9 @@ align-items: center;
   flex-direction: column;
   align-items: center;
 }
-
 .group-cards {
   margin-bottom: 50px;
 }
-
 .group-cards .card{
   display: flex;
   width: 900px;
@@ -394,7 +400,7 @@ align-items: center;
 .img-card{padding: 0px 30px 0px 30px;}
 .img-illustration{width: 200px;}
 
-/*---MOBILE--*/
+/*---MOBILE cards-retangle--*/
 @media screen and (max-width: 915px) { 
   .title-group-cards{display:flex; width:80vw; align-items:flex-start; color: #23AFAE;}
   .group-cards{width: 90vw;}
@@ -405,13 +411,14 @@ align-items: center;
     flex-direction: column;
     align-items: center;
   }
-  .card{
+  .group-cards .card{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 80vw;
     height: 500px;
-    background-color: #ccc;
+    background-color: #fff;
+    box-shadow: 2px 2px 10px #adadad;
     align-items: center;
     border-radius: 5px;
     font-size: 13px;
@@ -422,7 +429,8 @@ align-items: center;
     justify-content: center;
     width: 80vw;
     height: 500px;
-    background-color: #ccc;
+    background-color: #fff;
+    box-shadow: 2px 2px 10px #adadad;
     align-items: center;
     border-radius: 5px;
     font-size: 13px;

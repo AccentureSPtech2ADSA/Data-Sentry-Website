@@ -119,3 +119,46 @@ header {
   color: #fff;
   background-color: black;
 }
+@media screen and (max-width: 740px){
+  .footer{width: 100%;}
+  .footer .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #22252A;
+    height: 500px;
+  }
+  .brasao-footer{width: 150px;}
+}
+@media screen and (max-width: 550px){
+  .footer{width: 100%;}
+  .footer .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #22252A;
+    height: 700px;
+  }     
+  .brasao-footer{width: 130px;}
+  .links-footer{display: flex; flex-direction: column;}
+  .links-footer div{margin-left: 30px;}
+  .links-footer span{display: flex; align-items: center; margin-right: 30px;}
+  .links-footer ul{list-style: none; margin-top: 0; line-height: 25px;}
+  .links-footer ul li a{text-decoration: none; color: #fff;}
+  .links-footer ul li a:hover{color: #1b8a8a;}
+  .links-footer h4{color: #23AFAE; line-height: 0;}
+  .effect-rotate{transition: all 1s;}
+  .effect-rotate:hover{transform: rotate(360deg);cursor: pointer;}
+  .redes-sociais{padding: 0px 0px 40px 0px;}
+  .direitos-autorais{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    color: #fff;
+    background-color: black;
+    font-size: 13px;
+  }
+}
