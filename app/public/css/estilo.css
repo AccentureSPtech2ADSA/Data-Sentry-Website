@@ -93,4 +93,28 @@ header {
   background-color: #23AFAE;
 }
 
-/* Footer */
+/* -------------------------------------------  Footer */
+.footer{width: 100%;}
+.footer .container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #22252A;
+  height: 200px;
+}
+.links-footer{display: flex;}
+.links-footer div{margin-left: 30px;}
+.links-footer span{display: flex; align-items: center; margin-right: 30px;}
+.links-footer ul{list-style: none; margin-top: 0;}
+.links-footer ul li a{text-decoration: none; color: #fff;}
+.links-footer ul li a:hover{color: #1b8a8a;}
+.links-footer h4{color: #23AFAE; line-height: 0;}
+.effect-rotate{transition: all 1s;}
+.effect-rotate:hover{transform: rotate(360deg);cursor: pointer;}
+.direitos-autorais{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: black;
+}
