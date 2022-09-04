@@ -226,7 +226,7 @@ header {
     background-color: #22252A;
     height: 500px;
   }
-  .brasao-footer{width: 150px;}
+  .brasao-footer{width: 120px;}
 }
 @media screen and (max-width: 550px){
   .footer{width: 100%;}
@@ -238,7 +238,7 @@ header {
     background-color: #22252A;
     height: 700px;
   }     
-  .brasao-footer{width: 130px;}
+  .brasao-footer{width: 90px;}
   .links-footer{display: flex; flex-direction: column;}
   .links-footer div{margin-left: 30px;}
   .links-footer span{display: flex; align-items: center; margin-right: 30px;}
