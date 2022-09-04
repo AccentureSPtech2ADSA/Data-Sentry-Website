@@ -13,9 +13,7 @@
   <body>
     <!-- Navbar -->
     <header>
-      <a class="logo" href="/"
-        ><img id="img_logo" src="./assets/logo-texto.png" alt="logo"
-      /></a>
+      <a class="logo" href="/"><img id="img_logo" src="./assets/logo-texto.png" alt="logo"/></a>
       <nav>
         <ul class="nav__links">
           <li><a href="#">Inicio</a></li>
@@ -25,7 +23,21 @@
           <li><a href="#" onclick="popup_login()">Entrar</a></li>
         </ul>
       </nav>
-      <a class="cta" href="cadastro.html">Cadastrar-se</a>
+      <a class="cta" id="btn-cadastro" href="cadastro.html">Cadastrar-se</a>
+      <a class="menu-navbar" id="menu-navbar" onclick="toggle1()"><img src="./assets/svg/hamburger-menu.svg"></a>
+      
+      <!-- Menu Mobile -->
+      <div class="menu_mobile" id="menu_lateral">
+        <div class="btn_menu">
+          <a class="menu-navbar" id="menu-navbar" onclick="toggle2()"><img src="./assets/svg/hamburger-menu.svg"></a>
+          </div>
+        <div id="menu_item"><p id="item1">Inicio</p></div>
+        <div id="menu_item"><p id="item2">Funcionalidades</p></div>
+        <div id="menu_item"><p id="item3">Sobre</p></div>
+        <div id="menu_item"><p id="item4">Contato</p></div>
+        <div id="menu_item" onclick="popup_login()"><p id="item5">Entrar</p></div>
+        <div id="menu_item" onclick="window.location='./cadastro.html' "><p id="item6">Cadastro</p></div>
+      </div>
     </header>
 
     <!-- Hero -->

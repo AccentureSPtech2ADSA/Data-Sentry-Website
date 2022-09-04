@@ -83,6 +83,11 @@
   background-color: #23AFAE;
 }
 
+.btn_menu {
+  padding: 25px 10px;
+  width: 100%;
+}
+
 /* Bloco de conteúdo superior */
  .bloco-sup {
   margin: 50px 10%;
@@ -503,23 +508,6 @@ align-items: center;
   }
   .img-illustration{width: 30vw;}
 
-  /* Cards no meio */
-/*  .conjunto1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-   }
-
-   .conjunto2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-   } */
-
    .bloco-inf {
     display: none;
    }
@@ -545,7 +533,37 @@ align-items: center;
    }
 
    /* Hero */
-   .hero {
+   
+
+@media screen and (max-width: 600px) { 
+  /* Cards no meio */
+   .conjunto1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+   }
+
+   .conjunto2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+   }
+
+   .bloco-inf {
+    display: block;
+   }
+
+   .bloco-infMobile {
+    display: none;
+   }
+}
+
+@media screen and (max-width: 1100px) {
+  .hero {
     background-image: url("../assets/background-hero.jpg");
     height: auto;
     width: 100%;
@@ -596,30 +614,4 @@ align-items: center;
     width: 300px;
   }
 }
-
-@media screen and (max-width: 600px) { 
-  /* Cards no meio */
-   .conjunto1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-   }
-
-   .conjunto2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-   }
-
-   .bloco-inf {
-    display: block;
-   }
-
-   .bloco-infMobile {
-    display: none;
-   }
 }
