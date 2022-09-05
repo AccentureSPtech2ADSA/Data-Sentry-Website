@@ -236,7 +236,7 @@ header {
     justify-content: space-around;
     align-items: center;
     background-color: #22252A;
-    height: 700px;
+    height: 500px;
   }     
   .brasao-footer{width: 90px;}
   .links-footer{display: flex; flex-direction: column;}
