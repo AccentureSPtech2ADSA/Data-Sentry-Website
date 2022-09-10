@@ -1,15 +1,15 @@
 function validCadastro() {
   var nomeVar = input_nome.value
-  var sobrenomeVar = input_sobrenome.value
-  var telVar = input_tel.value
+  var cnpjVar = input_cnpj.value
+  var cepVar = input_cep.value
   var emailVar = input_email.value
   var senhaVar = input_senha.value
   /* Verifica se há algum input com valor vazio e ajusta o layout para o texto caber na tela caso houver */
   if (
     input_nome.value == "" ||
-    input_tel.value == "" ||
+    input_cnpj.value == "" ||
+    input_cep.value == "" ||
     input_senha.value == "" ||
-    input_sobrenome.value == "" ||
     input_email.value == "" ||
     input_repetir_senha.value == ""
   ) {
@@ -17,7 +17,7 @@ function validCadastro() {
     idcontainer2.style.marginTop = "-25px";
     texto_cadastro.style.marginBottom = "30px";
 
-    /* marca o campo sobrenome se estiver vazio */
+    /* marca o campo nome se estiver vazio */
     if (input_nome.value !== "") {
       input_nome.style.border = "none";
     } else {
@@ -32,10 +32,10 @@ function validCadastro() {
     }
 
     /* marca o campo nome/razão social se estiver vazio */
-    if (input_sobrenome.value !== "") {
-      input_sobrenome.style.border = "none";
+    if (input_cnpj.value !== "") {
+      input_cnpj.style.border = "none";
     } else {
-      input_sobrenome.style.border = "thin solid #FF0000";
+      input_cnpj.style.border = "thin solid #FF0000";
     }
 
     /* marca o campo senha se estiver vazio */
@@ -52,20 +52,20 @@ function validCadastro() {
       input_repetir_senha.style.border = "thin solid #FF0000";
     }
 
-    /* marca o campo telefone se estiver vazio */
-    if (input_tel.value !== "") {
-      input_tel.style.border = "none";
+    /* marca o campo cep se estiver vazio */
+    if (input_cep.value !== "") {
+      input_cep.style.border = "none";
     } else {
-      input_tel.style.border = "thin solid #FF0000";
+      input_cep.style.border = "thin solid #FF0000";
     }
   } else {
     /* tira as marcações das inputs já preenchidas */
-    input_tel.style.border = "none";
+    input_cep.style.border = "none";
     input_senha.style.border = "none";
     input_repetir_senha.style.border = "none";
     input_nome.style.border = "none";
     input_email.style.border = "none";
-    input_sobrenome.style.border = "none";
+    input_cnpj.style.border = "none";
 
     /* Valida se o email possui "@" */
     if (input_email.value.indexOf("@") == -1) {
@@ -82,16 +82,16 @@ function validCadastro() {
       /* Valida se o nome possui mais de 3 caracteres */
       input_nome.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Nome deve conter no mínimo 3 digitos";
-    } else if (input_sobrenome.value.length < 3) {
+    } else if (input_cnpj.value.length < 14) {
 
-      /* Valida se a input sobrenome possui mais de 3 caracteres */
-      input_sobrenome.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "Sobrenome deve conter no mínimo 3 digitos";
-    } else if (input_tel.value.length < 8) {
+      /* Valida se a input cnpj possui mais de 3 caracteres */
+      input_cnpj.style.border = "thin solid #FF0000";
+      span_validacao.innerHTML = "Insira um CNPJ válido";
+    } else if (input_cep.value.length < 8) {
 
       /* Valida se o número de telefone possui ao menos 8 digitos */
-      input_tel.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "Telefone deve conter no mínimo 8 digitos";
+      input_cep.style.border = "thin solid #FF0000";
+      span_validacao.innerHTML = "Insira um cep válido";
     } else if (input_senha.value.length < 8) {
 
       /* Valida se a senha tem mais de 8 caracteres */
@@ -114,17 +114,17 @@ function validCadastro() {
     } else {
 
       /* Confirma o cadastro e abre a tela de monitoramento */
-      input_tel.style.border = "none";
+      input_cep.style.border = "none";
       input_senha.style.border = "none";
       input_repetir_senha.style.border = "none";
       input_nome.style.border = "none";
       input_email.style.border = "none";
-      input_sobrenome.style.border = "none";
+      input_cnpj.style.border = "none";
 
       alert("Cadastro efetuado com sucesso");
-      window.location.href = "index.html";
+      window.location.href = "../index.html";
 
-      fetch("/usuarios/cadastrar", {
+      fetch("/usuarios/cadastrarHospital", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -133,8 +133,21 @@ function validCadastro() {
           // crie um atributo que recebe o valor recuperado aqui
           // Agora vá para o arquivo routes/usuario.js
           nomeServer: nomeVar,
-          sobrenomeServer: sobrenomeVar,
-          telServer: telVar,
+          cnpjServer: cnpjVar,
+          cepServer: cepVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+        })
+      })
+      fetch("/usuarios/cadastrarUsuario", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nomeVar,
           emailServer: emailVar,
           senhaServer: senhaVar,
         })

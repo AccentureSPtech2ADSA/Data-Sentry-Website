@@ -89,7 +89,7 @@ function validLogin() {
             span_validacao.style.color = "white"
 
             setTimeout(function () {
-              window.location = "index.html";
+              window.location = "../teste_login.html";
             }, 2000); // apenas para exibir o loading
           });
 
