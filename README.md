@@ -83,4 +83,4 @@ Iniciar o projeto
 - [@Guilherme Delfino](https://github.com/GuilhermeDelfino)
 - [@Matheus Oliveira](https://github.com/matheussOliveira1)
 - [@Leonardo Tomé](https://github.com/leonardotome)
-- [@Kaike Viana](https://www.github.com/example)
+- [@Kaike Viana](https://github.com/KaikeMamedeViana)
