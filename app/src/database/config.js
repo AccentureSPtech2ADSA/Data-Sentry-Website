@@ -3,10 +3,12 @@ var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    server: "SEU_SERVIDOR",
-    database: "SEU_BANCO_DE_DADOS",
-    user: "SEU_USUARIO",
-    password: "SUA_SENHA",
+    server: "localhost",
+    trustServerCertificate: true, // para rodar docker
+    database: "dataSentry",
+    port: 1433, //rodar docker
+    user: "SA",
+    password: "#Gfgrupo1",
     pool: {
         max: 10,
         min: 0,
@@ -24,6 +26,7 @@ var mySqlConfig = {
     user: "root",
     password: "matheus123",
 };
+
 
 // as quatros funcoes abaixos tem que ter a base para executar nossos scripts de banco de dados
 // ou seja, no sql vamos receber como parametro uma string com uma query sql select
