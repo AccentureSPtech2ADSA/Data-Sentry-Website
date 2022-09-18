@@ -25,6 +25,23 @@ var mySqlConfig = {
     password: "matheus123",
 };
 
+// as quatros funcoes abaixos tem que ter a base para executar nossos scripts de banco de dados
+// ou seja, no sql vamos receber como parametro uma string com uma query sql select
+// vamos ter que retornar de forma IGUAL os dados
+// ou seja, se no mysql retornou {nome: 'azul'} no azure tambem tem que retornar a mesma coisa
+// digo isso agora porque por padrao eles vem com formatos de retorno diferente
+// se baseie na funcao executar abaixo, vamos fazer de maneira diferente e melhor!
+function select(){
+}
+function insert(){
+
+}
+function remove(){
+
+}
+function update(){
+
+}
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
     if (process.env.AMBIENTE_PROCESSO == "producao") {
