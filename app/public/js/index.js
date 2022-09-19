@@ -139,9 +139,3 @@ function toggle2() {
   item5.style.display = "none"
   item6.style.display = "none"
 }
-
-function ancoraFunc() {
-  document.getElementById('ancoraFunc').scrollIntoView({
-    behavior: 'smooth'
-  });
-}

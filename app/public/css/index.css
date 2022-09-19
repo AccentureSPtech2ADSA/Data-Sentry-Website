@@ -26,7 +26,7 @@
   height: 60%;
   display: flex;
   justify-content: space-between;
-  font-family: "Montserrat", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-shadow: 4px 4px 6px black;
 }
 
@@ -111,13 +111,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
  }
 
  /* Bloco de conteúdo inferior */
  /* Desktop */
  .bloco-inf {
-  margin: 50px 10%;
-  margin-top: 70px;
+  margin: 0 10%;
+  padding-top: 70px;
  }
 
  .bloco-inf img {
@@ -129,6 +130,14 @@
   color: #1b8a8a;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 700;
+ }
+
+ .conjunto1 .card p{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ }
+
+ .conjunto2 .card p{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
  }
 
  .bloco-inf h2 {
@@ -432,6 +441,12 @@ align-items: center;
   font-size: 20px; 
   font-weight: 400;
 }
+
+#foco_texto {
+  margin-top: 0;
+  padding-top: 90px;
+}
+
 .group-cards{
   width: 100%;
   margin-bottom: 50px;
@@ -544,7 +559,6 @@ align-items: center;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 10px;
    }
 
    .conjunto2 {
@@ -552,7 +566,7 @@ align-items: center;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 10px;
+
    }
 
    .bloco-inf {
