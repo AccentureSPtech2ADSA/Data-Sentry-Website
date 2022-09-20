@@ -24,23 +24,56 @@ var mySqlConfig = {
     host: "localhost",
     database: "dataSentry",
     user: "root",
-    password: "matheus123",
+    password: "datasentry",
 };
 
-
+const AMBIENTE = process.env.AMBIENTE_PROCESSO;
+const NOME_AMBIENTE_PRODUCAO = "producao";
+const NOME_AMBIENTE_DESENVOLVIMENTO = "desenvolvimento";
 // as quatros funcoes abaixos tem que ter a base para executar nossos scripts de banco de dados
 // ou seja, no sql vamos receber como parametro uma string com uma query sql select
 // vamos ter que retornar de forma IGUAL os dados
 // ou seja, se no mysql retornou {nome: 'azul'} no azure tambem tem que retornar a mesma coisa
 // digo isso agora porque por padrao eles vem com formatos de retorno diferente
 // se baseie na funcao executar abaixo, vamos fazer de maneira diferente e melhor!
+
 function select(){
 }
-function insert(){
-
+function insert(instrucao){
+    if(AMBIENTE == NOME_AMBIENTE_DESENVOLVIMENTO) {
+        // mysql
+        return insertMysql(instrucao);
+    }
+    if(AMBIENTE == NOME_AMBIENTE_PRODUCAO) {
+        // mssql
+        return insertSqlServer(instrucao);
+    }
+}
+function insertMysql(instrucao){
+    const promessaRetorno = new Promise(function(resolve, reject){
+        var conexao = mysql.createConnection(mySqlConfig);
+        conexao.connect();
+        conexao.query(instrucao, function (erro, resultados) {
+            conexao.end();
+            if (erro) {
+                reject(erro);
+            }
+            console.log(resultados);
+            resolve(resultados);
+            resultados.entries
+        });
+    })
+    return 
+}
+function insertSqlServer(instrucao){
+    return {
+        data: "Kaike"
+    }
 }
 function remove(){
+    fetch().then(function (){
 
+    });
 }
 function update(){
 
