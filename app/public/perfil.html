@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg">
-    <title>Dashboard - Data Sentry</title>
+    <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg" />
+    <title>Perfil - Data Sentry</title>
     <link rel="stylesheet" href="./css/navbarLateral.css" />
-    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/perfil.css">
     <script src="./js/dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
@@ -18,7 +18,7 @@
         <div class="navbar_topo">
           <img id="logo_navbar" src="./assets/svg/logo-escudo.svg" />
           <a href="./perfil.html"><div class="tooltip">
-            <svg viewBox="0 0 24 24" fill="white">
+            <svg viewBox="0 0 24 24" fill="#15CDD3">
               <path
                 d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2S7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"
               ></path>
@@ -27,7 +27,7 @@
           </div></a>
 
           <a href="./dashboard.html"><div class="tooltip">
-            <svg viewBox="0 0 36 36" fill="#15CDD3">
+            <svg viewBox="0 0 36 36" fill="white">
               <path
                 d="M18 4.25A16.49 16.49 0 0 0 5.4 31.4l.3.35h24.6l.3-.35A16.49 16.49 0 0 0 18 4.25Zm8.6 9.48l-5.92 5.81a3 3 0 1 1-1.41-1.42l5.91-5.81Zm-23 6.17H7v2H3.56c0-.39-.05-.77-.05-1.17s.02-.55.04-.83Zm4.88-10l2.46 2.46l-1.47 1.38L7 11.29a14.57 14.57 0 0 1 1.43-1.42ZM19 9.79h-2v-3.5h1c.37 0 .7 0 1 .05Zm13.49 10.95c0 .39 0 .79-.05 1.17h-3.52v-2h3.53c.02.27.04.55.04.83Z"
               ></path>
@@ -80,133 +80,8 @@
       </div>
     </div>
 
-    <!-- Conteúdo dashboards -->
     <div class="body_container">
-    <div class="bloco1">
-      <p>Clínica Cirúrgica Santa Efigênia</p>
-      <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">#Servidor 01 ↓</button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="#">#Servidor 02</a>
-          <a href="#">#Servidor 03</a>
-          <a href="#">#Servidor 04</a>
-        </div>
-      </div>
+      <!-- Codar aqui (arquivo css já criado e conectado) ------------------------------------------------------>
     </div>
-
-    <div class="bloco2">
-      <div class="kpi_card">
-        <span>Uso de CPU</span>
-        <div>
-          <canvas id="myChart1"></canvas>
-        </div>
-      </div>
-
-      <div class="kpi_card">
-        <span>Uso de RAM</span>
-        <div>
-          <canvas id="myChart2"></canvas>
-        </div>
-      </div>
-
-      <div class="kpi_card">
-        <span>Espaço em disco</span>
-        <div>
-          <canvas id="myChart3"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <div class="bloco3">
-      <p>Visão geral de uso do hardware</p>
-      <div class="graph_geral">
-        <div>
-          <canvas id="myChart4"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <div class="bloco4">
-      <p>Processos ativos no sistema</p>
-      <div class="lista_processos"></div>
-    </div>
-  </div>
   </body>
 </html>
-
-<script>
-  /* Setup chart 1*/
-  const labels = ["Utilizado", "Livre"];
-
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        backgroundColor: ["#009492", "#17EBE6"],
-        data: [28, 10],
-      },
-    ],
-  };
-
-  /* Setup chart 4*/
-  const labels2 = ["CPU", "RAM", "Disco"];
-
-  const data2 = {
-    labels: labels2,
-    datasets: [
-      {
-        backgroundColor: ["#009492", "#17EBE6", "#174366"],
-        data: [28, 10, 18],
-      },
-    ],
-  };
-
-  /* config chart 1 */
-  const config1 = {
-    type: "doughnut",
-    data: data,
-    options: {},
-  };
-
-  /* config chart 2 */
-  const config2 = {
-    type: "bar",
-    data: data,
-    options: {},
-  };
-
-  /* config chart 3 */
-  const config3 = {
-    type: "bar",
-    data: data,
-    options: {},
-  };
-
-  /* config chart 4 */
-  const config4 = {
-    type: "line",
-    data: data2,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-    },
-  };
-
-  /* Renderizar chart */
-  const myChart3 = new Chart(document.getElementById("myChart3"), config1);
-
-  const myChart2 = new Chart(document.getElementById("myChart2"), config2);
-
-  const myChart1 = new Chart(document.getElementById("myChart1"), config3);
-
-  const myChart4 = new Chart(document.getElementById("myChart4"), config4);
-</script>

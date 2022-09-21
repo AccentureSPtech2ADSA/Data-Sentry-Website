@@ -2,9 +2,13 @@ body {
     background-color: #E9E9E9;
 }
 
+.body_container {
+    float: right;
+    width: 97%;
+}
+
 /* Bloco1 (nome hospital, seleção de servidor)*/
 .bloco1 {
-    margin-left: 7%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
