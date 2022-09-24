@@ -46,12 +46,11 @@ button:hover{
 .painel thead{ /*----Cabeçalho------*/
     background-color: #629d9c;
     color: #fff;
-    line-height: 40px;
 }
 .painel th{ /*----Titulo------*/
     width: 30vw;
     text-align: left;
-    padding: 0px 9px;
+    padding: 13px 9px;
     font-size: 17px;
 }
 .painel td{ /*----Conteúdo------*/
