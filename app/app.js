@@ -1,6 +1,7 @@
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
+const { enviarEmailSimples } = require("./src/util/emailService");
 require("dotenv").config();
 var PORTA = process.env.EXPRESS_PORT;
 
