@@ -1,8 +1,13 @@
-var mysql = require("mysql2");
-var sql = require("mssql");
+const mysql = require("mysql2");
+const sql = require("mssql");
+const AMBIENTE = process.env.AMBIENTE_PROCESSO;
+const NOME_AMBIENTE_PRODUCAO = "PROD";
+const NOME_AMBIENTE_DESENVOLVIMENTO = "DEV";
+const isAmbienteDesenvolvimento = AMBIENTE == NOME_AMBIENTE_DESENVOLVIMENTO;
+const isAmbienteProducao = AMBIENTE == NOME_AMBIENTE_PRODUCAO;
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
-var sqlServerConfig = {
+const sqlServerConfig = {
   server: process.env.MSSQL_HOST,
   trustServerCertificate: true, // para rodar docker
   database: process.env.MSSQL_DATABASE,
@@ -20,15 +25,11 @@ var sqlServerConfig = {
 };
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {
-    host: "localhost",
-    database: "dataSentry",
-    user: "root",
-    password: "datasentry",
+  host: "localhost",
+  database: "dataSentry",
+  user: "root",
+  password: "datasentry",
 };
-
-const AMBIENTE = process.env.AMBIENTE_PROCESSO;
-const NOME_AMBIENTE_PRODUCAO = "producao";
-const NOME_AMBIENTE_DESENVOLVIMENTO = "desenvolvimento";
 
 // as quatros funcoes abaixos tem que ter a base para executar nossos scripts de banco de dados
 // ou seja, no sql vamos receber como parametro uma string com uma query sql select
@@ -36,57 +37,49 @@ const NOME_AMBIENTE_DESENVOLVIMENTO = "desenvolvimento";
 // ou seja, se no mysql retornou {nome: 'azul'} no azure tambem tem que retornar a mesma coisa
 // digo isso agora porque por padrao eles vem com formatos de retorno diferente
 // se baseie na funcao executar abaixo, vamos fazer de maneira diferente e melhor!
-function insert(querySQL) {
-    return new Promise(function (resolve) {
+function insertMysql(querySQL) {
+  return new Promise((resolve) => {
+    const msgResponse = `Houve algum erro ao inserir no banco de dados \nQuery: ${querySQL}`;
+    const response = {
+      status: 500,
+      msg: msgResponse,
+    };
+    const conexaoMysql = mysql.createConnection(mySqlConfig);
+    conexaoMysql.connect();
+    conexaoMysql.query(querySQL, (err, result) => {
+      if (err) {
+        response.data = err;
+      } else {
+        const msgResponse = `Inserido com sucesso no ID = ${result.insertId} `;
+        response.data = result;
+        response.msg = msgResponse;
+        response.status = 201;
+      }
+      conexaoMysql.end();
 
-        const conexaoMysql = mysql.createConnection(mySqlConfig);
-        conexaoMysql.connect();
-
-        conexaoMysql.query(querySQL, (err, result) => {
-
-            if (err) {
-                resolve(err);
-            } else {
-                // deu certo
-                const msgResponse = ` Hospital inserido com sucesso no ID = ${result.insertId}. `
-
-                const response = {
-                    data: result,
-                    msg: msgResponse
-                }
-
-                resolve(response);
-            }
-        });
-    })
-        .then(res => res)
-        .catch(err => err)
+      resolve(response);
+    });
+  });
 }
-function insertUsuario(querySQL) {
-    return new Promise(function (resolve) {
-
-        const conexaoMysql = mysql.createConnection(mySqlConfig);
-        conexaoMysql.connect();
-
-        conexaoMysql.query(querySQL, (err, result) => {
-
-            if (err) {
-                resolve(err);
-            } else {
-                // deu certo
-                const msgResponse = ` Usuario inserido com sucesso no ID = ${result.insertId}. `
-
-                const response = {
-                    data: result,
-                    msg: msgResponse
-                }
-
-                resolve(response);
-            }
-        });
-    })
-        .then(res => res)
-        .catch(err => err)
+function insertSqlServer(querySQL) {}
+/**
+ * @description Vai inserir de acordo com o ambiente de desenvolvimento, ou sql server ou mysql
+ * @param {string} querySQL Query para insert ex: INSERT INTO User VALUES(1);
+ * @returns {{data: mysql.ResultSetHeader | sql.IRecordSet, msg: string, status: number}}
+ */
+function insert(querySQL) {
+  return new Promise(async (resolve) => {
+    if (isAmbienteDesenvolvimento) {
+      const resultInsertMysql = await insertMysql(querySQL);
+      resolve(resultInsertMysql);
+    } else if (isAmbienteProducao) {
+      resolve(insertSqlServer(querySQL));
+    } else {
+      console.log("process.env.AMBIENTE incorreto");
+    }
+  })
+    .then((res) => res)
+    .catch((err) => err);
 }
 
 function executar(instrucao) {
@@ -137,8 +130,6 @@ function executar(instrucao) {
 }
 
 module.exports = {
-    executar,
-    insert,
-    insertUsuario
-}
-
+  executar,
+  insert,
+};
