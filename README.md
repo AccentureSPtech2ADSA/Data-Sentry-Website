@@ -1,6 +1,6 @@
 # Data Sentry
 
-![Logo](https://svgshare.com/s/mw1)
+![Logo](https://svgshare.com/i/mw1.svg)
 
 ## Features
 
