@@ -20,11 +20,15 @@ var sqlServerConfig = {
 };
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {
-  host: process.env.MYSQL_HOST,
-  database: process.env.MYSQL_DATABASE,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
+    host: "localhost",
+    database: "dataSentry",
+    user: "root",
+    password: "datasentry",
 };
+
+const AMBIENTE = process.env.AMBIENTE_PROCESSO;
+const NOME_AMBIENTE_PRODUCAO = "producao";
+const NOME_AMBIENTE_DESENVOLVIMENTO = "desenvolvimento";
 
 // as quatros funcoes abaixos tem que ter a base para executar nossos scripts de banco de dados
 // ou seja, no sql vamos receber como parametro uma string com uma query sql select
@@ -32,10 +36,59 @@ var mySqlConfig = {
 // ou seja, se no mysql retornou {nome: 'azul'} no azure tambem tem que retornar a mesma coisa
 // digo isso agora porque por padrao eles vem com formatos de retorno diferente
 // se baseie na funcao executar abaixo, vamos fazer de maneira diferente e melhor!
-function select() {}
-function insert() {}
-function remove() {}
-function update() {}
+function insert(querySQL) {
+    return new Promise(function (resolve) {
+
+        const conexaoMysql = mysql.createConnection(mySqlConfig);
+        conexaoMysql.connect();
+
+        conexaoMysql.query(querySQL, (err, result) => {
+
+            if (err) {
+                resolve(err);
+            } else {
+                // deu certo
+                const msgResponse = ` Hospital inserido com sucesso no ID = ${result.insertId}. `
+
+                const response = {
+                    data: result,
+                    msg: msgResponse
+                }
+
+                resolve(response);
+            }
+        });
+    })
+        .then(res => res)
+        .catch(err => err)
+}
+function insertUsuario(querySQL) {
+    return new Promise(function (resolve) {
+
+        const conexaoMysql = mysql.createConnection(mySqlConfig);
+        conexaoMysql.connect();
+
+        conexaoMysql.query(querySQL, (err, result) => {
+
+            if (err) {
+                resolve(err);
+            } else {
+                // deu certo
+                const msgResponse = ` Usuario inserido com sucesso no ID = ${result.insertId}. `
+
+                const response = {
+                    data: result,
+                    msg: msgResponse
+                }
+
+                resolve(response);
+            }
+        });
+    })
+        .then(res => res)
+        .catch(err => err)
+}
+
 function executar(instrucao) {
   // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
   if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -84,5 +137,8 @@ function executar(instrucao) {
 }
 
 module.exports = {
-  executar,
-};
+    executar,
+    insert,
+    insertUsuario
+}
+
