@@ -36,48 +36,59 @@ const NOME_AMBIENTE_DESENVOLVIMENTO = "desenvolvimento";
 // ou seja, se no mysql retornou {nome: 'azul'} no azure tambem tem que retornar a mesma coisa
 // digo isso agora porque por padrao eles vem com formatos de retorno diferente
 // se baseie na funcao executar abaixo, vamos fazer de maneira diferente e melhor!
+function insert(querySQL) {
+    return new Promise(function (resolve) {
 
-function select(){
-}
-function insert(instrucao){
-    if(AMBIENTE == NOME_AMBIENTE_DESENVOLVIMENTO) {
-        // mysql
-        return insertMysql(instrucao);
-    }
-    if(AMBIENTE == NOME_AMBIENTE_PRODUCAO) {
-        // mssql
-        return insertSqlServer(instrucao);
-    }
-}
-function insertMysql(instrucao){
-    const promessaRetorno = new Promise(function(resolve, reject){
-        var conexao = mysql.createConnection(mySqlConfig);
-        conexao.connect();
-        conexao.query(instrucao, function (erro, resultados) {
-            conexao.end();
-            if (erro) {
-                reject(erro);
+        const conexaoMysql = mysql.createConnection(mySqlConfig);
+        conexaoMysql.connect();
+
+        conexaoMysql.query(querySQL, (err, result) => {
+
+            if (err) {
+                resolve(err);
+            } else {
+                // deu certo
+                const msgResponse = ` Hospital inserido com sucesso no ID = ${result.insertId}. `
+
+                const response = {
+                    data: result,
+                    msg: msgResponse
+                }
+
+                resolve(response);
             }
-            console.log(resultados);
-            resolve(resultados);
-            resultados.entries
         });
     })
-    return 
+        .then(res => res)
+        .catch(err => err)
 }
-function insertSqlServer(instrucao){
-    return {
-        data: "Kaike"
-    }
-}
-function remove(){
-    fetch().then(function (){
+function insertUsuario(querySQL) {
+    return new Promise(function (resolve) {
 
-    });
-}
-function update(){
+        const conexaoMysql = mysql.createConnection(mySqlConfig);
+        conexaoMysql.connect();
 
+        conexaoMysql.query(querySQL, (err, result) => {
+
+            if (err) {
+                resolve(err);
+            } else {
+                // deu certo
+                const msgResponse = ` Usuario inserido com sucesso no ID = ${result.insertId}. `
+
+                const response = {
+                    data: result,
+                    msg: msgResponse
+                }
+
+                resolve(response);
+            }
+        });
+    })
+        .then(res => res)
+        .catch(err => err)
 }
+
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
     if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -120,5 +131,7 @@ function executar(instrucao) {
 }
 
 module.exports = {
-    executar
+    executar,
+    insert,
+    insertUsuario
 }
