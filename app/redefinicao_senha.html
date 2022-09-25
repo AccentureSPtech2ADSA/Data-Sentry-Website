@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/css/redefinicao_senha.css">
+    <link rel="stylesheet" href="./public/css/popup.min.css">
+    <script src="./public/js/popup.min.js"></script>
+    <title>Redefinição de Senha</title>
+</head>
+
+<body>
+    <div class="interface">
+        <div class="area-logo">
+            <img src="/app/public/assets/svg/logo-escudo.svg" alt="" width="130px">
+        </div>
+        <h3>Redefinição de Senha</h3>
+        <div class="area-form">
+            <div class="form">
+                <form action="redefinir_senha">
+                    <label for="">Informe seu Email:</label><br>
+                    <div class="campos">
+                        <input type="text" id="">
+                        <div id="btn_info"class="ui button"data-inverted=""data-tooltip="Seu email do Data Sentry"data-position="right center">i</div>
+                    </div>
+
+                    <label for="">Nova senha:</label><br>
+                    <div class="campos">
+                        <input type="text" id="">
+                        <div id="btn_info"class="ui button"data-inverted=""data-tooltip="Senha mínimo 8 dígitos"data-position="right center">i</div>
+                    </div>
+
+                    <label for="">Confirmar senha:</label><br>
+                    <div class="campos">
+                        <input type="text" id="">
+                        <div id="btn_info"class="ui button"data-inverted=""data-tooltip="Confirme a mesma senha"data-position="right center">i</div>
+                    </div>
+
+                </form>
+
+            </div>
+            <button onclick="validar()">Redefinir Senha</button>
+
+        </div>
+        <footer>
+            <h5>@Data Sentry - Todos os Direitos reservados - 2022</h5>
+        </footer>
+    </div>
+</body>
+
+</html>
