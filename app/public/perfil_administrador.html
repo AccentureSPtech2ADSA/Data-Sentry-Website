@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="./css/perfil_usuario.css" />
     <script src="./js/dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/perfil_administrador.js"></script>
   </head>
-  <body>
+  <body onload="valorPlaceholder()">
     <!-- Navbar Lateral -->
     <div class="navbar">
       <div class="navbar_container">
@@ -94,77 +95,82 @@
         <div class="user">
           <div class="editar_foto">
             <div class="tooltip">
-            <svg id="svg_editar_foto" viewBox="0 0 24 24" fill="white">
-              <path
-                d="M4.42 20.579a1 1 0 0 1-.737-.326a.988.988 0 0 1-.263-.764l.245-2.694L14.983 5.481l3.537 3.536L7.205 20.33l-2.694.245a.95.95 0 0 1-.091.004ZM19.226 8.31L15.69 4.774l2.121-2.121a1 1 0 0 1 1.415 0l2.121 2.121a1 1 0 0 1 0 1.415l-2.12 2.12l-.001.001Z"
-              ></path>
-            </svg>
-            <span id="tooltip_perfil" class="tooltiptext">Alterar</span>
-          </div>
+              <svg id="svg_editar_foto" viewBox="0 0 24 24" fill="white">
+                <path
+                  d="M4.42 20.579a1 1 0 0 1-.737-.326a.988.988 0 0 1-.263-.764l.245-2.694L14.983 5.481l3.537 3.536L7.205 20.33l-2.694.245a.95.95 0 0 1-.091.004ZM19.226 8.31L15.69 4.774l2.121-2.121a1 1 0 0 1 1.415 0l2.121 2.121a1 1 0 0 1 0 1.415l-2.12 2.12l-.001.001Z"
+                ></path>
+              </svg>
+              <span id="tooltip_perfil" class="tooltiptext">Alterar</span>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Informações de usuário -->
-      <div class="bloco_duplo">
-        <div class="div_primeiro_nome">
-          <div class="ipt_titulo">Primeiro Nome</div>
-          <input type="text" placeholder="" />
-        </div>
+      <div class="bloco_unico">
+        <div class="ipt_titulo">Administrador Responsável</div>
+        <input id="id_input1" type="text" placeholder="" />
+      </div>
 
-        <div class="div_sobrenome">
-          <div class="ipt_titulo">Sobrenome</div>
-          <input type="text" placeholder="" />
-        </div>
+      <div class="bloco_unico">
+        <div class="ipt_titulo">Hospital</div>
+        <input id="id_input2" type="text" placeholder="" />
       </div>
 
       <div class="bloco_unico">
         <div class="ipt_titulo">Email</div>
-        <input type="text" placeholder="" />
-      </div>
-
-      <div class="bloco_unico">
-        <div class="ipt_titulo">Número de Contato</div>
-        <input type="text" placeholder="" />
+        <input id="id_input3" type="text" placeholder="" />
       </div>
 
       <div class="bloco_unico">
         <div class="ipt_titulo">Endereço</div>
-        <input type="text" placeholder="" />
+        <input id="id_input4" type="text" placeholder="" />
       </div>
 
       <div class="bloco_duplo">
         <div class="div_primeiro_nome">
           <div class="ipt_titulo">Cidade</div>
-          <input type="text" placeholder="" />
+          <input id="id_input5" type="text" placeholder="" />
         </div>
 
         <div class="div_sobrenome">
           <div class="ipt_titulo">Estado</div>
-          <input type="text" placeholder="" />
+          <input id="id_input6" type="text" placeholder="" />
         </div>
       </div>
 
       <div class="bloco_duplo">
         <div class="div_primeiro_nome">
           <div class="ipt_titulo">CEP</div>
-          <input type="text" placeholder="" />
+          <input id="id_input7" type="text" placeholder="" />
         </div>
 
         <div class="div_sobrenome">
           <div class="ipt_titulo">País</div>
-          <input type="text" placeholder="" />
+          <input id="id_input8" type="text" placeholder="" />
+        </div>
+      </div>
+
+      <div class="bloco_duplo">
+        <div class="div_primeiro_nome">
+          <div class="ipt_titulo">Número de Contato</div>
+          <input id="id_input10" type="text" placeholder="" />
+        </div>
+
+        <div class="div_sobrenome">
+          <div class="ipt_titulo">CNPJ</div>
+          <input id="id_input11" type="text" placeholder="" />
         </div>
       </div>
 
       <div class="bloco_unico">
         <div class="ipt_titulo">Senha</div>
-        <input type="text" placeholder="" />
+        <input id="id_input9" type="text" placeholder="" />
       </div>
 
       <div class="bloco_inferior">
         <div>
-          <button class="btn_salvar">Salvar</button>
+          <input class="btn_salvar" type="button" value="Editar" id="onoff" onclick="onoff();">
         </div>
 
         <div>
