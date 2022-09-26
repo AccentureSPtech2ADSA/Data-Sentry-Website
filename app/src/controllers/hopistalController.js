@@ -7,7 +7,7 @@ var hospitalModel = require("../models/hospitalModel");
  * @param {Response} res
  */
 async function insert(req, res) {
-  //   console.log(`req.body`, req.body); // see body of request
+  // console.log(`req.body`, req.body); // see body of request
   if (Object.values(req.body).length !== 10) {
     const msg =
       "Campos invalidos, valide no arquivo hospital controller quais os campos que essa requisicao pede. (funcão insert de hospitalController.js)";
@@ -31,16 +31,24 @@ async function insert(req, res) {
     const hospitalModelResult = await hospitalModel.insert(
       parametrosInsereHospital
     );
+    const resultLastInsertedIdHospital =
+      await hospitalModel.getLastInsertedId();
+
     const parametrosInsereUserHospital = {
       email: req.body.email,
-      hospital: hospitalModelResult.data.insertId, // mudar o inserted ID para o sql server dps
+      hospital: resultLastInsertedIdHospital,
       name: req.body.name,
       password: req.body.password,
     };
     const userHospitalModelResult = await userModel.insertUsuario(
       parametrosInsereUserHospital
     );
-    res.json(userHospitalModelResult).status(userHospitalModelResult.status);
+    if (userHospitalModelResult.status == 200) {
+      userHospitalModelResult.longMessage = `Hospital e usuário admin foram inseridos com sucesso no sistema Data Sentry`;
+      userHospitalModelResult.shortMessage = `Hospital e usuário adicionados.`;
+    }
+    res.status(userHospitalModelResult.status);
+    res.json(userHospitalModelResult);
   }
 }
 

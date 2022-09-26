@@ -9,10 +9,10 @@ async function insertUsuario({
 }) {
   // query vai ser nosso comando sql -> para inserir -> insert into
 
-  const query = `INSERT INTO UserHospital (name, email, password, idManager, fkHospital) VALUES
+  const query = `INSERT INTO UserHospital (name, email, password, fkManager, fkHospital) VALUES
     ('${name}', '${email}', '${password}', ${manager}, ${hospital})`;
 
-  return await database.insert(query);
+  return await database.execute(query);
 }
 
 module.exports = {
