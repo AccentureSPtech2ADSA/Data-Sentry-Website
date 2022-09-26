@@ -3,7 +3,6 @@ function onoff(){
     if(currentvalue == "Salvar"){
       document.getElementById("onoff").value="Editar";
 
-      document.getElementById("id_input1").style.border = "none"
       document.getElementById("id_input2").style.border = "none"
       document.getElementById("id_input3").style.border = "none"
       document.getElementById("id_input4").style.border = "none"
@@ -15,7 +14,6 @@ function onoff(){
       document.getElementById("id_input10").style.border = "none"
       document.getElementById("id_input11").style.border = "none"
 
-      document.getElementById("id_input1").style.cursor = "default"
       document.getElementById("id_input2").style.cursor = "default"
       document.getElementById("id_input3").style.cursor = "default"
       document.getElementById("id_input4").style.cursor = "default"
@@ -27,7 +25,6 @@ function onoff(){
       document.getElementById("id_input10").style.cursor = "default"
       document.getElementById("id_input11").style.cursor = "default"
 
-      document.getElementById("id_input1").style.boxShadow = "none";
       document.getElementById("id_input2").style.boxShadow = "none";
       document.getElementById("id_input3").style.boxShadow = "none";
       document.getElementById("id_input4").style.boxShadow = "none";
@@ -39,7 +36,6 @@ function onoff(){
       document.getElementById("id_input10").style.boxShadow = "none";
       document.getElementById("id_input11").style.boxShadow = "none";
 
-      document.getElementById("id_input1").style.color = "#525252";
       document.getElementById("id_input2").style.color = "#525252";
       document.getElementById("id_input3").style.color = "#525252";
       document.getElementById("id_input4").style.color = "#525252";
@@ -56,7 +52,6 @@ function onoff(){
       document.getElementById("onoff").style.color = "white"
     }else{
       document.getElementById("onoff").value="Salvar";
-      document.getElementById("id_input1").style.border = "1px solid grey"
       document.getElementById("id_input2").style.border = "1px solid grey"
       document.getElementById("id_input3").style.border = "1px solid grey"
       document.getElementById("id_input4").style.border = "1px solid grey"
@@ -68,7 +63,6 @@ function onoff(){
       document.getElementById("id_input10").style.border = "1px solid grey"
       document.getElementById("id_input11").style.border = "1px solid grey"
 
-      document.getElementById("id_input1").style.cursor = "auto"
       document.getElementById("id_input2").style.cursor = "auto"
       document.getElementById("id_input3").style.cursor = "auto"
       document.getElementById("id_input4").style.cursor = "auto"
@@ -80,7 +74,6 @@ function onoff(){
       document.getElementById("id_input10").style.cursor = "auto"
       document.getElementById("id_input11").style.cursor = "auto"
     
-      document.getElementById("id_input1").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
       document.getElementById("id_input2").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
       document.getElementById("id_input3").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
       document.getElementById("id_input4").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
@@ -92,7 +85,6 @@ function onoff(){
       document.getElementById("id_input10").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
       document.getElementById("id_input11").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
 
-      document.getElementById("id_input1").style.color = "black";
       document.getElementById("id_input2").style.color = "black";
       document.getElementById("id_input3").style.color = "black";
       document.getElementById("id_input4").style.color = "black";
@@ -110,7 +102,6 @@ function onoff(){
   }
 
   function valorPlaceholder() {
-    document.getElementById("id_input1").value = "Jonathan Gilber";
     document.getElementById("id_input2").value = "Clínica Cirúrgica Santa Efigênia";
     document.getElementById("id_input3").value = "clinicase@outlook.com";
     document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
