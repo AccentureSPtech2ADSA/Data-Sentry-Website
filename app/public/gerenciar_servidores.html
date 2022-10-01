@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg" />
     <title>Usuários - Data Sentry</title>
     <link rel="stylesheet" href="./css/navbarLateral.css" />
-    <link rel="stylesheet" href="./css/usuarios.css" />
+    <link rel="stylesheet" href="./css/gerenciar_servidores.css" />
     <script src="./js/dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="//code.jivosite.com/widget/PPcXITM6I4" async></script>
@@ -37,7 +37,7 @@
           </div></a>
 
           <a href="./usuarios.html"><div class="tooltip">
-            <svg viewBox="0 0 24 24" fill="#15CDD3">
+            <svg viewBox="0 0 24 24" fill="white">
               <path
                 d="M9 11a4 4 0 1 0-4-4a4 4 0 0 0 4 4Zm8 2a3 3 0 1 0-3-3a3 3 0 0 0 3 3Zm4 7a1 1 0 0 0 1-1a5 5 0 0 0-8.06-3.95A7 7 0 0 0 2 20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1"
               ></path>
@@ -45,8 +45,8 @@
             <span class="tooltiptext">Usuários</span>
           </div></a>
 
-          <a href="./servidores.html"><div class="tooltip">
-            <svg viewBox="0 0 24 24" fill="white">
+          <a href="./gerenciar_servidores.html"><div class="tooltip">
+            <svg viewBox="0 0 24 24" fill="#15CDD3">
               <path
                 d="M5.507 4.048A3 3 0 0 1 7.785 3h8.43a3 3 0 0 1 2.278 1.048l1.722 2.008A4.533 4.533 0 0 0 19.5 6h-15c-.243 0-.482.02-.715.056l1.722-2.008Z"
               />
@@ -83,13 +83,117 @@
 
     <div class="body_container">
       <!-- Codar aqui (arquivo css já criado e conectado) ------------------------------------------------------>
-      <div class="area-servers">
-        <div class="servers">
+      <div class="area-painel">
+        <div class="painel">
             <div class="cabecalho">
-
+              <div class="qtd_servidores">
+                <h3>16</h3>
+                <h4>Servidores Adicionados</h4>
+              </div>
+              <div class="data_att">
+                <h4>Ultima atualização<br>
+                dd/mm/aaaa</h4>
+              </div>
             </div>
             <div class="corpo">
-                
+                <table>
+                  <tr class="colorDark">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input id="inp_1" type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img id="edit_1" src="./assets/svg/edit-icon.svg" alt="" width="18px" onclick="editar()"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorGray">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorDark">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorGray">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorDark">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorGray">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorDark">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorGray">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorDark">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorGray">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorDark">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorGray">
+                    <td><button class="button-parado">Parado</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorDark">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorGray">
+                    <td><button class="button-parado">Parado</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorDark">
+                    <td><button class="button-parado">Parado</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                  <tr class="colorGray">
+                    <td><button class="button-ativo">Ativo</button></td>
+                    <td><input type="text" value="Server  SV88886666WQ - 08/03/2022 - 08:30" disabled></td>
+                    <td><img src="./assets/svg/edit-icon.svg" alt="" width="18px"></td>
+                    <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+                  </tr>           
+                </table>
             </div>
             <div class="rodape">
 
@@ -100,3 +204,8 @@
     </div>
   </body>
 </html>
+<script>
+  function editar(){
+    document.getElementById('inp_1').disabled = false;
+  }
+</script>
