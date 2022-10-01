@@ -8,7 +8,7 @@ var hospitalModel = require("../models/hospitalModel");
  */
 async function insert(req, res) {
   // console.log(`req.body`, req.body); // see body of request
-  if (Object.values(req.body).length !== 10) {
+  if (Object.values(req.body).length !== 11) {
     const msg =
       "Campos invalidos, valide no arquivo hospital controller quais os campos que essa requisicao pede. (funcão insert de hospitalController.js)";
     res
@@ -38,6 +38,7 @@ async function insert(req, res) {
       email: req.body.email,
       hospital: resultLastInsertedIdHospital,
       name: req.body.name,
+      phone: req.body.phone,
       password: req.body.password,
     };
     const userHospitalModelResult = await userModel.insertUsuario(
