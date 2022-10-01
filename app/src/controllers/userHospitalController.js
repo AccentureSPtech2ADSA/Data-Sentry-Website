@@ -31,6 +31,39 @@ async function insertUsuario(req, res) {
   }
 }
 
+async function login(req, res) {
+  //   console.log(`req.body`, req.body);
+  if (Object.values(req.body).length !== 2) {
+    const msg =
+      "Campos invalidos, valide no arquivo userHospitalController quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const parametros = {
+      email: req.body.email,
+      password: req.body.password,
+      phone: req.body.phone,
+    };
+    const userHospitalResult = await userHospitalModel.login(parametros);
+    console.log(userHospitalResult);
+    if (userHospitalResult.data[0] == undefined) {
+      res
+        .json({
+          data: [],
+          msg: "Email ou senha incorretos",
+          status: 404,
+        })
+        .status(404);
+    }
+    res.json(userHospitalResult).status(userHospitalResult.status);
+  }
+}
 module.exports = {
   insertUsuario,
+  login,
 };

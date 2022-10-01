@@ -12,7 +12,7 @@ const sqlServerConfig = {
   server: process.env.MSSQL_HOST,
   trustServerCertificate: true, // para rodar docker
   database: process.env.MSSQL_DATABASE,
-  port: process.env.MSSQL_PORT, //rodar docker
+  port: 1433, //rodar docker
   user: process.env.MSSQL_USER,
   password: process.env.MSSQL_PASSWORD,
   pool: {
@@ -25,11 +25,12 @@ const sqlServerConfig = {
   },
 };
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
+
 var mySqlConfig = {
-  host: "localhost",
-  database: "dataSentry",
-  user: "root",
-  password: "datasentry",
+  host: process.env.MYSQL_HOST,
+  database: process.env.MYSQL_DATABASE,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
 };
 const msgResponseError = `Houve algum erro executar a query.`;
 const msgResponseOk = `Query executada com sucesso.`;

@@ -7,6 +7,7 @@ async function getLastInsertedId() {
   }
   const resultSelect = await database.execute(query);
   let lastId = resultSelect.data;
+  console.log(lastId);
   if (database.isAmbienteProducao) {
     lastId = lastId[0][0]["id"];
   }
