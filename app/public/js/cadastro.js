@@ -144,6 +144,9 @@ function validCadastro() {
       input_email.style.border = "none";
       input_cnpj.style.border = "none";
 
+      // fazerRequisicaoInserirHospitalUser()
+      return;
+
       alert("Cadastro efetuado com sucesso");
       window.location.href = "../index.html";
 
@@ -177,4 +180,40 @@ function validCadastro() {
       });
     }
   }
+}
+
+async function fazerRequisicaoInserirHospitalUser(
+  cnpj,
+  cep,
+  numberAddress,
+  unit,
+  fantasyName,
+  corporateName,
+  complemento,
+  name,
+  email,
+  password,
+  phone
+) {
+  let req = await fetch("http://localhost:3333/hospital/insert", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      cep: cep,
+      cnpj: cnpj,
+      complement: complemento,
+      corporateName: corporateName,
+      fantasyName: fantasyName,
+      numberAdress: numberAddress,
+      unit: unit,
+      name: name,
+      email: email,
+      password: password,
+      phone: phone,
+    }),
+  });
+  let res = await req.json();
+  return res;
 }
