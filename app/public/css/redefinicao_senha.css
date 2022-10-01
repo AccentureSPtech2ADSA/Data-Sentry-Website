@@ -1,5 +1,7 @@
 body{
-    background-color: rgb(40, 40, 40);
+    background-color: #232428;
+    margin: 0;
+    padding: 0;
 }
 h3{
     color: #D9D9D9;
@@ -40,7 +42,19 @@ h3{
 .form{
     font-size: 13px;
 }
-button{
+.btn_back{
+    width: 5vw;
+    height: 30px;
+    margin: 10px 0 0 10px;
+    border-radius: 30px;
+    border: 0;
+    background-color: #1a6969;
+    color: aliceblue;
+    cursor: pointer;
+    transition: all 1s;
+    position: absolute;
+}
+.btn_submit{
     width: 10vw;
     height: 30px;
     border-radius: 5px;
@@ -72,4 +86,9 @@ button:hover{
 }
 footer{
     color: #50746f;
+}
+
+.information{
+    color: #4f4f4f;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

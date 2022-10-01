@@ -12,36 +12,28 @@
 </head>
 
 <body>
+    <a href="index.html"><button class="btn_back">Voltar</button></a>
     <div class="interface">
         <div class="area-logo">
             <img src="./assets/svg/logo-escudo.svg" alt="" width="130px">
         </div>
-        <h3>Redefinição de Senha</h3>
+        <h3>Recuperação de Senha</h3>
         <div class="area-form">
             <div class="form">
                 <form action="redefinir_senha">
+                    <label class="information">
+                        Através do seu email cadastrado no Data Sentry, enviaremos um link para redefinição de senha.<br>
+                        Após enviar, verifique sua caixa de spam ou a caixa de entrada.<br><br>
+                    </label><br>
                     <label for="">Informe seu Email:</label><br>
                     <div class="campos">
                         <input type="text" id="">
                         <div id="btn_info"class="ui button"data-inverted=""data-tooltip="Seu email do Data Sentry"data-position="right center">i</div>
                     </div>
-
-                    <label for="">Nova senha:</label><br>
-                    <div class="campos">
-                        <input type="text" id="">
-                        <div id="btn_info"class="ui button"data-inverted=""data-tooltip="Senha mínimo 8 dígitos"data-position="right center">i</div>
-                    </div>
-
-                    <label for="">Confirmar senha:</label><br>
-                    <div class="campos">
-                        <input type="text" id="">
-                        <div id="btn_info"class="ui button"data-inverted=""data-tooltip="Confirme a mesma senha"data-position="right center">i</div>
-                    </div>
-
                 </form>
 
             </div>
-            <button class="btn_submit" onclick="validar()">Redefinir Senha</button>
+            <button class="btn_submit" onclick="validar()">Enviar</button>
 
         </div>
         <footer>
