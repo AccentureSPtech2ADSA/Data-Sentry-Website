@@ -31,25 +31,39 @@ async function insert(req, res) {
     const hospitalModelResult = await hospitalModel.insert(
       parametrosInsereHospital
     );
-    const resultLastInsertedIdHospital =
-      await hospitalModel.getLastInsertedId();
+    if (
+      hospitalModelResult.status == 200 ||
+      hospitalModelResult.status == 201
+    ) {
+      const resultLastInsertedIdHospital =
+        await hospitalModel.getLastInsertedId();
 
-    const parametrosInsereUserHospital = {
-      email: req.body.email,
-      hospital: resultLastInsertedIdHospital,
-      name: req.body.name,
-      phone: req.body.phone,
-      password: req.body.password,
-    };
-    const userHospitalModelResult = await userModel.insertUsuario(
-      parametrosInsereUserHospital
-    );
-    if (userHospitalModelResult.status == 200) {
-      userHospitalModelResult.longMessage = `Hospital e usuário admin foram inseridos com sucesso no sistema Data Sentry`;
-      userHospitalModelResult.shortMessage = `Hospital e usuário adicionados.`;
+      const parametrosInsereUserHospital = {
+        email: req.body.email,
+        hospital: resultLastInsertedIdHospital,
+        name: req.body.name,
+        phone: req.body.phone,
+        password: req.body.password,
+      };
+      const userHospitalModelResult = await userModel.insertUsuario(
+        parametrosInsereUserHospital
+      );
+      if (userHospitalModelResult.status == 200) {
+        userHospitalModelResult.longMessage = `Hospital e usuário admin foram inseridos com sucesso no sistema Data Sentry`;
+        userHospitalModelResult.shortMessage = `Hospital e usuário adicionados.`;
+      }
+      res.status(userHospitalModelResult.status);
+      res.json(userHospitalModelResult);
+    } else {
+      res
+        .json({
+          data: hospitalModelResult,
+          msg: "Hospital nao foi inserido",
+          status: 404,
+        })
+        .status(404);
     }
-    res.status(userHospitalModelResult.status);
-    res.json(userHospitalModelResult);
+
   }
 }
 
