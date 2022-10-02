@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/redefinicao_senha.css">
     <link rel="stylesheet" href="./css/popup.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="./js/popup.min.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/alertas_popup.js"></script>
     <title>Redefinição de Senha</title>
 </head>
 
@@ -22,26 +25,30 @@
                 <form action="redefinir_senha">
                     <label for="">Informe seu Email:</label><br>
                     <div class="campos">
-                        <input type="text" id="">
-                        <div id="btn_info"class="ui button"data-inverted=""data-tooltip="Seu email do Data Sentry"data-position="right center">i</div>
+                        <input type="text"  id="inp_email">
+                        <div id="btn_info" class="ui button" data-inverted="" data-tooltip="Seu email do Data Sentry"
+                            data-position="right center">i</div>
                     </div>
 
                     <label for="">Nova senha:</label><br>
                     <div class="campos">
-                        <input type="text" id="">
-                        <div id="btn_info"class="ui button"data-inverted=""data-tooltip="Senha mínimo 8 dígitos"data-position="right center">i</div>
+                        <input type="text" id="inp_password">
+                        <div id="btn_info" class="ui button" data-inverted="" data-tooltip="Senha mínimo 8 dígitos"
+                            data-position="right center">i</div>
                     </div>
 
                     <label for="">Confirmar senha:</label><br>
                     <div class="campos">
-                        <input type="text" id="">
-                        <div id="btn_info"class="ui button"data-inverted=""data-tooltip="Confirme a mesma senha"data-position="right center">i</div>
+                        <input type="text" id="inp_confirmPassword">
+                        <div id="btn_info" class="ui button" data-inverted="" data-tooltip="Confirme a mesma senha"
+                            data-position="right center">i</div>
                     </div>
 
                 </form>
 
             </div>
-            <button class="btn_submit" onclick="validar()">Redefinir Senha</button>
+            <div id="alert"></div>
+            <button class="btn_submit" onclick="testValue()">Redefinir Senha</button>
 
         </div>
         <footer>
@@ -51,3 +58,28 @@
 </body>
 
 </html>
+
+<script>
+    function testValue() {
+        var email = document.getElementById('inp_email').value;
+        var novaSenha = document.getElementById('inp_password').value;
+        var confirmSenha = document.getElementById('inp_confirmPassword').value;
+
+        const regexSenha = /[a-z0-9]{6,}[!@#$-_.]{1,}[A-Z]{1,}/gmi
+        const regexEmail = /^[a-zA-Z0-9]{3,}@[a-zA-Z]{2,}\.{1}[a-z]{3}$/gmi
+
+        if (regexEmail.test(email)){
+            console.log('Correto')
+        } else {
+            console.log('Errado')
+        }
+
+        if (regexSenha.test(novaSenha) && (novaSenha == confirmSenha)) {
+            console.log('Correto')
+        } else {
+            console.log('Errado')
+        }
+    }
+
+    
+</script>
