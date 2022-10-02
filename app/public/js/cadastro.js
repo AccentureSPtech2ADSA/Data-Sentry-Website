@@ -122,22 +122,22 @@ function validCadastro() {
       input_razao_social.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Campo razão social deve conter no mínimo 3 digitos";
     } else if (input_cnpj.value.length < 14) {
-      /* Valida se a input cnpj possui mais de 3 caracteres */
+      /* Valida se a input cnpj possui mais de 14 caracteres */
       input_cnpj.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Insira um CNPJ válido";
-    } else if (input_cep.value.length < 8) {
-      /* Valida se o número de telefone possui ao menos 8 digitos */
+    } else if (input_cep.value.length != 8) {
+      /* Valida se o cep possui ao menos 8 digitos */
       input_cep.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Insira um cep válido";
     } else if (input_senha.value.length < 8) {
       /* Valida se a senha tem mais de 8 caracteres */
       input_senha.style.border = "thin solid #FF0000";
-      input_repetir_senha.style.border = "thin solid #FF0000";
+      input_confirmar_senha.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Senha deve conter no mínimo 8 digitos";
-    } else if (input_senha.value !== input_repetir_senha.value) {
+    } else if (input_senha.value !== input_confirmar_senha.value) {
       /* Valida se as inputs de senha e confirmar senha são iguais */
       input_senha.style.border = "thin solid #FF0000";
-      input_repetir_senha.style.border = "thin solid #FF0000";
+      input_confirmar_senha.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "As senhas não coincidem";
     } else if (chk_termos.checked == false) {
       /* Valida se o checkbox de termos de uso foi aceito */
@@ -147,12 +147,17 @@ function validCadastro() {
       chk_termos.style.outlineOffset = "-1px";
     } else {
       /* Confirma o cadastro e abre a tela de monitoramento */
-      input_cep.style.border = "none";
-      input_senha.style.border = "none";
-      input_repetir_senha.style.border = "none";
       input_razao_social.style.border = "none";
-      input_email.style.border = "none";
+      input_cep.style.border = "none";
+      input_complemento.style.border = "none";
+      input_num_contato.style.border = "none";
+      input_nome_fantasia.style.border = "none";
+      input_num_endereco.style.border = "none";
+      input_unidade.style.border = "none";
       input_cnpj.style.border = "none";
+      input_email.style.border = "none";
+      input_senha.style.border = "none";
+      input_confirmar_senha.style.border = "none";
 
       // fazerRequisicaoInserirHospitalUser()
       return;
