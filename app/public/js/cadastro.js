@@ -1,54 +1,69 @@
 function validCadastro() {
   /* Verifica se há algum input com valor vazio e ajusta o layout para o texto caber na tela caso houver */
   if (
-    input_nome.value == "" ||
-    input_endereco.value == "" ||
-    input_estado.value == "" ||
+    input_razao_social.value == "" ||
     input_cep.value == "" ||
-    input_senha.value == "" ||
-    input_repetir_senha.value == "" ||
-    input_email.value == "" ||
-    input_cidade.value == "" ||
+    input_complemento.value == "" ||
+    input_num_contato.value == "" ||
+    input_nome_fantasia.value == "" ||
+    input_num_endereco.value == "" ||
+    input_unidade.value == "" ||
     input_cnpj.value == "" ||
-    input_numero.value == ""
+    input_email.value == "" ||
+    input_senha.value == "" ||
+    input_confirmar_senha.value == ""
   ) {
     span_validacao.innerHTML = "Por favor preencha todos os campos";
     idcontainer2.style.marginTop = "-25px";
     texto_cadastro.style.marginBottom = "30px";
 
-    /* marca o campo nome se estiver vazio */
-    if (input_nome.value !== "") {
-      input_nome.style.border = "none";
+    /* marca o campo razao social se estiver vazio */
+    if (input_razao_social.value !== "") {
+      input_razao_social.style.border = "none";
     } else {
-      input_nome.style.border = "thin solid #FF0000";
+      input_razao_social.style.border = "thin solid #FF0000";
     }
 
-    /* marca o campo endereco se estiver vazio */
-    if (input_endereco.value !== "") {
-      input_endereco.style.border = "none";
+    /* marca o campo cep se estiver vazio */
+    if (input_cep.value !== "") {
+      input_cep.style.border = "none";
     } else {
-      input_endereco.style.border = "thin solid #FF0000";
+      input_cep.style.border = "thin solid #FF0000";
     }
 
-    /* marca o campo estado se estiver vazio */
-    if (input_estado.value !== "") {
-      input_estado.style.border = "none";
+    /* marca o campo complemento se estiver vazio */
+    if (input_complemento.value !== "") {
+      input_complemento.style.border = "none";
     } else {
-      input_estado.style.border = "thin solid #FF0000";
+      input_complemento.style.border = "thin solid #FF0000";
     }
 
-    /* marca o campo cidade se estiver vazio */
-    if (input_cidade.value !== "") {
-      input_cidade.style.border = "none";
+    /* marca o campo numero de contato se estiver vazio */
+    if (input_num_contato.value !== "") {
+      input_num_contato.style.border = "none";
     } else {
-      input_cidade.style.border = "thin solid #FF0000";
+      input_num_contato.style.border = "thin solid #FF0000";
     }
 
-    /* marca o campo numero se estiver vazio */
-    if (input_numero.value !== "") {
-      input_numero.style.border = "none";
+    /* marca o campo nome fantasia se estiver vazio */
+    if (input_nome_fantasia.value !== "") {
+      input_nome_fantasia.style.border = "none";
     } else {
-      input_numero.style.border = "thin solid #FF0000";
+      input_nome_fantasia.style.border = "thin solid #FF0000";
+    }
+
+    /* marca o campo numero de endereço se estiver vazio */
+    if (input_num_endereco.value !== "") {
+      input_num_endereco.style.border = "none";
+    } else {
+      input_num_endereco.style.border = "thin solid #FF0000";
+    }
+
+    /* marca o campo unidade se estiver vazio */
+    if (input_unidade.value !== "") {
+      input_unidade.style.border = "none";
+    } else {
+      input_unidade.style.border = "thin solid #FF0000";
     }
 
     /* marca o campo cnpj se estiver vazio */
@@ -72,31 +87,26 @@ function validCadastro() {
       input_senha.style.border = "thin solid #FF0000";
     }
 
-    /* marca o campo repetir senha se estiver vazio */
-    if (input_repetir_senha.value !== "") {
-      input_repetir_senha.style.border = "none";
+    /* marca o campo confirmar senha se estiver vazio */
+    if (input_confirmar_senha.value !== "") {
+      input_confirmar_senha.style.border = "none";
     } else {
-      input_repetir_senha.style.border = "thin solid #FF0000";
-    }
-
-    /* marca o campo cep se estiver vazio */
-    if (input_cep.value !== "") {
-      input_cep.style.border = "none";
-    } else {
-      input_cep.style.border = "thin solid #FF0000";
+      input_confirmar_senha.style.border = "thin solid #FF0000";
     }
   } else {
+
     /* tira as marcações das inputs já preenchidas */
-    input_nome.style.border = "none";
-    input_endereco.style.border = "none";
-    input_estado.style.border = "none";
+    input_razao_social.style.border = "none";
     input_cep.style.border = "none";
-    input_senha.style.border = "none";
-    input_email.style.border = "none";
-    input_cidade.style.border = "none";
+    input_complemento.style.border = "none";
+    input_num_contato.style.border = "none";
+    input_nome_fantasia.style.border = "none";
+    input_num_endereco.style.border = "none";
+    input_unidade.style.border = "none";
     input_cnpj.style.border = "none";
-    input_numero.style.border = "none";
-    input_repetir_senha.style.border = "none";
+    input_email.style.border = "none";
+    input_senha.style.border = "none";
+    input_confirmar_senha.style.border = "none";
 
     /* Valida se o email possui "@" */
     if (input_email.value.indexOf("@") == -1) {
@@ -107,10 +117,10 @@ function validCadastro() {
       input_email.style.border = "thin solid #FF0000";
       span_validacao.innerHTML =
         "Email inválido, deve conter no mínimo 10 digitos";
-    } else if (input_nome.value.length < 3) {
+    } else if (input_razao_social.value.length < 3) {
       /* Valida se o nome possui mais de 3 caracteres */
-      input_nome.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "Nome deve conter no mínimo 3 digitos";
+      input_razao_social.style.border = "thin solid #FF0000";
+      span_validacao.innerHTML = "Campo razão social deve conter no mínimo 3 digitos";
     } else if (input_cnpj.value.length < 14) {
       /* Valida se a input cnpj possui mais de 3 caracteres */
       input_cnpj.style.border = "thin solid #FF0000";
@@ -140,7 +150,7 @@ function validCadastro() {
       input_cep.style.border = "none";
       input_senha.style.border = "none";
       input_repetir_senha.style.border = "none";
-      input_nome.style.border = "none";
+      input_razao_social.style.border = "none";
       input_email.style.border = "none";
       input_cnpj.style.border = "none";
 
