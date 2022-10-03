@@ -15,61 +15,35 @@
 
   <body>
     <!-- navbar -->
-    <header>
-      <a class="logo" href="/"><img id="img_logo" src="./assets/svg/logo-navbar.svg" alt="logo"/></a>
-      <nav>
-        <ul class="nav__links">
-          <li><a href="index.html">Inicio</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="overlay_navbar">
+      <div id="navbar_blocoEsq">
+        <button id="btn_inicio" onclick="window.location.href='index.html'">INÍCIO</button>
+        </button>
+      </div>
+    </div>
 
     <!-- Conteúdo -->
     <div class="conteudo">
+      <!-- bloco esquerdo -->
+      <div class="leftbox">
+        <div class="container">
+          <img
+            id="assinatura_monocromatica" src="./assets/svg/logo-navbar.svg"/>
+        </div>
+        <div class="container2"></div>
+        <div class="container3">
+          <p id="texto_left">Junte-se agora e monitore seus problemas</p>
+        </div>
+      </div>
+
+      <!-- bloco direito -->
       <div class="rightbox">
         <div class="container">
           <p id="texto_cadastro">Cadastro</p>
         </div>
 
         <div class="container2" id="idcontainer2">
-          <div class="bloco_esquerdo">
-            <p>Razão Social</p>
-            <input id="input_razao_social" placeholder="Grupo Arcos Dourados" type="text"/>
-            <p>CEP</p>
-            <input id="input_cep" placeholder="00000-000" type="text" />
-            <p>Complemento</p>
-            <input id="input_complemento" placeholder="Inserir Complemento" type="text" />
-            <p>Número de Contato</p>
-            <input id="input_num_contato" placeholder="00 00000-0000" type="text" />
-          </div>
 
-          <div class="bloco_direito">
-            <p>Nome Fantasia</p>
-            <input id="input_nome_fantasia" placeholder="Centro Cirúrgico Santa Efigênia" type="text" />
-            <p>Numero de Endereço</p>
-            <input id="input_num_endereco" placeholder="Número" type="text" />
-            <p>Unidade</p>
-            <input id="input_unidade" placeholder="Nome da Unidade" type="text" />
-            <p>CNPJ</p>
-            <input id="input_cnpj" placeholder="00.000.000/0000-00" type="text" />
-          </div>
-        </div>
-
-        <div class="bloco_secundario">
-          <p>Email</p>
-          <input id="input_email" placeholder="Email@exemplo.com" type="email" />
-        </div>
-
-        <div class="container5">
-          <div class="bloco_esquerdo">
-            <p>Senha</p>
-            <input id="input_senha" placeholder="Inserir Senha" type="password" />
-          </div>
-
-          <div class="bloco_direito">
-            <p>Confirmar Senha</p>
-            <input id="input_confirmar_senha" placeholder="Redigite sua Senha" type="password" />
-          </div>
         </div>
 
         <!-- Frase de erro de validação -->
