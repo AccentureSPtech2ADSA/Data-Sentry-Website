@@ -5,7 +5,7 @@ CREATE TABLE Hospital(
 	_idHospital INT PRIMARY KEY IDENTITY(1,1),
 	cnpj CHAR(14),
 	cep CHAR(8),
-	numberAddress SMALLINT,
+	numberAddress SMALLINT, 
 	complement VARCHAR(25),
 	fantasyName VARCHAR(50),
 	corporateName VARCHAR(50),

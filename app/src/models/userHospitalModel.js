@@ -13,7 +13,7 @@ async function insertUsuario({
     
     const query = 
     `INSERT INTO UserHospital (name, email, password) VALUES
-    ('${name}', '${email}', '${password}')`;
+    ('${name}', '${email}', aes_encrypt('${password}', 'AES_128'))`;
 
     return await database.insertUsuario(query);
 
