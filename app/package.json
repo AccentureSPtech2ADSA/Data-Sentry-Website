@@ -23,6 +23,7 @@
     "nodemailer": "^6.7.8",
     "nodemon": "^2.0.7",
     "path": "^0.12.7",
-    "pdf-creator-node": "^2.3.5"
+    "pdf-creator-node": "^2.3.5",
+    "sweetalert2": "^11.4.36"
   }
 }

@@ -1,37 +1,38 @@
-var database = require("../database/config")
+var database = require("../database/config");
 
-
-function entrar(email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucao = `
-        SELECT * FROM Usuario WHERE email = '${email}' AND senha = '${senha}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+async function getLastInsertedId() {
+  let query = "SELECT MAX(_idHospital) id FROM Hospital ORDER BY id DESC";
+  if (database.isAmbienteProducao) {
+    query = `SELECT TOP 1 _idHospital id FROM Hospital ORDER BY id DESC`;
+  }
+  const resultSelect = await database.execute(query);
+  let lastId = resultSelect.data;
+  console.log(lastId);
+  if (database.isAmbienteProducao) {
+    lastId = lastId[0][0]["id"];
+  }
+  if (database.isAmbienteDesenvolvimento) {
+    lastId = lastId[0]["id"];
+  }
+  return lastId;
 }
-
 async function insert({
-    cnpj,
-    cep,
-    numberAdress, 
-    unit,
-    fantasyName,
-    corporateName,
-    complement
-}){
+  cnpj = "",
+  cep = "",
+  numberAdress = "",
+  unit = "",
+  fantasyName = "",
+  corporateName = "",
+  complement = "",
+}) {
+  // query vai ser nosso comando sql -> para inserir -> insert into
+  const query = `INSERT INTO Hospital 
+  (cnpj, cep, numberAddress, unit, fantasyName, corporateName, complement)
+   VALUES ('${cnpj}', '${cep}', '${numberAdress}', '${unit}', '${fantasyName}', '${corporateName}', '${complement}')`;
 
-    // query vai ser nosso comando sql -> para inserir -> insert into
-    
-    const query = 
-    `INSERT INTO Hospital (cnpj, cep, numberAdress, unit, fantasyName, corporateName, complement) VALUES
-    (${cnpj}, '${cep}', '${numberAdress}', '${unit}', '${fantasyName}', '${corporateName}', '${complement}')`;
-
-    return await database.insert(query);
-
+  return await database.execute(query);
 }
-
-
 module.exports = {
-    entrar,
-    insert
+  insert,
+  getLastInsertedId,
 };

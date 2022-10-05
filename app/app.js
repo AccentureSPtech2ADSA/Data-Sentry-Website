@@ -1,7 +1,6 @@
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-const { enviarEmailSimples } = require("./src/util/emailService");
 require("dotenv").config();
 var PORTA = process.env.EXPRESS_PORT;
 
@@ -18,7 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-
 app.use(cors());
 
 app.use("/", indexRouter);
@@ -26,7 +24,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/hospital", hospitalRouter);
-app.use("/userHospital", userHospitalRouter);
+app.use("/user", userHospitalRouter);
 
 app.listen(PORTA, function () {
   console.log(`Servidor do site está rodando rodando: http://localhost:${PORTA} \n
