@@ -165,6 +165,9 @@ function validCadastro() {
       chk_termos.style.outline = "1px solid red";
       chk_termos.style.outlineOffset = "-1px";
     } else {
+      // !!~~ Limpando Mascaras antes de enviar os dados para o Banco 
+      limparMascara()
+
       /* Confirma o cadastro e abre a tela de monitoramento */
       input_razao_social.style.border = "none";
       input_cep.style.border = "none";

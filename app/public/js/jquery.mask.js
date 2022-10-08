@@ -559,12 +559,25 @@
 }, window.jQuery, window.Zepto));
 
 $(document).ready(function () {
+    // Cadastro
     $("#input_cep").mask("00000-000")
     $("#input_num_contato").mask("(00) 00000-0000")
     $("#input_cnpj").mask("00.000.000/0000-00")
-    $().mask()
-    $().mask()
-    $().mask()
-    $().mask()
-    $().mask()
+    // Perfil ADM
+    $("#id_input7").mask("00000-000")
+    $("#id_input10").mask("(00) 00000-0000")
+    $("#id_input11").mask("00.000.000/0000-00")
 })
+
+function limparMascara(){
+    // Cadastro
+    $("#input_cep").mask("")
+    $("#input_num_contato").mask("")
+    $("#input_cnpj").mask("")
+    // Perfil ADM
+    $("#id_input7").mask("")
+    $("#id_input10").mask("")
+    $("#id_input11").mask("")
+}
+
+

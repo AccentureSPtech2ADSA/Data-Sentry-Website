@@ -84,3 +84,29 @@ function erroSenhasDiferentes(){
         timerProgressBar: true
     })
 }
+function erroEmailInvalido(){
+    Swal.fire({
+        title: '',
+        text: 'Email inválido !',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#1a6969',
+        iconColor: '#8B0000',
+        backdrop: '',
+        timer: '8000',
+        timerProgressBar: true
+    })
+}
+function sucessoEnvioDeEmail(){
+    Swal.fire({
+        title: 'Enviado com sucesso !',
+        text: 'Verifique sua caixa de entrada ou a caixa de Spam',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#1a6969',
+        iconColor: 'green',
+        backdrop: '',
+        timer: '8000',
+        timerProgressBar: true
+    })
+}
