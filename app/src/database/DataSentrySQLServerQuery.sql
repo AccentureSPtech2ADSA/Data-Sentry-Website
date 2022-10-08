@@ -1,13 +1,10 @@
 CREATE DATABASE datasentry;
 USE datasentry;
-SELECT TOP 1 _idHospital id FROM Hospital ORDER BY id DESC;
-SELECT IDENT_CURRENT('Hospital')
-SELECT SCOPE_IDENTITY();
 CREATE TABLE Hospital(
 	_idHospital INT PRIMARY KEY IDENTITY(1,1),
 	cnpj CHAR(14),
 	cep CHAR(8),
-	numberAddress VARCHAR(5),
+	numberAddress VARCHAR(10),
 	complement VARCHAR(25),
 	fantasyName VARCHAR(50),
 	unit VARCHAR(25),
@@ -15,23 +12,13 @@ CREATE TABLE Hospital(
 	createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 	updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP 
 );
-alter table Hospital alter column numberAddress VARCHAR(5);
-alter table Hospital add unit varchar(25);
-CREATE TABLE contactPhoneHospital(
-	_idContactPhoneHospital INT IDENTITY(1,1),
-	contactPhone CHAR(13),
-	fkHospital INT NOT NULL,
-	FOREIGN KEY (fkHospital) REFERENCES Hospital(_idHospital),
-	createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-	updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY(_idContactPhoneHospital, fkHospital)
-);
+
 
 CREATE TABLE UserHospital(
 	_idUserHospital INT PRIMARY KEY IDENTITY(1,1),
 	name VARCHAR(100),
-	email VARBINARY(100),
-	password VARCHAR(100),
+	email VARCHAR(100),
+	password VARBINARY(150),
 	contactPhone CHAR(13),
 	fkHospital INT NOT NULL,
 	FOREIGN KEY (fkHospital) REFERENCES Hospital(_idHospital),
@@ -40,26 +27,15 @@ CREATE TABLE UserHospital(
 	createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 	updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP 
 );
-select * from UserHospital uh ;
+
 CREATE TABLE Server(
-	_serialServer VARCHAR(30) PRIMARY KEY, -- senão pegar serial vamos pegar outro dado único do PC
+	_serialServer VARCHAR(50) PRIMARY KEY, -- senão pegar serial vamos pegar outro dado único do PC
 	isActive CHAR(1),
+	description VARCHAR(100),
 	fkHospital INT NOT NULL,
 	FOREIGN KEY (fkHospital) REFERENCES Hospital(_idHospital),
 	createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 	updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP 
-);
-
-CREATE TABLE UserHasServer(
-	_idUserHasServer INT IDENTITY(1,1),
-	isActive CHAR(1),
-	fkServer VARCHAR(30) NOT NULL,
-	FOREIGN KEY (fkServer) REFERENCES Server(_serialServer),
-	fkUserHospital INT NOT NULL,
-	FOREIGN KEY (fkUserHospital) REFERENCES UserHospital(_idUserHospital),
-	createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-	updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (_idUserHasServer, fkServer, fkUserHospital)
 );
 
 CREATE TABLE Process(
@@ -79,11 +55,11 @@ CREATE TABLE ComponentType(
 
 CREATE TABLE ComponentServer(
 	_idComponentServer INT IDENTITY(1,1),
-	serial VARCHAR(30),
+	serial VARCHAR(50),
 	model VARCHAR(25),
-	yearManufatured CHAR(4),
 	brand VARCHAR(25),
-	fkServer VARCHAR(30) NOT NULL,
+	maxUse DECIMAL(10,2),
+	fkServer VARCHAR(50) NOT NULL,
 	FOREIGN KEY (fkServer) REFERENCES Server(_serialServer),
 	fkComponentType INT NOT NULL,
 	FOREIGN KEY (fkComponentType) REFERENCES ComponentType(_idComponentType),
@@ -95,7 +71,6 @@ CREATE TABLE ComponentServer(
 CREATE TABLE LogComponentPerProcess(
 	_idLogComponentPerProcess INT IDENTITY(1,1),
 	usageComponent decimal(10,2),
-	total decimal(10,2),
 	createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 	updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 	fkProcess INT,
@@ -133,6 +108,7 @@ BEGIN
 	)
 	CLOSE SYMMETRIC key cryptAesSqlServer
 END;
+SELECT * from hospital;
 CREATE PROCEDURE sp_loginUser
 @email VARCHAR(MAX),
 @password VARCHAR(MAX)
@@ -140,15 +116,18 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 	OPEN SYMMETRIC KEY cryptAesSqlServer decryption BY password = '#Gfgrupo1'
-	SELECT * FROM UserHospital 
+	SELECT _idUserHospital id ,name, email, contactPhone, 
+	fkHospital, cnpj, cep, numberAddress, complement, fantasyName, corporateName
+	FROM UserHospital uh JOIN Hospital h
+	ON h._idHospital = uh.fkHospital  
 	WHERE email = @email AND 
 	@password = CONVERT (VARCHAR(MAX), DECRYPTBYKEY(password))
 	CLOSE SYMMETRIC key cryptAesSqlServer
 END;
-
--- EXEC sp_insereUser 'delfino', 'delfino@gmail.com', '12345', '11972595523', null, 1;
--- EXEC sp_loginUser 'delfino@gmail.com', '12345';
--- select * from UserHospital uh;
-
+--EXEC sp_insereUser 'delfino', 'delfino@gmail.com', '12345', '11972595523', null, 1;
+--EXEC sp_loginUser 'delfino@gmail.com', '12345';
+--select * from Hospital h ;
+--select * from UserHospital uh;
+--
 
 

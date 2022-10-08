@@ -18,29 +18,69 @@ function outsideclickBalance() {
 
 //______Popups
 
-function sucesso(){
+function sucessoSenhaRedefinida(){
     Swal.fire({
         title: '',
-        text: '',
+        text: 'Senha redefinida com sucesso',
         icon: 'success',
         confirmButtonText: 'Ok',
         confirmButtonColor: '#1a6969',
         iconColor: 'green',
         backdrop: '',
-        timer: '3000',
+        timer: '5000',
         timerProgressBar: true
     })
 }
 function erro(){
     Swal.fire({
-        title: '',
-        text: '',
+        title: 'Erro',
+        text: 'Erro texto',
         icon: 'error',
         confirmButtonText: 'Ok',
         confirmButtonColor: '#1a6969',
         iconColor: 'red',
         backdrop: '',
         timer: '3000',
+        timerProgressBar: true
+    })
+}
+function atencaoCamposNull(){
+    Swal.fire({
+        title: 'Atenção',
+        text: 'Todos os campos devem ser preenchidos',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#1a6969',
+        iconColor: '#FFBF00',
+        backdrop: '',
+        timer: '5000',
+        timerProgressBar: true
+    })
+}
+
+function erroPadraoSenha(){
+    Swal.fire({
+        title: 'Senha inválida',
+        text: 'A senha deve ter no mínimo 8 dígitos, contendo caracter especial e Letra maíuscula.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#1a6969',
+        iconColor: '#8B0000',
+        backdrop: '',
+        timer: '8000',
+        timerProgressBar: true
+    })
+}
+function erroSenhasDiferentes(){
+    Swal.fire({
+        title: '',
+        text: 'Confirme a mesma senha !',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#1a6969',
+        iconColor: '#FFBF00',
+        backdrop: '',
+        timer: '8000',
         timerProgressBar: true
     })
 }

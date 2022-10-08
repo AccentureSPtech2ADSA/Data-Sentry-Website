@@ -31,12 +31,16 @@ async function insert(req, res) {
     const hospitalModelResult = await hospitalModel.insert(
       parametrosInsereHospital
     );
+    console.log("hospitalModelResult", hospitalModelResult);
+    
     if (
       hospitalModelResult.status == 200 ||
       hospitalModelResult.status == 201
     ) {
       const resultLastInsertedIdHospital =
         await hospitalModel.getLastInsertedId();
+
+      console.log("resultLastInsertedIdHospital", resultLastInsertedIdHospital);
 
       const parametrosInsereUserHospital = {
         email: req.body.email,
@@ -48,6 +52,7 @@ async function insert(req, res) {
       const userHospitalModelResult = await userModel.insertUsuario(
         parametrosInsereUserHospital
       );
+      console.log("userHospitalModelResult", userHospitalModelResult);
       if (userHospitalModelResult.status == 200) {
         userHospitalModelResult.longMessage = `Hospital e usuário admin foram inseridos com sucesso no sistema Data Sentry`;
         userHospitalModelResult.shortMessage = `Hospital e usuário adicionados.`;

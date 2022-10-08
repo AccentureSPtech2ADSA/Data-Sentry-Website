@@ -1,5 +1,5 @@
 var userHospitalModel = require("../models/userHospitalModel");
-
+const {sign} = require('../util/auth/jwt');
 /**
  * @param {Request} req
  * @param {Response} res
@@ -60,6 +60,8 @@ async function login(req, res) {
         })
         .status(404);
     }
+    const tokenLogin = sign(userHospitalResult.data[0][0]);
+    userHospitalResult.token = tokenLogin;
     res.json(userHospitalResult).status(userHospitalResult.status);
   }
 }

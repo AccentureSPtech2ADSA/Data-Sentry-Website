@@ -1,3 +1,4 @@
+
 function validCadastro() {
   /* Verifica se há algum input com valor vazio e ajusta o layout para o texto caber na tela caso houver */
   if (
@@ -231,4 +232,4 @@ async function fazerRequisicaoInserirHospitalUser(
   });
   let res = await req.json();
   return res;
-}
+  }

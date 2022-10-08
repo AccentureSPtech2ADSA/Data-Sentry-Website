@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/redefinicao_senha.css">
     <link rel="stylesheet" href="./css/popup.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://kit.fontawesome.com/905b8dc8d6.js" crossorigin="anonymous"></script>
     <script src="./js/popup.min.js"></script>
     <script src="./js/sweetalert2.all.min.js"></script>
     <script src="./js/alertas_popup.js"></script>
@@ -23,23 +24,29 @@
         <div class="area-form">
             <div class="form">
                 <form action="redefinir_senha">
-                    <label for="">Informe seu Email:</label><br>
-                    <div class="campos">
-                        <input type="text"  id="inp_email">
-                        <div id="btn_info" class="ui button" data-inverted="" data-tooltip="Seu email do Data Sentry"
-                            data-position="right center">i</div>
-                    </div>
-
+                    <label class="information">
+                        Informe uma nova senha.<br>
+                        A senha deve ter no mínimo 8 dígitos, contendo caracter especial e Letra maíuscula.<br><br>
+                    </label><br>
                     <label for="">Nova senha:</label><br>
                     <div class="campos">
-                        <input type="text" id="inp_password">
+                        <p>
+                            <input type="password" id="inp_password">
+                            <i class="fa-solid fa-eye" id="text1"></i>
+                            <i class="fa-solid fa-eye-slash" id="pass1"></i>
+                        </p>
                         <div id="btn_info" class="ui button" data-inverted="" data-tooltip="Senha mínimo 8 dígitos"
                             data-position="right center">i</div>
                     </div>
 
                     <label for="">Confirmar senha:</label><br>
                     <div class="campos">
-                        <input type="text" id="inp_confirmPassword">
+                        <p>
+                            <input type="password" id="inp_confirmPassword">
+                            <i class="fa-solid fa-eye" id="text2"></i>
+                            <i class="fa-solid fa-eye-slash" id="pass2"></i>
+                        </p>
+
                         <div id="btn_info" class="ui button" data-inverted="" data-tooltip="Confirme a mesma senha"
                             data-position="right center">i</div>
                     </div>
@@ -60,26 +67,66 @@
 </html>
 
 <script>
+
     function testValue() {
-        var email = document.getElementById('inp_email').value;
+
         var novaSenha = document.getElementById('inp_password').value;
         var confirmSenha = document.getElementById('inp_confirmPassword').value;
 
         const regexSenha = /[a-z0-9]{6,}[!@#$-_.]{1,}[A-Z]{1,}/gmi
-        const regexEmail = /^[a-zA-Z0-9]{3,}@[a-zA-Z]{2,}\.{1}[a-z]{3}$/gmi
 
-        if (regexEmail.test(email)){
-            console.log('Correto')
-        } else {
-            console.log('Errado')
-        }
+        if (regexSenha.test(novaSenha) && confirmSenha == novaSenha) {
+            sucessoSenhaRedefinida()()
 
-        if (regexSenha.test(novaSenha) && (novaSenha == confirmSenha)) {
-            console.log('Correto')
+        } else if (novaSenha == "" || confirmSenha == "") {
+            atencaoCamposNull()
+
+        } else if (novaSenha != confirmSenha) {
+            erroSenhasDiferentes()
+
         } else {
-            console.log('Errado')
+            erroPadraoSenha()
         }
     }
 
-    
+
+    var campo1 = document.getElementById('inp_password')
+    var campo2 = document.getElementById('inp_confirmPassword')
+
+    document.getElementById('pass1').addEventListener('click', () => {
+        if (campo1.value) {
+            campo1.type == 'password' ? campo1.type = 'text' : campo1.type = 'password';
+            campo1.focus()
+            document.getElementById('pass1').style.display = 'none';
+            document.getElementById('text1').style.display = 'inline-block';
+        }
+    })
+
+    document.getElementById('text1').addEventListener('click', () => {
+        if (campo1.value) {
+            campo1.type == 'text' ? campo1.type = 'password' : campo1.type = 'text';
+            campo1.focus()
+            document.getElementById('text1').style.display = 'none';
+            document.getElementById('pass1').style.display = 'inline-block';
+        }
+    })
+
+    document.getElementById('pass2').addEventListener('click', () => {
+        if (campo2.value) {
+            campo2.type == 'password' ? campo2.type = 'text' : campo2.type = 'password';
+            campo2.focus()
+            document.getElementById('pass2').style.display = 'none';
+            document.getElementById('text2').style.display = 'inline-block';
+        }
+    })
+
+    document.getElementById('text2').addEventListener('click', () => {
+        if (campo2.value) {
+            campo2.type == 'text' ? campo2.type = 'password' : campo2.type = 'text';
+            campo2.focus()
+            document.getElementById('text2').style.display = 'none';
+            document.getElementById('pass2').style.display = 'inline-block';
+        }
+    })
+
 </script>

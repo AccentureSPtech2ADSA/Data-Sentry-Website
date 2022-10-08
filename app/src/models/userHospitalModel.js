@@ -10,8 +10,7 @@ async function insertUsuario({
 }) {
   // query vai ser nosso comando sql -> para inserir -> insert into
 
-  let query = `INSERT INTO UserHospital (name, email, password, contactPhone, fkManager, fkHospital) VALUES
-    ('${name}', '${email}', AES_ENCRYPT('${password}', '${secret_key}'), '${phone}',${manager}, ${hospital});`;
+  let query = `CALL sp_insereUser("${name}", "${email}", '${password}', '${phone}', ${hospital}, ${manager});`;
 
   if (database.isAmbienteProducao) {
     query = `sp_insereUser '${name}', '${email}', '${password}', '${phone}', ${manager}, ${hospital};`;
@@ -21,9 +20,8 @@ async function insertUsuario({
 }
 async function login({ email = "", password = "" }) {
   let query = `
-  SELECT * FROM UserHospital WHERE
-   email = '${email}' AND
-   password = AES_ENCRYPT('${password}', '${secret_key}')`;
+  CALL sp_loginUser ('${email}', '${password}');
+  `;
   if (database.isAmbienteProducao) {
     query = `EXEC sp_loginUser '${email}', '${password}';`;
   }
