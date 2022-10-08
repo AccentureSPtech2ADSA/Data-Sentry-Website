@@ -15,8 +15,8 @@ function validCadastro() {
     input_confirmar_senha.value == ""
   ) {
     span_validacao.innerHTML = "Por favor preencha todos os campos";
-    idcontainer2.style.marginTop = "-25px";
-    texto_cadastro.style.marginBottom = "30px";
+    idcontainer2.style.marginTop = "-6px";
+    id_container3.style.marginTop = "14px"
 
     /* marca o campo razao social se estiver vazio */
     if (input_razao_social.value !== "") {
@@ -119,15 +119,15 @@ function validCadastro() {
       span_validacao.innerHTML =
         "Email inválido, deve conter no mínimo 10 digitos";
     } else if (input_razao_social.value.length < 3) {
-      /* Valida se o nome possui mais de 3 caracteres */
+      /* Valida se a razao social possui mais de 3 caracteres */
       input_razao_social.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Campo razão social deve conter no mínimo 3 digitos";
     } else if (input_cnpj.value.length < 14) {
-      /* Valida se a input cnpj possui mais de 14 caracteres */
+      /* Valida se o cnpj possui mais de 14 caracteres */
       input_cnpj.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Insira um CNPJ válido";
-    } else if (input_cep.value.length != 8) {
-      /* Valida se o cep possui ao menos 8 digitos */
+    } else if (input_cep.value.length != 9) {
+      /* Valida se o cep possui ao menos 9 digitos (contando com hífen)*/
       input_cep.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Insira um cep válido";
     } else if (input_senha.value.length < 8) {
