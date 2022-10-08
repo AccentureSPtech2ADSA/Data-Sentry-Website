@@ -50,15 +50,16 @@ async function login(req, res) {
       phone: req.body.phone,
     };
     const userHospitalResult = await userHospitalModel.login(parametros);
-    console.log(userHospitalResult);
-    if (userHospitalResult.data[0] == undefined) {
+    console.log(userHospitalResult.data);
+    if (userHospitalResult.data[0].length == 0) {
       res
         .json({
-          data: [],
+          data: null,
           msg: "Email ou senha incorretos",
           status: 404,
         })
         .status(404);
+        return;
     }
     const tokenLogin = sign(userHospitalResult.data[0][0]);
     userHospitalResult.token = tokenLogin;

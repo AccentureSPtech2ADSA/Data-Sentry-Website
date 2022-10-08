@@ -193,9 +193,15 @@ function validCadastro() {
       const complemento = input_complemento.value.trim();
       const razao_social = input_razao_social.value.trim();
 
+      console.log(cep, num_contato, cnpj, email);
+
       fazerRequisicaoInserirHospitalUser(cnpj, cep, num_endereco, unidade, nome_fantasia, razao_social, complemento, nome_fantasia, email, senha, num_contato)
       .then(res=>{
         console.log(res);
+        if(res.status == 200){
+          // programar logica do session storage aqui dentro, colocar o jwt e os dados do usuario
+          alert('deu certo');
+        }
       })
       .catch(err=>{
         alert(err)
