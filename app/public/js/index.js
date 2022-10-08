@@ -58,9 +58,20 @@ function validLogin() {
       span_validacao.innerHTML = "Senha deve conter no mínimo 8 digitos";
     } else {
       /* Confirma o login e recarrega a página */
-      // fazerRequisicaoLogin(emailVar, senhaVar).then((v) => {
-      //   // console.log(v)
-      // });
+      fazerRequisicaoLogin(emailVar.trim(), senhaVar.trim())
+      .then((v) => {
+        console.log(v)
+        if(v.status == 200){
+          alert('deu certo. Ir para tela de perfil ou dashboard');
+          // setar tbm no session storage...
+        }else{
+          alert('deu errado')
+        }
+      })
+      .catch(err=>{
+        console.error(err);
+        alert("deu errado")
+      });
       return;
       fetch("/user/login", {
         method: "POST",
