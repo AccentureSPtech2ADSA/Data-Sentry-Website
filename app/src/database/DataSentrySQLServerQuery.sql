@@ -1,6 +1,5 @@
 CREATE DATABASE datasentry;
 USE datasentry;
-use master;
 CREATE TABLE Hospital(
 	_idHospital INT PRIMARY KEY IDENTITY(1,1),
 	cnpj CHAR(14),
@@ -30,7 +29,7 @@ CREATE TABLE UserHospital(
 );
 
 CREATE TABLE Server(
-	_serialServer VARCHAR(30) PRIMARY KEY, -- senão pegar serial vamos pegar outro dado único do PC
+	_serialServer VARCHAR(50) PRIMARY KEY, -- senão pegar serial vamos pegar outro dado único do PC
 	isActive CHAR(1),
 	description VARCHAR(100),
 	fkHospital INT NOT NULL,
@@ -38,7 +37,6 @@ CREATE TABLE Server(
 	createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 	updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP 
 );
-
 
 CREATE TABLE Process(
 	_idProcess INT PRIMARY KEY IDENTITY(1,1), -- talvez vire o PID
@@ -110,7 +108,7 @@ BEGIN
 	)
 	CLOSE SYMMETRIC key cryptAesSqlServer
 END;
-
+SELECT * from hospital;
 CREATE PROCEDURE sp_loginUser
 @email VARCHAR(MAX),
 @password VARCHAR(MAX)
@@ -118,13 +116,18 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 	OPEN SYMMETRIC KEY cryptAesSqlServer decryption BY password = '#Gfgrupo1'
-	SELECT * FROM UserHospital 
+	SELECT _idUserHospital id ,name, email, contactPhone, 
+	fkHospital, cnpj, cep, numberAddress, complement, fantasyName, corporateName
+	FROM UserHospital uh JOIN Hospital h
+	ON h._idHospital = uh.fkHospital  
 	WHERE email = @email AND 
 	@password = CONVERT (VARCHAR(MAX), DECRYPTBYKEY(password))
 	CLOSE SYMMETRIC key cryptAesSqlServer
 END;
-
 --EXEC sp_insereUser 'delfino', 'delfino@gmail.com', '12345', '11972595523', null, 1;
 --EXEC sp_loginUser 'delfino@gmail.com', '12345';
 --select * from Hospital h ;
 --select * from UserHospital uh;
+--
+
+

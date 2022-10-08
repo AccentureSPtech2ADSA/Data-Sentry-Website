@@ -1,10 +1,11 @@
 var express = require("express");
 var router = express.Router();
 var userHospitalController = require("../controllers/userHospitalController");
-const {authJwt} = require('../util/middleware/jwtMIddleware');
+// const {authJwt} = require('../util/middleware/jwtMIddleware');
+// se quiser usar como middleware da funcao, vai precisar utilizar esse authJwt
 
 router.post("/insert", (req, res) => {
-  console.log("estou na rota de insert do hospital");
+  console.log("estou na rota de insert do user hospital");
   userHospitalController.insertUsuario(req, res);
 });
 router.post("/login", (req, res) => {

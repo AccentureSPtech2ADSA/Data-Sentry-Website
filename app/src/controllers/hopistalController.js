@@ -31,7 +31,7 @@ async function insert(req, res) {
     const hospitalModelResult = await hospitalModel.insert(
       parametrosInsereHospital
     );
-    console.log("hospitalModelResult", resultLastInsertedIdHospital);
+    console.log("hospitalModelResult", hospitalModelResult);
     
     if (
       hospitalModelResult.status == 200 ||
