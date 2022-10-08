@@ -49,7 +49,7 @@ span {
 /* bloco de conteúdo esquerdo */
 .leftbox {
   background-color: #6c8a99;
-  height: 550px;
+  height: 600px;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -107,7 +107,7 @@ span {
 /* bloco de conteúdo direito */
 .rightbox {
   background-color: rgb(255, 255, 255);
-  height: 550px;
+  height: 600px;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -122,7 +122,7 @@ span {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   height: 10px;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .rightbox .container2 p {
@@ -164,6 +164,11 @@ span {
   justify-content: space-between;
   align-items: center;
   font-size: 13.6px;
+  margin-bottom: 8px;
+}
+
+.bloco_unico {
+  width: 103%;
   margin-bottom: 8px;
 }
 
@@ -252,6 +257,7 @@ span {
   height: 5%;
   display: flex;
   justify-content: center;
+  margin-top: -15px;
 }
 
 /* Já possui uma conta? */
@@ -316,6 +322,14 @@ span {
 }
 
 @media screen and (max-width: 1050px) {
+  .rightbox {
+    height: 640px;
+  }
+
+  .leftbox {
+    height: 640px;
+  }
+
   .rightbox .container3 {
     flex-direction: column;
   }
@@ -337,7 +351,7 @@ span {
   }
 
   .rightbox .container4 {
-    margin-top: 35px;
+    margin-top: 20px;
   }
 }
 
@@ -349,6 +363,7 @@ span {
 .rightbox {
   width: 80%;
   border-radius: 5px;
+  height: 600px;
 }
 
 .rightbox .container3 {
@@ -374,7 +389,11 @@ span {
 }
 
 .rightbox .container4 {
-  margin: 0;
+  margin-top: -22px;
+}
+
+#span_validacao {
+  margin-bottom: 10px;
 }
 }
 
@@ -384,7 +403,7 @@ span {
 }
 
   .rightbox {
-    height: 900px;
+    height: 1000px;
     margin: 60px 0 60px 0;
   }
 
@@ -410,7 +429,7 @@ span {
   }
 
   .rightbox .container4 {
-    margin-top: 30px;
+    margin-top: -6px;
   }
 
   .bloco_duplo {
@@ -420,5 +439,13 @@ span {
   .rightbox .bloco_ipt {
     width: 100%;
     margin-bottom: 8px;
+  }
+
+  .rightbox .bloco_unico {
+    width: 100%;
+  }
+
+  #span_validacao {
+    margin: -4px 0 4px 0;
   }
   }
