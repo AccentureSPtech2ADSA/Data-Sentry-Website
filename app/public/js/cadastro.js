@@ -1,3 +1,23 @@
+function removerBordas(id) {
+  console.log(id);
+  document.getElementById(id).style.border = "none"
+
+  if (
+    input_razao_social.value != "" &&
+    input_cep.value != "" &&
+    input_complemento.value != "" &&
+    input_num_contato.value != "" &&
+    input_nome_fantasia.value != "" &&
+    input_num_endereco.value != "" &&
+    input_unidade.value != "" &&
+    input_cnpj.value != "" &&
+    input_email.value != "" &&
+    input_senha.value != "" &&
+    input_confirmar_senha.value != ""
+  ) {
+    span_validacao.innerHTML = ""
+  }
+}
 
 function validCadastro() {
   /* Verifica se há algum input com valor vazio e ajusta o layout para o texto caber na tela caso houver */
@@ -15,8 +35,8 @@ function validCadastro() {
     input_confirmar_senha.value == ""
   ) {
     span_validacao.innerHTML = "Por favor preencha todos os campos";
-    idcontainer2.style.marginTop = "-25px";
-    texto_cadastro.style.marginBottom = "30px";
+    idcontainer2.style.marginTop = "-6px";
+    id_container3.style.marginTop = "14px"
 
     /* marca o campo razao social se estiver vazio */
     if (input_razao_social.value !== "") {
@@ -116,18 +136,17 @@ function validCadastro() {
     } else if (input_email.value.length < 10) {
       /* Valida se o email possui mais de 10 caracteres */
       input_email.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML =
-        "Email inválido, deve conter no mínimo 10 digitos";
+      span_validacao.innerHTML = "Email inválido, deve conter no mínimo 10 digitos";
     } else if (input_razao_social.value.length < 3) {
-      /* Valida se o nome possui mais de 3 caracteres */
+      /* Valida se a razao social possui mais de 3 caracteres */
       input_razao_social.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Campo razão social deve conter no mínimo 3 digitos";
     } else if (input_cnpj.value.length < 14) {
-      /* Valida se a input cnpj possui mais de 14 caracteres */
+      /* Valida se o cnpj possui mais de 14 caracteres */
       input_cnpj.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Insira um CNPJ válido";
-    } else if (input_cep.value.length != 8) {
-      /* Valida se o cep possui ao menos 8 digitos */
+    } else if (input_cep.value.length != 9) {
+      /* Valida se o cep possui ao menos 9 digitos (contando com hífen)*/
       input_cep.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Insira um cep válido";
     } else if (input_senha.value.length < 8) {
@@ -142,8 +161,7 @@ function validCadastro() {
       span_validacao.innerHTML = "As senhas não coincidem";
     } else if (chk_termos.checked == false) {
       /* Valida se o checkbox de termos de uso foi aceito */
-      span_validacao.innerHTML =
-        "Você deve concordar com os nossos termos de uso antes de prosseguir";
+      span_validacao.innerHTML = "Você deve concordar com os nossos termos de uso antes de prosseguir";
       chk_termos.style.outline = "1px solid red";
       chk_termos.style.outlineOffset = "-1px";
     } else {
@@ -232,6 +250,4 @@ async function fazerRequisicaoInserirHospitalUser(
   });
   let res = await req.json();
   return res;
-}
-
-
+  }
