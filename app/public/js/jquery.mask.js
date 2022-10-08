@@ -571,9 +571,10 @@ $(document).ready(function () {
 
 function limparMascara(){
     // Cadastro
-    $("#input_cep").mask("")
-    $("#input_num_contato").mask("")
-    $("#input_cnpj").mask("")
+    $("#input_cep").mask("00000000")
+    $("#input_num_contato").mask("00000000000")
+    $("#input_cnpj").mask("00000000000000")
+
     // Perfil ADM
     $("#id_input7").mask("")
     $("#id_input10").mask("")
