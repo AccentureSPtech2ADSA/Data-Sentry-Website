@@ -232,6 +232,4 @@ async function fazerRequisicaoInserirHospitalUser(
   });
   let res = await req.json();
   return res;
-}
-
-
+  }
