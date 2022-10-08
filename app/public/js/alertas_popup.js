@@ -33,8 +33,8 @@ function sucesso(){
 }
 function erro(){
     Swal.fire({
-        title: '',
-        text: '',
+        title: 'Erro',
+        text: 'Erro texto',
         icon: 'error',
         confirmButtonText: 'Ok',
         confirmButtonColor: '#1a6969',
