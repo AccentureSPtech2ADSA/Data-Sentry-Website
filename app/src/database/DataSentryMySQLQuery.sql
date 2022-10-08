@@ -83,6 +83,28 @@ CREATE TABLE LogComponentPerProcess(
 	PRIMARY KEY (_idLogComponentPerProcess, fkComponentServer, fkComponentType, fkProcess)
 );
 
+CREATE PROCEDURE sp_loginUser(
+IN emailVar VARCHAR(100),
+IN passwordVar VARCHAR(100)
+)
+	SELECT `_idUserHospital` id ,name, email, contactPhone, 
+	fkHospital, cnpj, cep, numberAddress, complement, fantasyName, corporateName
+	FROM UserHospital uh JOIN Hospital h
+	ON h.`_idHospital` = uh.fkHospital 
+	WHERE email = emailVar
+	AND password = AES_ENCRYPT(passwordVar, '#Gfgrupo1');
+drop procedure sp_loginUser; 
+call sp_loginUser('kaike@gmail.com', '12345678'); 
+
+-- _idHospital INT PRIMARY KEY AUTO_INCREMENT,
+-- 	cnpj CHAR(14),
+-- 	cep CHAR(8),
+-- 	numberAddress VARCHAR(10),
+--     unit VARCHAR(50),
+-- 	complement VARCHAR(25),
+-- 	fantasyName VARCHAR(50),
+-- 	corporateName VARCHAR(50),
+
 -- 
 -- insert into Hospital (cnpj, fantasyName) values ('010111', 'nome');
 -- use datasentry;
