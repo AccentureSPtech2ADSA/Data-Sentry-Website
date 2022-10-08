@@ -178,7 +178,25 @@ function validCadastro() {
       input_senha.style.border = "none";
       input_confirmar_senha.style.border = "none";
 
-      // fazerRequisicaoInserirHospitalUser()
+
+      const cnpj = input_cnpj.value.trim();
+      const cep = input_cep.value.trim();
+      const num_contato = input_num_contato.value.trim();
+      const num_endereco = input_num_endereco.value.trim();
+      const nome_fantasia = input_nome_fantasia.value.trim();
+      const email = input_email.value.trim();
+      const senha = input_senha.value.trim();
+      const unidade = input_unidade.value.trim();
+      const complemento = input_complemento.value.trim();
+      const razao_social = input_razao_social.value.trim();
+
+      fazerRequisicaoInserirHospitalUser(cnpj, cep, num_endereco, unidade, nome_fantasia, razao_social, complemento, nome_fantasia, email, senha, num_contato)
+      .then(res=>{
+        console.log(res);
+      })
+      .catch(err=>{
+        alert(err)
+      })
       return;
 
       alert("Cadastro efetuado com sucesso");
