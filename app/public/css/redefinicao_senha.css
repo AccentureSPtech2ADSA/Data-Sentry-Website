@@ -30,6 +30,12 @@ h3{
     flex-direction: column;
     width: 50%;
 }
+p{
+    width: 100%;
+    margin: 0!important;
+}
+#text1{display: none;}
+#text2{display: none;}
 .form input{
     border-radius: 8px;
     border: 0;
@@ -91,4 +97,8 @@ footer{
 .information{
     color: #4f4f4f;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+i {
+    margin-left: -25px;
+    cursor: pointer;
 }
