@@ -1,5 +1,4 @@
 var database = require("../database/config");
-const secret_key = process.env.SECRET_KEY_CRYPT;
 async function insertUsuario({
   name = "",
   email = "",
@@ -28,7 +27,15 @@ async function login({ email = "", password = "" }) {
   // query mysql
   return await database.execute(query);
 }
+async function isEmailsExitsInDatabase(email){
+  let query = `SELECT name, _idUserHospital id FROM UserHospital WHERE email = '${email}' LIMIT 1`;
+  if (database.isAmbienteProducao) 
+    query = ``;
+
+  return await database.execute(query);
+}
 module.exports = {
   login,
   insertUsuario,
+  isEmailsExitsInDatabase
 };

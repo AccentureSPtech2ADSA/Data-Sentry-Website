@@ -1,5 +1,6 @@
 var userHospitalModel = require("../models/userHospitalModel");
-const {sign} = require('../util/auth/jwt');
+const { sign } = require("../util/auth/jwt");
+const { enviarEmail } = require("../util/email/emailService");
 /**
  * @param {Request} req
  * @param {Response} res
@@ -30,7 +31,6 @@ async function insertUsuario(req, res) {
     res.json(userHospitalResult).status(userHospitalResult.status);
   }
 }
-
 async function login(req, res) {
   //   console.log(`req.body`, req.body);
   if (Object.values(req.body).length !== 2) {
@@ -59,14 +59,79 @@ async function login(req, res) {
           status: 404,
         })
         .status(404);
-        return;
+      return;
     }
     const tokenLogin = sign(userHospitalResult.data[0][0]);
     userHospitalResult.token = tokenLogin;
     res.json(userHospitalResult).status(userHospitalResult.status);
   }
 }
+async function sendEmailToResetPassword(req, res) {
+  const email = req.body.email;
+
+  if (email == "" || email == undefined) {
+    const msg = "Email esta indefinido";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const req = await userHospitalModel.isEmailsExitsInDatabase(email);
+    console.log(req);
+    const name = req.data[0].name;
+    const token = sign(req.data[0]);
+    if (req.status == 200) {
+      try {
+        let htmlMessage = 
+        `
+        <p style='font-size: 18px;'><strong>Olá ${name}! Tudo bem?</strong></p>
+        <p>
+        Esqueceu sua senha? Não tem problemas! <br>
+        Com o sistema do DataSentry seu problema já foi pensado e resolvido por nós!
+        <br>
+        </p>
+        <p>
+        Clique neste <a href='${process.env.HOST + `/redefinicao_senha.html?token=${token}`}' style='color: #23AFAE'>link</a> para redefinir sua senha!
+        </p>
+        `
+        let resEmail = await enviarEmail(
+          htmlMessage,
+          email,
+          htmlMessage,
+          "Redefinição Email"
+        );
+        console.log(resEmail);
+
+        const shortMessage =
+          "E-mail enviado com sucesso";
+        const longMessage = `Enviamos um e-mail para sua caixa de entrada`
+        res
+          .json({
+            data: resEmail,
+            shortMessage: shortMessage,
+            longMessage: longMessage,
+            status: 200,
+          })
+          .status(200);
+          return;
+      } catch (error) {
+        res
+          .json({
+            data: null,
+            msg: error,
+            status: 500,
+          })
+          .status(500);
+      }
+    }
+  }
+}
+
 module.exports = {
   insertUsuario,
   login,
+  sendEmailToResetPassword,
 };
