@@ -68,7 +68,7 @@ async function login(req, res) {
 }
 async function sendEmailToResetPassword(req, res) {
   const email = req.body.email;
-
+  console.log(req.body)
   if (email == "" || email == undefined) {
     const msg = "Email esta indefinido";
     res
