@@ -64,7 +64,8 @@ function executeSqlServer(querySQL) {
     try {
       await sql.connect(sqlServerConfig);
       const resultMssql = await sql.query(querySQL);
-      response.status = 201;
+      console.log(`executando query ${querySQL}`);
+      response.status = 200;
       response.msg = msgResponseOk;
       response.data = resultMssql.recordsets;
       resolve(response);

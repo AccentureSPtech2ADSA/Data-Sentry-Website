@@ -29,8 +29,13 @@ async function login({ email = "", password = "" }) {
 }
 async function isEmailsExitsInDatabase(email){
   let query = `SELECT name, _idUserHospital id FROM UserHospital WHERE email = '${email}' LIMIT 1`;
-  if (database.isAmbienteProducao) 
-    query = ``;
+  if (database.isAmbienteProducao) {
+    query = `SELECT TOP 1 name, _idUserHospital id FROM UserHospital WHERE email = '${email}'`;
+    let data = await database.execute(query)
+    data.data = data.data[0];
+    return data;
+  }
+
 
   return await database.execute(query);
 }

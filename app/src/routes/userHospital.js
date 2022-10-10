@@ -15,7 +15,6 @@ router.post("/login", (req, res) => {
 
 router.post('/resetPasswordEmail', (req,res)=>{
   console.log('estou na rota de resetPassword do userHospital');
-
   userHospitalController.sendEmailToResetPassword(req,res);
 })
 module.exports = router;
