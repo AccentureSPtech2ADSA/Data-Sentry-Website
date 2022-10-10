@@ -68,6 +68,7 @@ async function login(req, res) {
 }
 async function sendEmailToResetPassword(req, res) {
   const email = req.body.email;
+
   if (email == "" || email == undefined) {
     const msg = "Email esta indefinido";
     res
@@ -80,6 +81,7 @@ async function sendEmailToResetPassword(req, res) {
   } else {
     const req = await userHospitalModel.isEmailsExitsInDatabase(email);
     console.log('req user model enviar email isEmailExists', req);
+
     const name = req.data[0].name;
     const token = sign(req.data[0]);
     if (req.status == 200) {

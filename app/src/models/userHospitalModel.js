@@ -36,6 +36,7 @@ async function isEmailsExitsInDatabase(email){
     return data;
   }
 
+
   return await database.execute(query);
 }
 module.exports = {
