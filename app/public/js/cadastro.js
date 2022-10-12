@@ -128,15 +128,28 @@ function validCadastro() {
     input_email.style.border = "none";
     input_senha.style.border = "none";
     input_confirmar_senha.style.border = "none";
+    
+    // Regex Validação (Email):
+    var email = document.getElementById('input_email').value
+    const regexEmail = /^(\w){3,}@[a-z]{2,}(\.[a-z]+){1,2}$/i;  
+    // Regex Validação (Senha)
+    var senha = document.getElementById('input_senha').value;
+    var confirmSenha = document.getElementById('input_confirmar_senha').value;
+    const regexSenha = /[a-z0-9]{6,}[!@#$-_.]{1,}[A-Z]{1,}/gim;
+
+    if (regexEmail.test(email) == false){
+      input_email.style.border = "thin solid #FF0000";
+      span_validacao.innerHTML = 'Email inválido';
 
     /* Valida se o email possui "@" */
-    if (input_email.value.indexOf("@") == -1) {
-      input_email.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = 'Email inválido, deve conter "@"';
-    } else if (input_email.value.length < 10) {
-      /* Valida se o email possui mais de 10 caracteres */
-      input_email.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "Email inválido, deve conter no mínimo 10 digitos";
+    // if (input_email.value.indexOf("@") == -1) {
+    //   input_email.style.border = "thin solid #FF0000";
+    //   span_validacao.innerHTML = 'Email inválido, deve conter "@"';
+    // } else if (input_email.value.length < 10) {
+    //   /* Valida se o email possui mais de 10 caracteres */
+    //   input_email.style.border = "thin solid #FF0000";
+    //   span_validacao.innerHTML = "Email inválido, deve conter no mínimo 10 digitos";
+
     } else if (input_razao_social.value.length < 3) {
       /* Valida se a razao social possui mais de 3 caracteres */
       input_razao_social.style.border = "thin solid #FF0000";
@@ -145,20 +158,29 @@ function validCadastro() {
       /* Valida se o cnpj possui mais de 14 caracteres */
       input_cnpj.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Insira um CNPJ válido";
-    } else if (input_cep.value.length != 9) {
-      /* Valida se o cep possui ao menos 9 digitos (contando com hífen)*/
-      input_cep.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "Insira um cep válido";
-    } else if (input_senha.value.length < 8) {
-      /* Valida se a senha tem mais de 8 caracteres */
+
+    
+    } else if (regexSenha.test(senha) == false){
       input_senha.style.border = "thin solid #FF0000";
       input_confirmar_senha.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "Senha deve conter no mínimo 8 digitos";
-    } else if (input_senha.value !== input_confirmar_senha.value) {
-      /* Valida se as inputs de senha e confirmar senha são iguais */
+      span_validacao.innerHTML = "A senha deve ter no mínimo 8 dígitos, contendo carácter especial e Letra maíuscula";
+
+    } else if (senha != confirmSenha){
       input_senha.style.border = "thin solid #FF0000";
       input_confirmar_senha.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "As senhas não coincidem";
+    
+    // } else if (input_senha.value.length < 8) {
+    //   /* Valida se a senha tem mais de 8 caracteres */
+    //   input_senha.style.border = "thin solid #FF0000";
+    //   input_confirmar_senha.style.border = "thin solid #FF0000";
+    //   span_validacao.innerHTML = "Senha deve conter no mínimo 8 digitos";
+    // } else if (input_senha.value !== input_confirmar_senha.value) {
+    //   /* Valida se as inputs de senha e confirmar senha são iguais */
+    //   input_senha.style.border = "thin solid #FF0000";
+    //   input_confirmar_senha.style.border = "thin solid #FF0000";
+    //   span_validacao.innerHTML = "As senhas não coincidem";
+
     } else if (chk_termos.checked == false) {
       /* Valida se o checkbox de termos de uso foi aceito */
       span_validacao.innerHTML = "Você deve concordar com os nossos termos de uso antes de prosseguir";
@@ -208,7 +230,11 @@ function validCadastro() {
       })
       return;
 
-      alert("Cadastro efetuado com sucesso");
+      alertar(
+        '',
+        'Cadastro efetuado com sucesso !',
+        'success'
+      );
       window.location.href = "../index.html";
 
       fetch("/usuarios/cadastrarHospital", {
