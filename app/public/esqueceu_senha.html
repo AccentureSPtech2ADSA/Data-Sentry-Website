@@ -57,12 +57,27 @@
     var email = document.getElementById("inp_email").value;
     const regexEmail = /^(\w){3,}@[a-z]{2,}(\.[a-z]+){1,2}$/i;
     if (regexEmail.test(email)) {
-      sucessoEnvioDeEmail(email);
+      alertar(
+        'Email enviado com sucesso !',
+        'Verifique sua caixa de entrada ou Spam',
+        'success',
+        'Ok',
+      );
       enviarEmail(email);
     } else if (email == "") {
-      atencaoCamposNull();
+      alertar(
+        '', 
+        'Preencha o campo para que possamos enviar o email', 
+        'warning', 
+        'Ok'
+      );
     } else {
-      erroEmailInvalido();
+      alertar(
+        'Email inválido', 
+        'Informe um email válido', 
+        'error', 
+        'Ok'
+      );
     }
   }
 

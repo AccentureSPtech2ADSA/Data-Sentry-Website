@@ -78,13 +78,33 @@
     const regexSenha = /[a-z0-9]{6,}[!@#$-_.]{1,}[A-Z]{1,}/gim;
 
     if (regexSenha.test(novaSenha) && confirmSenha == novaSenha) {
-      sucessoSenhaRedefinida()();
+      alertar(
+        '',
+        'Senha redefinida com sucesso !',
+        'success',
+        'Ok'
+      );
     } else if (novaSenha == "" || confirmSenha == "") {
-      atencaoCamposNull();
+      alertar(
+        'Atenção',
+        'Todos os campos devem ser preenchidos',
+        'warning',
+        'Ok'
+      );
     } else if (novaSenha != confirmSenha) {
-      erroSenhasDiferentes();
+      alertar(
+        '',
+        'Confirme a mesma senha',
+        'warning',
+        'Ok'
+      );
     } else {
-      erroPadraoSenha();
+      alertar(
+        'Senha inválida',
+        'A senha deve ter no mínimo 8 dígitos, contendo caracter especial e Letra maíuscula.',
+        'error',
+        'Ok'
+      );
     }
   }
 
