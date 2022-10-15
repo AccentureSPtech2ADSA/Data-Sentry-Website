@@ -1,27 +1,97 @@
+function removerBordas(id) {
+  console.log(id);
+  document.getElementById(id).style.border = "none"
+
+  if (
+    input_razao_social.value != "" &&
+    input_cep.value != "" &&
+    input_complemento.value != "" &&
+    input_num_contato.value != "" &&
+    input_nome_fantasia.value != "" &&
+    input_num_endereco.value != "" &&
+    input_unidade.value != "" &&
+    input_cnpj.value != "" &&
+    input_email.value != "" &&
+    input_senha.value != "" &&
+    input_confirmar_senha.value != ""
+  ) {
+    span_validacao.innerHTML = ""
+  }
+}
+
 function validCadastro() {
-  var nomeVar = input_nome.value
-  var cnpjVar = input_cnpj.value
-  var cepVar = input_cep.value
-  var emailVar = input_email.value
-  var senhaVar = input_senha.value
   /* Verifica se há algum input com valor vazio e ajusta o layout para o texto caber na tela caso houver */
   if (
-    input_nome.value == "" ||
-    input_cnpj.value == "" ||
+    input_razao_social.value == "" ||
     input_cep.value == "" ||
-    input_senha.value == "" ||
+    input_complemento.value == "" ||
+    input_num_contato.value == "" ||
+    input_nome_fantasia.value == "" ||
+    input_num_endereco.value == "" ||
+    input_unidade.value == "" ||
+    input_cnpj.value == "" ||
     input_email.value == "" ||
-    input_repetir_senha.value == ""
+    input_senha.value == "" ||
+    input_confirmar_senha.value == ""
   ) {
     span_validacao.innerHTML = "Por favor preencha todos os campos";
-    idcontainer2.style.marginTop = "-25px";
-    texto_cadastro.style.marginBottom = "30px";
+    idcontainer2.style.marginTop = "-6px";
+    id_container3.style.marginTop = "14px"
 
-    /* marca o campo nome se estiver vazio */
-    if (input_nome.value !== "") {
-      input_nome.style.border = "none";
+    /* marca o campo razao social se estiver vazio */
+    if (input_razao_social.value !== "") {
+      input_razao_social.style.border = "none";
     } else {
-      input_nome.style.border = "thin solid #FF0000";
+      input_razao_social.style.border = "thin solid #FF0000";
+    }
+
+    /* marca o campo cep se estiver vazio */
+    if (input_cep.value !== "") {
+      input_cep.style.border = "none";
+    } else {
+      input_cep.style.border = "thin solid #FF0000";
+    }
+
+    /* marca o campo complemento se estiver vazio */
+    if (input_complemento.value !== "") {
+      input_complemento.style.border = "none";
+    } else {
+      input_complemento.style.border = "thin solid #FF0000";
+    }
+
+    /* marca o campo numero de contato se estiver vazio */
+    if (input_num_contato.value !== "") {
+      input_num_contato.style.border = "none";
+    } else {
+      input_num_contato.style.border = "thin solid #FF0000";
+    }
+
+    /* marca o campo nome fantasia se estiver vazio */
+    if (input_nome_fantasia.value !== "") {
+      input_nome_fantasia.style.border = "none";
+    } else {
+      input_nome_fantasia.style.border = "thin solid #FF0000";
+    }
+
+    /* marca o campo numero de endereço se estiver vazio */
+    if (input_num_endereco.value !== "") {
+      input_num_endereco.style.border = "none";
+    } else {
+      input_num_endereco.style.border = "thin solid #FF0000";
+    }
+
+    /* marca o campo unidade se estiver vazio */
+    if (input_unidade.value !== "") {
+      input_unidade.style.border = "none";
+    } else {
+      input_unidade.style.border = "thin solid #FF0000";
+    }
+
+    /* marca o campo cnpj se estiver vazio */
+    if (input_cnpj.value !== "") {
+      input_cnpj.style.border = "none";
+    } else {
+      input_cnpj.style.border = "thin solid #FF0000";
     }
 
     /* marca o campo email se estiver vazio */
@@ -31,13 +101,6 @@ function validCadastro() {
       input_email.style.border = "thin solid #FF0000";
     }
 
-    /* marca o campo nome/razão social se estiver vazio */
-    if (input_cnpj.value !== "") {
-      input_cnpj.style.border = "none";
-    } else {
-      input_cnpj.style.border = "thin solid #FF0000";
-    }
-
     /* marca o campo senha se estiver vazio */
     if (input_senha.value !== "") {
       input_senha.style.border = "none";
@@ -45,89 +108,139 @@ function validCadastro() {
       input_senha.style.border = "thin solid #FF0000";
     }
 
-    /* marca o campo repetir senha se estiver vazio */
-    if (input_repetir_senha.value !== "") {
-      input_repetir_senha.style.border = "none";
+    /* marca o campo confirmar senha se estiver vazio */
+    if (input_confirmar_senha.value !== "") {
+      input_confirmar_senha.style.border = "none";
     } else {
-      input_repetir_senha.style.border = "thin solid #FF0000";
-    }
-
-    /* marca o campo cep se estiver vazio */
-    if (input_cep.value !== "") {
-      input_cep.style.border = "none";
-    } else {
-      input_cep.style.border = "thin solid #FF0000";
+      input_confirmar_senha.style.border = "thin solid #FF0000";
     }
   } else {
+
     /* tira as marcações das inputs já preenchidas */
+    input_razao_social.style.border = "none";
     input_cep.style.border = "none";
-    input_senha.style.border = "none";
-    input_repetir_senha.style.border = "none";
-    input_nome.style.border = "none";
-    input_email.style.border = "none";
+    input_complemento.style.border = "none";
+    input_num_contato.style.border = "none";
+    input_nome_fantasia.style.border = "none";
+    input_num_endereco.style.border = "none";
+    input_unidade.style.border = "none";
     input_cnpj.style.border = "none";
+    input_email.style.border = "none";
+    input_senha.style.border = "none";
+    input_confirmar_senha.style.border = "none";
+    
+    // Regex Validação (Email):
+    var email = document.getElementById('input_email').value
+    const regexEmail = /^(\w){3,}@[a-z]{2,}(\.[a-z]+){1,2}$/i;  
+    // Regex Validação (Senha)
+    var senha = document.getElementById('input_senha').value;
+    var confirmSenha = document.getElementById('input_confirmar_senha').value;
+    const regexSenha = /[a-z0-9]{6,}[!@#$-_.]{1,}[A-Z]{1,}/gim;
+
+    if (regexEmail.test(email) == false){
+      input_email.style.border = "thin solid #FF0000";
+      span_validacao.innerHTML = 'Email inválido';
 
     /* Valida se o email possui "@" */
-    if (input_email.value.indexOf("@") == -1) {
-      input_email.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = 'Email inválido, deve conter "@"';
-    } else if (input_email.value.length < 10) {
+    // if (input_email.value.indexOf("@") == -1) {
+    //   input_email.style.border = "thin solid #FF0000";
+    //   span_validacao.innerHTML = 'Email inválido, deve conter "@"';
+    // } else if (input_email.value.length < 10) {
+    //   /* Valida se o email possui mais de 10 caracteres */
+    //   input_email.style.border = "thin solid #FF0000";
+    //   span_validacao.innerHTML = "Email inválido, deve conter no mínimo 10 digitos";
 
-      /* Valida se o email possui mais de 10 caracteres */
-      input_email.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML =
-        "Email inválido, deve conter no mínimo 10 digitos";
-    } else if (input_nome.value.length < 3) {
-
-      /* Valida se o nome possui mais de 3 caracteres */
-      input_nome.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "Nome deve conter no mínimo 3 digitos";
+    } else if (input_razao_social.value.length < 3) {
+      /* Valida se a razao social possui mais de 3 caracteres */
+      input_razao_social.style.border = "thin solid #FF0000";
+      span_validacao.innerHTML = "Campo razão social deve conter no mínimo 3 digitos";
     } else if (input_cnpj.value.length < 14) {
-
-      /* Valida se a input cnpj possui mais de 3 caracteres */
+      /* Valida se o cnpj possui mais de 14 caracteres */
       input_cnpj.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "Insira um CNPJ válido";
-    } else if (input_cep.value.length < 8) {
 
-      /* Valida se o número de telefone possui ao menos 8 digitos */
-      input_cep.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "Insira um cep válido";
-    } else if (input_senha.value.length < 8) {
-
-      /* Valida se a senha tem mais de 8 caracteres */
+    
+    } else if (regexSenha.test(senha) == false){
       input_senha.style.border = "thin solid #FF0000";
-      input_repetir_senha.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "Senha deve conter no mínimo 8 digitos";
-    } else if (input_senha.value !== input_repetir_senha.value) {
+      input_confirmar_senha.style.border = "thin solid #FF0000";
+      span_validacao.innerHTML = "A senha deve ter no mínimo 8 dígitos, contendo carácter especial e Letra maíuscula";
 
-      /* Valida se as inputs de senha e confirmar senha são iguais */
+    } else if (senha != confirmSenha){
       input_senha.style.border = "thin solid #FF0000";
-      input_repetir_senha.style.border = "thin solid #FF0000";
+      input_confirmar_senha.style.border = "thin solid #FF0000";
       span_validacao.innerHTML = "As senhas não coincidem";
-    } else if (chk_termos.checked == false) {
+    
+    // } else if (input_senha.value.length < 8) {
+    //   /* Valida se a senha tem mais de 8 caracteres */
+    //   input_senha.style.border = "thin solid #FF0000";
+    //   input_confirmar_senha.style.border = "thin solid #FF0000";
+    //   span_validacao.innerHTML = "Senha deve conter no mínimo 8 digitos";
+    // } else if (input_senha.value !== input_confirmar_senha.value) {
+    //   /* Valida se as inputs de senha e confirmar senha são iguais */
+    //   input_senha.style.border = "thin solid #FF0000";
+    //   input_confirmar_senha.style.border = "thin solid #FF0000";
+    //   span_validacao.innerHTML = "As senhas não coincidem";
 
+    } else if (chk_termos.checked == false) {
       /* Valida se o checkbox de termos de uso foi aceito */
-      span_validacao.innerHTML =
-        "Você deve concordar com os nossos termos de uso antes de prosseguir";
+      span_validacao.innerHTML = "Você deve concordar com os nossos termos de uso antes de prosseguir";
       chk_termos.style.outline = "1px solid red";
       chk_termos.style.outlineOffset = "-1px";
     } else {
+      // !!~~ Limpando Mascaras antes de enviar os dados para o Banco 
+      limparMascara()
 
       /* Confirma o cadastro e abre a tela de monitoramento */
+      input_razao_social.style.border = "none";
       input_cep.style.border = "none";
-      input_senha.style.border = "none";
-      input_repetir_senha.style.border = "none";
-      input_nome.style.border = "none";
-      input_email.style.border = "none";
+      input_complemento.style.border = "none";
+      input_num_contato.style.border = "none";
+      input_nome_fantasia.style.border = "none";
+      input_num_endereco.style.border = "none";
+      input_unidade.style.border = "none";
       input_cnpj.style.border = "none";
+      input_email.style.border = "none";
+      input_senha.style.border = "none";
+      input_confirmar_senha.style.border = "none";
 
-      alert("Cadastro efetuado com sucesso");
+
+      const cnpj = input_cnpj.value.trim();
+      const cep = input_cep.value.trim();
+      const num_contato = input_num_contato.value.trim();
+      const num_endereco = input_num_endereco.value.trim();
+      const nome_fantasia = input_nome_fantasia.value.trim();
+      const email = input_email.value.trim();
+      const senha = input_senha.value.trim();
+      const unidade = input_unidade.value.trim();
+      const complemento = input_complemento.value.trim();
+      const razao_social = input_razao_social.value.trim();
+
+      console.log(cep, num_contato, cnpj, email);
+
+      fazerRequisicaoInserirHospitalUser(cnpj, cep, num_endereco, unidade, nome_fantasia, razao_social, complemento, nome_fantasia, email, senha, num_contato)
+      .then(res=>{
+        console.log(res);
+        if(res.status == 200){
+          // programar logica do session storage aqui dentro, colocar o jwt e os dados do usuario
+          alert('deu certo');
+        }
+      })
+      .catch(err=>{
+        alert(err)
+      })
+      return;
+
+      alertar(
+        '',
+        'Cadastro efetuado com sucesso !',
+        'success'
+      );
       window.location.href = "../index.html";
 
       fetch("/usuarios/cadastrarHospital", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           // crie um atributo que recebe o valor recuperado aqui
@@ -137,12 +250,12 @@ function validCadastro() {
           cepServer: cepVar,
           emailServer: emailVar,
           senhaServer: senhaVar,
-        })
-      })
+        }),
+      });
       fetch("/usuarios/cadastrarUsuario", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           // crie um atributo que recebe o valor recuperado aqui
@@ -150,8 +263,44 @@ function validCadastro() {
           nomeServer: nomeVar,
           emailServer: emailVar,
           senhaServer: senhaVar,
-        })
-      })
+        }),
+      });
     }
   }
 }
+
+async function fazerRequisicaoInserirHospitalUser(
+  cnpj,
+  cep,
+  numberAddress,
+  unit,
+  fantasyName,
+  corporateName,
+  complemento,
+  name,
+  email,
+  password,
+  phone
+) {
+  let req = await fetch("http://localhost:3333/hospital/insert", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      cep: cep,
+      cnpj: cnpj,
+      complement: complemento,
+      corporateName: corporateName,
+      fantasyName: fantasyName,
+      numberAdress: numberAddress,
+      unit: unit,
+      name: name,
+      email: email,
+      password: password,
+      phone: phone,
+    }),
+  });
+  let res = await req.json();
+  return res;
+  }
