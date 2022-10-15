@@ -8,7 +8,7 @@
     <title>Usuários - Data Sentry</title>
     <link rel="stylesheet" href="./css/navbarLateral.css" />
     <link rel="stylesheet" href="./css/usuarios.css" />
-    <script src="./js/dashboard.js"></script>
+    <script src="./js/usuarios.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="//code.jivosite.com/widget/PPcXITM6I4" async></script>
   </head>
@@ -82,17 +82,19 @@
     </div>
 
     <div class="body_container">
-      <!-- Codar aqui (arquivo css já criado e conectado) ------------------------------------------------------>
       <div class="area-buttons">
-        <button class="btn-ativo">Usuários</button>
+        <button onclick="irparaGerenciar()" id="btn_gerenciar" class="btn-ativo">Gerenciar membros</button>
+        <button onclick="irparaCadastro()" id="btn_cadastrar">Cadastrar analistas</button>
       </div>
-      <div class="area-painel">
-        <div class="painel">
+      <div id="area_painel" class="area-painel">
+        <div id="painel" class="painel">
           <table>
             <thead>
               <tr>
                 <th>Email</th>
-                <th>Nome</th>
+                <th>Apelido</th>
+                <th>Cargo</th>
+                <th style="font-size: 13px;">Permissões<br>de ADM</th>
                 <th class="remove-icon"></th>
               </tr>           
             </thead>
@@ -178,6 +180,41 @@
             </tr>           
           </table>
         </div>
+
+        <!-- Cadastrar usuário -->
+        <div id="painel_cadastro" class="painel_cadastro">
+          <div class="container_cadastro">
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Email</div>
+            <input id="" type="email" placeholder="Exemplo@hotmail.com" />
+          </div>
+    
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Apelido</div>
+            <input id="" type="text" placeholder="Apelido do analista" />
+          </div>
+    
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Número de Contato</div>
+            <input id="" type="text" placeholder="(00) 00000-0000" />
+          </div>
+    
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Senha</div>
+            <input id="" type="password" placeholder="Inserir senha" />
+          </div>
+
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Confirmar senha</div>
+            <input id="" type="password" placeholder="Repetir senha" />
+          </div>
+    
+          <div class="bloco_inferior">
+            <div>
+              <input class="btn_salvar" type="button" value="Adicionar" id="onoff" onclick="onoff();">
+            </div>
+        </div>
+      </div>
       </div>
     </div>
   </body>
