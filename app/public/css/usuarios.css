@@ -1,5 +1,6 @@
 body {
     background-color: #E9E9E9;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .body_container {
@@ -82,3 +83,82 @@ button:hover{
 .colorBebe{background-color: #c7c7c7;}
 .colorGray:hover{background-color: rgb(163, 163, 163);}
 .colorBebe:hover{background-color: rgb(163, 163, 163);}
+
+/* Tela de cadastrar usuário */
+.painel_cadastro {
+    margin-top: 40px;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.container_cadastro {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.bloco_unico {
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+.bloco_unico input {
+    width: 93%;
+    height: 25px;
+    border-radius: 5px;
+    border: 0;
+    padding-left: 8px;
+    background-color: rgb(233, 233, 233);
+    cursor: default;
+    color: #525252;
+}
+
+.ipt_titulo {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #808080;
+    font-size: 16px;
+    padding-bottom: 5px;
+    font-weight: 500;
+    cursor: default;
+}
+
+.bloco_inferior {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+}
+
+.btn_salvar {
+    padding: 12px 36px 12px 36px;
+    border: 0;
+    border-radius: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #15CDD3;
+    width: 100%;
+}
+
+.btn_salvar:hover {
+    box-shadow: 8px 8px 18px rgb(189, 189, 189);
+}
+
+#btn_gerenciar {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+
+#btn_cadastrar {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px; 
+}
