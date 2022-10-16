@@ -12,6 +12,6 @@ function irparaGerenciar() {
     painel_cadastro.style.display = "none"
     btn_gerenciar.style.backgroundColor = "#FFFFFF"
     btn_cadastrar.style.backgroundColor = "#c4e4e4"
-    area_painel.style.width = "80%"
+    area_painel.style.width = "57%"
     area_painel.style.height = "auto"
 }
