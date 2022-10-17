@@ -62,8 +62,9 @@ function validLogin() {
       .then((v) => {
         console.log(v)
         if(v.status == 200){
-          alert('deu certo. Ir para tela de perfil ou dashboard');
-          sessionStorage.setItem('Token', v.token)
+          sessionStorage.setItem('Token', v.token);
+          window.open("./dashboard.html","_self")
+
           // setar tbm no session storage...
         }else{
           alert('deu errado')
