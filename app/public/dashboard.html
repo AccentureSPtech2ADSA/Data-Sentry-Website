@@ -105,24 +105,30 @@
 
       <div class="bloco2">
         <div class="kpi_card">
-          <span>Uso de CPU</span>
+          <span class="kpi_texto">Uso de CPU</span>
           <div class="chart_kpi">
             <canvas id="myChart1"></canvas>
           </div>
+          <span class="kpi_texto_inferior">64%</span>
+          <span class="kpi_texto_inferior2">2.44/3.80 GHz</span>
         </div>
 
         <div class="kpi_card">
-          <span>Uso de RAM</span>
+          <span class="kpi_texto">Uso de RAM</span>
           <div class="chart_kpi">
             <canvas id="myChart2"></canvas>
           </div>
+          <span class="kpi_texto_inferior">28%</span>
+          <span class="kpi_texto_inferior2">8.96/32 GB</span>
         </div>
 
         <div class="kpi_card">
-          <span>Espaço em disco</span>
-          <div class="chart_kpi">
+          <span class="kpi_texto_disco">Espaço em disco utilizado</span>
+          <div class="chart_kpi_disco">
             <canvas id="myChart3"></canvas>
           </div>
+          <span class="kpi_texto_inferior_disco">37%</span>
+          <span class="kpi_texto_inferior2_disco">754/2048 GB</span>
         </div>
       </div>
 
@@ -135,7 +141,9 @@
 
       <div class="bloco4">
         <p>Processos ativos no sistema</p>
-        <div class="lista_processos"></div>
+        <div class="lista_processos">
+          <!-- Fazer tabela aqui -->
+        </div>
       </div>
     </div>
   </body>
@@ -143,29 +151,29 @@
 
 <script>
   /* Setup KPI CPU (chart1)*/
-  const labels1 = [""];
+  const labels1 = ["Utilizado", "Livre"];
 
   const data1 = {
     labels: labels1,
     datasets: [
       {
         label: "CPU",
-        backgroundColor: ["#17EBE6"],
-        data: [50],
+        backgroundColor: ["#17EBE6", "#e0e0e0"],
+        data: [64,(100-64)],
       },
     ],
   };
 
   /* Setup KPI RAM (chart2)*/
-  const labels2 = [""];
+  const labels2 = ["Utilizado", "Livre"];
 
   const data2 = {
-    labels: labels2,
+    labels: labels1,
     datasets: [
       {
         label: "RAM",
-        backgroundColor: ["#17EBE6"],
-        data: [26],
+        backgroundColor: ["#17EBE6", "#e0e0e0"],
+        data: [28,(100-28)],
       },
     ],
   };
@@ -177,7 +185,7 @@
     labels: labels3,
     datasets: [
       {
-        backgroundColor: ["#17EBE6", "#009492"],
+        backgroundColor: ["#17EBE6", "#e0e0e0"],
         data: [28, 72],
       },
     ],
@@ -202,22 +210,25 @@
       {
         label: "CPU",
         borderColor: ["#009492"],
-        backgroundColor: ["#009492"],
+        backgroundColor: "rgba(0, 148, 146, 0.5)",
         data: [34, 42, 30, 38, 61, 40, 81, 54, 61],
+        fill: true
       },
 
       {
         label: "RAM",
         borderColor: ["#17EBE6"],
-        backgroundColor: ["#17EBE6"],
+        backgroundColor: "rgba(23, 235, 230, 0.5)",
         data: [62, 68, 65, 62, 64, 60, 62, 67, 64],
+        fill: true
       },
 
       {
         label: "Disco",
         borderColor: ["#174366"],
-        backgroundColor: ["#174366"],
+        backgroundColor: "rgba(23, 67, 102, 0.5)",
         data: [17, 21, 15, 19, 30, 20, 40, 27, 30],
+        fill: true
       },
     ],
   };
@@ -225,11 +236,19 @@
 
   /* config chart 1 (CPU)*/
   const config1 = {
-    type: "bar",
+    type: "doughnut",
     data: data1,
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      rotation: -90,
+      circumference: 180,
+      cutout: 55,
+      plugins: {
+    legend: {
+      display: false
+    }
+  },
       scales: {
         yAxes: [
           {
@@ -244,11 +263,19 @@
 
   /* config chart 2 (RAM)*/
   const config2 = {
-    type: "bar",
+    type: "doughnut",
     data: data2,
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      rotation: -90,
+      circumference: 180,
+      cutout: 55,
+      plugins: {
+    legend: {
+      display: false
+    }
+  },
       scales: {
         yAxes: [
           {
@@ -268,6 +295,13 @@
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      circumference: 360,
+      cutout: 55,
+      plugins: {
+    legend: {
+      display: false
+    }
+  },
       scales: {
         yAxes: [
           {
@@ -286,6 +320,8 @@
     data: data4,
     options: {
       responsive: true,
+      smooth: true,
+      lineTension: 0.5,
       maintainAspectRatio: false,
       scales: {
         yAxes: [
