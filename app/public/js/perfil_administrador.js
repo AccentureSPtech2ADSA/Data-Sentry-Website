@@ -138,13 +138,8 @@ function valorPlaceholder() {
 
   const dados = parseJwt(data).data;
 
-<<<<<<< HEAD
   document.getElementById("id_input2").value = dados.name;
   document.getElementById("id_input3").value = dados.corporateName;
-=======
-  document.getElementById("id_input2").value = "teste";
-  document.getElementById("id_input3").value = "clinicase@outlook.com";
->>>>>>> 162047927988140d25569ed5a4f1e48fe1390d5a
   document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
   document.getElementById("id_input5").value = "São Paulo";
   document.getElementById("id_input6").value = "São Paulo";
