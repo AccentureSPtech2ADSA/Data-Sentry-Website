@@ -1,7 +1,22 @@
+function enabledisable() {
+  id_input2.disabled = !id_input2.disabled
+  id_input3.disabled = !id_input3.disabled
+  id_input4.disabled = !id_input4.disabled
+  id_input5.disabled = !id_input5.disabled
+  id_input6.disabled = !id_input6.disabled
+  id_input7.disabled = !id_input7.disabled
+  id_input8.disabled = !id_input8.disabled
+  id_input9.disabled = !id_input9.disabled
+  id_input10.disabled = !id_input10.disabled
+  id_input11.disabled = !id_input11.disabled
+}
+
 function onoff() {
 
   currentvalue = document.getElementById('onoff').value;
   if (currentvalue == "Salvar") {
+
+    //Perfil salvo
     document.getElementById("onoff").value = "Editar";
 
     document.getElementById("id_input2").style.border = "none"
@@ -52,6 +67,8 @@ function onoff() {
     document.getElementById("onoff").style.backgroundColor = "#15CDD3"
     document.getElementById("onoff").style.color = "white"
   } else {
+
+    // perfil no modo edição
     document.getElementById("onoff").value = "Salvar";
     document.getElementById("id_input2").style.border = "1px solid grey"
     document.getElementById("id_input3").style.border = "1px solid grey"
