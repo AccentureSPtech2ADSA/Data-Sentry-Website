@@ -134,7 +134,7 @@ function validLogin() {
   }
 }
 async function fazerRequisicaoLogin(email, senha) {
-  let req = await fetch("http://localhost:3333/user/login", {
+  let req = await fetch("http://datasentry.sytes.net/user/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
