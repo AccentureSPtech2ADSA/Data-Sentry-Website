@@ -281,8 +281,9 @@ async function fazerRequisicaoInserirHospitalUser(
   email,
   password,
   phone
-) {
-  let req = await fetch("http://localhost:3333/hospital/insert", {
+) 
+// let req = await fetch("http://localhost:3333/hospital/insert",{
+  let req = await fetch("http://localhost:80/hospital/insert", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

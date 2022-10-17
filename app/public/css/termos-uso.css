@@ -10,10 +10,10 @@ body{
     display: flex;
     justify-content:center;
     text-align: justify;
-    padding: 80px;
+    padding: 40px 80px 80px 80px;
     width: 60%;
-    background-color: rgb(187, 187, 187);
-    border-radius: 60px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 20px;
     margin-top: 90px;
     margin-bottom: 50px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
