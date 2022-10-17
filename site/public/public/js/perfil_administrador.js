@@ -138,14 +138,14 @@ function valorPlaceholder() {
 
   const dados = parseJwt(data).data;
 
-  document.getElementById("id_input2").value = dados.name || "Nome";
-  document.getElementById("id_input3").value = dados.corporateName || "Corporativo";
+  document.getElementById("id_input2").value = dados.name;
+  document.getElementById("id_input3").value = dados.corporateName;
   document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
   document.getElementById("id_input5").value = "São Paulo";
   document.getElementById("id_input6").value = "São Paulo";
-  document.getElementById("id_input7").value = dados.cep || "00000-000";
+  document.getElementById("id_input7").value = dados.cep;
   document.getElementById("id_input8").value = "Brasil";
   document.getElementById("id_input9").value = "***************";
-  document.getElementById("id_input10").value = dados.contactPhone || "(11) 11111-1111";
-  document.getElementById("id_input11").value = dados.cnpj || "1111111111/111";
+  document.getElementById("id_input10").value = dados.contactPhone;
+  document.getElementById("id_input11").value = dados.cnpj;
 }
