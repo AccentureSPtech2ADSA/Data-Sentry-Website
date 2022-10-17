@@ -33,7 +33,7 @@ body {
 input{
     border: none;
     background-color: rgba(0, 0, 0, 0);
-    width: 20vw;
+    width: 30vw;
 }
 .btn-ativo{
     background-color: #fff;
@@ -82,7 +82,15 @@ button:hover{
     padding: 6px 22px;
     font-family: monospace;
 }
-
+.desassociar_text{
+    color: rgb(168, 2, 2);
+    font-size: 13px;
+}
+.desassociar_text:hover{
+    color: rgb(206, 5, 5);
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 /*----Icone de Deletar------*/
 .painel .remove-icon{width: auto;}
