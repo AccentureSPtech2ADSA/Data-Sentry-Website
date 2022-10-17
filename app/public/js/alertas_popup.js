@@ -1,5 +1,29 @@
 //______Popup
-function alertar(title = '', text = '', icon = '', confirmButtonText = '', iconColor = 'Ok'){
+function alertarQ(title = '', text = '', icon = '', confirmButtonText = '', cancelButtonText = ''){
+    if(icon == 'warning'){
+        iconColor = '#FFBF00'
+
+    } else if (icon == 'error'){
+        iconColor = '#8B0000'
+
+    } else if (icon == 'success'){
+        iconColor = 'green'
+
+    }
+    Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        iconColor: iconColor,
+        showCancelButton: true,
+        confirmButtonText: confirmButtonText,
+        cancelButtonText: cancelButtonText,
+        confirmButtonColor: '#1a6969',
+        timer: '20000',
+        timerProgressBar: true
+    })
+}
+function alertar(title = '', text = '', icon = '', confirmButtonText = ''){
     if(icon == 'warning'){
         iconColor = '#FFBF00'
 

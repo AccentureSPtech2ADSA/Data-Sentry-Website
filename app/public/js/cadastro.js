@@ -282,7 +282,8 @@ async function fazerRequisicaoInserirHospitalUser(
   password,
   phone
 ) {
-  let req = await fetch("http://localhost:3333/hospital/insert", {
+// let req = await fetch("http://datasentry.sytes.net/hospital/insert",{
+  let req = await fetch("http://datasentry.sytes.net/hospital/insert", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -295,7 +296,7 @@ async function fazerRequisicaoInserirHospitalUser(
       fantasyName: fantasyName,
       numberAdress: numberAddress,
       unit: unit,
-      name: name,
+      name: fantasyName,
       email: email,
       password: password,
       phone: phone,

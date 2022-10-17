@@ -62,10 +62,9 @@ function validLogin() {
       .then((v) => {
         console.log(v)
         if(v.status == 200){
-          sessionStorage.setItem('Token', v.token);
-          window.open("./dashboard.html","_self")
-
-          // setar tbm no session storage...
+          alert('deu certo. Ir para tela de perfil ou dashboard');
+          sessionStorage.setItem('Token', v.token)
+          window.location.href = 'http://datasentry.sytes.net/perfil_administrador.html';
         }else{
           alert('deu errado')
         }
@@ -135,7 +134,7 @@ function validLogin() {
   }
 }
 async function fazerRequisicaoLogin(email, senha) {
-  let req = await fetch("http://localhost:3333/user/login", {
+  let req = await fetch("http://datasentry.sytes.net/user/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
