@@ -1,7 +1,35 @@
+function valoresPlaceholder() {
+    document.getElementById("id_input2").value = "teste";
+  document.getElementById("id_input3").value = "clinicase@outlook.com";
+  document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
+  document.getElementById("id_input5").value = "São Paulo";
+  document.getElementById("id_input6").value = "São Paulo";
+  document.getElementById("id_input7").value = "00000001";
+  document.getElementById("id_input8").value = "Brasil";
+  document.getElementById("id_input9").value = "***************";
+  document.getElementById("id_input10").value = "11 912345678";
+  document.getElementById("id_input11").value = "00.000.000/0000-00";
+}
+
+function enabledisable() {
+  id_input2.disabled = !id_input2.disabled
+  id_input3.disabled = !id_input3.disabled
+  id_input4.disabled = !id_input4.disabled
+  id_input5.disabled = !id_input5.disabled
+  id_input6.disabled = !id_input6.disabled
+  id_input7.disabled = !id_input7.disabled
+  id_input8.disabled = !id_input8.disabled
+  id_input9.disabled = !id_input9.disabled
+  id_input10.disabled = !id_input10.disabled
+  id_input11.disabled = !id_input11.disabled
+}
+
 function onoff() {
 
   currentvalue = document.getElementById('onoff').value;
   if (currentvalue == "Salvar") {
+
+    //Perfil salvo
     document.getElementById("onoff").value = "Editar";
 
     document.getElementById("id_input2").style.border = "none"
@@ -52,6 +80,8 @@ function onoff() {
     document.getElementById("onoff").style.backgroundColor = "#15CDD3"
     document.getElementById("onoff").style.color = "white"
   } else {
+
+    // perfil no modo edição
     document.getElementById("onoff").value = "Salvar";
     document.getElementById("id_input2").style.border = "1px solid grey"
     document.getElementById("id_input3").style.border = "1px solid grey"
@@ -108,7 +138,7 @@ function valorPlaceholder() {
 
   const dados = parseJwt(data).data;
 
-  document.getElementById("id_input2").value = dados.name;
+  document.getElementById("id_input2").value = "teste";
   document.getElementById("id_input3").value = "clinicase@outlook.com";
   document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
   document.getElementById("id_input5").value = "São Paulo";
