@@ -103,7 +103,12 @@ function onoff() {
 }
 
 function valorPlaceholder() {
-  document.getElementById("id_input2").value = "Clínica Cirúrgica Santa Efigênia";
+
+  const data = window.sessionStorage.getItem('Token');
+
+  const dados = parseJwt(data).data;
+
+  document.getElementById("id_input2").value = dados.name;
   document.getElementById("id_input3").value = "clinicase@outlook.com";
   document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
   document.getElementById("id_input5").value = "São Paulo";
@@ -113,6 +118,4 @@ function valorPlaceholder() {
   document.getElementById("id_input9").value = "***************";
   document.getElementById("id_input10").value = "11 912345678";
   document.getElementById("id_input11").value = "00.000.000/0000-00";
-
-
 }

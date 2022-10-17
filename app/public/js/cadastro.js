@@ -24,7 +24,6 @@ function validCadastro() {
   if (
     input_razao_social.value == "" ||
     input_cep.value == "" ||
-    input_complemento.value == "" ||
     input_num_contato.value == "" ||
     input_nome_fantasia.value == "" ||
     input_num_endereco.value == "" ||
@@ -135,7 +134,7 @@ function validCadastro() {
     // Regex Validação (Senha)
     var senha = document.getElementById('input_senha').value;
     var confirmSenha = document.getElementById('input_confirmar_senha').value;
-    const regexSenha = /[a-z0-9]{6,}[!@#$-_.]{1,}[A-Z]{1,}/gim;
+    const regexSenha = /[a-z0-9]{1,}[!@#$-_.]{1,}[A-Z]{1,}/gim;
 
     if (regexEmail.test(email) == false){
       input_email.style.border = "thin solid #FF0000";
@@ -222,7 +221,8 @@ function validCadastro() {
         console.log(res);
         if(res.status == 200){
           // programar logica do session storage aqui dentro, colocar o jwt e os dados do usuario
-          alert('deu certo');
+          alert('Cadastro efetuado com sucesso');
+          window.open("./dashboard.html","_self")
         }
       })
       .catch(err=>{
@@ -282,7 +282,8 @@ async function fazerRequisicaoInserirHospitalUser(
   password,
   phone
 ) {
-  let req = await fetch("http://localhost:3333/hospital/insert", {
+// let req = await fetch("http://datasentry.sytes.net/hospital/insert",{
+  let req = await fetch("http://datasentry.sytes.net/hospital/insert", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -295,7 +296,7 @@ async function fazerRequisicaoInserirHospitalUser(
       fantasyName: fantasyName,
       numberAdress: numberAddress,
       unit: unit,
-      name: name,
+      name: fantasyName,
       email: email,
       password: password,
       phone: phone,

@@ -58,31 +58,26 @@
     const regexEmail = /^(\w){3,}@[a-z]{2,}(\.[a-z]+){1,2}$/i;
     if (regexEmail.test(email)) {
       alertar(
-        'Email enviado com sucesso !',
-        'Verifique sua caixa de entrada ou Spam',
-        'success',
-        'Ok',
+        "Email enviado com sucesso !",
+        "Verifique sua caixa de entrada ou Spam",
+        "success",
+        "Ok"
       );
       enviarEmail(email);
     } else if (email == "") {
       alertar(
-        '', 
-        'Preencha o campo para que possamos enviar o email', 
-        'warning', 
-        'Ok'
+        "",
+        "Preencha o campo para que possamos enviar o email",
+        "warning",
+        "Ok"
       );
     } else {
-      alertar(
-        'Email inválido', 
-        'Informe um email válido', 
-        'error', 
-        'Ok'
-      );
+      alertar("Email inválido", "Informe um email válido", "error", "Ok");
     }
   }
 
   function enviarEmail(emailVar) {
-    fetch("http://localhost:3333/user/resetPasswordEmail", {
+    fetch("http://datasentry.sytes.net/user/resetPasswordEmail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
