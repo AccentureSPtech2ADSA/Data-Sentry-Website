@@ -64,7 +64,7 @@ function validLogin() {
         if(v.status == 200){
           alert('deu certo. Ir para tela de perfil ou dashboard');
           sessionStorage.setItem('Token', v.token)
-          // setar tbm no session storage...
+          window.location.href = 'http://datasentry.sytes.net/perfil_administrador.html';
         }else{
           alert('deu errado')
         }
