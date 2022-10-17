@@ -158,6 +158,14 @@ span {
   padding-left: 10px;
 }
 
+#input_rua {
+  background-color: rgb(240, 240, 240);
+}
+
+#input_cidade {
+  background-color: rgb(240, 240, 240);
+}
+
 .bloco_duplo {
   display: flex;
   flex-direction: row;

@@ -90,10 +90,20 @@
     var novaSenha = document.getElementById("inp_password").value;
     var confirmSenha = document.getElementById("inp_confirmPassword").value;
 
-    const regexSenha = /[a-z0-9]{6,}[!@#$-_.]{1,}[A-Z]{1,}/gim;
+    const regexSenha = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/g;
 
+<<<<<<< HEAD
+    if (novaSenha.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[$#@!-_.])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/g) && confirmSenha == novaSenha) {
+      alertar(
+        '',
+        'Senha redefinida com sucesso !',
+        'success',
+        'Ok'
+      );
+=======
     if (regexSenha.test(novaSenha) && confirmSenha == novaSenha) {
       alertar("", "Senha redefinida com sucesso !", "success", "Ok");
+>>>>>>> a91a38471a0693d074c6f5fc52f49e9748208215
     } else if (novaSenha == "" || confirmSenha == "") {
       alertar(
         "Atenção",
