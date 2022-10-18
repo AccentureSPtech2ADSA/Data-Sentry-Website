@@ -16,8 +16,5 @@
   "bugs": {
     "url": "https://github.com/AccentureSPtech2ADSA/Data-Sentry-Website/issues"
   },
-  "homepage": "https://github.com/AccentureSPtech2ADSA/Data-Sentry-Website#readme",
-  "dependencies": {
-    "eslint": "^8.25.0"
-  }
+  "homepage": "https://github.com/AccentureSPtech2ADSA/Data-Sentry-Website#readme"
 }
