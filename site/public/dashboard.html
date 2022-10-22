@@ -1,171 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg" />
-    <title>Dashboard - Data Sentry</title>
-    <link rel="stylesheet" href="./css/navbarLateral.css" />
-    <link rel="stylesheet" href="./css/dashboard.css" />
-    <script src="./js/dashboard.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="//code.jivosite.com/widget/PPcXITM6I4" async></script>
-  </head>
-  <body>
-    <!-- Navbar Lateral -->
-    <div class="navbar">
-      <div class="navbar_container">
-        <div class="navbar_topo">
-          <img id="logo_navbar" src="./assets/svg/logo-escudo.svg" />
-          <a href="./perfil_usuario.html"
-            ><div class="tooltip">
-              <svg viewBox="0 0 24 24" fill="white">
-                <path
-                  d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2S7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"
-                ></path>
-              </svg>
-              <span class="tooltiptext">Perfil</span>
-            </div></a
-          >
 
-          <a href="./dashboard.html"
-            ><div class="tooltip">
-              <svg viewBox="0 0 36 36" fill="#15CDD3">
-                <path
-                  d="M18 4.25A16.49 16.49 0 0 0 5.4 31.4l.3.35h24.6l.3-.35A16.49 16.49 0 0 0 18 4.25Zm8.6 9.48l-5.92 5.81a3 3 0 1 1-1.41-1.42l5.91-5.81Zm-23 6.17H7v2H3.56c0-.39-.05-.77-.05-1.17s.02-.55.04-.83Zm4.88-10l2.46 2.46l-1.47 1.38L7 11.29a14.57 14.57 0 0 1 1.43-1.42ZM19 9.79h-2v-3.5h1c.37 0 .7 0 1 .05Zm13.49 10.95c0 .39 0 .79-.05 1.17h-3.52v-2h3.53c.02.27.04.55.04.83Z"
-                ></path>
-              </svg>
-              <span class="tooltiptext">Dashboard</span>
-            </div></a
-          >
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg" />
+  <title>Dashboard - Data Sentry</title>
+  <link rel="stylesheet" href="./css/navbarLateral.css" />
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <script src="./js/dashboard.js"></script>
+  <script src="./js/sweetalert2.all.min.js"></script>
+  <script src="./js/alertas_popup.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="//code.jivosite.com/widget/aFYsG8qL2S" async></script>
+</head>
 
-          <a href="./usuarios.html"
-            ><div class="tooltip">
-              <svg viewBox="0 0 24 24" fill="white">
-                <path
-                  d="M9 11a4 4 0 1 0-4-4a4 4 0 0 0 4 4Zm8 2a3 3 0 1 0-3-3a3 3 0 0 0 3 3Zm4 7a1 1 0 0 0 1-1a5 5 0 0 0-8.06-3.95A7 7 0 0 0 2 20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1"
-                ></path>
-              </svg>
-              <span class="tooltiptext">Usuários</span>
-            </div></a
-          >
-
-          <a href="./gerenciar_servidores.html"
-            ><div class="tooltip">
-              <svg viewBox="0 0 24 24" fill="white">
-                <path
-                  d="M5.507 4.048A3 3 0 0 1 7.785 3h8.43a3 3 0 0 1 2.278 1.048l1.722 2.008A4.533 4.533 0 0 0 19.5 6h-15c-.243 0-.482.02-.715.056l1.722-2.008Z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M1.5 10.5a3 3 0 0 1 3-3h15a3 3 0 1 1 0 6h-15a3 3 0 0 1-3-3Zm15 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm2.25.75a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5ZM4.5 15a3 3 0 1 0 0 6h15a3 3 0 1 0 0-6h-15Zm11.25 3.75a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5ZM19.5 18a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Z"
-                ></path>
-              </svg>
-              <span class="tooltiptext">Servidores</span>
-            </div></a
-          >
-        </div>
-
-        <div class="navbar_base">
+<body>
+  <!-- Navbar Lateral -->
+  <div class="navbar">
+    <div class="navbar_container">
+      <div class="navbar_topo">
+        <img id="logo_navbar" src="./assets/svg/logo-escudo.svg" />
+        <a href="./perfil_administrador.html">
           <div class="tooltip">
             <svg viewBox="0 0 24 24" fill="white">
               <path
-                d="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h7v2H5v14h7v2Zm11-4l-1.375-1.45l2.55-2.55H9v-2h8.175l-2.55-2.55L16 7l5 5Z"
-              ></path>
+                d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2S7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z">
+              </path>
             </svg>
-            <span class="tooltiptext">Sair</span>
+            <span class="tooltiptext">Perfil</span>
           </div>
+        </a>
 
+        <a href="./dashboard.html">
           <div class="tooltip">
-            <svg viewBox="0 0 36 36" fill="white">
+            <svg viewBox="0 0 36 36" fill="#15CDD3">
               <path
-                d="m32.57 15.72l-3.35-1a11.65 11.65 0 0 0-.95-2.33l1.64-3.07a.61.61 0 0 0-.11-.72l-2.39-2.4a.61.61 0 0 0-.72-.11l-3.05 1.63a11.62 11.62 0 0 0-2.36-1l-1-3.31a.61.61 0 0 0-.59-.41h-3.38a.61.61 0 0 0-.58.43l-1 3.3a11.63 11.63 0 0 0-2.38 1l-3-1.62a.61.61 0 0 0-.72.11L6.2 8.59a.61.61 0 0 0-.11.72l1.62 3a11.63 11.63 0 0 0-1 2.37l-3.31 1a.61.61 0 0 0-.43.58v3.38a.61.61 0 0 0 .43.58l3.33 1a11.62 11.62 0 0 0 1 2.33l-1.64 3.14a.61.61 0 0 0 .11.72l2.39 2.39a.61.61 0 0 0 .72.11l3.09-1.65a11.65 11.65 0 0 0 2.3.94l1 3.37a.61.61 0 0 0 .58.43h3.38a.61.61 0 0 0 .58-.43l1-3.38a11.63 11.63 0 0 0 2.28-.94l3.11 1.66a.61.61 0 0 0 .72-.11l2.39-2.39a.61.61 0 0 0 .11-.72l-1.66-3.1a11.63 11.63 0 0 0 .95-2.29l3.37-1a.61.61 0 0 0 .43-.58v-3.41a.61.61 0 0 0-.37-.59ZM18 23.5a5.5 5.5 0 1 1 5.5-5.5a5.5 5.5 0 0 1-5.5 5.5Z"
-              ></path>
+                d="M18 4.25A16.49 16.49 0 0 0 5.4 31.4l.3.35h24.6l.3-.35A16.49 16.49 0 0 0 18 4.25Zm8.6 9.48l-5.92 5.81a3 3 0 1 1-1.41-1.42l5.91-5.81Zm-23 6.17H7v2H3.56c0-.39-.05-.77-.05-1.17s.02-.55.04-.83Zm4.88-10l2.46 2.46l-1.47 1.38L7 11.29a14.57 14.57 0 0 1 1.43-1.42ZM19 9.79h-2v-3.5h1c.37 0 .7 0 1 .05Zm13.49 10.95c0 .39 0 .79-.05 1.17h-3.52v-2h3.53c.02.27.04.55.04.83Z">
+              </path>
             </svg>
-            <span class="tooltiptext">Configurações</span>
+            <span class="tooltiptext">Dashboard</span>
           </div>
+        </a>
+
+        <a href="./usuarios.html">
+          <div class="tooltip">
+            <svg viewBox="0 0 24 24" fill="white">
+              <path
+                d="M9 11a4 4 0 1 0-4-4a4 4 0 0 0 4 4Zm8 2a3 3 0 1 0-3-3a3 3 0 0 0 3 3Zm4 7a1 1 0 0 0 1-1a5 5 0 0 0-8.06-3.95A7 7 0 0 0 2 20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1">
+              </path>
+            </svg>
+            <span class="tooltiptext">Usuários</span>
+          </div>
+        </a>
+
+        <a href="./gerenciar_servidores.html">
+          <div class="tooltip">
+            <svg viewBox="0 0 24 24" fill="white">
+              <path
+                d="M5.507 4.048A3 3 0 0 1 7.785 3h8.43a3 3 0 0 1 2.278 1.048l1.722 2.008A4.533 4.533 0 0 0 19.5 6h-15c-.243 0-.482.02-.715.056l1.722-2.008Z" />
+              <path fill-rule="evenodd"
+                d="M1.5 10.5a3 3 0 0 1 3-3h15a3 3 0 1 1 0 6h-15a3 3 0 0 1-3-3Zm15 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm2.25.75a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5ZM4.5 15a3 3 0 1 0 0 6h15a3 3 0 1 0 0-6h-15Zm11.25 3.75a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5ZM19.5 18a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Z">
+              </path>
+            </svg>
+            <span class="tooltiptext">Servidores</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="navbar_base">
+        <a href="./index.html" class="tooltip">
+          <svg viewBox="0 0 24 24" fill="white">
+            <path
+              d="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h7v2H5v14h7v2Zm11-4l-1.375-1.45l2.55-2.55H9v-2h8.175l-2.55-2.55L16 7l5 5Z">
+            </path>
+          </svg>
+          <span class="tooltiptext">Sair</span>
+        </a>
+
+        <div class="tooltip">
+          <svg viewBox="0 0 36 36" fill="white">
+            <path
+              d="m32.57 15.72l-3.35-1a11.65 11.65 0 0 0-.95-2.33l1.64-3.07a.61.61 0 0 0-.11-.72l-2.39-2.4a.61.61 0 0 0-.72-.11l-3.05 1.63a11.62 11.62 0 0 0-2.36-1l-1-3.31a.61.61 0 0 0-.59-.41h-3.38a.61.61 0 0 0-.58.43l-1 3.3a11.63 11.63 0 0 0-2.38 1l-3-1.62a.61.61 0 0 0-.72.11L6.2 8.59a.61.61 0 0 0-.11.72l1.62 3a11.63 11.63 0 0 0-1 2.37l-3.31 1a.61.61 0 0 0-.43.58v3.38a.61.61 0 0 0 .43.58l3.33 1a11.62 11.62 0 0 0 1 2.33l-1.64 3.14a.61.61 0 0 0 .11.72l2.39 2.39a.61.61 0 0 0 .72.11l3.09-1.65a11.65 11.65 0 0 0 2.3.94l1 3.37a.61.61 0 0 0 .58.43h3.38a.61.61 0 0 0 .58-.43l1-3.38a11.63 11.63 0 0 0 2.28-.94l3.11 1.66a.61.61 0 0 0 .72-.11l2.39-2.39a.61.61 0 0 0 .11-.72l-1.66-3.1a11.63 11.63 0 0 0 .95-2.29l3.37-1a.61.61 0 0 0 .43-.58v-3.41a.61.61 0 0 0-.37-.59ZM18 23.5a5.5 5.5 0 1 1 5.5-5.5a5.5 5.5 0 0 1-5.5 5.5Z">
+            </path>
+          </svg>
+          <span class="tooltiptext">Configurações</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo dashboards -->
+  <div class="body_container">
+    <div class="bloco1">
+      <p>Clínica Cirúrgica Santa Efigênia</p>
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">#Servidor 01 ↓</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#">#Servidor 02</a>
+          <a href="#">#Servidor 03</a>
+          <a href="#">#Servidor 04</a>
         </div>
       </div>
     </div>
 
-    <!-- Conteúdo dashboards -->
-    <div class="body_container">
-      <div class="bloco1">
-        <p>Clínica Cirúrgica Santa Efigênia</p>
-        <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">#Servidor 01 ↓</button>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="#">#Servidor 02</a>
-            <a href="#">#Servidor 03</a>
-            <a href="#">#Servidor 04</a>
-          </div>
+    <div class="bloco2">
+      <div class="kpi_card">
+        <span class="kpi_texto">Uso de CPU</span>
+        <div class="chart_kpi">
+          <canvas id="myChart1"></canvas>
         </div>
+        <span class="kpi_texto_inferior">64%</span>
+        <span class="kpi_texto_inferior2">2.44/3.80 GHz</span>
       </div>
 
-      <div class="bloco2">
-        <div class="kpi_card">
-          <span>Uso de CPU</span>
-          <div class="chart_kpi">
-            <canvas id="myChart1"></canvas>
-          </div>
+      <div class="kpi_card">
+        <span class="kpi_texto">Uso de RAM</span>
+        <div class="chart_kpi">
+          <canvas id="myChart2"></canvas>
         </div>
-
-        <div class="kpi_card">
-          <span>Uso de RAM</span>
-          <div class="chart_kpi">
-            <canvas id="myChart2"></canvas>
-          </div>
-        </div>
-
-        <div class="kpi_card">
-          <span>Espaço em disco</span>
-          <div class="chart_kpi">
-            <canvas id="myChart3"></canvas>
-          </div>
-        </div>
+        <span class="kpi_texto_inferior">28%</span>
+        <span class="kpi_texto_inferior2">8.96/32 GB</span>
       </div>
 
-      <div class="bloco3">
-        <p>Visão geral de uso do hardware</p>
-        <div class="graph_geral">
-          <canvas id="myChart4"></canvas>
+      <div class="kpi_card">
+        <span class="kpi_texto_disco">Espaço em disco utilizado</span>
+        <div class="chart_kpi_disco">
+          <canvas id="myChart3"></canvas>
         </div>
-      </div>
-
-      <div class="bloco4">
-        <p>Processos ativos no sistema</p>
-        <div class="lista_processos"></div>
+        <span class="kpi_texto_inferior_disco">37%</span>
+        <span class="kpi_texto_inferior2_disco">754/2048 GB</span>
       </div>
     </div>
-  </body>
+
+    <div class="bloco3">
+      <p>Visão geral de uso do hardware</p>
+      <div class="graph_geral">
+        <canvas id="myChart4"></canvas>
+      </div>
+    </div>
+
+    <div class="bloco4">
+      <p>Processos ativos no sistema</p>
+      <div class="lista_processos">
+        <div id="painel" class="painel">
+          <table>
+            <thead>
+              <tr>
+              <th>ID</th>
+              <th>NOME</th>
+              <th>CPU</th>
+              <th>MEMORIA</th>
+              <th></th>          
+            </tr>
+            </thead>
+            
+            <tr class="colorGray">
+              <td>15</td>
+              <td>Google Chrome</td>
+              <td>20%</td>
+              <td>40%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorBebe">
+              <td>19</td>
+              <td>Avira AntiVirus</td>
+              <td>10%</td>
+              <td>5%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorGray">
+              <td>32</td>
+              <td>Firefox</td>
+              <td>10%</td>
+              <td>30%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorBebe">
+              <td>15</td>
+              <td>Google Chrome</td>
+              <td>20%</td>
+              <td>40%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorGray">
+              <td>15</td>
+              <td>Google Chrome</td>
+              <td>20%</td>
+              <td>40%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorBebe">
+              <td>15</td>
+              <td>Google Chrome</td>
+              <td>20%</td>
+              <td>40%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorGray">
+              <td>15</td>
+              <td>Google Chrome</td>
+              <td>20%</td>
+              <td>40%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorBebe">
+              <td>15</td>
+              <td>Google Chrome</td>
+              <td>20%</td>
+              <td>40%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorGray">
+              <td>15</td>
+              <td>Google Chrome</td>
+              <td>20%</td>
+              <td>40%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorBebe">
+              <td>15</td>
+              <td>Google Chrome</td>
+              <td>20%</td>
+              <td>40%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+            <tr class="colorGray">
+              <td>15</td>
+              <td>Google Chrome</td>
+              <td>20%</td>
+              <td>40%</td>
+              <td><button class="button_kill" onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')">Encerrar</button></td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
 
 <script>
   /* Setup KPI CPU (chart1)*/
-  const labels1 = [""];
+  const labels1 = ["Utilizado", "Livre"];
 
   const data1 = {
     labels: labels1,
     datasets: [
       {
         label: "CPU",
-        backgroundColor: ["#17EBE6"],
-        data: [50],
+        backgroundColor: ["#17EBE6", "#e0e0e0"],
+        data: [64, (100 - 64)],
       },
     ],
   };
 
   /* Setup KPI RAM (chart2)*/
-  const labels2 = [""];
+  const labels2 = ["Utilizado", "Livre"];
 
   const data2 = {
-    labels: labels2,
+    labels: labels1,
     datasets: [
       {
         label: "RAM",
-        backgroundColor: ["#17EBE6"],
-        data: [26],
+        backgroundColor: ["#17EBE6", "#e0e0e0"],
+        data: [28, (100 - 28)],
       },
     ],
   };
@@ -177,7 +279,7 @@
     labels: labels3,
     datasets: [
       {
-        backgroundColor: ["#17EBE6", "#009492"],
+        backgroundColor: ["#17EBE6", "#e0e0e0"],
         data: [28, 72],
       },
     ],
@@ -202,22 +304,25 @@
       {
         label: "CPU",
         borderColor: ["#009492"],
-        backgroundColor: ["#009492"],
+        backgroundColor: "rgba(0, 148, 146, 0.5)",
         data: [34, 42, 30, 38, 61, 40, 81, 54, 61],
+        fill: true
       },
 
       {
         label: "RAM",
         borderColor: ["#17EBE6"],
-        backgroundColor: ["#17EBE6"],
+        backgroundColor: "rgba(23, 235, 230, 0.5)",
         data: [62, 68, 65, 62, 64, 60, 62, 67, 64],
+        fill: true
       },
 
       {
         label: "Disco",
         borderColor: ["#174366"],
-        backgroundColor: ["#174366"],
+        backgroundColor: "rgba(23, 67, 102, 0.5)",
         data: [17, 21, 15, 19, 30, 20, 40, 27, 30],
+        fill: true
       },
     ],
   };
@@ -225,11 +330,19 @@
 
   /* config chart 1 (CPU)*/
   const config1 = {
-    type: "bar",
+    type: "doughnut",
     data: data1,
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      rotation: -90,
+      circumference: 180,
+      cutout: 55,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
       scales: {
         yAxes: [
           {
@@ -244,11 +357,19 @@
 
   /* config chart 2 (RAM)*/
   const config2 = {
-    type: "bar",
+    type: "doughnut",
     data: data2,
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      rotation: -90,
+      circumference: 180,
+      cutout: 55,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
       scales: {
         yAxes: [
           {
@@ -261,13 +382,20 @@
     },
   };
 
-    /* config chart 3 (disco)*/
-    const config3 = {
+  /* config chart 3 (disco)*/
+  const config3 = {
     type: "doughnut",
     data: data3,
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      circumference: 360,
+      cutout: 55,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
       scales: {
         yAxes: [
           {
@@ -286,6 +414,8 @@
     data: data4,
     options: {
       responsive: true,
+      smooth: true,
+      lineTension: 0.5,
       maintainAspectRatio: false,
       scales: {
         yAxes: [

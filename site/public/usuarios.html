@@ -8,9 +8,9 @@
     <title>Usuários - Data Sentry</title>
     <link rel="stylesheet" href="./css/navbarLateral.css" />
     <link rel="stylesheet" href="./css/usuarios.css" />
-    <script src="./js/dashboard.js"></script>
+    <script src="./js/usuarios.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="//code.jivosite.com/widget/PPcXITM6I4" async></script>
+    <script src="//code.jivosite.com/widget/aFYsG8qL2S" async></script>
   </head>
   <body>
     <!-- Navbar Lateral -->
@@ -18,7 +18,7 @@
       <div class="navbar_container">
         <div class="navbar_topo">
           <img id="logo_navbar" src="./assets/svg/logo-escudo.svg" />
-          <a href="./perfil_usuario.html"><div class="tooltip">
+          <a href="./perfil_administrador.html"><div class="tooltip">
             <svg viewBox="0 0 24 24" fill="white">
               <path
                 d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2S7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"
@@ -60,14 +60,14 @@
         </div>
 
         <div class="navbar_base">
-          <div class="tooltip">
+          <a href="./index.html" class="tooltip">
             <svg viewBox="0 0 24 24" fill="white">
               <path
                 d="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h7v2H5v14h7v2Zm11-4l-1.375-1.45l2.55-2.55H9v-2h8.175l-2.55-2.55L16 7l5 5Z"
               ></path>
             </svg>
             <span class="tooltiptext">Sair</span>
-          </div>
+          </a>
 
           <div class="tooltip">
             <svg viewBox="0 0 36 36" fill="white">
@@ -82,137 +82,137 @@
     </div>
 
     <div class="body_container">
-      <!-- Codar aqui (arquivo css já criado e conectado) ------------------------------------------------------>
       <div class="area-buttons">
-        <button class="btn-ativo">Gerenciar usuários</button>
-        <button>Cadastrar usuários</button>
+        <button onclick="irparaGerenciar()" id="btn_gerenciar" class="btn-ativo">Gerenciar membros</button>
+        <button onclick="irparaCadastro()" id="btn_cadastrar">Cadastrar analistas</button>
       </div>
-      <div class="area-painel">
-        <div class="painel">
+      <div id="area_painel" class="area-painel">
+        <div id="painel" class="painel">
           <table>
             <thead>
               <tr>
                 <th>Email</th>
-                <th>Apelido</th>
-                <th>Cargo</th>
-                <th style="font-size: 13px;">Permissões<br>de ADM</th>
+                <th>Nome</th>
                 <th class="remove-icon"></th>
               </tr>           
             </thead>
             <tr class="colorBebe">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Marcelo Oliveira Ramos</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorGray">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Clodoildo Neves dos Santos</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorBebe">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Marcela Nogueira da Silva</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorGray">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Roberto Harrys</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorBebe">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Eduardo da Silva</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorGray">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Felipe Rocha Magalhães</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorBebe">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Ricardo Linsin Neves</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorGray">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Clodoaldo Marcelo Silva</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorBebe">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Samantha Oliveira Prantos</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorGray">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Guilherme Deofino Narciso</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorBebe">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Leonardo Tomé</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorGray">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>João Ricardo Dias</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorBebe">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Kaike Mamede Viana</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorGray">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Yudi Nagacho Takahashi</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorBebe">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Lidía da Silva Rocha</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
             <tr class="colorGray">
               <td>user.lorem@corp.com</td>
-              <td>Marcelo</td>
-              <td>Analista</td>
-              <td><input type="checkbox" name="concederPermissao" id=""></td>
-              <td><img class="icone-delete" src="./assets/svg/remove-icon.svg" alt="" width="18px"></td>
+              <td>Marcelo Lateral</td>
+              <td><span class="delete">Deletar</span></td>
             </tr>           
           </table>
         </div>
+
+        <!-- Cadastrar usuário -->
+        <div id="painel_cadastro" class="painel_cadastro">
+          <div class="container_cadastro">
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Email</div>
+            <input id="" type="email" placeholder="Exemplo@hotmail.com" />
+          </div>
+    
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Apelido</div>
+            <input id="" type="text" placeholder="Apelido do analista" />
+          </div>
+    
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Número de Contato</div>
+            <input id="" type="text" placeholder="(00) 00000-0000" />
+          </div>
+    
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Senha</div>
+            <input id="" type="password" placeholder="Inserir senha" />
+          </div>
+
+          <div class="bloco_unico">
+            <div class="ipt_titulo">Confirmar senha</div>
+            <input id="" type="password" placeholder="Repetir senha" />
+          </div>
+    
+          <div class="bloco_inferior">
+            <div>
+              <input class="btn_salvar" type="button" value="Adicionar" id="onoff" onclick="onoff();">
+            </div>
+        </div>
+      </div>
       </div>
     </div>
   </body>
