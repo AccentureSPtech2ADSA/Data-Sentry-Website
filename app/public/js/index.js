@@ -74,58 +74,6 @@ function validLogin() {
         alert("deu errado")
       });
       return;
-      fetch("/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: emailVar.trim(),
-          password: senhaVar.trim(),
-        }),
-      })
-        .then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!");
-
-          if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then((json) => {
-              console.log(json);
-              console.log(JSON.stringify(json));
-
-              // aqui pra baixo voces vão gerar o jwt e colocar no session storage;
-              return;
-              sessionStorage.EMAIL_USUARIO = json.email;
-              sessionStorage.NOME_USUARIO = json.nome;
-              sessionStorage.SOBRENOME_USUARIO = json.sobrenome;
-              sessionStorage.ID_USUARIO = json.idUsuario;
-
-              span_validacao.innerHTML = `Redirecionando...`;
-              span_gif.style.display = "flex";
-              span_validacao.style.color = "white";
-
-              setTimeout(function () {
-                window.location = "../teste_login.html";
-              }, 2000); // apenas para exibir o loading
-            });
-          } else {
-            console.log("Houve um erro ao tentar realizar o login!");
-            span_validacao.innerHTML = `Email ou senha inválidos`;
-            input_senha_login.style.border = "thin solid red";
-            input_email_login.style.border = "thin solid red";
-
-            resposta.text().then((texto) => {
-              console.error(texto);
-              finalizarAguardar(texto);
-            });
-          }
-        })
-        .catch(function (erro) {
-          console.log(erro);
-        });
-
-      return false;
     }
 
     function sumirMensagem() {
@@ -146,8 +94,6 @@ async function fazerRequisicaoLogin(email, senha) {
   });
   let res = await req.json();
   return res;
-  console.log(res);
-  // recomendo que aqui chame uma funcao para fazer os bagui de session storage e JWT
 }
 var b = true;
 
