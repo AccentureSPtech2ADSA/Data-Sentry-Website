@@ -15,6 +15,7 @@
       src="https://kit.fontawesome.com/905b8dc8d6.js"
       crossorigin="anonymous"
     ></script>
+    <script src="./js/jwt.js"></script>
     <script src="./js/popup.min.js"></script>
     <script src="./js/sweetalert2.all.min.js"></script>
     <script src="./js/alertas_popup.js"></script>
@@ -92,18 +93,13 @@
 
     const regexSenha = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/g;
 
-<<<<<<< HEAD
-    if (novaSenha.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[$#@!-_.])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/g) && confirmSenha == novaSenha) {
-      alertar(
-        '',
-        'Senha redefinida com sucesso !',
-        'success',
-        'Ok'
-      );
-=======
-    if (regexSenha.test(novaSenha) && confirmSenha == novaSenha) {
+    if (
+      novaSenha.match(
+        /^(?=.*[0-9])(?=.*[a-z])(?=.*[$#@!-_.])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/g
+      ) &&
+      confirmSenha == novaSenha
+    ) {
       alertar("", "Senha redefinida com sucesso !", "success", "Ok");
->>>>>>> a91a38471a0693d074c6f5fc52f49e9748208215
     } else if (novaSenha == "" || confirmSenha == "") {
       alertar(
         "Atenção",
@@ -169,4 +165,21 @@
       document.getElementById("pass2").style.display = "inline-block";
     }
   });
+
+  async function fazerRequisicaoMudarSenha(id, novaSenha, token) {
+    let req = await fetch("/user/changePassword", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        id: id,
+        newPass: novaSenha,
+      }),
+    });
+
+    let res = await req.json();
+    return res;
+  }
 </script>
