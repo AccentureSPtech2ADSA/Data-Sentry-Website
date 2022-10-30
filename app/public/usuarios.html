@@ -9,16 +9,15 @@
     <link rel="stylesheet" href="./css/navbarLateral.css" />
     <link rel="stylesheet" href="./css/usuarios.css" />
     <script src="./js/usuarios.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="//code.jivosite.com/widget/aFYsG8qL2S" async></script>
   </head>
-  <body>
+  <body onload="validarLogin()">
     <!-- Navbar Lateral -->
     <div class="navbar">
       <div class="navbar_container">
         <div class="navbar_topo">
           <img id="logo_navbar" src="./assets/svg/logo-escudo.svg" />
-          <a href="./perfil_administrador.html"><div class="tooltip">
+          <a href="./perfil.html"><div class="tooltip">
             <svg viewBox="0 0 24 24" fill="white">
               <path
                 d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2S7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"
@@ -60,7 +59,7 @@
         </div>
 
         <div class="navbar_base">
-          <div class="tooltip">
+          <div onclick="logout()" class="tooltip">
             <svg viewBox="0 0 24 24" fill="white">
               <path
                 d="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h7v2H5v14h7v2Zm11-4l-1.375-1.45l2.55-2.55H9v-2h8.175l-2.55-2.55L16 7l5 5Z"

@@ -15,3 +15,14 @@ function irparaGerenciar() {
     area_painel.style.width = "57%"
     area_painel.style.height = "auto"
 }
+
+function validarLogin() {
+    if (sessionStorage.getItem('id') == null) {
+      location.href = "./index.html";
+    }
+  }
+
+  function logout() {
+    sessionStorage.clear();
+    location.reload();
+  }

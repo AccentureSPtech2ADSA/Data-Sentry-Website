@@ -1,16 +1,3 @@
-function valoresPlaceholder() {
-    document.getElementById("id_input2").value = "teste";
-  document.getElementById("id_input3").value = "clinicase@outlook.com";
-  document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
-  document.getElementById("id_input5").value = "São Paulo";
-  document.getElementById("id_input6").value = "São Paulo";
-  document.getElementById("id_input7").value = "00000001";
-  document.getElementById("id_input8").value = "Brasil";
-  document.getElementById("id_input9").value = "***************";
-  document.getElementById("id_input10").value = "11 912345678";
-  document.getElementById("id_input11").value = "00.000.000/0000-00";
-}
-
 function enabledisable() {
   id_input2.disabled = !id_input2.disabled
   id_input3.disabled = !id_input3.disabled
@@ -25,7 +12,6 @@ function enabledisable() {
 }
 
 function onoff() {
-
   currentvalue = document.getElementById('onoff').value;
   if (currentvalue == "Salvar") {
 
@@ -75,7 +61,6 @@ function onoff() {
     document.getElementById("id_input9").style.color = "#525252";
     document.getElementById("id_input10").style.color = "#525252";
     document.getElementById("id_input11").style.color = "#525252";
-
 
     document.getElementById("onoff").style.backgroundColor = "#15CDD3"
     document.getElementById("onoff").style.color = "white"
@@ -132,13 +117,12 @@ function onoff() {
   }
 }
 
-function valorPlaceholder() {
+function valoresInputs() {
 
   const data = window.sessionStorage.getItem('Token');
-
   const dados = parseJwt(data).data;
 
-  document.getElementById("id_input2").value = "teste";
+  document.getElementById("id_input2").value = sessionStorage.getItem("nomeFantasia");
   document.getElementById("id_input3").value = "clinicase@outlook.com";
   document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
   document.getElementById("id_input5").value = "São Paulo";
@@ -148,4 +132,15 @@ function valorPlaceholder() {
   document.getElementById("id_input9").value = "***************";
   document.getElementById("id_input10").value = "11 912345678";
   document.getElementById("id_input11").value = "00.000.000/0000-00";
+}
+
+function validarLogin() {
+  if (sessionStorage.getItem('id') == null) {
+    location.href = "./index.html";
+  }
+}
+
+function logout() {
+  sessionStorage.clear();
+  location.reload();
 }
