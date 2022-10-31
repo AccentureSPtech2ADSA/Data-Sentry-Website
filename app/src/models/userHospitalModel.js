@@ -39,8 +39,19 @@ async function isEmailsExitsInDatabase(email){
 
   return await database.execute(query);
 }
+async function changePassUser({id=0, newPass=''}){
+  let query = `
+  CALL sp_changePass ${id}, '${newPass}';
+  `;
+  if (database.isAmbienteProducao) {
+    query = `EXEC sp_changePass ${id}, '${newPass}';`;
+  }
+  // query mysql
+  return await database.execute(query);
+}
 module.exports = {
   login,
   insertUsuario,
-  isEmailsExitsInDatabase
+  isEmailsExitsInDatabase,
+  changePassUser
 };

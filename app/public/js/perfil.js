@@ -122,16 +122,16 @@ function valoresInputs() {
   const data = window.sessionStorage.getItem('Token');
   const dados = parseJwt(data).data;
 
-  document.getElementById("id_input2").value = sessionStorage.getItem("nomeFantasia");
-  document.getElementById("id_input3").value = "clinicase@outlook.com";
+  document.getElementById("id_input2").value = dados.name || "Nome";
+  document.getElementById("id_input3").value = dados.corporateName || "Corporativo";
   document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
   document.getElementById("id_input5").value = "São Paulo";
   document.getElementById("id_input6").value = "São Paulo";
-  document.getElementById("id_input7").value = "00000001";
+  document.getElementById("id_input7").value = dados.cep || "00000-000";
   document.getElementById("id_input8").value = "Brasil";
   document.getElementById("id_input9").value = "***************";
-  document.getElementById("id_input10").value = "11 912345678";
-  document.getElementById("id_input11").value = "00.000.000/0000-00";
+  document.getElementById("id_input10").value = dados.contactPhone || "(11) 11111-1111";
+  document.getElementById("id_input11").value = dados.cnpj || "1111111111/111";
 }
 
 function validarLogin() {

@@ -80,14 +80,13 @@ async function sendEmailToResetPassword(req, res) {
       .status(404);
   } else {
     const req = await userHospitalModel.isEmailsExitsInDatabase(email);
-    console.log('req user model enviar email isEmailExists', req);
+    console.log("req user model enviar email isEmailExists", req);
 
     const name = req.data[0].name;
     const token = sign(req.data[0]);
     if (req.status == 200) {
       try {
-        let htmlMessage = 
-        `
+        let htmlMessage = `
         <p style='font-size: 18px;'><strong>Olá ${name}! Tudo bem?</strong></p>
         <p>
         Esqueceu sua senha? Não tem problemas! <br>
@@ -95,9 +94,11 @@ async function sendEmailToResetPassword(req, res) {
         <br>
         </p>
         <p>
-        Clique neste <a href='${process.env.HOST + `/redefinicao_senha.html?token=${token}`}' style='color: #23AFAE'>link</a> para redefinir sua senha!
+        Clique neste <a href='${
+          process.env.HOST + `/redefinicao_senha.html?token=${token}`
+        }' style='color: #23AFAE'>link</a> para redefinir sua senha!
         </p>
-        `
+        `;
         let resEmail = await enviarEmail(
           htmlMessage,
           email,
@@ -106,9 +107,8 @@ async function sendEmailToResetPassword(req, res) {
         );
         console.log(resEmail);
 
-        const shortMessage =
-          "E-mail enviado com sucesso";
-        const longMessage = `Enviamos um e-mail para sua caixa de entrada`
+        const shortMessage = "E-mail enviado com sucesso";
+        const longMessage = `Enviamos um e-mail para sua caixa de entrada`;
         res
           .json({
             data: resEmail,
@@ -117,7 +117,7 @@ async function sendEmailToResetPassword(req, res) {
             status: 200,
           })
           .status(200);
-          return;
+        return;
       } catch (error) {
         res
           .json({
@@ -130,9 +130,43 @@ async function sendEmailToResetPassword(req, res) {
     }
   }
 }
+async function changePassword(req, res) {
+  const id = req.body.id;
+  const newPass = req.body.newPass;
 
+  if (
+    Object.values(req.body).length !== 2 ||
+    id == undefined ||
+    newPass == undefined
+  ) {
+    const msg =
+      "Campos invalidos, valide no arquivo changePassword quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const changePassResult = await userHospitalModel.changePassUser({
+      id,
+      newPass,
+    });
+    console.dir(changePassResult);
+    if (changePassResult.status == 200 || changePassResult == 201) {
+      changePassResult.longMessage = `Senha alterada com sucesso!`;
+      changePassResult.shortMessage = `Senha atualizada.`;
+      res.json(changePassResult);
+    } else {
+      res.status(changePassResult.status);
+      res.json(changePassResult);
+    }
+  }
+}
 module.exports = {
   insertUsuario,
   login,
   sendEmailToResetPassword,
+  changePassword,
 };

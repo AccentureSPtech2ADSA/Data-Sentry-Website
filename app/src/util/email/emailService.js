@@ -1,11 +1,12 @@
 const nodemailer = require("nodemailer");
+
 function cleanHTML (html){
   return html.replace(/(&lt;([^>]+)>)/gi, "");
 }
 function createHtml(content){
   let html = 
   `
-  <div style='font-family: sans-serif; background: #F1F2F4; color: #343941; padding: 36px 12px; height: 100%'>
+  <div style='font-family: sans-serif; background: #F1F2F4; color: #343941; padding: 36px 12px; height: 600px'>
         <div style="max-width: 400px; margin: 0 auto; width: 100%;">
             <div id="content" style='font-size: 14px;'>
               ${content}
@@ -28,15 +29,16 @@ function createHtml(content){
 const transportadorArgument = {
   host: process.env.NODEMAILER_HOST,
   port: process.env.NODEMAILER_PORT,
-  secure: false,
   auth: {
     user: process.env.NODEMAILER_USER,
     pass: process.env.NODEMAILER_PASSWORD,
   },
 };
+// const transportadorArgument = (`smtps://${process.env.NODEMAILER_USER}:${process.env.NODEMAILER_PASSWORD}@${process.env.NODEMAILER_HOST}`);
 
 async function enviarEmail(htmlBody, receiver, body, subject) {
   try {
+    
     const transportador = nodemailer.createTransport(transportadorArgument);
     const info = await transportador.sendMail({
       from: `"${process.env.PROJECT_NAME}" <${process.env.NODEMAILER_EMAIL_FROM}>`,
