@@ -188,7 +188,7 @@ async function deleteUser(req, res) {
     console.dir(deleteUserResult);
     if (deleteUserResult.status == 200 || deleteUserResult == 201) {
       deleteUserResult.longMessage = `Usuário excluído com sucesso!`;
-      deleteUserResult.shortMessage = `Senha atualizada.`;
+      deleteUserResult.shortMessage = `Usuário desativado com sucesso.`;
       res.json(deleteUserResult);
     } else {
       res.status(deleteUserResult.status);

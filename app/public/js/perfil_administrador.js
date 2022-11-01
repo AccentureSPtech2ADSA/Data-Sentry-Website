@@ -149,3 +149,21 @@ function valorPlaceholder() {
   document.getElementById("id_input10").value = dados.contactPhone || "(11) 11111-1111";
   document.getElementById("id_input11").value = dados.cnpj || "1111111111/111";
 }
+
+async function deleteUser(){
+  const data = window.sessionStorage.getItem('Token');
+  const dados = parseJwt(data).data;
+  var id = dados.id;
+  
+  let req = await fetch("/user/deleteUser", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: id,
+    }),
+  });
+  let res = await req.json();
+  return res;
+}

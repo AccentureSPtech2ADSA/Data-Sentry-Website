@@ -52,7 +52,7 @@ async function changePassUser({id=0, newPass=''}){
 
 
 
-async function deleteUser({id=''}){
+async function deleteUser({id=""}){
   let query = `
   DELETE FROM userHospital WHERE _idUserHospital = ${id};
   `;

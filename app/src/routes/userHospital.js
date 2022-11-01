@@ -23,6 +23,6 @@ router.put('/changePassword', authJwt, (req,res)=>{
 });
 router.put('/deleteUser', authJwt, (req,res)=>{
   console.log('estou na rota de deleteUser do userHospital');
-  userHospitalController.changePassword(req,res);
+  userHospitalController.deleteUser(req,res);
 });
 module.exports = router;
