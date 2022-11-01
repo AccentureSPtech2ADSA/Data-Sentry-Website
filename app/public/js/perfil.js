@@ -1,15 +1,4 @@
-function valoresPlaceholder() {
-    document.getElementById("id_input2").value = "teste";
-  document.getElementById("id_input3").value = "clinicase@outlook.com";
-  document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
-  document.getElementById("id_input5").value = "São Paulo";
-  document.getElementById("id_input6").value = "São Paulo";
-  document.getElementById("id_input7").value = "00000001";
-  document.getElementById("id_input8").value = "Brasil";
-  document.getElementById("id_input9").value = "***************";
-  document.getElementById("id_input10").value = "11 912345678";
-  document.getElementById("id_input11").value = "00.000.000/0000-00";
-}
+
 
 function enabledisable() {
   id_input2.disabled = !id_input2.disabled
@@ -132,20 +121,35 @@ function onoff() {
   }
 }
 
-function valorPlaceholder() {
+function logout() {
+  sessionStorage.clear();
+  window.open("/index.html", "_self");
+}
 
+let dadosjwt;
+function DescriptografiaJWT() {
   const data = window.sessionStorage.getItem('Token');
+  dadosjwt = parseJwt(data).data;
+}
 
-  const dados = parseJwt(data).data;
+function validarPatente() {
+  if (dadosjwt.patent == "admin") {
+    texto_patente.innerHTML = "Perfil de Administrador"
+  } else {
+    texto_patente.innerHTML = "Perfil de Analista"
+  }
+}
 
-  document.getElementById("id_input2").value = dados.name || "Nome";
-  document.getElementById("id_input3").value = dados.corporateName || "Corporativo";
-  document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
-  document.getElementById("id_input5").value = "São Paulo";
-  document.getElementById("id_input6").value = "São Paulo";
-  document.getElementById("id_input7").value = dados.cep || "00000-000";
-  document.getElementById("id_input8").value = "Brasil";
-  document.getElementById("id_input9").value = "***************";
-  document.getElementById("id_input10").value = dados.contactPhone || "(11) 11111-1111";
-  document.getElementById("id_input11").value = dados.cnpj || "1111111111/111";
+function valoresPlaceholder() {
+document.getElementById("id_input1").value = dadosjwt.corporateName;
+document.getElementById("id_input2").value = dadosjwt.fantasyName;
+document.getElementById("id_input3").value = dadosjwt.email;
+document.getElementById("id_input4").value = "Rua Haddock Lobo, 155"; // pegar do via cep
+document.getElementById("id_input5").value = "São Paulo"; // cidade via cep
+document.getElementById("id_input6").value = "São Paulo"; // estado via cep
+document.getElementById("id_input7").value = "00000001"; // cep via cep
+document.getElementById("id_input8").value = "Brasil"; // pais via cep
+document.getElementById("id_input9").value = "***************";
+document.getElementById("id_input10").value = dadosjwt.contactPhone;
+document.getElementById("id_input11").value = dadosjwt.cnpj;
 }

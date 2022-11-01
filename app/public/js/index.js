@@ -64,7 +64,7 @@ function validLogin() {
         if(v.status == 200){
           alert('deu certo. Ir para tela de perfil ou dashboard');
           sessionStorage.setItem('Token', v.token)
-          window.location.href = '/perfil_administrador.html';
+          window.location.href = '/perfil.html';
         }else{
           alert('deu errado')
         }
