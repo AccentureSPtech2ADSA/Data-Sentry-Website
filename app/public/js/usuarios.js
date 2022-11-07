@@ -7,6 +7,11 @@ function irparaCadastro() {
     area_painel.style.height = "440px"
 }
 
+function logout() {
+    sessionStorage.clear();
+    window.open("/index.html", "_self");
+  }
+
 function irparaGerenciar() {
     painel.style.display = "block";
     painel_cadastro.style.display = "none"

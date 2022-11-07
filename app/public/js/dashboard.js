@@ -2,6 +2,11 @@
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
+
+  function logout() {
+    sessionStorage.clear();
+    window.open("/index.html", "_self");
+  }
   
   window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
