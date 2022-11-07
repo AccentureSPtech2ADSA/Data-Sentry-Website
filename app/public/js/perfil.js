@@ -156,6 +156,7 @@ async function deleteUser(){
   const data = window.sessionStorage.getItem('Token');
   const dados = parseJwt(data).data;
   var id = dados.id;
+  console.log(id);
   
   let req = await fetch("/user/deleteUser", {
     method: "POST",
@@ -168,6 +169,7 @@ async function deleteUser(){
   });
   let res = await req.json();
   return res;
+  alert("Deu certo");
 }
 function valoresPlaceholder() {
 document.getElementById("id_input1").value = dadosjwt.corporateName;
