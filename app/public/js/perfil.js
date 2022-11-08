@@ -152,24 +152,24 @@ function validarPatente() {
 //   document.getElementById("id_input11").value = dados.cnpj || "1111111111/111";
 // }
 
-async function deleteUser(){
+function deleteUser(){
   const data = window.sessionStorage.getItem('Token');
   const dados = parseJwt(data).data;
   var id = dados.id;
-  console.log(id);
-  
-  let req = await fetch("/user/deleteUser", {
+    console.log(data)
+  let req = fetch("/user/deleteUser", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${data}`,
     },
     body: JSON.stringify({
       id: id,
     }),
   });
-  let res = await req.json();
+  let res = req.then(val=>val.json());
+  res.then(json=>console.log(json))
   return res;
-  alert("Deu certo");
 }
 function valoresPlaceholder() {
 document.getElementById("id_input1").value = dadosjwt.corporateName;

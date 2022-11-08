@@ -54,10 +54,10 @@ async function changePassUser({id=0, newPass=''}){
 
 async function deleteUser({id=""}){
   let query = `
-  DELETE FROM userHospital WHERE _idUserHospital = ${id};
+  DELETE FROM UserHospital WHERE _idUserHospital = ${id};
   `;
   if (database.isAmbienteProducao) {
-    query = `DELETE FROM userHospital WHERE _idUserHospital = ${id};`;
+    query = `DELETE FROM UserHospital WHERE _idUserHospital = ${id};`;
   }
   // query mysql
   return await database.execute(query);

@@ -169,7 +169,7 @@ async function deleteUser(req, res) {
   const id = req.body.id;
 
   if (
-    Object.values(req.body).length !== 2 ||
+    Object.values(req.body).length !== 1 ||
     id == undefined
   ) {
     const msg =
@@ -183,7 +183,7 @@ async function deleteUser(req, res) {
       .status(404);
   } else {
     const deleteUserResult = await userHospitalModel.deleteUser({
-      id,
+      id
     });
     console.dir(deleteUserResult);
     if (deleteUserResult.status == 200 || deleteUserResult == 201) {
