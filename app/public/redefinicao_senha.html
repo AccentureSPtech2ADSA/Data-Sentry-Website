@@ -7,14 +7,8 @@
     <link rel="stylesheet" href="./css/redefinicao_senha.css" />
     <link rel="stylesheet" href="./css/popup.min.css" />
     <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/905b8dc8d6.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="./js/validacaoLogin.js"></script>
+    <script src="https://kit.fontawesome.com/905b8dc8d6.js" crossorigin="anonymous"></script>
     <script src="./js/jwt.js"></script>
     <script src="./js/popup.min.js"></script>
     <script src="./js/sweetalert2.all.min.js"></script>
@@ -22,7 +16,7 @@
     <title>Redefinição de Senha</title>
   </head>
 
-  <body>
+  <body onload="validacaoLoginSemToken()">
     <div class="interface">
       <div class="area-logo">
         <img src="./assets/svg/logo-escudo.svg" alt="" width="130px" />
