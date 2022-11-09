@@ -160,7 +160,7 @@ function deleteUser(){
   let req = fetch("/user/deleteUser", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json", //necessario utilizar essas linha e a de baixo, sempre que tiver o "authJwt" na rota.
       Authorization: `Bearer ${data}`,
     },
     body: JSON.stringify({
