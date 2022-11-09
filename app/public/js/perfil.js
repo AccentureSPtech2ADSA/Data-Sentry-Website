@@ -168,7 +168,8 @@ function deleteUser(){
     }),
   });
   let res = req.then(val=>val.json());
-  res.then(json=>console.log(json))
+  res.then(json=>console.log(json));
+  window.open("./index.html","_self")
   return res;
 }
 function valoresPlaceholder() {
