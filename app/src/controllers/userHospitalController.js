@@ -87,9 +87,9 @@ async function sendEmailToResetPassword(req, res) {
     if (req.status == 200) {
       try {
         let htmlMessage = `
-        <p style='font-size: 18px;'><strong>Olá ${name}! Tudo bem?</strong></p>
+        <p style='font-size: 18px;'><strong>Olá, ${name}! Tudo bem?</strong></p>
         <p>
-        Esqueceu sua senha? Não tem problemas! <br>
+        Esqueceu sua senha? Não tem problema! <br>
         Com o sistema do DataSentry seu problema já foi pensado e resolvido por nós!
         <br>
         </p>
