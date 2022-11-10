@@ -164,9 +164,42 @@ async function changePassword(req, res) {
     }
   }
 }
+
+async function deleteUser(req, res) {
+  const id = req.body.id;
+
+  if (
+    Object.values(req.body).length !== 1 ||
+    id == undefined
+  ) {
+    const msg =
+      "Campos invalidos, valide no arquivo deleteUser quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const deleteUserResult = await userHospitalModel.deleteUser({
+      id
+    });
+    console.dir(deleteUserResult);
+    if (deleteUserResult.status == 200 || deleteUserResult == 201) {
+      deleteUserResult.longMessage = `Usuário excluído com sucesso!`;
+      deleteUserResult.shortMessage = `Usuário desativado com sucesso.`;
+      res.json(deleteUserResult);
+    } else {
+      res.status(deleteUserResult.status);
+      res.json(deleteUserResult);
+    }
+  }
+}
 module.exports = {
   insertUsuario,
   login,
   sendEmailToResetPassword,
   changePassword,
+  deleteUser
 };
