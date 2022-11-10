@@ -154,7 +154,7 @@ async function changePassword(req, res) {
       newPass,
     });
     console.dir(changePassResult);
-    if (changePassResult.status == 200 || changePassResult == 201) {
+    if (changePassResult.status == 200 || changePassResult.status == 201) {
       changePassResult.longMessage = `Senha alterada com sucesso!`;
       changePassResult.shortMessage = `Senha atualizada.`;
       res.json(changePassResult);
@@ -164,9 +164,40 @@ async function changePassword(req, res) {
     }
   }
 }
+
+async function getListAnalists(req,res){
+  const fkHospital = req.params.fkHospital;
+
+  if (
+    Object.values(req.params).length !== 1 ||
+    fkHospital == undefined 
+  ) {
+    const msg =
+      "Campos invalidos, valide no arquivo getListAnalists quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const listAnalists = await userHospitalModel.getListAnalists({fkHospital});
+    console.dir(listAnalists);
+    if (listAnalists.status == 200 || listAnalists.status == 201) {
+      listAnalists.longMessage = `Lista de usuarios analistas do hosital ${fkHospital}`;
+      listAnalists.shortMessage = `Lista de analistas.`;
+      res.json(listAnalists);
+    } else {
+      res.status(listAnalists.status);
+      res.json(listAnalists);
+    }
+  }
+}
 module.exports = {
   insertUsuario,
   login,
   sendEmailToResetPassword,
   changePassword,
+  getListAnalists
 };

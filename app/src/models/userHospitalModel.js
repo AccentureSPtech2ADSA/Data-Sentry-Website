@@ -49,9 +49,23 @@ async function changePassUser({id=0, newPass=''}){
   // query mysql
   return await database.execute(query);
 }
+
+async function getListAnalists({fkHospital}){
+  let query = `EXEC sp_getListAnalistPerManager ${fkHospital};`;
+  if (database.isAmbienteProducao) {
+    query = `EXEC sp_getListAnalistPerManager ${fkHospital};`;
+    let data = await database.execute(query)
+    console.log(data);
+    data.data = data.data[0];
+    return data;
+  }
+
+  return await database.execute(query);
+}
 module.exports = {
   login,
   insertUsuario,
   isEmailsExitsInDatabase,
-  changePassUser
+  changePassUser,
+  getListAnalists
 };
