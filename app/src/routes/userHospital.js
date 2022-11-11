@@ -25,4 +25,8 @@ router.get("/getListAnalists/:fkHospital", authJwt, (req,res)=>{
   console.log(`Estou na rota /getListAnalists/{fkHospital}...`);
   userHospitalController.getListAnalists(req,res);
 })
+router.post('/deleteUser', authJwt, (req,res)=>{
+  console.log('estou na rota de deleteUser do userHospital');
+  userHospitalController.deleteUser(req,res);
+});
 module.exports = router;

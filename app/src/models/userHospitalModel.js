@@ -59,7 +59,18 @@ async function getListAnalists({fkHospital}){
     data.data = data.data[0];
     return data;
   }
+  return await database.execute(query);
+}
 
+
+async function deleteUser({id=""}){
+  let query = `
+  DELETE FROM UserHospital WHERE _idUserHospital = ${id};
+  `;
+  if (database.isAmbienteProducao) {
+    query = `DELETE FROM UserHospital WHERE _idUserHospital = ${id};`;
+  }
+  // query mysql
   return await database.execute(query);
 }
 module.exports = {
@@ -67,5 +78,6 @@ module.exports = {
   insertUsuario,
   isEmailsExitsInDatabase,
   changePassUser,
-  getListAnalists
+  getListAnalists,
+  deleteUser
 };

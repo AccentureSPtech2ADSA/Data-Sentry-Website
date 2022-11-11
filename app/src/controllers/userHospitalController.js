@@ -164,14 +164,38 @@ async function changePassword(req, res) {
     }
   }
 }
+async function deleteUser(req, res) {
+  const id = req.body.id;
 
-async function getListAnalists(req,res){
+  if (Object.values(req.body).length !== 1 || id == undefined) {
+    const msg =
+      "Campos invalidos, valide no arquivo deleteUser quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const deleteUserResult = await userHospitalModel.deleteUser({
+      id,
+    });
+    console.dir(deleteUserResult);
+    if (deleteUserResult.status == 200 || deleteUserResult == 201) {
+      deleteUserResult.longMessage = `Usuário excluído com sucesso!`;
+      deleteUserResult.shortMessage = `Usuário desativado com sucesso.`;
+      res.json(deleteUserResult);
+    } else {
+      res.status(deleteUserResult.status);
+      res.json(deleteUserResult);
+    }
+  }
+}
+async function getListAnalists(req, res) {
   const fkHospital = req.params.fkHospital;
 
-  if (
-    Object.values(req.params).length !== 1 ||
-    fkHospital == undefined 
-  ) {
+  if (Object.values(req.params).length !== 1 || fkHospital == undefined) {
     const msg =
       "Campos invalidos, valide no arquivo getListAnalists quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
     res
@@ -182,7 +206,9 @@ async function getListAnalists(req,res){
       })
       .status(404);
   } else {
-    const listAnalists = await userHospitalModel.getListAnalists({fkHospital});
+    const listAnalists = await userHospitalModel.getListAnalists({
+      fkHospital,
+    });
     console.dir(listAnalists);
     if (listAnalists.status == 200 || listAnalists.status == 201) {
       listAnalists.longMessage = `Lista de usuarios analistas do hosital ${fkHospital}`;
@@ -199,5 +225,6 @@ module.exports = {
   login,
   sendEmailToResetPassword,
   changePassword,
-  getListAnalists
+  getListAnalists,
+  deleteUser,
 };
