@@ -130,11 +130,11 @@ function validCadastro() {
     
     // Regex Validação (Email):
     var email = document.getElementById('input_email').value
-    const regexEmail = /^(\w){3,}@[a-z]{2,}(\.[a-z]+){1,2}$/i;  
+    const regexEmail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/gm;  
     // Regex Validação (Senha)
     var senha = document.getElementById('input_senha').value;
     var confirmSenha = document.getElementById('input_confirmar_senha').value;
-    const regexSenha = /[a-z0-9]{1,}[!@#$-_.]{1,}[A-Z]{1,}/gim;
+    const regexSenha = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g;
 
     if (regexEmail.test(email) == false){
       input_email.style.border = "thin solid #FF0000";
@@ -162,7 +162,7 @@ function validCadastro() {
     } else if (regexSenha.test(senha) == false){
       input_senha.style.border = "thin solid #FF0000";
       input_confirmar_senha.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "A senha deve ter no mínimo 8 dígitos, contendo carácter especial e Letra maíuscula";
+      span_validacao.innerHTML = "A senha deve ter no mínimo 8 dígitos, contendo carácter especial, Letra maíuscula e Letra minúscula";
 
     } else if (senha != confirmSenha){
       input_senha.style.border = "thin solid #FF0000";
