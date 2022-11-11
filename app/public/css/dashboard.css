@@ -170,6 +170,58 @@ body {
     box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
 }
 
+.graph_treshoulds{
+    width: 100%-15px;
+    height: 400px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 15px 100px 15px;
+    margin-top: 20px;
+    -webkit-box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
+    -moz-box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
+    box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
+}
+.legendas{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.item_legend{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.item_legend div{
+    width: 15px;
+    height: 15px;
+    margin-right: 9px;
+}
+.area-button{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+.graph_treshoulds button{
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    font-size: 11px;
+    border: none;
+    border-radius: 5px;
+    line-height: 15px;
+    background-color: #46716f;
+    color: #fff;
+    transition: all 1.9;
+}
+.graph_treshoulds button:hover{cursor: pointer;background-image: linear-gradient(#71a1a0, #215a57);}
+.ideal{background-color: rgba(46, 204, 113,0.5); border: 2px solid green;}
+.atencao{background-color: rgba(255, 224, 113,0.9); border: 2px solid rgb(176, 176, 53);}
+.critico{background-color: rgba(255, 0, 0, 0.4); border: 2px solid red;}
+
+
 .bloco4 {
     margin-left: 7%;
     display: flex;
@@ -237,6 +289,7 @@ body {
     background-color: #ff2c2c;
     color: rgb(255, 255, 255);
 }
+
 /*----Icone de Deletar------*/
 .painel .remove-icon{width: auto;}
 .painel .icone-delete:hover{cursor: pointer;}
