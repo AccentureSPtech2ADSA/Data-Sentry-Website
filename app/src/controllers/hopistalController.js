@@ -72,6 +72,39 @@ async function insert(req, res) {
   }
 }
 
+async function listServerPerHospital(req,res){
+  const idHospital = req.params.idHospital;
+
+  if (
+    Object.values(req.params).length !== 1 ||
+    idHospital == undefined
+  ) {
+    const msg =
+      "Campos invalidos, valide no arquivo listServerPerHospital quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const listPerHospital = await hospitalModel.listServerPerHospital({
+      idHospital,
+    });
+    console.dir(listPerHospital);
+    if (listPerHospital.status == 200 || listPerHospital.status == 201) {
+      listPerHospital.longMessage = `Todos os servidores listados do hospital ${idHospital}`;
+      listPerHospital.shortMessage = `Lista de Servers`;
+      res.json(listPerHospital);
+    } else {
+      res.status(listPerHospital.status);
+      res.json(listPerHospital);
+    }
+  }
+}
+
 module.exports = {
   insert,
+  listServerPerHospital
 };

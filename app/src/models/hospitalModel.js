@@ -31,7 +31,20 @@ async function insert({
 
   return await database.execute(query);
 }
+
+async function listServerPerHospital({idHospital}){
+  let query = `EXEC sp_getHospitalServers ${idHospital};`;
+  if (database.isAmbienteProducao) {
+    query = `EXEC sp_getHospitalServers ${idHospital};`;
+    let data = await database.execute(query)
+    console.log(data);
+    data.data = data.data[0];
+    return data;
+  }
+  return await database.execute(query);
+}
 module.exports = {
   insert,
   getLastInsertedId,
+  listServerPerHospital
 };
