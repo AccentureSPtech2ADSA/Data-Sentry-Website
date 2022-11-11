@@ -1,5 +1,5 @@
 var express = require("express");
-var router = express.Router();
+const router = express.Router();
 var userHospitalController = require("../controllers/userHospitalController");
 const {authJwt} = require('../util/middleware/jwtMIddleware');
 // se quiser usar como middleware da funcao, vai precisar utilizar esse authJwt
@@ -21,6 +21,10 @@ router.put('/changePassword', authJwt, (req,res)=>{
   console.log('estou na rota de changePassword do userHospital');
   userHospitalController.changePassword(req,res);
 });
+router.get("/getListAnalists/:fkHospital", authJwt, (req,res)=>{
+  console.log(`Estou na rota /getListAnalists/{fkHospital}...`);
+  userHospitalController.getListAnalists(req,res);
+})
 router.post('/deleteUser', authJwt, (req,res)=>{
   console.log('estou na rota de deleteUser do userHospital');
   userHospitalController.deleteUser(req,res);
