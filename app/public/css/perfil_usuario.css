@@ -2,6 +2,17 @@ body {
     background-color: #ffffff;
 }
 
+#div_delete {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    width: 100%;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    position: fixed;
+  }
+
 .body_container {
     margin: 30px 12% 50px 12%;
     width: 83%;

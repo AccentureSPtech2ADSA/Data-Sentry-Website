@@ -49,9 +49,23 @@ async function changePassUser({id=0, newPass=''}){
   // query mysql
   return await database.execute(query);
 }
+
+
+
+async function deleteUser({id=""}){
+  let query = `
+  DELETE FROM UserHospital WHERE _idUserHospital = ${id};
+  `;
+  if (database.isAmbienteProducao) {
+    query = `DELETE FROM UserHospital WHERE _idUserHospital = ${id};`;
+  }
+  // query mysql
+  return await database.execute(query);
+}
 module.exports = {
   login,
   insertUsuario,
   isEmailsExitsInDatabase,
-  changePassUser
+  changePassUser,
+  deleteUser
 };
