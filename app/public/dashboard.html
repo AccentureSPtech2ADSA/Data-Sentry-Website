@@ -9,9 +9,19 @@
   <title>Dashboard - Data Sentry</title>
   <link rel="stylesheet" href="./css/navbarLateral.css" />
   <link rel="stylesheet" href="./css/dashboard.css" />
+
+
+  <script src="./js/dashboard.js"></script>
+  <script src="./js/sweetalert2.all.min.js"></script>
+  <script src="./js/alertas_popup.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="//code.jivosite.com/widget/aFYsG8qL2S" async></script>
+  <script src="./js/validacaoLogin.js"></script>
+  <script src="./js/jwt.js"></script>
+
 </head>
 
-<body>
+<body onload="validacaoLogin()">
   <!-- Navbar Lateral -->
   <div class="navbar">
     <div class="navbar_container">
@@ -89,7 +99,7 @@
   <!-- Conteúdo dashboards -->
   <div class="body_container">
     <div class="bloco1">
-      <p>Clínica Cirúrgica Santa Efigênia</p>
+      <p id="nomeClinica">Clínica Cirúrgica Santa Efigênia</p>
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">#Servidor 01 ↓</button>
         <div id="myDropdown" class="dropdown-content">
@@ -521,5 +531,11 @@
     const chartCpu = new Chart(document.getElementById("chartCpu"), config6);
 
     const chartDisco = new Chart(document.getElementById("chartDisco"), config7);
+
+
+  const myChart4 = new Chart(document.getElementById("myChart4"), config4);
+
+  window.onload = DescriptografiaJWT();
+  window.onload = preenchimentoNome();
 
 </script>

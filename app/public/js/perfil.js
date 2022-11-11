@@ -140,6 +140,38 @@ function validarPatente() {
   }
 }
 
+//   document.getElementById("id_input2").value = dados.name || "Nome";
+//   document.getElementById("id_input3").value = dados.corporateName || "Corporativo";
+//   document.getElementById("id_input4").value = "Rua Haddock Lobo, 155";
+//   document.getElementById("id_input5").value = "São Paulo";
+//   document.getElementById("id_input6").value = "São Paulo";
+//   document.getElementById("id_input7").value = dados.cep || "00000-000";
+//   document.getElementById("id_input8").value = "Brasil";
+//   document.getElementById("id_input9").value = "***************";
+//   document.getElementById("id_input10").value = dados.contactPhone || "(11) 11111-1111";
+//   document.getElementById("id_input11").value = dados.cnpj || "1111111111/111";
+// }
+
+function deleteUser(){
+  const data = window.sessionStorage.getItem('Token');
+  const dados = parseJwt(data).data;
+  var id = dados.id;
+    console.log(data)
+  let req = fetch("/user/deleteUser", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", //necessario utilizar essas linha e a de baixo, sempre que tiver o "authJwt" na rota.
+      Authorization: `Bearer ${data}`,
+    },
+    body: JSON.stringify({
+      id: id,
+    }),
+  });
+  let res = req.then(val=>val.json());
+  res.then(json=>console.log(json));
+  window.open("./index.html","_self")
+  return res;
+}
 function valoresPlaceholder() {
 document.getElementById("id_input1").value = dadosjwt.corporateName;
 document.getElementById("id_input2").value = dadosjwt.fantasyName;

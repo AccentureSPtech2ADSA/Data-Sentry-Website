@@ -20,3 +20,12 @@ function myFunction() {
       }
     }
   }
+
+  function DescriptografiaJWT() {
+    const data = window.sessionStorage.getItem('Token');
+    dadosjwt = parseJwt(data).data;
+  }
+
+  function preenchimentoNome() {
+nomeClinica.innerHTML = dadosjwt.fantasyName;
+  }

@@ -15,8 +15,9 @@
     <script src="./js/jquery.mask.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/perfil.js"></script>
+    <script src="./js/validacaoLogin.js"></script>
   </head>
-  <body onload="DescriptografiaJWT(); valoresPlaceholder(); validarPatente()">
+  <body onload="validacaoLogin(), DescriptografiaJWT(), valoresPlaceholder(), validarPatente()">
     <!-- Navbar Lateral -->
     <div class="navbar">
       <div class="navbar_container">
@@ -178,9 +179,46 @@
         </div>
 
         <div>
-          <span class="desativar_conta">Desativar Conta</span>
+          <span class="desativar_conta" onclick="deleteUser()">Desativar Conta</span>
         </div>
       </div>
+          <!-- pop-up deleteUser-->
+    <div id="div_delete">
+      <div class="conteudo_login">
+        <div class="box">
+          <div id="btn_fechar_login" onclick="fechar_popup_login()">X</div>
+
+          <div class="box_container">
+            <div id="login_center">
+              <p id="texto_bemvindo">BEM VINDO(A) DE VOLTA</p>
+              <p id="texto_login">Entrar na sua conta</p>
+            </div>
+
+            <div>
+              <p class="texto_inputs">E-mail</p>
+              <input
+                id="input_email_login"
+                class="input_texto"
+                type="text"
+                placeholder="Exemplo@hotmail.com"
+              />
+            </div>
+
+            <div class="senha">
+              <p class="texto_inputs">Senha</p>
+              <input
+                id="input_senha_login"
+                class="input_texto"
+                type="password"
+                placeholder="Inserir Senha"
+              />
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   </body>
 </html>
