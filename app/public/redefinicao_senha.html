@@ -87,54 +87,30 @@
 </html>
 
 <script>
-
+  
   
   function testValue() {
     var novaSenha = document.getElementById("inp_password").value;
     var confirmSenha = document.getElementById("inp_confirmPassword").value;
-
+    
     const regexSenha = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g
     
     if (novaSenha.match(regexSenha) && confirmSenha == novaSenha) {
-
-      // ------------------ Caso a senha estiver em conformidade, será atualizado a senha
-      async function fazerRequisicaoMudarSenha(id, novaSenha, token) {
-        let req = await fetch("/user/changePassword", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            id: id,
-            newPass: novaSenha,
-          }),
-        });
-    
-        let res = await req.json();
-        return res;
-
-        if(true){
-          const token = window.location.href.split('token=')[1];
-          if(token){
-            const user = parseJwt(token);
-            console.log(user)
-            fazerRequisicaoMudarSenha(user.data.id, campo1.value, token)
-            .then(val=>console.log(val))
-            .catch(err=>console.error(err));
-          }
-        }
+      const token = window.location.href.split('token=')[1];
+      if(token){
+        const user = parseJwt(token);
+        console.log(user)
+        fazerRequisicaoMudarSenha(user.data.id, novaSenha, token)
+        .then(val=>console.log(val))
+        .catch(err=>console.error(err));
       }
+    
       alertar(
         '',
         'Senha redefinida com sucesso !',
         'success',
         'Ok'
       );
-      if (result.isConfirmed){
-        window.location.href = "/index.html"
-      }
-      
 
     } else if (novaSenha == "" || confirmSenha == "") {
       alertar(
@@ -151,12 +127,28 @@
         "A senha deve ter no mínimo 8 dígitos, contendo números, caracter especial, Letra minúscula e Letra maíuscula.",
         "error",
         "Ok"
-      );
+        );
+      }
     }
-  }
-
-  var campo1 = document.getElementById("inp_password");
-  var campo2 = document.getElementById("inp_confirmPassword");
+    // ------------------ Caso a senha estiver em conformidade, será atualizado a senha
+    async function fazerRequisicaoMudarSenha(id, novaSenha, token) {
+      let req = await fetch("/user/changePassword", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          id: id,
+          newPass: novaSenha,
+        }),
+      });
+      let res = await req.json();
+      return res;
+    }
+    
+    var campo1 = document.getElementById("inp_password");
+    var campo2 = document.getElementById("inp_confirmPassword");
 
 
   document.getElementById("pass1").addEventListener("click", () => {
