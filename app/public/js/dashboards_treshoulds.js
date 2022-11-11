@@ -1,5 +1,6 @@
 ////////////////////////////////// GRÁFICO DA RAM COM TRESHOULDS ////////////////////////////////
 
+// ---- Transformando os dados do eixo (Y) em String
 let valorMaximoGb = 100;
 var listaDadosGigaByte = []
 var gigaByte = 0;
