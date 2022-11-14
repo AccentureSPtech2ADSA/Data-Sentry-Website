@@ -165,12 +165,55 @@ button:hover{
 }
 
 @media screen and (max-width: 760px){
-    .area-painel{
-        overflow: auto;
-    }
     #btn_gerenciar, #btn_cadastrar{
         font-size: 13px;
     }
+}
+@media screen and (max-width: 700px){
+    body{
+        background-color: rgb(255, 255, 255);
+    }
+    .body_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        float: right;
+        width: 94%;
+        margin: 0px 0px;
+    }
+    .area-painel{
+        display: flex;
+        justify-content: center;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 0px 0px 30px;
+        width: 99%;
+        box-shadow: none;
+        border: none;
+        border-radius: none;
+        padding-right: 0;
+    }
+    .painel{
+        display: flex;
+        flex-direction: column;
+        -webkit-box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
+        -moz-box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
+        box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
+    }
+    button{
+        border-radius: 5;
+        transition: none;
+        border-bottom: 1px solid #5252529a;
+        
+    }
+    .btn-ativo{
+        background-color: #e2e2e2;
+    }
+    .btn_cadastrar{
+        background-color: #e2e2e2;
+    }
+    
+    
 }
 @media screen and (max-width: 625px){
     #btn_gerenciar, #btn_cadastrar{
