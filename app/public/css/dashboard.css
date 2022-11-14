@@ -311,6 +311,16 @@ body {
         margin-bottom: 40px;
         width: 100%;
     }
+
+    .painel{
+        overflow: auto;
+    }
+}
+
+@media screen and (max-width: 725px) {
+    .painel{
+        overflow: auto;
+    }
 }
 
 @media screen and (max-width: 580px) { 
@@ -335,5 +345,12 @@ body {
 
     .bloco4 {
         margin-left: 55px;
+    }
+
+    .painel{
+        overflow: auto;
+    }
+    .button_kill{
+        width: auto;
     }
 }
