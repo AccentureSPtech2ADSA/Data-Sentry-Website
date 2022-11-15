@@ -41,7 +41,7 @@ function alertar(title = '', text = '', icon = '', confirmButtonText = ''){
         iconColor: iconColor,
         confirmButtonText: confirmButtonText,
         confirmButtonColor: '#1a6969',
-        timer: '8000',
+        timer: '',
         timerProgressBar: true
     })
 }

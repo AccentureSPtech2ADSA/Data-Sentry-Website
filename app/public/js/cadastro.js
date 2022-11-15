@@ -234,37 +234,6 @@ function validCadastro() {
         alert(err)
       })
       return;
-
-      window.location.href = "../index.html";
-
-      fetch("/usuarios/cadastrarHospital", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: nomeVar,
-          cnpjServer: cnpjVar,
-          cepServer: cepVar,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-        }),
-      });
-      fetch("/usuarios/cadastrarUsuario", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: nomeVar,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-        }),
-      });
     }
   }
 }

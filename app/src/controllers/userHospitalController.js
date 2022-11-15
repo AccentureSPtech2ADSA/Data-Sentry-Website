@@ -6,18 +6,19 @@ const { enviarEmail } = require("../util/email/emailService");
  * @param {Response} res
  */
 async function insertUsuario(req, res) {
+  console.log(req.body)
   //   console.log(`req.body`, req.body);
-  if (Object.values(req.body).length !== 5) {
-    const msg =
-      "Campos invalidos, valide no arquivo userHospitalController quais os campos que essa requisicao pede. (funcão insertUsuario de userHospitalController.js)";
-    res
-      .json({
-        data: null,
-        msg: msg,
-        status: 404,
-      })
-      .status(404);
-  } else {
+  // if (Object.values(req.body).length !== 5) {
+  //   const msg =
+  //     "Campos invalidos, valide no arquivo userHospitalController quais os campos que essa requisicao pede. (funcão insertUsuario de userHospitalController.js)";
+  //   res
+  //     .json({
+  //       data: null,
+  //       msg: msg,
+  //       status: 404,
+  //     })
+  //     .status(404);
+  // } else {
     const parametros = {
       name: req.body.name,
       email: req.body.email,
@@ -30,7 +31,7 @@ async function insertUsuario(req, res) {
     );
     res.json(userHospitalResult).status(userHospitalResult.status);
   }
-}
+// }
 async function login(req, res) {
   //   console.log(`req.body`, req.body);
   if (Object.values(req.body).length !== 2) {

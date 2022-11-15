@@ -8,10 +8,17 @@
     <title>Usuários - Data Sentry</title>
     <link rel="stylesheet" href="./css/navbarLateral.css" />
     <link rel="stylesheet" href="./css/usuarios.css" />
+    <script src="./js/jwt.js"></script>
     <script src="./js/usuarios.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/alertas_popup.js"></script>
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
+    <script src="./js/jquery.mask.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="//code.jivosite.com/widget/aFYsG8qL2S" async></script>
     <script src="./js/validacaoLogin.js"></script>
+    <link rel="stylesheet" href="./css/custom_SweetAlert.css">
   </head>
   <body onload="validacaoLogin()">
     <!-- Navbar Lateral -->
@@ -178,27 +185,27 @@
           <div class="container_cadastro">
           <div class="bloco_unico">
             <div class="ipt_titulo">Email</div>
-            <input id="" type="email" placeholder="Exemplo@hotmail.com" />
+            <input id="inp_email" type="email" placeholder="Exemplo@hotmail.com" />
           </div>
     
           <div class="bloco_unico">
             <div class="ipt_titulo">Apelido</div>
-            <input id="" type="text" placeholder="Apelido do analista" />
+            <input id="inp_nome" type="text" placeholder="Apelido do analista" />
           </div>
     
           <div class="bloco_unico">
             <div class="ipt_titulo">Número de Contato</div>
-            <input id="" type="text" placeholder="(00) 00000-0000" />
+            <input id="inp_telefone" type="text" placeholder="(00) 00000-0000" />
           </div>
     
           <div class="bloco_unico">
             <div class="ipt_titulo">Senha</div>
-            <input id="" type="password" placeholder="Inserir senha" />
+            <input id="inp_senha" type="password" placeholder="Inserir senha" />
           </div>
 
           <div class="bloco_unico">
             <div class="ipt_titulo">Confirmar senha</div>
-            <input id="" type="password" placeholder="Repetir senha" />
+            <input id="inp_confirmSenha" type="password" placeholder="Repetir senha" />
           </div>
     
           <div class="bloco_inferior">
