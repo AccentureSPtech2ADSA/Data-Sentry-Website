@@ -156,7 +156,7 @@ body {
 
 
 /* Pop up de confirmar usuário deletado */
-#div_div_confirmar_delete {
+#div_confirmar_delete {
     background-color: rgba(0, 0, 0, 0.7);
     height: 100%;
     width: 100%;

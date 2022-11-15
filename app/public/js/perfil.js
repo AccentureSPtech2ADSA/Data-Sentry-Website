@@ -169,9 +169,12 @@ function deleteUser() {
   });
   let res = req.then(val => val.json());
   res.then(json => console.log(json));
-  // Abre tela de login
-  setInterval(popup_confirmar_exclusao, 5000);
-  window.open("./index.html", "_self");
+  div_confirmar_delete.style.display = "block";
+  // Abre pop up de confirmação de delete usario.
+  setTimeout(function () {
+    window.location = "./index.html", "_self";
+}, 6000);
+ // window.open("./index.html", "_self");
   return res;
 }
 function valoresPlaceholder() {
@@ -188,12 +191,12 @@ function valoresPlaceholder() {
   document.getElementById("id_input11").value = dadosjwt.cnpj;
 }
 
-// Abre tela de login
+// Abre pop up de deletar usuario
 function popup_login() {
   div_delete.style.display = "block";
 }
 
-// Fecha tela de login
+// Fecha pop up de deletar usuario
 function fechar_popup_login() {
   div_delete.style.display = "none";
   input_email_login.style.border = "thin solid #646569";
@@ -203,8 +206,8 @@ function fechar_popup_login() {
   span_validacao.innerHTML = "";
 }
 
+
+//Abre pop up de confirmação de deletar usuario
 function popup_confirmar_exclusao() {
-
   div_confirmar_delete.style.display = "block";
-
 }
