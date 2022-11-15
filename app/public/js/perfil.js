@@ -185,3 +185,18 @@ document.getElementById("id_input9").value = "***************";
 document.getElementById("id_input10").value = dadosjwt.contactPhone;
 document.getElementById("id_input11").value = dadosjwt.cnpj;
 }
+
+// Abre tela de login
+function popup_login() {
+  div_delete.style.display = "block";
+}
+
+// Fecha tela de login
+function fechar_popup_login() {
+  div_delete.style.display = "none";
+  input_email_login.style.border = "thin solid #646569";
+  input_senha_login.style.border = "thin solid #646569";
+  input_email_login.innerHTML = "";
+  input_senha_login.innerHTML = "";
+  span_validacao.innerHTML = "";
+}
