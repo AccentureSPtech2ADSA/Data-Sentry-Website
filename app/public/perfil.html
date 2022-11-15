@@ -180,71 +180,46 @@
       <div>
         <span class="desativar_conta" onclick="popup_login()">Desativar Conta</span>
       </div>
-    </div>    
+    </div>
   </div>
-    <!-- pop-up tela de login -->
-    <div id="div_delete">
-      <div class="conteudo_login">
-        <div class="box">
-          <div id="btn_fechar_login" onclick="fechar_popup_login()">X</div>
-  
-          <div class="box_container">
-            <div id="login_center">
-              <p id="texto_bemvindo">BEM VINDO(A) DE VOLTA</p>
-              <p id="texto_login">Entrar na sua conta</p>
-            </div>
-  
-            <div>
-              <p class="texto_inputs">E-mail</p>
-              <input
-                id="input_email_login"
-                class="input_texto"
-                type="text"
-                placeholder="Exemplo@hotmail.com"
-              />
-            </div>
-  
-            <div class="senha">
-              <p class="texto_inputs">Senha</p>
-              <input
-                id="input_senha_login"
-                class="input_texto"
-                type="password"
-                placeholder="Inserir Senha"
-              />
-            </div>
-  
-            <div id="validacao">
-              <span id="span_validacao"></span>
-              <img
-                id="span_gif"
-                src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif"
-              />
-            </div>
-  
-            <div class="LembrarUsuario_EsqueceuSenha">
-              <span id="span_lembrarUsuario"
-                ><input type="checkbox" /> Lembrar Usuário</span
-              >
-              <span id="span_esqueceuSenha"
-                ><a id="esqueceu_senha" href="esqueceu_senha.html">Esqueceu sua senha?</a></span
-              >
-            </div>
-  
-            <div>
-              <button id="btn_entrar" onclick="validLogin()">Entrar</button>
-            </div>
-  
-            <div class="div_cadastrar">
-              <p id="nao_possui_conta">Não possui uma conta ainda?</p>
-              <a href="cadastro.html" id="a_cadastrar"
-                >Faça parte da jornada →</a
-              >
-            </div>
+  <!-- pop-up tela de login -->
+  <div id="div_delete">
+    <div class="conteudo_login">
+      <div class="box">
+        <div id="btn_fechar_login" onclick="fechar_popup_login()">X</div>
+
+        <div class="box_container">
+          <div id="login_center">
+            <p id="texto_bemvindo">EXCLUIR USUÁRIO ADMINSTRADOR</p>
+            <p id="texto_login">Você deseja mesmo deletar este usuário?</p>
           </div>
+
+          <div class="senha">
+            <p class="texto_inputs">Deletar este usuário adminstrador, acarretará na exclusão do:</p>
+            <br>
+            <p class="texto_inputs">- Perfil do hospital</p>
+            <p class="texto_inputs">- Perfil do todos os analistas</p>
+            <p class="texto_inputs">- todos os servidores</p>
+            <br>
+            <p class="texto_inputs">Você deseja excluir este usuário?</p>
+          </div>
+
+
+          <div id="validacao">
+            <span id="span_validacao"></span>
+            <img id="span_gif" src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif" />
+          </div>
+
+
+          <div>
+            <button id="btn_entrar" onclick="deleteUser()">Confirmar</button>
+            <button id="btn_entrar" onclick="fechar_popup_login()">Cancelar</button>
+          </div>
+
         </div>
       </div>
     </div>
+  </div>
 </body>
 
 </html>
