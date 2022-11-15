@@ -170,10 +170,11 @@ function deleteUser() {
   let res = req.then(val => val.json());
   res.then(json => console.log(json));
   div_confirmar_delete.style.display = "block";
+  div_delete.style.display = "none";
   // Abre pop up de confirmação de delete usario.
   setTimeout(function () {
     window.location = "./index.html", "_self";
-}, 6000);
+}, 2000);
  // window.open("./index.html", "_self");
   return res;
 }
