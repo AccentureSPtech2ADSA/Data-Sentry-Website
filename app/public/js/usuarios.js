@@ -107,7 +107,7 @@ async function getListAnalists(fkHospital, token){
         },
       });
   
-      let res = await req.json();
+      let res = await req.json();d
       return res;
 }
 const token = sessionStorage.getItem('Token');
