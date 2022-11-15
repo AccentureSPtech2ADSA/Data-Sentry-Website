@@ -8,6 +8,7 @@ router.post("/insert", (req, res) => {
   console.log("estou na rota de insert do user hospital");
   userHospitalController.insertUsuario(req, res);
 });
+
 router.post("/login", (req, res) => {
   console.log('estou na rota de /login do user');
   userHospitalController.login(req, res);
