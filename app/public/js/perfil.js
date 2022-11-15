@@ -152,11 +152,11 @@ function validarPatente() {
 //   document.getElementById("id_input11").value = dados.cnpj || "1111111111/111";
 // }
 
-function deleteUser(){
+function deleteUser() {
   const data = window.sessionStorage.getItem('Token');
   const dados = parseJwt(data).data;
   var id = dados.id;
-    console.log(data)
+  console.log(data)
   let req = fetch("/user/deleteUser", {
     method: "POST",
     headers: {
@@ -167,23 +167,25 @@ function deleteUser(){
       id: id,
     }),
   });
-  let res = req.then(val=>val.json());
-  res.then(json=>console.log(json));
-  window.open("./index.html","_self")
+  let res = req.then(val => val.json());
+  res.then(json => console.log(json));
+  // Abre tela de login
+  setInterval(popup_confirmar_exclusao, 5000);
+  window.open("./index.html", "_self");
   return res;
 }
 function valoresPlaceholder() {
-document.getElementById("id_input1").value = dadosjwt.corporateName;
-document.getElementById("id_input2").value = dadosjwt.fantasyName;
-document.getElementById("id_input3").value = dadosjwt.email;
-document.getElementById("id_input4").value = "Rua Haddock Lobo, 155"; // pegar do via cep
-document.getElementById("id_input5").value = "São Paulo"; // cidade via cep
-document.getElementById("id_input6").value = "São Paulo"; // estado via cep
-document.getElementById("id_input7").value = "00000001"; // cep via cep
-document.getElementById("id_input8").value = "Brasil"; // pais via cep
-document.getElementById("id_input9").value = "***************";
-document.getElementById("id_input10").value = dadosjwt.contactPhone;
-document.getElementById("id_input11").value = dadosjwt.cnpj;
+  document.getElementById("id_input1").value = dadosjwt.corporateName;
+  document.getElementById("id_input2").value = dadosjwt.fantasyName;
+  document.getElementById("id_input3").value = dadosjwt.email;
+  document.getElementById("id_input4").value = "Rua Haddock Lobo, 155"; // pegar do via cep
+  document.getElementById("id_input5").value = "São Paulo"; // cidade via cep
+  document.getElementById("id_input6").value = "São Paulo"; // estado via cep
+  document.getElementById("id_input7").value = "00000001"; // cep via cep
+  document.getElementById("id_input8").value = "Brasil"; // pais via cep
+  document.getElementById("id_input9").value = "***************";
+  document.getElementById("id_input10").value = dadosjwt.contactPhone;
+  document.getElementById("id_input11").value = dadosjwt.cnpj;
 }
 
 // Abre tela de login
@@ -199,4 +201,10 @@ function fechar_popup_login() {
   input_email_login.innerHTML = "";
   input_senha_login.innerHTML = "";
   span_validacao.innerHTML = "";
+}
+
+function popup_confirmar_exclusao() {
+
+  div_confirmar_delete.style.display = "block";
+
 }

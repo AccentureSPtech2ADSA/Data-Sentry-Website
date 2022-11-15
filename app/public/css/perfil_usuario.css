@@ -154,6 +154,20 @@ body {
 }
 /* ACIMA CLASSES DO POP UP DO DELETE USER */
 
+
+/* Pop up de confirmar usuário deletado */
+#div_div_confirmar_delete {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    width: 100%;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    position: fixed;
+}
+/* ACIMA CLASSES DO POP UP DO DELETE USER */
+
 .body_container {
     margin: 30px 12% 50px 12%;
     width: 83%;
