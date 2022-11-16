@@ -1,3 +1,5 @@
+
+
 function irparaCadastro() {
     painel.style.display = "none";
     painel_cadastro.style.display = "block"
@@ -20,3 +22,96 @@ function irparaGerenciar() {
     area_painel.style.width = "57%"
     area_painel.style.height = "auto"
 }
+
+function onoff(){
+    var nome = document.getElementById('inp_nome').value
+    var email = document.getElementById('inp_email').value
+    var telefone = document.getElementById('inp_telefone').value
+    var senha = document.getElementById('inp_senha').value
+    var confirmSenha = document.getElementById('inp_confirmSenha').value
+
+    const regexSenha = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g
+    const regexEmail = /^([a-zA-Z0-9-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$/gm;
+
+    if (senha.match(regexSenha) && confirmSenha == senha) {
+        const token = sessionStorage.getItem('Token');
+        const user = parseJwt(token);
+        console.log(user)
+
+        fazerRequisicaoInserirUser(nome, email, telefone, senha, user.data.id, user.data.fkHospital)
+        .then(val=>console.log(val))
+        .catch(err=>console.error(err));
+
+        alertar(
+            '',
+            'Analista inserido com sucesso !',
+            'success',
+            'Ok'
+        );
+
+    } else if (nome == "" || email == "" || telefone == "" || senha == "" || confirmSenha == ""){
+        alertar(
+            'Atenção',
+            'Preencha todos os campos',
+            'warning',
+            'Ok'
+        );
+
+    } else if (senha != confirmSenha){
+        alertar(
+            'Atenção',
+            'Confirme a mesma senha',
+            'warning',
+            'Ok'
+        );
+
+    } else {
+        alertar(
+            "Senha inválida",
+            "A senha deve ter no mínimo 8 dígitos, contendo números, caracter especial, Letra minúscula e Letra maíuscula.",
+            "error",
+            "Ok"
+        );
+    }
+}
+
+
+async function fazerRequisicaoInserirUser(nome, email, telefone, senha, manager, hospital) {
+
+    let req = await fetch("/user/insert", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name : nome,
+        email : email,
+        // telefone : telefone,
+        password : senha,
+        manager : manager,
+        hospital : hospital
+      }),
+    });
+
+    let res = await req.json();
+    return res;
+}
+
+async function getListAnalists(fkHospital, token){
+
+    let req = await fetch(`/user/getListAnalists/${fkHospital}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      let res = await req.json();d
+      return res;
+}
+const token = sessionStorage.getItem('Token');
+const user = parseJwt(token);
+console.log(user)
+getListAnalists(user.data.fkHospital, token)
+.then(res=>console.log(res))

@@ -128,13 +128,13 @@ function validCadastro() {
     input_senha.style.border = "none";
     input_confirmar_senha.style.border = "none";
     
-    // Regex Validação (Email):
-    var email = document.getElementById('input_email').value
-    const regexEmail = /^(\w){3,}@[a-z]{2,}(\.[a-z]+){1,2}$/i;  
-    // Regex Validação (Senha)
-    var senha = document.getElementById('input_senha').value;
-    var confirmSenha = document.getElementById('input_confirmar_senha').value;
-    const regexSenha = /[a-z0-9]{1,}[!@#$-_.]{1,}[A-Z]{1,}/gim;
+   // Regex Validação (Email):
+   var email = document.getElementById('input_email').value
+   const regexEmail = /^([a-zA-Z0-9-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$/gm;
+   // Regex Validação (Senha)
+   var senha = document.getElementById('input_senha').value;
+   var confirmSenha = document.getElementById('input_confirmar_senha').value;
+   const regexSenha = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g
 
     if (regexEmail.test(email) == false){
       input_email.style.border = "thin solid #FF0000";
@@ -162,7 +162,7 @@ function validCadastro() {
     } else if (regexSenha.test(senha) == false){
       input_senha.style.border = "thin solid #FF0000";
       input_confirmar_senha.style.border = "thin solid #FF0000";
-      span_validacao.innerHTML = "A senha deve ter no mínimo 8 dígitos, contendo carácter especial e Letra maíuscula";
+      span_validacao.innerHTML = "A senha deve ter no mínimo 8 dígitos, contendo carácter especial, Letra maíuscula e Letra minúscula";
 
     } else if (senha != confirmSenha){
       input_senha.style.border = "thin solid #FF0000";
@@ -219,52 +219,21 @@ function validCadastro() {
       fazerRequisicaoInserirHospitalUser(cnpj, cep, num_endereco, unidade, nome_fantasia, razao_social, complemento, nome_fantasia, email, senha, num_contato)
       .then(res=>{
         console.log(res);
-        if(res.status == 200){
+        if(res.status == 200 || res.status == 201){
           // programar logica do session storage aqui dentro, colocar o jwt e os dados do usuario
-          alert('Cadastro efetuado com sucesso');
-          window.open("./dashboard.html","_self")
+          alertar(
+            '',
+            'Cadastro efetuado com sucesso !',
+            'success',
+            'Ok'
+          );
+          
         }
       })
       .catch(err=>{
         alert(err)
       })
       return;
-
-      alertar(
-        '',
-        'Cadastro efetuado com sucesso !',
-        'success'
-      );
-      window.location.href = "../index.html";
-
-      fetch("/usuarios/cadastrarHospital", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: nomeVar,
-          cnpjServer: cnpjVar,
-          cepServer: cepVar,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-        }),
-      });
-      fetch("/usuarios/cadastrarUsuario", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: nomeVar,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-        }),
-      });
     }
   }
 }

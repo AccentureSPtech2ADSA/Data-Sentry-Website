@@ -6,18 +6,19 @@ const { enviarEmail } = require("../util/email/emailService");
  * @param {Response} res
  */
 async function insertUsuario(req, res) {
+  console.log(req.body)
   //   console.log(`req.body`, req.body);
-  if (Object.values(req.body).length !== 5) {
-    const msg =
-      "Campos invalidos, valide no arquivo userHospitalController quais os campos que essa requisicao pede. (funcão insertUsuario de userHospitalController.js)";
-    res
-      .json({
-        data: null,
-        msg: msg,
-        status: 404,
-      })
-      .status(404);
-  } else {
+  // if (Object.values(req.body).length !== 5) {
+  //   const msg =
+  //     "Campos invalidos, valide no arquivo userHospitalController quais os campos que essa requisicao pede. (funcão insertUsuario de userHospitalController.js)";
+  //   res
+  //     .json({
+  //       data: null,
+  //       msg: msg,
+  //       status: 404,
+  //     })
+  //     .status(404);
+  // } else {
     const parametros = {
       name: req.body.name,
       email: req.body.email,
@@ -30,7 +31,7 @@ async function insertUsuario(req, res) {
     );
     res.json(userHospitalResult).status(userHospitalResult.status);
   }
-}
+// }
 async function login(req, res) {
   //   console.log(`req.body`, req.body);
   if (Object.values(req.body).length !== 2) {
@@ -87,9 +88,9 @@ async function sendEmailToResetPassword(req, res) {
     if (req.status == 200) {
       try {
         let htmlMessage = `
-        <p style='font-size: 18px;'><strong>Olá ${name}! Tudo bem?</strong></p>
+        <p style='font-size: 18px;'><strong>Olá, ${name}! Tudo bem?</strong></p>
         <p>
-        Esqueceu sua senha? Não tem problemas! <br>
+        Esqueceu sua senha? Não tem problema! <br>
         Com o sistema do DataSentry seu problema já foi pensado e resolvido por nós!
         <br>
         </p>
@@ -154,7 +155,7 @@ async function changePassword(req, res) {
       newPass,
     });
     console.dir(changePassResult);
-    if (changePassResult.status == 200 || changePassResult == 201) {
+    if (changePassResult.status == 200 || changePassResult.status == 201) {
       changePassResult.longMessage = `Senha alterada com sucesso!`;
       changePassResult.shortMessage = `Senha atualizada.`;
       res.json(changePassResult);
@@ -164,14 +165,10 @@ async function changePassword(req, res) {
     }
   }
 }
-
 async function deleteUser(req, res) {
   const id = req.body.id;
 
-  if (
-    Object.values(req.body).length !== 1 ||
-    id == undefined
-  ) {
+  if (Object.values(req.body).length !== 1 || id == undefined) {
     const msg =
       "Campos invalidos, valide no arquivo deleteUser quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
     res
@@ -183,7 +180,7 @@ async function deleteUser(req, res) {
       .status(404);
   } else {
     const deleteUserResult = await userHospitalModel.deleteUser({
-      id
+      id,
     });
     console.dir(deleteUserResult);
     if (deleteUserResult.status == 200 || deleteUserResult == 201) {
@@ -196,10 +193,39 @@ async function deleteUser(req, res) {
     }
   }
 }
+async function getListAnalists(req, res) {
+  const fkHospital = req.params.fkHospital;
+
+  if (Object.values(req.params).length !== 1 || fkHospital == undefined) {
+    const msg =
+      "Campos invalidos, valide no arquivo getListAnalists quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const listAnalists = await userHospitalModel.getListAnalists({
+      fkHospital,
+    });
+    console.dir(listAnalists);
+    if (listAnalists.status == 200 || listAnalists.status == 201) {
+      listAnalists.longMessage = `Lista de usuarios analistas do hosital ${fkHospital}`;
+      listAnalists.shortMessage = `Lista de analistas.`;
+      res.json(listAnalists);
+    } else {
+      res.status(listAnalists.status);
+      res.json(listAnalists);
+    }
+  }
+}
 module.exports = {
   insertUsuario,
   login,
   sendEmailToResetPassword,
   changePassword,
-  deleteUser
+  getListAnalists,
+  deleteUser,
 };

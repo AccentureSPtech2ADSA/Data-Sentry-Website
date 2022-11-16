@@ -567,6 +567,8 @@ $(document).ready(function () {
     $("#id_input7").mask("00000-000")
     $("#id_input10").mask("(00) 00000-0000")
     $("#id_input11").mask("00.000.000/0000-00")
+    // Pagina Cadastro de analistas
+    $("#inp_telefone").mask("(00) 00000-0000")
 })
 
 function limparMascara(){

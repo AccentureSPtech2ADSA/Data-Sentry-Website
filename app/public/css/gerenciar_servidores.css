@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 body {
     background-color: #E9E9E9;
 }
@@ -10,8 +11,9 @@ body {
     float: right;
     width: 94%;
     margin: 40px 0px;
+    transition: all 1s;
 }
-/* -------------------- Gerenciamento de Usuários */
+/* -------------------- Gerenciamento de Servidores */
 .button-ativo{
     background-color: #0b8c1c;
     border: none;
@@ -58,7 +60,7 @@ button:hover{
 .cabecalho{
     display: flex;
     flex-direction: row;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     justify-content: space-between;
     color: #373737;
     font-weight: 100;
@@ -77,17 +79,28 @@ button:hover{
     color: #252b2b;
     width: 100%;
 }
-
+table{
+    overflow: auto;
+}
 
 .painel td{ /*----Conteúdo------*/
     padding: 6px 22px;
-    font-family: monospace;
+    font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .desassociar_text{
     color: rgb(168, 2, 2);
     font-size: 13px;
 }
 .desassociar_text:hover{
+    color: rgb(206, 5, 5);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.stop_text{
+    color: rgb(168, 2, 2);
+    font-size: 13px;
+}
+.stop_text:hover{
     color: rgb(206, 5, 5);
     text-decoration: underline;
     cursor: pointer;
@@ -102,3 +115,132 @@ button:hover{
 .colorDark{background-color: #c7c7c7;}
 .colorGray:hover{background-color: rgb(163, 163, 163);}
 .colorDark:hover{background-color: rgb(163, 163, 163);}
+
+
+@media screen and (max-width: 980px){
+    .body_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        float: right;
+        width: 120%;
+        margin: 40px 0px;
+        transition: all 1s;
+    }
+}
+
+@media screen and (max-width: 630px){
+    body{
+        background-color: #fff;
+    }
+    .body_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        float: right;
+        width: 94%;
+        margin: 0px 0px;
+        transition: all 1s;
+    }
+    /* -------------------- Gerenciamento de Servidores */
+    .button-ativo{
+        display: none;
+        background-color: #0b8c1c;
+        border: none;
+        width: 10vw;
+        height: 4vh;
+        border-radius: 20px;
+        transition: all 0.5s;
+        transform: translate();
+    }
+    .button-parado{
+        display: none;
+        background-color: #c01a1a;
+        border: none;
+        width: 10vw;
+        height: 4vh;
+        border-radius: 20px;
+        transition: all 0.5s;
+        transform: translate();
+    }
+    input{
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        width: 30vw;
+    }
+    .btn-ativo{
+        background-color: #fff;
+    }
+    button:hover{
+        background-color: rgb(152, 152, 152);
+        transition: all 0.9s;
+    }
+    .area-painel{
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        padding: 30px 0px 30px 30px;
+        width: 70%;
+        border-radius: 17px;
+        box-shadow: none;
+    }
+    .painel{
+        display: flex;
+        flex-direction: column;
+    }
+    .cabecalho{
+        display: flex;
+        flex-direction: column;
+        font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        justify-content: center;
+        align-items: center;
+        color: #373737;
+        font-weight: 100;
+        font-size: 14px;
+        border-bottom: 1px solid rgb(67, 67, 67);
+        margin-bottom: 15px;
+    }
+    .count_servers{
+        text-align: center;
+    }
+    .corpo{
+        display: flex;
+        width: 100%;
+    }
+    .painel{display: flex;width: 800px;}
+    .painel table{ /*----Tabela------*/
+        border-spacing: 0px!important;
+        border-collapse: none!important;
+        color: #252b2b;
+        width: 100%;
+    }
+    
+    .td_status{
+        display: none;
+    }
+    .painel td{ /*----Conteúdo------*/
+        padding: 6px 22px;
+        font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .desassociar_text{
+        color: rgb(168, 2, 2);
+        font-size: 13px;
+    }
+    .desassociar_text:hover{
+        color: rgb(206, 5, 5);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+    /*----Icone de Deletar------*/
+    .painel .remove-icon{width: auto;}
+    .painel .icone-delete:hover{cursor: pointer;}
+    
+    /*----Cor de fundo zebrada----*/
+    .colorGray{background-color: #e9e9e9;}
+    .colorDark{background-color: #c7c7c7;}
+    .colorGray:hover{background-color: rgb(163, 163, 163);}
+    .colorDark:hover{background-color: rgb(163, 163, 163);}
+}

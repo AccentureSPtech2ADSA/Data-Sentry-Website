@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 body{
     background-image: url('../assets/bg-termos.png');
 }
@@ -16,8 +17,27 @@ body{
     border-radius: 20px;
     margin-top: 90px;
     margin-bottom: 50px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .termos{
     margin-top: 20px;
+}
+
+@media screen and (max-width: 500px){
+    body{
+        background-image: none;
+    }
+    .container-termos {
+        font-size: 12px;
+        display: flex;
+        justify-content:center;
+        text-align: justify;
+        padding: 40px 5px 80px 5px;
+        width: 80%;
+        background-color: rgb(243, 243, 243);
+        border-radius: 20px;
+        margin-top: 90px;
+        margin-bottom: 50px;
+        font-family:Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
 }
