@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./css/navbarLateral.css" />
     <link rel="stylesheet" href="./css/usuarios.css" />
     <script src="./js/jwt.js"></script>
-    <script src="./js/usuarios.js"></script>
     <script src="./js/sweetalert2.all.min.js"></script>
     <script src="./js/alertas_popup.js"></script>
     <script src="./js/jquery-3.6.1.min.js"></script>
@@ -20,7 +19,7 @@
     <script src="./js/validacaoLogin.js"></script>
     <link rel="stylesheet" href="./css/custom_SweetAlert.css">
   </head>
-  <body onload="validacaoLogin()">
+  <body onload="validacaoLogin() ">
     <!-- Navbar Lateral -->
     <div class="navbar">
       <div class="navbar_container">
@@ -89,7 +88,7 @@
       </div>
       <div id="area_painel" class="area-painel">
         <div id="painel" class="painel">
-          <table>
+          <table id="table-users">
             <thead>
               <tr>
                 <th>Email</th>
@@ -97,12 +96,10 @@
                 <th class="remove-icon"></th>
               </tr>           
             </thead>
-            <tr class="colorBebe">
-              <td>user.lorem@corp.com</td>
-              <td>Marcelo Oliveira Ramos</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorGray">
+            <tbody>
+              
+            </tbody>
+            <!-- <tr class="colorGray">
               <td>user.lorem@corp.com</td>
               <td>Clodoildo Neves dos Santos</td>
               <td><span class="delete">Deletar</span></td>
@@ -176,7 +173,7 @@
               <td>user.lorem@corp.com</td>
               <td>Marcelo Lateral</td>
               <td><span class="delete">Deletar</span></td>
-            </tr>           
+            </tr>            -->
           </table>
         </div>
 
@@ -217,4 +214,8 @@
       </div>
     </div>
   </body>
+
+
+  <script src="./js/usuarios.js"></script>
+
 </html>
