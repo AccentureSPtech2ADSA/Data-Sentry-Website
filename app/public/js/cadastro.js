@@ -201,7 +201,7 @@ function validCadastro() {
       input_email.style.border = "none";
       input_senha.style.border = "none";
       input_confirmar_senha.style.border = "none";
-
+      
 
       const cnpj = input_cnpj.value.trim();
       const cep = input_cep.value.trim();

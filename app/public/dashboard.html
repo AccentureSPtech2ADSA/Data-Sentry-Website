@@ -9,7 +9,7 @@
   <title>Dashboard - Data Sentry</title>
   <link rel="stylesheet" href="./css/navbarLateral.css" />
   <link rel="stylesheet" href="./css/dashboard.css" />
-
+  <script src="./js/dashboard.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="//code.jivosite.com/widget/aFYsG8qL2S" async></script>
   <script src="./js/validacaoLogin.js"></script>
@@ -17,7 +17,20 @@
 
 </head>
 
-<body onload="validacaoLogin()">
+<body onload="esconderLoading()">
+  <!-- Loading -->
+  <div id="div_loading">
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
   <!-- Navbar Lateral -->
   <div class="navbar">
     <div class="navbar_container">
@@ -294,8 +307,6 @@
       </div>
     </div>
   </div>
-
-  <script src="./js/dashboard.js"></script>
   <script src="./js/sweetalert2.all.min.js"></script>
   <script src="./js/alertas_popup.js"></script>
   <script src="./js/dashboards_treshoulds.js"></script>

@@ -26,7 +26,6 @@ const loadUsers = async () => {
 
 }
 
-
 function irparaCadastro() {
   painel.style.display = "none";
   painel_cadastro.style.display = "block";
@@ -51,7 +50,6 @@ function irparaGerenciar() {
   area_painel.style.height = "auto";
 
   loadUsers();
-
 }
 
 function onoff() {
@@ -145,9 +143,10 @@ async function getListAnalists(fkHospital, token) {
 
 function deletarUser(element){
     console.log("Deletar user id = "+ element.id.split('-')[1]);
-
-    
 }
 
-
 document.body.onload = loadUsers
+
+function esconderLoading() {
+  div_loading.style.display = "none";
+}

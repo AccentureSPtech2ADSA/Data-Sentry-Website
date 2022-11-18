@@ -8,6 +8,7 @@
     <title>Usuários - Data Sentry</title>
     <link rel="stylesheet" href="./css/navbarLateral.css" />
     <link rel="stylesheet" href="./css/usuarios.css" />
+    <script src="./js/usuarios.js"></script>
     <script src="./js/jwt.js"></script>
     <script src="./js/sweetalert2.all.min.js"></script>
     <script src="./js/alertas_popup.js"></script>
@@ -19,7 +20,19 @@
     <script src="./js/validacaoLogin.js"></script>
     <link rel="stylesheet" href="./css/custom_SweetAlert.css">
   </head>
-  <body onload="validacaoLogin() ">
+  <body onload="validacaoLogin(), esconderLoading()">
+    <!-- Loading -->
+    <div id="div_loading">
+      <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
     <!-- Navbar Lateral -->
     <div class="navbar">
       <div class="navbar_container">
@@ -97,83 +110,7 @@
               </tr>           
             </thead>
             <tbody>
-              
             </tbody>
-            <!-- <tr class="colorGray">
-              <td>user.lorem@corp.com</td>
-              <td>Clodoildo Neves dos Santos</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorBebe">
-              <td>user.lorem@corp.com</td>
-              <td>Marcela Nogueira da Silva</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorGray">
-              <td>user.lorem@corp.com</td>
-              <td>Roberto Harrys</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorBebe">
-              <td>user.lorem@corp.com</td>
-              <td>Eduardo da Silva</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorGray">
-              <td>user.lorem@corp.com</td>
-              <td>Felipe Rocha Magalhães</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorBebe">
-              <td>user.lorem@corp.com</td>
-              <td>Ricardo Linsin Neves</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorGray">
-              <td>user.lorem@corp.com</td>
-              <td>Clodoaldo Marcelo Silva</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorBebe">
-              <td>user.lorem@corp.com</td>
-              <td>Samantha Oliveira Prantos</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorGray">
-              <td>user.lorem@corp.com</td>
-              <td>Guilherme Deofino Narciso</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorBebe">
-              <td>user.lorem@corp.com</td>
-              <td>Leonardo Tomé</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorGray">
-              <td>user.lorem@corp.com</td>
-              <td>João Ricardo Dias</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorBebe">
-              <td>user.lorem@corp.com</td>
-              <td>Kaike Mamede Viana</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorGray">
-              <td>user.lorem@corp.com</td>
-              <td>Yudi Nagacho Takahashi</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorBebe">
-              <td>user.lorem@corp.com</td>
-              <td>Lidía da Silva Rocha</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>           
-            <tr class="colorGray">
-              <td>user.lorem@corp.com</td>
-              <td>Marcelo Lateral</td>
-              <td><span class="delete">Deletar</span></td>
-            </tr>            -->
           </table>
         </div>
 
@@ -214,8 +151,4 @@
       </div>
     </div>
   </body>
-
-
-  <script src="./js/usuarios.js"></script>
-
 </html>
