@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #f1f1f1;
+}
+
+/* Scroll Bar */
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Caminho do scroll */
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255);
+  border: 1px solid #ccc;
+}
+
+/* Barra de scroll */
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #aaa;
+  border: 1px solid rgb(112, 112, 112);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+body::-webkit-scrollbar-thumb:active{
+  background-color: #575757;
+}
+
+/* Navbar */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10%;
+  background-color: #24252a;
+  position: fixed;
+  width: 80%;
+}
+
+#menu-navbar {
+  display: none;
+}
+
+.logo {
+  margin-right: auto;
+}
+
+#img_logo {
+  height: 50px;
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+}
+
+.nav__links a,
+.cta,
+.overlay__content a {
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.nav__links li {
+  padding: 0px 20px;
+}
+
+.nav__links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+  color: #23AFAE;
+}
+
+.cta {
+  margin-left: 20px;
+  padding: 9px 25px;
+  background-color: #1b8a8a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.cta:hover {
+  background-color: #23AFAE;
+}
+
+.menu-navbar {
+  margin-left: 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1125px) { 
+  .nav__links {
+    display: none;
+  }
+
+  #btn-cadastro {
+    display: block;
+  }
+
+  #menu-navbar {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 700px) { 
+  .nav__links {
+    display: none;
+  }
+
+  #btn-cadastro {
+    display: none;
+  }
+
+  #menu-navbar {
+    display: block;
+  }
+}
+
+/* Menu mobile */
+.menu_mobile {
+  background-color:#2d2f35;
+  width: 0%;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  right: 0;
+  top: 0;
+  transition: all 0.3s ease 0s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#menu_item {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+#item1 {
+  display: none;
+}
+
+#item2 {
+  display: none;
+}
+
+#item3 {
+  display: none;
+}
+
+#item4 {
+  display: none;
+}
+
+#item5 {
+  display: none;
+}
+
+#item6 {
+  display: none;
+}
+
+#menu_item:hover {
+  background-color: #33343a;
+  width: 100%;
+  height: 50px;
+}
+
+/* -------------------------------------------  Footer */
+.footer{width: 100%;}
+.footer .container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #22252A;
+  height: 200px;
+}
+.links-footer{display: flex;}
+.links-footer div{margin-left: 30px;}
+.links-footer span{display: flex; align-items: center; margin-right: 30px;}
+.links-footer ul{list-style: none; margin-top: 0;}
+.links-footer ul li a{text-decoration: none; color: #fff;}
+.links-footer ul li a:hover{color: #1b8a8a;}
+.links-footer h4{color: #23AFAE; line-height: 0;}
+.effect-rotate{transition: all 1s;}
+.effect-rotate:hover{transform: rotate(360deg);cursor: pointer;}
+.direitos-autorais{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: black;
+}
+@media screen and (max-width: 740px){
+  .footer{width: 100%;}
+  .footer .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #22252A;
+    height: 500px;
+  }
+  .brasao-footer{width: 120px;}
+}
+@media screen and (max-width: 550px){
+  .footer{width: 100%;}
+  .footer .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #22252A;
+    height: 500px;
+  }     
+  .brasao-footer{width: 90px;}
+  .links-footer{display: flex; flex-direction: column;}
+  .links-footer div{margin-left: 30px;}
+  .links-footer span{display: flex; align-items: center; margin-right: 30px;}
+  .links-footer ul{list-style: none; margin-top: 0; line-height: 25px;}
+  .links-footer ul li a{text-decoration: none; color: #fff;}
+  .links-footer ul li a:hover{color: #1b8a8a;}
+  .links-footer h4{color: #23AFAE; line-height: 0;}
+  .effect-rotate{transition: all 1s;}
+  .effect-rotate:hover{transform: rotate(360deg);cursor: pointer;}
+  .redes-sociais{padding: 0px 0px 40px 0px;}
+  .direitos-autorais{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    color: #fff;
+    background-color: black;
+    font-size: 13px;
+  }
+}

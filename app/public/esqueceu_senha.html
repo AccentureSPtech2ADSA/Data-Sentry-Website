@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/redefinicao_senha.css" />
+    <link rel="stylesheet" href="./css/popup.min.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg" />
+    <script src="./js/popup.min.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/alertas_popup.js"></script>
+    <title>Recuperação de Senha</title>
+  </head>
+
+  <body>
+    <a href="index.html"><button class="btn_back">Voltar</button></a>
+    <div class="interface">
+      <div class="area-logo">
+        <img src="./assets/svg/logo-escudo.svg" alt="" width="130px" />
+      </div>
+      <h3>Recuperação de Senha</h3>
+      <div class="area-form">
+        <div class="form">
+          <form action="redefinir_senha">
+            <label class="information">
+              Através do seu email cadastrado no Data Sentry, enviaremos um link
+              para redefinição de senha.<br />
+              Após enviar, verifique sua caixa de spam ou a caixa de entrada.<br /><br /> </label
+            ><br />
+            <label for="">Informe seu email do Data Sentry:</label><br />
+            <div class="campos">
+              <input type="text" id="inp_email" />
+              <div
+                id="btn_info"
+                class="ui button"
+                data-inverted=""
+                data-tooltip="Seu email do Data Sentry"
+                data-position="right center"
+              >
+                i
+              </div>
+            </div>
+          </form>
+        </div>
+        <button class="btn_submit" onclick="validacao()">Enviar</button>
+      </div>
+      <footer>
+        <h5>@Data Sentry - Todos os Direitos reservados - 2022</h5>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<script>
+  function validacao() {
+    var email = document.getElementById("inp_email").value;
+    const regexEmail = /^(\w){3,}@[a-z]{2,}(\.[a-z]+){1,2}$/i;
+    if (regexEmail.test(email)) {
+      alertar(
+        "Email enviado com sucesso !",
+        "Verifique sua caixa de entrada ou Spam",
+        "success",
+        "Ok"
+      );
+      enviarEmail(email);
+    } else if (email == "") {
+      alertar(
+        "",
+        "Preencha o campo para que possamos enviar o email",
+        "warning",
+        "Ok"
+      );
+    } else {
+      alertar("Email inválido", "Informe um email válido", "error", "Ok");
+    }
+  }
+
+  function enviarEmail(emailVar) {
+    fetch("/user/resetPasswordEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: emailVar,
+      }),
+    })
+      .then((v) => v.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.error(err));
+  }
+</script>

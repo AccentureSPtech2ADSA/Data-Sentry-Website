@@ -1,0 +1,638 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body{
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Div modelo pop-up com display none*/
+#div_login {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  width: 100%;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  position: fixed;
+}
+
+/* Hero */
+.hero {
+  background-image: url("../assets/background-hero.jpg");
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .container1 {
+  color: white;
+  width: 78%;
+  height: 60%;
+  display: flex;
+  justify-content: space-between;
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-shadow: 4px 4px 6px black;
+}
+
+.hero .container2 {
+  width: 48%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero .container2 .titulo {
+  font-size: 40px;
+}
+
+.hero .container2 .texto {
+  font-size: 20px;
+  list-style-type: none;
+  margin-top: 50px;
+}
+
+.texto li {
+  margin-top: 15px;
+}
+
+.hero .container3 {
+  width: 40%;
+  height: 100%;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container3 .bloco1 {
+  font-size: 28px;
+}
+
+.container3 .btn_experimentar {
+  background-color: #1b8a8a;
+  border: 0;
+  padding: 15px 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 60px;
+  color: #0a3131;
+  width: auto;
+  font-weight: bolder;
+  transition: all 0.3s ease 0s;
+}
+
+.btn_experimentar:hover {
+  background-color: #23AFAE;
+}
+
+.btn_menu {
+  padding: 25px 10px;
+  width: 100%;
+}
+
+/* Bloco de conteúdo superior */
+ .bloco-sup {
+  margin: 50px 10%;
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+ }
+
+ .bloco-sup .bloco-esq {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+ }
+
+ .bloco-esq img {
+  width: 300px;
+ }
+
+ .bloco-sup .bloco-dir {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ }
+
+ /* Bloco de conteúdo inferior */
+ /* Desktop */
+ .bloco-inf {
+  margin: 0 10%;
+  padding-top: 70px;
+ }
+
+ .bloco-inf img {
+  width: 50px;
+ }
+
+ .bloco-inf .card-titulo {
+  font-size: 18px;
+  color: #1b8a8a;
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+ }
+
+ .conjunto1 .card p{
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ }
+
+ .conjunto2 .card p{
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ }
+
+ .bloco-inf h2 {
+  color: #1b8a8a;
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 32px;
+  font-weight: 0;
+ }
+
+ .conjunto1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+ }
+
+ .conjunto2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+ }
+
+ .bloco-inf .card {
+  width: 250px;
+  height: 90%;
+  box-shadow: 2px 2px 10px #adadad;
+  border-radius: 5px;
+  text-align: center;
+  background-color: white;
+  height: 300px;
+  margin: 30px;
+  padding: 0 15px;
+ }
+
+/* Mobile */
+.bloco-infMobile {
+  margin: 50px 10%;
+  margin-top: 70px;
+  display: none;
+ }
+
+ .bloco-infMobile img {
+  width: 50px;
+ }
+
+ .bloco-infMobile .card-tituloMobile {
+  font-size: 18px;
+  color: #1b8a8a;
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+ }
+
+ .bloco-infMobile h2 {
+  color: #1b8a8a;
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+ }
+
+ .conjunto1Mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+ }
+
+ .conjunto2Mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+ }
+
+ .conjunto3Mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+ }
+
+ .bloco-infMobile .cardMobile {
+  width: 250px;
+  height: 300px;
+  box-shadow: 2px 2px 10px #adadad;
+  border-radius: 5px;
+  text-align: center;
+  background-color: white;
+  margin: 30px;
+  padding: 0 15px;
+ }
+
+/* Tela de login */
+.conteudo_login {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#validacao {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+#span_validacao {
+  color: red;
+  margin-top: 5px;
+  margin-bottom: -10px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#span_gif {
+  width: 28px;
+  display: none;
+  margin-top: 14px;
+  margin-bottom: -14px;
+}
+
+.box {
+  background-color: #232428;
+  height: 400px;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 20px 0 20px 0;
+}
+
+.texto_inputs {
+  margin: 0;
+  font-family: Roboto, "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+}
+
+#login_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#texto_bemvindo {
+  margin: 0;
+  color: #646569;
+  font-size: 12px;
+  font-family: Roboto, "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+}
+
+#texto_login {
+  font-family: Roboto, "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 20px;
+  color: white;
+  margin-top: 0;
+}
+
+.input_texto {
+  background-color: #232428;
+  border: 1px solid #646569;
+  margin-top: 4px;
+  border-radius: 4px;
+  height: 25px;
+  width: calc(100% - 10px);
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 5px 0 5px 10px;
+    color: white;
+}
+
+#logo {
+  width: 50%;
+  margin-left: -18px;
+}
+
+.box_container {
+width: 75%;
+height: auto;
+color: #37474f;
+font-family: Roboto, "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.LembrarUsuario_EsqueceuSenha {
+ margin-top: 15px;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+}
+
+#esqueceu_senha {
+ text-decoration: none;
+}
+
+.senha {
+ margin-top: 15px;
+}
+
+#span_lembrarUsuario {
+ color: white;
+ font-size: 12px;
+}
+
+#span_esqueceuSenha {
+ font-size: 12px;
+ cursor: pointer;
+}
+
+#span_esqueceuSenha a{
+color: #23AFAE;
+}
+
+#btn_entrar {
+ width: 100%;
+ background-color: #1b8a8a;
+ color: white;
+ font-weight: 200;
+ font-size: 16px;
+ font-family: Roboto, "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ border: 0;
+ border-radius: 5px;
+ height: 40px;
+ margin-top: 15px;
+ font-weight: bold;
+ cursor: pointer;
+ transition: all 0.4s ease-in-out;
+}
+
+#btn_entrar:hover {
+  background-color: #ffffff;
+  color: #202020;
+}
+
+.div_cadastrar {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ margin-top: 20px;
+ color: black;
+ font-size: 12px;
+ font-weight: 500;
+ margin-bottom: 20px;
+}
+
+#nao_possui_conta {
+ margin: 0;
+font-weight: 400;
+font-size: 13px;
+margin-top: -6px;
+color: white;
+}
+
+#a_cadastrar {
+ color: #23AFAE;
+ margin-left: 10px;
+ cursor: pointer;
+ text-decoration: none;
+ margin-top: -6px;
+}
+
+.box .container3 {
+width: 75%;
+height: 20%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+#btn_fechar_login {
+  background-color: #23AFAE;
+  color: rgb(0, 0, 0);
+  padding: 7px 10px 7px 10px;
+  border-radius: 20px;
+  align-self: flex-end;
+  margin-right: -8px;
+  margin-top: -430px;
+  cursor: pointer;
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* -------------------------------------------  Cards */
+.title-group-cards{
+  display:flex; 
+  width:75%; 
+  align-items:flex-start; 
+  color: #1b8a8a; 
+  font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+  font-size: 20px; 
+  font-weight: 0;
+}
+
+#foco_texto {
+  margin-top: 0;
+  padding-top: 90px;
+}
+
+.group-cards{
+  width: 100%;
+  margin-bottom: 50px;
+  color: #22252A;
+}
+.group-cards h4{color: #23AFAE; font-weight: 0; font-size: 25px;}
+.group-cards .container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.group-cards .card{
+  display: flex;
+  width: 75%;
+  padding: 13px 0px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 10px #adadad;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+  border-radius: 5px;
+}
+.card-meio{
+  display: flex;
+  flex-direction:row-reverse;
+  width: 75%;
+  padding: 13px 0px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 10px #adadad;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+  border-radius: 5px;
+}
+.content-card{padding: 0px 30px 0px 30px;}
+.img-card{padding: 0px 30px 0px 30px;}
+.img-illustration{width: 200px;}
+
+/*---MOBILE cards-retangle--*/
+@media screen and (max-width: 915px) { 
+  .title-group-cards{display:flex; width:80vw; align-items:flex-start; color: #23AFAE;}
+  .group-cards{
+    display: flex;
+    justify-content: center; 
+    width: 100vw;
+  }
+  .group-cards{color: #22252A;}
+  .group-cards h4{color: #23AFAE; font-weight: 800; font-size: 20px;}
+  .group-cards .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .group-cards .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80vw;
+    padding: 12px 0px 12px 0px;
+    background-color: #fff;
+    box-shadow: 2px 2px 10px #adadad;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 13px;
+  }
+  .card-meio{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    width: 80vw;
+    padding: 12px 0px 12px 0px;
+    background-color: #fff;
+    box-shadow: 2px 2px 10px #adadad;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 13px;
+  }
+  .img-illustration{width: 30vw;}
+
+   .bloco-inf {
+    display: none;
+   }
+
+   .bloco-infMobile {
+    display: block;
+   }
+
+   /* Logo central com texto */
+   .bloco-sup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   }
+
+   .bloco-sup .bloco-dir {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 40px;
+   }
+
+   /* Hero */
+   
+
+@media screen and (max-width: 600px) { 
+  /* Cards no meio */
+   .conjunto1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+   .conjunto2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+   }
+
+   .bloco-inf {
+    display: block;
+   }
+
+   .bloco-infMobile {
+    display: none;
+   }
+}
+
+@media screen and (max-width: 1100px) {
+  .hero {
+    background-image: url("../assets/background-hero.jpg");
+    height: auto;
+    width: 100%;
+  }
+  
+  .hero .container1 {
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+  }
+  
+  .hero .container2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero .container2 .titulo {
+    font-size: 24px;
+  }
+  
+  .hero .container2 .texto {
+    font-size: 18px;
+    list-style-type: none;
+    margin-left: -40px;
+    margin-top: 20px;
+  }
+
+  .hero .container3 {
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container3 .bloco1 {
+    font-size: 22px;
+  }
+
+  .container3 .btn_experimentar {
+    width: 300px;
+  }
+}
+}
