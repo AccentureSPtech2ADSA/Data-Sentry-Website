@@ -1,3 +1,11 @@
+
+function esconderLoading() {
+  div_loading.style.display = "none";
+}
+function mostrarLoading(){
+  div_loading.style.display = "flex";
+}
+
 function removerBordas(id) {
   console.log(id);
   document.getElementById(id).style.border = "none"
@@ -186,6 +194,8 @@ function validCadastro() {
       chk_termos.style.outline = "1px solid red";
       chk_termos.style.outlineOffset = "-1px";
     } else {
+  mostrarLoading();
+
       // !!~~ Limpando Mascaras antes de enviar os dados para o Banco 
       limparMascara()
 
@@ -218,20 +228,36 @@ function validCadastro() {
 
       fazerRequisicaoInserirHospitalUser(cnpj, cep, num_endereco, unidade, nome_fantasia, razao_social, complemento, nome_fantasia, email, senha, num_contato)
       .then(res=>{
+        esconderLoading();
         console.log(res);
         if(res.status == 200 || res.status == 201){
           // programar logica do session storage aqui dentro, colocar o jwt e os dados do usuario
           alertar(
-            '',
-            'Cadastro efetuado com sucesso !',
+            'Cadastro efetuado!',
+            res.longMessage || res.msg,
             'success',
             'Ok'
           );
+          setTimeout(() => {
+            window.location.href = '/'
+          }, 2000);
           
+        }else{
+          alertar(
+            'Ops...',
+            res.msg,
+            'warning',
+            'Ok'
+          );
         }
       })
       .catch(err=>{
-        alert(err)
+        alertar(
+          'Ops...',
+          err,
+          'error',
+          'Ok'
+        );
       })
       return;
     }
