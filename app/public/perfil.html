@@ -98,7 +98,7 @@
       </div>
     </div>
   </div>
-  <div id="texto_patente" class="titulo_perfil">Perfil de Administrador</div>
+  <div id="texto_patente" class="titulo_perfil"></div>
   <div class="body_container">
     <!-- Bloco de foto de perfil/editar foto -->
     <div class="div_fotoUser">
@@ -175,7 +175,14 @@
 
     <div class="bloco_unico">
       <div class="ipt_titulo">Senha</div>
+      <div id="div_senha">
       <input id="id_input9" type="password" placeholder="" disabled="true" />
+      <div id="id_trocarsenha">
+        <svg id="id_svg_senha" viewBox="0 0 24 24" fill="white" onclick="trocarSenha()">
+          <path d="M9.243 19H21v2H3v-4.243l9.9-9.9 4.242 4.244L9.242 19zm5.07-13.556l2.122-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"/>
+        </svg>
+      </div>
+      </div>
     </div>
 
     <div class="bloco_inferior">
@@ -183,8 +190,16 @@
         <input class="btn_salvar" type="button" value="Editar" id="onoff" onclick="onoff();enabledisable()">
       </div>
 
-      <div>
-        <span class="desativar_conta" onclick="popup_login()">Desativar Conta</span>
+      <div id="div_desativar_conta">
+        <span class="desativar_conta" onclick="popup_login()">
+          <svg id="trash_bin" width="18px" height="18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            <line x1="10" y1="11" x2="10" y2="17"></line>
+            <line x1="14" y1="11" x2="14" y2="17"></line>
+          </svg>
+          Desativar Conta
+        </span>
       </div>
     </div>
     <!-- pop-up tela de login -->
