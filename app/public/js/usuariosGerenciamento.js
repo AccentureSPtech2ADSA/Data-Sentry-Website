@@ -1,4 +1,8 @@
 
+function esconderLoading(){
+  document.querySelector(`#div_loading`).style.display = "none";
+}
+
 const loadUsers = async () => {
     const token = sessionStorage.getItem("Token");
     const user = parseJwt(token);
@@ -11,7 +15,11 @@ const loadUsers = async () => {
     if(res.status == 200){
         let analistas = res.data;
         tableBody.innerHTML = "";
-        tableBody.parentElement?.querySelector("p").innerHTML = '';
+
+        let p = tableBody.parentElement.querySelector("p");
+        if(p){
+          p.innerHTML = ''
+        }
 
 
         analistas.forEach((item, index) => {
@@ -181,8 +189,9 @@ async function getListAnalists(fkHospital, token) {
 
 function deletarUser(element){
     const id = element.id.split('-')[1];
-
     fazerRequisicaoInserirUser(id);
 }
-document.body.onload = loadUsers
+
+
+document.body.onload = loadUsers;
 

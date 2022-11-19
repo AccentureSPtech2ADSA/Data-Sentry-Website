@@ -13,7 +13,3 @@ function validacaoLoginSemToken() {
         window.open("./index.html", "_self")
     }
 }
-
-function esconderLoading(){
-    div_loading.style.display = "none";
-}
