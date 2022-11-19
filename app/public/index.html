@@ -4,14 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg">
     <title>Data Sentry</title>
+    <script src="./js/popup.min.js"></script>
     <link rel="stylesheet" href="./css/estilo.css" />
     <link rel="stylesheet" href="./css/index.css" />
     <script src="//code.jivosite.com/widget/aFYsG8qL2S" async></script>
+    <link rel="stylesheet" href="./css/popup.min.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg" />
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <script src="./js/alertas_popup.js"></script>
   </head>
 
-  <body>
+  <body onload="esconderLoading()">
+     <!-- Loading -->
+  <div id="div_loading">
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
     <!-- Navbar -->
     <header>
       <a class="logo" href="/"><img id="img_logo" src="./assets/svg/logo-navbar.svg" alt="logo"/></a>
