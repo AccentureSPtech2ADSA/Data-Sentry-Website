@@ -29,15 +29,15 @@
     </div>
   </div>
     <!-- Navbar -->
-    <header>
+    <header >
       <a class="logo" href="/"><img id="img_logo" src="./assets/svg/logo-navbar.svg" alt="logo"/></a>
       <nav>
         <ul class="nav__links">
-          <li><a href="#">Inicio</a></li>
+          <li><a href="#inicio">Inicio</a></li>
           <li><a href="#ancoraFunc">Funcionalidades</a></li>
           <li><a href="#ancoraFoco">Sobre</a></li>
           <li><a href="#ancoraFooter">Contato</a></li>
-          <li><a href="##" onclick="popup_login()">Entrar</a></li>
+          <li><a onclick="popup_login()">Entrar</a></li>
         </ul>
       </nav>
       <a class="cta" id="btn-cadastro" href="cadastro.html">Cadastrar-se</a>
@@ -46,19 +46,19 @@
       <!-- Menu Mobile -->
       <div class="menu_mobile" id="menu_lateral">
         <div class="btn_menu">
-          <a class="menu-navbar" id="menu-navbar" onclick="toggle2()"><img src="./assets/svg/hamburger-menu.svg"></a>
+          <a class="menu-navbar" id="menu-navbar" onclick="toggle2()"><div id="close-button"></div></a>
           </div>
-        <div id="menu_item"><p id="item1">Inicio</p></div>
-        <div id="menu_item"><p id="item2">Funcionalidades</p></div>
-        <div id="menu_item"><p id="item3">Sobre</p></div>
-        <div id="menu_item"><p id="item4">Contato</p></div>
-        <div id="menu_item" onclick="popup_login()"><p id="item5">Entrar</p></div>
-        <div id="menu_item" onclick="window.location='./cadastro.html' "><p id="item6">Cadastro</p></div>
+        <div class="menu_item"><p id="item1"><a href='#inicio'>Inicio</a></p></div>
+        <div class="menu_item"><p id="item2"><a href='#ancoraFunc'>Funcionalidades</a></p></div>
+        <div class="menu_item"><p id="item3"><a href='#ancoraFoco'>Sobre</a></p></div>
+        <div class="menu_item"><p id="item4"><a href='#ancoraFooter'>Contato</a></p></div>
+        <div class="menu_item" onclick="popup_login()"><p id="item5">Entrar</p></div>
+        <div class="menu_item" onclick="window.location='./cadastro.html' "><p id="item6">Cadastro</p></div>
       </div>
     </header>
 
     <!-- Hero -->
-    <div class="hero">
+    <div class="hero" id="inicio">
       <div class="container1">
         <div class="container2">
           <div class="titulo">Seu Data Center tem essas caracteristicas?</div>
