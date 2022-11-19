@@ -52,7 +52,8 @@ async function login(req, res) {
     };
     const userHospitalResult = await userHospitalModel.login(parametros);
     console.log(userHospitalResult.data);
-    if (userHospitalResult.data[0].length == 0) {
+
+    if (userHospitalResult.data && userHospitalResult.data[0] && userHospitalResult.data[0].length == 0) {
       res
         .json({
           data: null,
@@ -83,6 +84,15 @@ async function sendEmailToResetPassword(req, res) {
     const req = await userHospitalModel.isEmailsExitsInDatabase(email);
     console.log("req user model enviar email isEmailExists", req);
 
+    if(!req.data || !req.data[0] || !req.data[0].name){
+      res
+      .json({
+        data: null,
+        msg: "Email não existe na nossa base de dados",
+        status: 404,
+      })
+      .status(404);
+    }
     const name = req.data[0].name;
     const token = sign(req.data[0]);
     if (req.status == 200) {
@@ -167,8 +177,9 @@ async function changePassword(req, res) {
 }
 async function deleteUser(req, res) {
   const id = req.body.id;
+  const fk = req.body.fk || 0;
 
-  if (Object.values(req.body).length !== 1 || id == undefined) {
+  if (Object.values(req.body).length > 1 || id == undefined) {
     const msg =
       "Campos invalidos, valide no arquivo deleteUser quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
     res
@@ -180,12 +191,13 @@ async function deleteUser(req, res) {
       .status(404);
   } else {
     const deleteUserResult = await userHospitalModel.deleteUser({
-      id,
+      id: id,
+      fkHospital: fk
     });
     console.dir(deleteUserResult);
     if (deleteUserResult.status == 200 || deleteUserResult == 201) {
-      deleteUserResult.longMessage = `Usuário excluído com sucesso!`;
-      deleteUserResult.shortMessage = `Usuário desativado com sucesso.`;
+      deleteUserResult.longMessage = `Usuário excluído com sucesso da base de dados!`;
+      deleteUserResult.shortMessage = `Usuário excluído.`;
       res.json(deleteUserResult);
     } else {
       res.status(deleteUserResult.status);
