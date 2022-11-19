@@ -62,14 +62,15 @@ async function getListAnalists({fkHospital}){
   return await database.execute(query);
 }
 
-
-async function deleteUser({id=""}){
+// se fkHospital == 0 nao apagar hospital
+async function deleteUser({id=0, fkHospital = 0}){
   let query = `
-  DELETE FROM UserHospital WHERE _idUserHospital = ${id};
+  exec sp_deleteUser ${id}, ${fkHospital}
   `;
   if (database.isAmbienteProducao) {
-    query = `DELETE FROM UserHospital WHERE _idUserHospital = ${id};`;
+    query = `exec sp_deleteUser ${id}, ${fkHospital}`;
   }
+  
   // query mysql
   return await database.execute(query);
 }

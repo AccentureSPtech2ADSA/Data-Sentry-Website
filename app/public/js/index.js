@@ -12,9 +12,15 @@ function fechar_popup_login() {
   input_senha_login.innerHTML = "";
   span_validacao.innerHTML = "";
 }
-
+function esconderLoading() {
+  div_loading.style.display = "none";
+}
+function mostrarLoading(){
+  div_loading.style.display = "flex";
+}
 // Validação tela de login
 function validLogin() {
+  mostrarLoading()
   emailVar = input_email_login.value;
   senhaVar = input_senha_login.value;
   /* verifica se há algum input vazio */
@@ -60,18 +66,28 @@ function validLogin() {
       /* Confirma o login e recarrega a página */
       fazerRequisicaoLogin(emailVar.trim(), senhaVar.trim())
       .then((v) => {
+        esconderLoading();
         console.log(v)
         if(v.status == 200){
-          alert('deu certo. Ir para tela de perfil ou dashboard');
           sessionStorage.setItem('Token', v.token)
           window.location.href = '/perfil.html';
         }else{
-          alert('deu errado')
+          alertar(
+            v.msg,
+            "Cadastre-se ja sua conta no Datasentry!",
+            "warning",
+            "Ok"
+          );
         }
       })
       .catch(err=>{
-        console.error(err);
-        alert("deu errado")
+        esconderLoading();
+        alertar(
+          "Ops...",
+          err,
+          "error",
+          "Ok"
+        );
       });
       return;
     }

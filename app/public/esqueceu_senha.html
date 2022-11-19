@@ -57,12 +57,6 @@
     var email = document.getElementById("inp_email").value;
     const regexEmail = /^(\w){3,}@[a-z]{2,}(\.[a-z]+){1,2}$/i;
     if (regexEmail.test(email)) {
-      alertar(
-        "Email enviado com sucesso !",
-        "Verifique sua caixa de entrada ou Spam",
-        "success",
-        "Ok"
-      );
       enviarEmail(email);
     } else if (email == "") {
       alertar(
@@ -87,7 +81,22 @@
       }),
     })
       .then((v) => v.json())
-      .then((json) => console.log(json))
-      .catch((err) => console.error(err));
+      .then((json) => {
+        if (json.status == 200) {
+          alertar(
+            "Email enviado com sucesso !",
+            "Verifique sua caixa de entrada ou Spam",
+            "success",
+            "Ok"
+          );
+        } else if (json.status == 404) {
+          alertar("", json.msg, "warning", "Ok");
+        } else {
+          alertar("Houve algum problema ao enviar", json.msg, "error", "Ok");
+        }
+      })
+      .catch((err) =>
+        alertar("Houve algum problema ao enviar", error, "error", "Ok")
+      );
   }
 </script>

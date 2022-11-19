@@ -3,11 +3,11 @@ const loadUsers = async () => {
     const token = sessionStorage.getItem("Token");
     const user = parseJwt(token);
     const res = await getListAnalists(user.data.fkHospital, token);
-  
+
+    const tableBody = document.querySelector("table#table-users tbody");
     if(res.status == 200){
         let analistas = res.data;
 
-        const tableBody = document.querySelector("table#table-users tbody");
 
         tableBody.innerHTML = "";
 
@@ -22,8 +22,45 @@ const loadUsers = async () => {
             `
         });
 
+    }else{
+      tableBody.innerHTML = "Este perfil não tem analistas";
     }
 
+    esconderLoading();
+}
+
+
+function fazerRequisicaoRemoverUser(id){
+  const data = window.sessionStorage.getItem('Token');
+  let req = fetch("/user/deleteUser", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", //necessario utilizar essas linha e a de baixo, sempre que tiver o "authJwt" na rota.
+      Authorization: `Bearer ${data}`,
+    },
+    body: JSON.stringify({
+      id: id,
+    }),
+  });
+  let res = req.then(val=>val.json());
+  res.then(json=>{
+    console.log(json);
+    if(json.status == 200){
+      alertar("Feito", json.longMessage, "success", "Ok");
+    }else{
+      alertar(
+        "Ops...",
+        "Houve algum erro ao deletar usuario",
+        "error",
+        "Ok"
+      );
+    }
+  });
+  return res;
+}
+
+function esconderLoading() {
+  div_loading.style.display = "none";
 }
 
 function irparaCadastro() {
@@ -142,11 +179,9 @@ async function getListAnalists(fkHospital, token) {
 }
 
 function deletarUser(element){
-    console.log("Deletar user id = "+ element.id.split('-')[1]);
+    const id = element.id.split('-')[1];
+
+    fazerRequisicaoInserirUser(id);
 }
 
 document.body.onload = loadUsers
-
-function esconderLoading() {
-  div_loading.style.display = "none";
-}
