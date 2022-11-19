@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg" />
-    <title>Perfil - Data Sentry</title>
-    <link rel="stylesheet" href="./css/navbarLateral.css" />
-    <link rel="stylesheet" href="./css/perfil.css" />
-    <script src="./js/jwt.js"></script>
-    <script src="./js/dashboard.js"></script>
-    <script src="./js/jquery-3.6.1.min.js"></script>
-    <script src="./js/jquery.mask.min.js"></script>
-    <script src="./js/jquery.mask.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./js/perfil.js"></script>
-    <script src="./js/validacaoLogin.js"></script>
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="./assets/svg/logo-escudo.svg" />
+  <title>Perfil - Data Sentry</title>
+  <link rel="stylesheet" href="./css/navbarLateral.css" />
+  <link rel="stylesheet" href="./css/perfil.css" />
+  <script src="./js/jwt.js"></script>
+  <script src="./js/dashboard.js"></script>
+  <script src="./js/jquery-3.6.1.min.js"></script>
+  <script src="./js/jquery.mask.min.js"></script>
+  <script src="./js/jquery.mask.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./js/perfil.js"></script>
+  <script src="./js/validacaoLogin.js"></script>
+</head>
 
   <body
     onload="validacaoLogin(), DescriptografiaJWT(), valoresInputs(), validarPatente(), esconderLoading()"
@@ -99,20 +100,20 @@
         </div>
       </div>
     </div>
-    <div id="texto_patente" class="titulo_perfil">Perfil de Administrador</div>
-    <div class="body_container">
-      <!-- Bloco de foto de perfil/editar foto -->
-      <div class="div_fotoUser">
-        <div class="user">
-          <div class="editar_foto">
-            <div class="tooltip">
-              <svg id="svg_editar_foto" viewBox="0 0 24 24" fill="white">
-                <path
-                  d="M4.42 20.579a1 1 0 0 1-.737-.326a.988.988 0 0 1-.263-.764l.245-2.694L14.983 5.481l3.537 3.536L7.205 20.33l-2.694.245a.95.95 0 0 1-.091.004ZM19.226 8.31L15.69 4.774l2.121-2.121a1 1 0 0 1 1.415 0l2.121 2.121a1 1 0 0 1 0 1.415l-2.12 2.12l-.001.001Z"
-                ></path>
-              </svg>
-              <span id="tooltip_perfil" class="tooltiptext">Alterar</span>
-            </div>
+  </div>
+  <div id="texto_patente" class="titulo_perfil"></div>
+  <div class="body_container">
+    <!-- Bloco de foto de perfil/editar foto -->
+    <div class="div_fotoUser">
+      <div class="user">
+        <div class="editar_foto">
+          <div class="tooltip">
+            <svg id="svg_editar_foto" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M4.42 20.579a1 1 0 0 1-.737-.326a.988.988 0 0 1-.263-.764l.245-2.694L14.983 5.481l3.537 3.536L7.205 20.33l-2.694.245a.95.95 0 0 1-.091.004ZM19.226 8.31L15.69 4.774l2.121-2.121a1 1 0 0 1 1.415 0l2.121 2.121a1 1 0 0 1 0 1.415l-2.12 2.12l-.001.001Z">
+              </path>
+            </svg>
+            <span id="tooltip_perfil" class="tooltiptext">Alterar</span>
           </div>
         </div>
       </div>
@@ -161,72 +162,71 @@
           <input id="id_input8" type="text" placeholder="" disabled="true" />
         </div>
       </div>
+    </div>
 
-      <div class="bloco_duplo">
-        <div class="div_primeiro_nome">
-          <div class="ipt_titulo">Número de Contato</div>
-          <input id="id_input10" type="text" placeholder="" disabled="true" />
-        </div>
-
-        <div class="div_sobrenome">
-          <div class="ipt_titulo">CNPJ</div>
-          <input id="id_input11" type="text" placeholder="" disabled="true" />
-        </div>
+    <div class="bloco_duplo">
+      <div class="div_primeiro_nome">
+        <div class="ipt_titulo">Número de Contato</div>
+        <input id="id_input10" type="text" placeholder="" disabled="true" />
       </div>
 
-      <div class="bloco_unico">
-        <div class="ipt_titulo">Senha</div>
-        <input id="id_input9" type="password" placeholder="" disabled="true" />
+      <div class="div_sobrenome">
+        <div class="ipt_titulo">CNPJ</div>
+        <input id="id_input11" type="text" placeholder="" disabled="true" />
+      </div>
+    </div>
+
+    <div class="bloco_unico">
+      <div class="ipt_titulo">Senha</div>
+      <div id="div_senha">
+      <input id="id_input9" type="password" placeholder="" disabled="true" />
+      <div id="id_trocarsenha">
+        <svg id="id_svg_senha" viewBox="0 0 24 24" fill="white" onclick="trocarSenha()">
+          <path d="M9.243 19H21v2H3v-4.243l9.9-9.9 4.242 4.244L9.242 19zm5.07-13.556l2.122-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"/>
+        </svg>
+      </div>
+      </div>
+    </div>
+
+    <div class="bloco_inferior">
+      <div>
+        <input class="btn_salvar" type="button" value="Editar" id="onoff" onclick="onoff();enabledisable()">
       </div>
 
-      <div class="bloco_inferior">
-        <div>
-          <input
-            class="btn_salvar"
-            type="button"
-            value="Editar"
-            id="onoff"
-            onclick="onoff();enabledisable()"
-          />
-        </div>
-
-        <div>
-          <span class="desativar_conta" onclick="popup_login()"
-            >Desativar Conta</span
-          >
-        </div>
+      <div id="div_desativar_conta">
+        <span class="desativar_conta" onclick="popup_login()">
+          <svg id="trash_bin" width="18px" height="18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            <line x1="10" y1="11" x2="10" y2="17"></line>
+            <line x1="14" y1="11" x2="14" y2="17"></line>
+          </svg>
+          Desativar Conta
+        </span>
       </div>
-      <!-- pop-up tela de login -->
-      <div id="div_delete">
-        <div class="conteudo_delete">
-          <div class="box">
-            <div id="btn_fechar_login" onclick="fechar_popup_login()">X</div>
-            <div class="box_container">
-              <div id="delete_center">
-                <p id="texto_excluir">EXCLUIR USUÁRIO ADMINSTRADOR</p>
-                <p id="texto_desativar">Desativar conta?</p>
-              </div>
-              <div class="senha">
-                <p class="texto_informativo">
-                  Deletar este usuário adminstrador, acarretará na exclusão do:
-                </p>
-                <br />
-                <p class="texto_informativo">- Perfil do hospital</p>
-                <p class="texto_informativo">- Perfil do todos os analistas</p>
-                <p class="texto_informativo">- todos os servidores</p>
-                <br />
-                <p class="texto_informativo">
-                  Você deseja excluir este usuário?
-                </p>
-              </div>
-              <div class="btn_delete_user">
-                <button id="btn_cancelar" onclick="fechar_popup_login()">
-                  Não
-                </button>
-                <button id="btn_confirmar" onclick="deleteUser()">
-                  Excluir
-                </button>
-              </div>
+    </div>
+    <!-- pop-up tela de login -->
+    <div id="div_delete">
+      <div class="conteudo_delete">
+        <div class="box">
+          <div id="btn_fechar_login" onclick="fechar_popup_login()">X</div>
+          <div class="box_container">
+            <div id="delete_center">
+              <p id="texto_excluir">EXCLUIR USUÁRIO ADMINSTRADOR</p>
+              <p id="texto_desativar">Desativar conta?</p>
+            </div>
+            <div class="senha">
+              <p class="texto_informativo">Deletar este usuário adminstrador, acarretará na exclusão do:</p>
+              <br>
+              <p class="texto_informativo">- Perfil do hospital</p>
+              <p class="texto_informativo">- Perfil do todos os analistas</p>
+              <p class="texto_informativo">- todos os servidores</p>
+              <br>
+              <p class="texto_informativo">Você deseja excluir este usuário?</p>
+            </div>
+            <div class="btn_delete_user">
+              <button id="btn_cancelar" onclick="fechar_popup_login()">Não, cancelar</button>
+              <button id="btn_confirmar" onclick="deleteUser()">Sim, excluir</button>
             </div>
           </div>
         </div>

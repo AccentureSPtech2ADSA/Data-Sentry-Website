@@ -34,7 +34,9 @@ const loadUsers = async () => {
         });
 
     }else{
-      tableBody.parentElement.innerHTML += "<p id='err'>Este perfil não tem analistas</p>";
+      if(!tableBody.parentElement.querySelector(`p`)){
+        tableBody.parentElement.innerHTML += "<p id='err'>Este perfil não tem analistas</p>";
+      }
     }
 
     esconderLoading();

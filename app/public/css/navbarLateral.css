@@ -78,6 +78,7 @@ body::-webkit-scrollbar {
 
 .navbar svg {
   width: 24px;
+  transition: all 0.2s;
 }
 
 svg:hover {
