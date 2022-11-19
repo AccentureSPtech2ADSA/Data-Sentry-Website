@@ -1,15 +1,26 @@
 
+function esconderLoading(){
+  document.querySelector(`#div_loading`).style.display = "none";
+}
+
 const loadUsers = async () => {
     const token = sessionStorage.getItem("Token");
     const user = parseJwt(token);
     const res = await getListAnalists(user.data.fkHospital, token);
 
+    console.log(res);
     const tableBody = document.querySelector("table#table-users tbody");
+    tableBody.innerHTML = ``;
+    
     if(res.status == 200){
         let analistas = res.data;
-
-
         tableBody.innerHTML = "";
+
+        let p = tableBody.parentElement.querySelector("p");
+        if(p){
+          p.innerHTML = ''
+        }
+
 
         analistas.forEach((item, index) => {
             tableBody.innerHTML += 
@@ -23,7 +34,7 @@ const loadUsers = async () => {
         });
 
     }else{
-      tableBody.innerHTML = "Este perfil não tem analistas";
+      tableBody.parentElement.innerHTML += "<p id='err'>Este perfil não tem analistas</p>";
     }
 
     esconderLoading();
@@ -59,9 +70,7 @@ function fazerRequisicaoRemoverUser(id){
   return res;
 }
 
-function esconderLoading() {
-  div_loading.style.display = "none";
-}
+
 
 function irparaCadastro() {
   painel.style.display = "none";
@@ -180,8 +189,9 @@ async function getListAnalists(fkHospital, token) {
 
 function deletarUser(element){
     const id = element.id.split('-')[1];
-
     fazerRequisicaoInserirUser(id);
 }
 
-document.body.onload = loadUsers
+
+document.body.onload = loadUsers;
+
