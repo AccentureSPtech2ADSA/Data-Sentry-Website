@@ -154,8 +154,8 @@ function deleteUser() {
   });
   let res = req.then(val => val.json());
   res.then(json => console.log(json));
-  div_confirmar_delete.style.display = "block";
   div_delete.style.display = "none";
+  div_confirmar_delete.style.display = "block";
   // Abre pop up de confirmação de delete usario.
   setTimeout(function () {
     window.location = "./index.html", "_self";
@@ -197,6 +197,6 @@ function fechar_popup_login() {
 }
 
 //Abre pop up de confirmação de deletar usuario
-function popup_confirmar_exclusao() {
-  div_confirmar_delete.style.display = "block";
-}
+//function popup_confirmar_exclusao() {
+//  div_confirmar_delete.style.display = "block";
+//}

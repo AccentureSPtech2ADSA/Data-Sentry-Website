@@ -206,10 +206,6 @@
               <br>
               <p class="texto_informativo">Você deseja excluir este usuário?</p>
             </div>
-            <div id="validacao">
-              <span id="span_validacao"></span>
-              <img id="span_gif" src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif" />
-            </div>
             <div class="btn_delete_user">
               <button id="btn_cancelar" onclick="fechar_popup_login()">Não, cancelar</button>
               <button id="btn_confirmar" onclick="deleteUser()">Sim, excluir</button>
@@ -220,45 +216,24 @@
     </div>
     <!-- pop-up tela de confirmação de usuário -->
     <div id="div_confirmar_delete">
-      <div class="conteudo_delete">
-        <div class="box">
-          <div id="btn_fechar_login" onclick="fechar_popup_login()">X</div>
-          <div class="conteudo_confirmar_delete">
-            <div class="box_confirmar">
-              <div class="box_container">
-                <div id="delete_center">
-                  <p id="texto_desativar">Usuário excluído com sucesso</p>
-                </div>
-                <div class="senha">
-                  <p class="texto_informativo">Sentimos pela sua ida! Esperamos ter você de volta conosco em breve!</p>
-                  <br>
-                  <div id="delete_center">
-                    <p id="texto_excluir">EXCLUIR USUÁRIO ADMINSTRADOR</p>
-                    <p id="texto_desativar">Desativar conta?</p>
-                  </div>
-                  <div class="senha">
-                    <p class="texto_informativo">Deletar este usuário adminstrador, acarretará na exclusão do:</p>
-                    <br>
-                    <p class="texto_informativo">- Perfil do hospital</p>
-                    <p class="texto_informativo">- Perfil do todos os analistas</p>
-                    <p class="texto_informativo">- todos os servidores</p>
-                    <br>
-                    <p class="texto_informativo">Você deseja excluir este usuário?</p>
-                  </div>
-                  <div id="validacao">
-                    <span id="span_validacao"></span>
-                    <img id="span_gif" src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif" />
-                  </div>
-                  <div class="btn_delete_user">
-                    <button id="btn_cancelar" onclick="fechar_popup_login()">Não, cancelar</button>
-                    <button id="btn_confirmar" onclick="deleteUser()">Sim, excluir</button>
-                    <p id="texto_desativar">ATÉ LOGO!</p>
-                  </div>
-                </div>
+      <div class="conteudo_confirmar_delete">
+        <div class="box_confirmar">
+          <div class="box_container">
+            <div id="delete_center">
+              <p id="texto_desativar">Usuário excluído com sucesso</p>
+            </div>
+            <div class="senha">
+              <p class="texto_informativo">Sentimos pela sua ida! Esperamos ter você de volta conosco em breve!</p>
+              <br>
+              <div id="delete_center">
+                <p id="texto_desativar">ATÉ LOGO!</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
