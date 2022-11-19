@@ -4,12 +4,15 @@ const loadUsers = async () => {
     const user = parseJwt(token);
     const res = await getListAnalists(user.data.fkHospital, token);
 
+    console.log(res);
     const tableBody = document.querySelector("table#table-users tbody");
+    tableBody.innerHTML = ``;
+    
     if(res.status == 200){
         let analistas = res.data;
-
-
         tableBody.innerHTML = "";
+        tableBody.parentElement?.querySelector("p").innerHTML = '';
+
 
         analistas.forEach((item, index) => {
             tableBody.innerHTML += 
@@ -23,7 +26,7 @@ const loadUsers = async () => {
         });
 
     }else{
-      tableBody.innerHTML = "Este perfil não tem analistas";
+      tableBody.parentElement.innerHTML += "<p id='err'>Este perfil não tem analistas</p>";
     }
 
     esconderLoading();
@@ -59,9 +62,7 @@ function fazerRequisicaoRemoverUser(id){
   return res;
 }
 
-function esconderLoading() {
-  div_loading.style.display = "none";
-}
+
 
 function irparaCadastro() {
   painel.style.display = "none";
@@ -183,5 +184,5 @@ function deletarUser(element){
 
     fazerRequisicaoInserirUser(id);
 }
-
 document.body.onload = loadUsers
+
