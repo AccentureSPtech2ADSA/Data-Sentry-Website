@@ -179,7 +179,9 @@ async function deleteUser(req, res) {
   const id = req.body.id;
   const fk = req.body.fk || 0;
 
-  if (Object.values(req.body).length > 1 || id == undefined) {
+  console.log(req.body);
+
+  if (Object.values(req.body).length < 1 || id == undefined || Object.values(req.body).length > 2) {
     const msg =
       "Campos invalidos, valide no arquivo deleteUser quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
     res

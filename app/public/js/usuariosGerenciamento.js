@@ -12,7 +12,7 @@ const loadUsers = async () => {
     const tableBody = document.querySelector("table#table-users tbody");
     tableBody.innerHTML = ``;
     
-    if(res.status == 200){
+    if(res.status == 200 && res.data.length > 0){
         let analistas = res.data;
         tableBody.innerHTML = "";
 
@@ -58,6 +58,7 @@ function fazerRequisicaoRemoverUser(id){
     console.log(json);
     if(json.status == 200){
       alertar("Feito", json.longMessage, "success", "Ok");
+      window.location.reload()
     }else{
       alertar(
         "Ops...",
@@ -188,8 +189,15 @@ async function getListAnalists(fkHospital, token) {
 }
 
 function deletarUser(element){
-    const id = element.id.split('-')[1];
-    fazerRequisicaoInserirUser(id);
+  alertar("Atenção", "Deseja mesmo deletar este analista?", "warning", "Sim")
+  .then(res=>{
+    if(res.isConfirmed){
+      console.log(`deletar`)
+      const id = element.id.split('-')[1];
+      fazerRequisicaoRemoverUser(id);
+    }
+  })
+
 }
 
 
