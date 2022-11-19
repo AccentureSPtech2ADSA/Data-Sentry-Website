@@ -276,6 +276,8 @@ justify-content: center;
   background-color: #232428;
   height: 400px;
   width: 35%;
+  min-width: 450px;
+  max-width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: center;

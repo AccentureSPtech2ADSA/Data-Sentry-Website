@@ -329,6 +329,7 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
 .editar_foto:hover {
@@ -364,6 +365,39 @@ body {
     background-color: rgb(233, 233, 233);
     cursor: default;
     color: #525252;
+    position: relative;
+}
+
+#div_senha {
+    display: flex;
+    flex-direction: row;
+}
+
+#id_input9 {
+    width: -80px;
+}
+
+#id_trocarsenha {
+    width: 32px;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -32px;
+    background-color: transparent;
+}
+
+#id_svg_senha {
+    fill: #505050;
+    width: 22px;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#id_svg_senha:hover {
+    fill: #000000;
 }
 
 .bloco_unico {
@@ -380,6 +414,7 @@ body {
     background-color: rgb(233, 233, 233);
     cursor: default;
     color: #525252;
+    position: relative;
 }
 
 .div_primeiro_nome {
@@ -396,7 +431,7 @@ body {
 
 .ipt_titulo {
     font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #808080;
+    color: #3f3f3f;
     font-size: 16px;
     padding-bottom: 5px;
     font-weight: 500;
@@ -404,7 +439,7 @@ body {
 }
 
 .bloco_inferior {
-    width: 60%;
+    width: 59%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -423,21 +458,32 @@ body {
     cursor: pointer;
     background-color: #15CDD3;
     width: 100%;
+    transition: all 0.2s;
 }
 
 .btn_salvar:hover {
-    box-shadow: 8px 8px 18px rgb(189, 189, 189);
+    box-shadow: 3px 3px 14px rgb(150, 150, 150);
 }
 
 .desativar_conta {
-    color: red;
+    color: #202020;
     font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     cursor: pointer;
     margin-right: 28px;
+    transition: all 0.2s;
 }
 
 .desativar_conta:hover {
-    font-weight: 500;
+    color: rgb(0, 0, 0);
+    text-shadow: 0px 0px 1px #202020;
+}
+
+#trash_bin {
+    margin-bottom: -2px;
+}
+
+#trash_bin:hover {
+    fill: none;
 }
 
 #tooltip_perfil {

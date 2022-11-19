@@ -176,6 +176,12 @@ header {
   cursor: pointer;
 }
 
+@media screen and (max-width: 9999px) { 
+  #menu-navbar1 {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1125px) { 
   .nav__links {
     display: none;
@@ -185,7 +191,7 @@ header {
     display: block;
   }
 
-  #menu-navbar {
+  #menu-navbar1 {
     display: block;
   }
 }
