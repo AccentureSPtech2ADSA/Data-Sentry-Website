@@ -11,9 +11,8 @@ function enabledisable() {
 }
 
 function onoff() {
-  currentvalue = document.getElementById('onoff').value;
+  currentvalue = document.getElementById("onoff").value;
   if (currentvalue == "Salvar") {
-
     //Perfil salvo
     document.getElementById("onoff").value = "Editar";
 
@@ -67,11 +66,9 @@ function onoff() {
     document.getElementById("id_input10").style.color = "#525252";
     document.getElementById("id_input11").style.color = "#525252";
 
-
-    document.getElementById("onoff").style.backgroundColor = "#15CDD3"
-    document.getElementById("onoff").style.color = "white"
+    document.getElementById("onoff").style.backgroundColor = "#15CDD3";
+    document.getElementById("onoff").style.color = "white";
   } else {
-
     // perfil no modo edição
     document.getElementById("onoff").value = "Salvar";
     document.getElementById("id_input2").style.border = "1px solid grey"
@@ -124,8 +121,8 @@ function onoff() {
     document.getElementById("id_input10").style.color = "black";
     document.getElementById("id_input11").style.color = "black";
 
-    document.getElementById("onoff").style.color = "white"
-    document.getElementById("onoff").style.backgroundColor = "#1A6969"
+    document.getElementById("onoff").style.color = "white";
+    document.getElementById("onoff").style.backgroundColor = "#1A6969";
   }
 }
 
@@ -136,7 +133,7 @@ function logout() {
 
 let dadosjwt;
 function DescriptografiaJWT() {
-  const data = window.sessionStorage.getItem('Token');
+  const data = window.sessionStorage.getItem("Token");
   dadosjwt = parseJwt(data).data;
 }
 
@@ -162,10 +159,12 @@ function validarPatente() {
 }
 
 function deleteUser() {
-  const data = window.sessionStorage.getItem('Token');
+  const data = window.sessionStorage.getItem("Token");
   const dados = parseJwt(data).data;
   var id = dados.id;
-  console.log(data)
+  let fk = dados.fkHospital;
+
+  console.log(data);
   let req = fetch("/user/deleteUser", {
     method: "POST",
     headers: {
@@ -174,17 +173,21 @@ function deleteUser() {
     },
     body: JSON.stringify({
       id: id,
+      fk: fk,
     }),
   });
-  let res = req.then(val => val.json());
-  res.then(json => console.log(json));
-  div_delete.style.display = "none";
-  div_confirmar_delete.style.display = "block";
-  // Abre pop up de confirmação de delete usario.
-  setTimeout(function () {
-    window.location = "./index.html", "_self";
-}, 2000);
- // window.open("./index.html", "_self");
+  let res = req.then((val) => val.json());
+  res.then((json) => {
+    console.log(json);
+    if (json.status == 200) {
+      div_delete.style.display = "none";
+      div_confirmar_delete.style.display = "block";
+      // Abre pop up de confirmação de delete usario.
+      setTimeout(function () {
+        (window.location = "./index.html"), "_self";
+      }, 2000);
+    }
+  });
   return res;
 }
 
