@@ -201,7 +201,7 @@ table{
 
 @media screen and (max-width: 630px){
     body{
-        background-color: #fff;
+        background-color: #E9E9E9;
     }
     .body_container {
         display: flex;
@@ -209,55 +209,33 @@ table{
         justify-content: center;
         align-items: center;
         float: right;
-        width: 94%;
+        width: 89%;
         margin: 0px 0px;
         transition: all 1s;
     }
     /* -------------------- Gerenciamento de Servidores */
-    .button-ativo{
-        display: none;
-        background-color: #0b8c1c;
-        border: none;
-        width: 10vw;
-        height: 4vh;
-        border-radius: 20px;
-        transition: all 0.5s;
-        transform: translate();
-    }
-    .button-parado{
-        display: none;
-        background-color: #c01a1a;
-        border: none;
-        width: 10vw;
-        height: 4vh;
-        border-radius: 20px;
-        transition: all 0.5s;
-        transform: translate();
-    }
+ 
     input{
         border: none;
         background-color: rgba(0, 0, 0, 0);
         width: 30vw;
     }
-    .btn-ativo{
-        background-color: #fff;
-    }
-    button:hover{
-        background-color: rgb(152, 152, 152);
-        transition: all 0.9s;
-    }
+
+
     .area-painel{
         display: flex;
         justify-content: center;
         background-color: white;
-        padding: 30px 0px 30px 30px;
         width: 70%;
+        margin: 20px 0px 20px 0px;
         border-radius: 17px;
-        box-shadow: none;
+        border: 8px solid #fff;
+        box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
     }
     .painel{
         display: flex;
         flex-direction: column;
+        width: 120% !important;
     }
     .cabecalho{
         display: flex;
@@ -277,6 +255,7 @@ table{
     .corpo{
         display: flex;
         width: 100%;
+        overflow: auto;
     }
     .painel{display: flex;width: 800px;}
     .painel table{ /*----Tabela------*/
@@ -286,9 +265,7 @@ table{
         width: 100%;
     }
     
-    .td_status{
-        display: none;
-    }
+
     .painel td{ /*----Conteúdo------*/
         padding: 6px 22px;
         font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -312,4 +289,20 @@ table{
     .colorDark{background-color: #c7c7c7;}
     .colorGray:hover{background-color: rgb(163, 163, 163);}
     .colorDark:hover{background-color: rgb(163, 163, 163);}
+    .button-ativo{
+        width: 25px;
+        height: 25px;
+        border-radius: 130px;
+    }
+    .button-parado{
+        width: 25px;
+        height: 25px;
+        border-radius: 130px;
+    }
+    .button-ativo span{
+        display: none;
+    }
+    .button-parado span{
+        display: none;
+    }
 }

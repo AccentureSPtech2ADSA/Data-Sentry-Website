@@ -470,4 +470,7 @@ body {
     .bloco_inferior {
         width: 80%;
     }
+    .titulo_perfil{
+        text-align: center;
+    }
 }

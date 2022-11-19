@@ -27,7 +27,7 @@ function myFunction() {
   }
 
   function preenchimentoNome() {
-nomeClinica.innerHTML = dadosjwt.fantasyName;
+nomeClinica.innerHTML = "Olá "+dadosjwt.fantasyName;
   }
 
   myTimeout = setTimeout(esconderLoading, 1500);
