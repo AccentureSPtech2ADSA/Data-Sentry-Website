@@ -35,3 +35,14 @@ nomeClinica.innerHTML = "Olá "+dadosjwt.fantasyName;
   function esconderLoading() {
     div_loading.style.display = "none";
   }
+
+
+  async function getPercentagePerComponent({
+    component,
+    dataInicio = 'last',
+    dataFim,
+    idServer,
+    token = window.location.sessionStorage('Token')
+  }){
+    
+  }
