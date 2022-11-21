@@ -37,32 +37,3 @@ nomeClinica.innerHTML = "Olá "+dadosjwt.fantasyName;
     div_loading.style.display = "none";
   }
 
-
-  async function getPercentagePerComponent(
-    component,
-    idServer,
-    token = window.sessionStorage.getItem('Token'),
-    dataInicio = 'last',
-    dataFim  ='last',
-  ){
-    let req = await fetch('/dashboard/getPercentagePerComponent', {
-      method: 'POST', 
-      body: JSON.stringify({
-        "component" : component,
-        "idServer" : idServer,
-        "dataInicio" : dataInicio,
-        "dataFim" : dataFim
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      }
-    });
-    
-    let res = await req.json();
-    if(res.status == 200){
-      return res;
-    }
-    throw new Error(res.msg);
-  }
-
