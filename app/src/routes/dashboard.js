@@ -9,5 +9,15 @@ router.post("/getPercentagePerComponent", authJwt, (req, res) => {
   console.log("estou na rota de insert da dashboard");
   dashboardController.getPercentagePerComponent(req, res);
 });
+
+router.post("/getDataChart", authJwt, (req, res) => {
+  console.log("estou na rota de insert da dashboard");
+  dashboardController.getDataChart(req, res);
+});
+
+router.post("/getPercentageUsePerCompenent", authJwt, (req, res) => {
+  console.log("estou na rota de insert da dashboard");
+  dashboardController.getPercentageUsePerCompenent(req, res);
+});
   
 module.exports = router;
