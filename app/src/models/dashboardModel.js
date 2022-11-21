@@ -15,6 +15,28 @@ async function getPercentagePerComponent({
   return await database.execute(query);
 }
 
+async function getDataChart({
+  component,
+  idServer,
+}) {
+const query = `exec sp_getLastsPercentagesPerComponent
+ '${component}', '${idServer}';`;
+return await database.execute(query);
+}
+
+async function getPercentageUsePerCompenent({
+  component,
+  idServer,
+  dataInicio = 'last',
+  dataFim = 'last',
+}) {
+let time = await getLastTimeInserted();
+console.log(time);
+const query = `exec sp_getPercentagePerComponent
+'${component}', '${idServer}', '${dataInicio == 'last' ? time[0] : dataInicio }', '${dataFim == 'last' ? time[1] : dataFim}';`;
+return await database.execute(query);
+}
+
 
 async function getLastTimeInserted(){
   const query = `select top 1 createdAt Horario from LogComponentPerProcess lcpp order by createdAt desc;`;
@@ -33,4 +55,6 @@ async function getLastTimeInserted(){
 }
 module.exports = {
   getPercentagePerComponent,
+  getDataChart,
+  getPercentageUsePerCompenent,
 };
