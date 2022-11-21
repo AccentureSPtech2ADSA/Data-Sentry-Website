@@ -1,4 +1,5 @@
 /* Botão de seleção de servidor */
+const token = window.sessionStorage.getItem('Token');
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
@@ -37,12 +38,31 @@ nomeClinica.innerHTML = "Olá "+dadosjwt.fantasyName;
   }
 
 
-  async function getPercentagePerComponent({
+  async function getPercentagePerComponent(
     component,
-    dataInicio = 'last',
-    dataFim,
     idServer,
-    token = window.location.sessionStorage('Token')
-  }){
+    token = window.sessionStorage.getItem('Token'),
+    dataInicio = 'last',
+    dataFim  ='last',
+  ){
+    let req = await fetch('/dashboard/getPercentagePerComponent', {
+      method: 'POST', 
+      body: JSON.stringify({
+        "component" : component,
+        "idServer" : idServer,
+        "dataInicio" : dataInicio,
+        "dataFim" : dataFim
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    });
     
+    let res = await req.json();
+    if(res.status == 200){
+      return res;
+    }
+    throw new Error(res.msg);
   }
+
