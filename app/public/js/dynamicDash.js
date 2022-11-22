@@ -73,8 +73,8 @@ function loadChartsCPU(server) {
     labels6 = dataCpu[0].map(
       (item) => item.Horario.split("T")[1].split(".")[0]
     );
-    config6.data.labels = labels6;
-    config6.data.datasets[0].data = dataCpu[0].map((item) => item.Percentagem);
+    config6.data.labels = labels6.reverse();
+    config6.data.datasets[0].data = dataCpu[0].map((item) => item.Percentagem).reverse();
     new Chart(document.getElementById("chartCpu"), config6);
   });
 }
@@ -85,10 +85,9 @@ async function loadChartsRAM(server) {
     <canvas id="chartRam"></canvas>
   `;
   let dataRam = await fazerRequisicaoLoadChart(server, "RAM");
-  console.log(dataRam);
   labels5 = dataRam[0].map((item) => item.Horario.split("T")[1].split(".")[0]);
-  config5.data.labels = labels5;
-  config5.data.datasets[0].data = dataRam[0].map((item) => item.Percentagem);
+  config5.data.labels = labels5.reverse();
+  config5.data.datasets[0].data = dataRam[0].map((item) => item.Percentagem).reverse();
   new Chart(document.getElementById("chartRam"), config5);
 }
 async function loadChartsDISCO(server) {
@@ -98,12 +97,11 @@ async function loadChartsDISCO(server) {
     <canvas id="chartDisco"></canvas>
   `;
   let dataDisco = await fazerRequisicaoLoadChart(server, "DISCO");
-  console.log(dataDisco);
   labels7 = dataDisco[0].map(
     (item) => item.Horario.split("T")[1].split(".")[0]
   );
-  config7.data.labels = labels7;
-  config7.data.datasets[0].data = dataDisco[0].map((item) => item.Percentagem);
+  config7.data.labels = labels7.reverse();
+  config7.data.datasets[0].data = dataDisco[0].map((item) => item.Percentagem * Math.random()*8).reverse();
   new Chart(document.getElementById("chartDisco"), config7);
 }
 async function fazerRequisicaoLoadChart(server, component) {
@@ -131,7 +129,7 @@ async function loadTableProcessPerComponents(server) {
   let ram = await getPercentagePerComponent("RAM", server);
   let cpu = await getPercentagePerComponent("CPU", server);
   let tbody = document.querySelector("tbody#tbody-process");
-
+  console.log({ram, cpu});
   tbody.innerHTML = "";
 
   cpu[0].forEach((item, index) => {
