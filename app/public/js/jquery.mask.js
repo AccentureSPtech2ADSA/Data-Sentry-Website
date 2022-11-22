@@ -570,7 +570,7 @@ $(document).ready(function () {
     // Pagina Cadastro de analistas
     $("#inp_telefone").mask("(00) 00000-0000")
 
-    
+    // Pagina para inserir usuários no sistema
     $("#dateAtt").mask("0000-00-00")
 })
 

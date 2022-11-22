@@ -489,7 +489,10 @@ body {
 }
 
 /* Media queries para responsividade */
-@media screen and (max-width: 580px) { 
+@media screen and (max-width: 580px) {
+    .body_container{
+        overflow-x: hidden;
+    }
     .bloco_duplo {
         flex-direction: column;
         width: 176%;
