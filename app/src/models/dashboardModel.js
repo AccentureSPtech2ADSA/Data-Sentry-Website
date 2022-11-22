@@ -2,14 +2,14 @@
 
 var database = require("../database/config");
 
-async function getPercentagePerComponent({
+async function getPercentagePerComponent({ // Table
     component,
     dataInicio = 'last',
     dataFim = 'last',
     idServer,
 }) {
   let time = await getLastTimeInserted();
-  console.log(time);
+  console.log({time});
   const query = `exec sp_getPercentagePerProcess
    '${component}', '${idServer}', '${dataInicio == 'last' ? time[0] : dataInicio }', '${dataFim == 'last' ? time[1] : dataFim}';`;
   return await database.execute(query);
@@ -24,7 +24,7 @@ const query = `exec sp_getLastsPercentagesPerComponent
 return await database.execute(query);
 }
 
-async function getPercentageUsePerCompenent({
+async function getPercentageUsePerCompenent({ // KPI
   component,
   idServer,
   dataInicio = 'last',
@@ -39,19 +39,27 @@ return await database.execute(query);
 
 
 async function getLastTimeInserted(){
-  const query = `select top 1 createdAt Horario from LogComponentPerProcess lcpp order by createdAt desc;`;
+  const query = `select top 4 createdAt Horario from LogComponentPerProcess lcpp group by createdAt order by createdAt desc;`;
  let data = await database.execute(query);
   
  /**
   * @type Date
   */
-  let horario = data.data[0][0].Horario;
-  let initDate = horario.toISOString().split('T');
-  initDate = initDate[0] + " "+initDate[1].split('.')[0];
-  horario.setMinutes(horario.getMinutes() + 2);
-  let endDate = horario.toISOString().split('T'); // 2 minuto
-  endDate = endDate[0] + " "+endDate[1].split('.')[0];
-  return [initDate, endDate];
+  let horarioStart = data.data[0][2].Horario;
+  let horarioMiddle = data.data[0][1].Horario;
+  let horarioEnd = data.data[0][0].Horario;
+  
+  let initDate = horarioStart.toISOString().split('T');
+  initDate = initDate[0] + " " +initDate[1].split('.')[0];
+
+  let endDate = horarioEnd.toISOString().split('T'); 
+  endDate = endDate[0] + " " +endDate[1].split('.')[0];
+
+
+  let middleDate = horarioMiddle.toISOString().split('T'); 
+  middleDate = middleDate[0] + " " +middleDate[1].split('.')[0];
+
+  return [initDate, middleDate, endDate ];
 }
 module.exports = {
   getPercentagePerComponent,
