@@ -4,9 +4,6 @@ function esconderLoading() {
     div_loading.style.display = "none";
 }
 
-
-
-
 const loadServers = async () => {
   const token = sessionStorage.getItem("Token");
   const user = parseJwt(token);

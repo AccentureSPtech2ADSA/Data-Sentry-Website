@@ -102,12 +102,8 @@
       <div class="bloco1">
         <p id="nomeClinica">Clínica Cirúrgica Santa Efigênia</p>
         <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">#Servidor 01 ↓</button>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="#">#Servidor 02</a>
-            <a href="#">#Servidor 03</a>
-            <a href="#">#Servidor 04</a>
-          </div>
+          <button onclick="myFunction()" class="dropbtn">#Servidores ↓</button>
+          <div id="myDropdown" class="dropdown-content"></div>
         </div>
       </div>
 
@@ -137,13 +133,6 @@
           </div>
           <span class="kpi_texto_inferior_disco">37%</span>
           <span class="kpi_texto_inferior2_disco">754/2048 GB</span>
-        </div>
-      </div>
-
-      <div class="bloco3">
-        <p>Visão geral de uso dos hardware</p>
-        <div class="graph_geral">
-          <canvas id="myChart4"></canvas>
         </div>
       </div>
 
@@ -472,13 +461,11 @@
 
   // const myChart4 = new Chart(document.getElementById("myChart4"), config4);
 
-  const chartRam = new Chart(document.getElementById("chartRam"), config5);
+  // const chartRam = new Chart(document.getElementById("chartRam"), config5);
 
-  const chartCpu = new Chart(document.getElementById("chartCpu"), config6);
+  // const chartCpu = new Chart(document.getElementById("chartCpu"), config6);
 
-  const chartDisco = new Chart(document.getElementById("chartDisco"), config7);
-
-  const myChart4 = new Chart(document.getElementById("myChart4"), config4);
+  // const chartDisco = new Chart(document.getElementById("chartDisco"), config7);
 
   window.onload = DescriptografiaJWT();
 
