@@ -66,7 +66,7 @@ async function loadDashByServer(server) {
 function loadChartsCPU(server) {
   fazerRequisicaoLoadChart(server, "CPU").then((dataCpu) => {
     let html = document.getElementById("chartCpu").parentElement;
-    html.removeChild(html.querySelector('canvas'));
+    html.removeChild(html.querySelector("canvas"));
     html.innerHTML = `
       <canvas id="chartCpu"></canvas>
     `;
@@ -74,25 +74,29 @@ function loadChartsCPU(server) {
       (item) => item.Horario.split("T")[1].split(".")[0]
     );
     config6.data.labels = labels6.reverse();
-    config6.data.datasets[0].data = dataCpu[0].map((item) => item.Percentagem).reverse();
+    config6.data.datasets[0].data = dataCpu[0]
+      .map((item) => item.Percentagem)
+      .reverse();
     new Chart(document.getElementById("chartCpu"), config6);
   });
 }
 async function loadChartsRAM(server) {
   let html = document.getElementById("chartRam").parentElement;
-  html.removeChild(html.querySelector('canvas'));
+  html.removeChild(html.querySelector("canvas"));
   html.innerHTML = `
     <canvas id="chartRam"></canvas>
   `;
   let dataRam = await fazerRequisicaoLoadChart(server, "RAM");
   labels5 = dataRam[0].map((item) => item.Horario.split("T")[1].split(".")[0]);
   config5.data.labels = labels5.reverse();
-  config5.data.datasets[0].data = dataRam[0].map((item) => item.Percentagem).reverse();
+  config5.data.datasets[0].data = dataRam[0]
+    .map((item) => item.Percentagem)
+    .reverse();
   new Chart(document.getElementById("chartRam"), config5);
 }
 async function loadChartsDISCO(server) {
   let html = document.getElementById("chartDisco").parentElement;
-  html.removeChild(html.querySelector('canvas'));
+  html.removeChild(html.querySelector("canvas"));
   html.innerHTML = `
     <canvas id="chartDisco"></canvas>
   `;
@@ -101,7 +105,9 @@ async function loadChartsDISCO(server) {
     (item) => item.Horario.split("T")[1].split(".")[0]
   );
   config7.data.labels = labels7.reverse();
-  config7.data.datasets[0].data = dataDisco[0].map((item) => item.Percentagem * Math.random()*8).reverse();
+  config7.data.datasets[0].data = dataDisco[0]
+    .map((item) => item.Percentagem * Math.random() * 8)
+    .reverse();
   new Chart(document.getElementById("chartDisco"), config7);
 }
 async function fazerRequisicaoLoadChart(server, component) {
@@ -129,7 +135,7 @@ async function loadTableProcessPerComponents(server) {
   let ram = await getPercentagePerComponent("RAM", server);
   let cpu = await getPercentagePerComponent("CPU", server);
   let tbody = document.querySelector("tbody#tbody-process");
-  console.log({ram, cpu});
+  console.log({ ram, cpu });
   tbody.innerHTML = "";
 
   cpu[0].forEach((item, index) => {
@@ -181,6 +187,34 @@ async function getPercentagePerComponent(
   let res = await req.json();
   if (res.status == 200) {
     return res.data;
+  }
+  throw new Error(res.msg);
+}
+
+async function getUsePerComponentForKpi(
+  component,
+  idServer,
+  token = window.sessionStorage.getItem("Token"),
+  dataInicio = "last",
+  dataFim = "last"
+) {
+  let req = await fetch("/dashboard/getPercentageUsePerCompenent", {
+    method: "POST",
+    body: JSON.stringify({
+      component: component,
+      idServer: idServer,
+      dataInicio: dataInicio,
+      dataFim: dataFim,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  let res = await req.json();
+  if (res.status == 200) {
+    return res;
   }
   throw new Error(res.msg);
 }
