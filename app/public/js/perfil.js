@@ -11,9 +11,8 @@ function enabledisable() {
 }
 
 function onoff() {
-  currentvalue = document.getElementById('onoff').value;
+  currentvalue = document.getElementById("onoff").value;
   if (currentvalue == "Salvar") {
-
     //Perfil salvo
     document.getElementById("onoff").value = "Editar";
 
@@ -67,11 +66,9 @@ function onoff() {
     document.getElementById("id_input10").style.color = "#525252";
     document.getElementById("id_input11").style.color = "#525252";
 
-
-    document.getElementById("onoff").style.backgroundColor = "#15CDD3"
-    document.getElementById("onoff").style.color = "white"
+    document.getElementById("onoff").style.backgroundColor = "#15CDD3";
+    document.getElementById("onoff").style.color = "white";
   } else {
-
     // perfil no modo edição
     document.getElementById("onoff").value = "Salvar";
     document.getElementById("id_input2").style.border = "1px solid grey"
@@ -124,8 +121,8 @@ function onoff() {
     document.getElementById("id_input10").style.color = "black";
     document.getElementById("id_input11").style.color = "black";
 
-    document.getElementById("onoff").style.color = "white"
-    document.getElementById("onoff").style.backgroundColor = "#1A6969"
+    document.getElementById("onoff").style.color = "white";
+    document.getElementById("onoff").style.backgroundColor = "#1A6969";
   }
 }
 
@@ -136,23 +133,38 @@ function logout() {
 
 let dadosjwt;
 function DescriptografiaJWT() {
-  const data = window.sessionStorage.getItem('Token');
+  const data = window.sessionStorage.getItem("Token");
   dadosjwt = parseJwt(data).data;
 }
 
 function validarPatente() {
   if (dadosjwt.patent == "admin") {
     texto_patente.innerHTML = "Perfil de Administrador"
+    nome_analista.style.display = "none"
+    num_contato.style.display = "none"
   } else {
+    nome_analista.style.display = "block"
+    num_contato.style.display = "block"
     texto_patente.innerHTML = "Perfil de Analista"
+    titulo_nome_fantasia.style.display = "none"
+    id_input2.style.display = "none"
+    titulo_razao_social.style.display = "none"
+    id_input1.style.display = "none"
+    titulo_endereco.style.display = "none"
+    id_input4.style.display = "none"
+    id_blocoEnd1.style.display = "none"
+    id_blocoEnd2.style.display = "none"
+    id_blocoEnd3.style.display = "none"
   }
 }
 
 function deleteUser() {
-  const data = window.sessionStorage.getItem('Token');
+  const data = window.sessionStorage.getItem("Token");
   const dados = parseJwt(data).data;
   var id = dados.id;
-  console.log(data)
+  let fk = dados.fkHospital;
+
+  console.log(data);
   let req = fetch("/user/deleteUser", {
     method: "POST",
     headers: {
@@ -161,32 +173,44 @@ function deleteUser() {
     },
     body: JSON.stringify({
       id: id,
+      fk: fk,
     }),
   });
-  let res = req.then(val => val.json());
-  res.then(json => console.log(json));
-  div_delete.style.display = "none";
-  div_confirmar_delete.style.display = "block";
-  // Abre pop up de confirmação de delete usario.
-  setTimeout(function () {
-    window.location = "./index.html", "_self";
-}, 2000);
- // window.open("./index.html", "_self");
+  let res = req.then((val) => val.json());
+  res.then((json) => {
+    console.log(json);
+    if (json.status == 200) {
+      div_delete.style.display = "none";
+      div_confirmar_delete.style.display = "block";
+      // Abre pop up de confirmação de delete usario.
+      setTimeout(function () {
+        (window.location = "./index.html"), "_self";
+      }, 2000);
+    }
+  });
   return res;
 }
 
 function valoresInputs() {
-document.getElementById("id_input1").value = dadosjwt.corporateName;
-document.getElementById("id_input2").value = dadosjwt.fantasyName;
-document.getElementById("id_input3").value = dadosjwt.email;
-document.getElementById("id_input4").value = "Rua Haddock Lobo, 155"; // rua via cep
-document.getElementById("id_input5").value = "São Paulo"; // cidade via cep
-document.getElementById("id_input6").value = "São Paulo"; // estado via cep
-document.getElementById("id_input7").value = dadosjwt.cep;
-document.getElementById("id_input8").value = "Brasil"; // pais via cep
-document.getElementById("id_input9").value = "***************";
-document.getElementById("id_input10").value = dadosjwt.contactPhone;
-document.getElementById("id_input11").value = dadosjwt.cnpj;
+  let viaCepDados = fetch(`https://viacep.com.br/ws/${dadosjwt.cep}/json/`);
+  viaCepDados
+  .then(val=>val.json())
+  .then(json=>{
+    console.log(json);
+  document.getElementById("id_input4").value = json.logradouro;
+  document.getElementById("id_input6").value = json.uf;
+  document.getElementById("id_input8").value = json.bairro;
+  document.getElementById("id_input5").value = json.localidade;
+  })
+  document.getElementById("id_input1").value = dadosjwt.corporateName;
+  document.getElementById("id_input2").value = dadosjwt.fantasyName;
+  document.getElementById("id_input3").value = dadosjwt.email;
+  document.getElementById("id_input7").value = dadosjwt.cep;
+  document.getElementById("id_input9").value = "***************";
+  document.getElementById("id_input10").value = dadosjwt.contactPhone;
+  document.getElementById("id_input11").value = dadosjwt.cnpj;
+  document.getElementById("id_input12").value = dadosjwt.name;
+  document.getElementById("id_input13").value = dadosjwt.contactPhone;
 }
 
 function esconderLoading() {

@@ -1,4 +1,5 @@
 /* Botão de seleção de servidor */
+const token = window.sessionStorage.getItem('Token');
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
@@ -35,3 +36,4 @@ nomeClinica.innerHTML = "Olá "+dadosjwt.fantasyName;
   function esconderLoading() {
     div_loading.style.display = "none";
   }
+

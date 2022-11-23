@@ -7,11 +7,11 @@ var gigaByte = 0;
 var eixoYram = listaDadosGigaByte
 
 for (;gigaByte <= valorMaximoGb; gigaByte++) {
-    listaDadosGigaByte.push(`${gigaByte} GB`)       
+    listaDadosGigaByte.push(`${gigaByte} %`)       
 }
 
 // ---- Labels do eixo (X)
-const labels5 = [
+let labels5 = [
     "00:00",
     "00:15",
     "00:30",
@@ -23,7 +23,7 @@ const labels5 = [
     "02:00",
 ];
 // ---- Dados do eixo (Y)
-const data5 = {
+let data5 = {
     labels: labels5,
     datasets: [{
         type: "line",
@@ -35,7 +35,7 @@ const data5 = {
     }]
 };
 // ---- Configurações do gráfico
-const config5 = {
+let config5 = {
     type: 'line',
     data: data5,
     options: {
@@ -198,7 +198,7 @@ for (;porcentagem <= valorMaximoPorcentagem; porcentagem++) {
 }
 
 // ---- Labels do eixo (X)
-const labels6 = [
+let labels6 = [
     "00:00",
     "00:15",
     "00:30",
@@ -210,7 +210,7 @@ const labels6 = [
     "02:00",
 ];
 // ---- Dados do eixo (Y)
-const data6 = {
+let data6 = {
     labels: labels6,
     datasets: [{
         type: "line",
@@ -222,7 +222,7 @@ const data6 = {
     }]
 };
 // ---- Configurações do gráfico
-const config6 = {
+let config6 = {
     type: 'line',
     data: data6,
     options: {
@@ -378,7 +378,7 @@ const config6 = {
 var eixoYdisco = listaDadosGigaByte
 
 // ---- Labels do eixo (X)
-const labels7 = [
+let labels7 = [
     "00:00",
     "00:15",
     "00:30",
@@ -390,7 +390,7 @@ const labels7 = [
     "02:00",
 ];
 // ---- Dados do eixo (Y)
-const data7 = {
+let data7 = {
     labels: labels7,
     datasets: [{
         type: "line",
@@ -402,7 +402,7 @@ const data7 = {
     }]
 };
 // ---- Configurações do gráfico
-const config7 = {
+let config7 = {
     type: 'line',
     data: data7,
     options: {

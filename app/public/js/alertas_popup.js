@@ -23,10 +23,9 @@ function alertarQ(title = '', text = '', icon = '', confirmButtonText = '', canc
         timerProgressBar: true
     })
 }
-function alertar(title = '', text = '', icon = '', confirmButtonText = ''){
+function alertar(title = '', text = '', icon = 'success', confirmButtonText = ''){
     if(icon == 'warning'){
         iconColor = '#FFBF00'
-
     } else if (icon == 'error'){
         iconColor = '#8B0000'
 
@@ -34,7 +33,7 @@ function alertar(title = '', text = '', icon = '', confirmButtonText = ''){
         iconColor = 'green'
 
     }
-    Swal.fire({
+    return Swal.fire({
         title: title,
         text: text,
         icon: icon,
