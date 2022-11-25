@@ -20,6 +20,10 @@ body {
     position: fixed;
 }
 
+#area_buttons {
+    display: flex;
+}
+
 :root {
     --color-bg: #eaeaea;
     --color-loader: #2fbdc2;
@@ -165,6 +169,10 @@ button:hover{
     justify-content: center;
     align-items: center;
     display: none;
+}
+
+.painel_cadastro input:hover {
+    cursor: text;
 }
 
 .container_cadastro {
