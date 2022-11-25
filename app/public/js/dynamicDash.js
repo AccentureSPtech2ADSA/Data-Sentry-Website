@@ -133,6 +133,7 @@ async function fazerRequisicaoLoadChart(server, component) {
   throw new Error(res.msg);
 }
 
+
 async function loadTableProcessPerComponents(server) {
   mostrarLoading();
   let ram = await getPercentagePerComponent("RAM", server);
