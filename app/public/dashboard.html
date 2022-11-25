@@ -143,7 +143,7 @@
             <button onclick="download_graph_ram()">Exportar como PNG</button>
           </div>
           <canvas id="chartRam"></canvas>
-          <div class="legendas">
+          <div id="legenda1" class="legendas">
             <div class="item_legend">
               <div class="ideal"></div>
               <p style="font-size: 15px">Zona Ideal</p>
@@ -167,7 +167,7 @@
             <button onclick="download_graph_cpu()">Exportar como PNG</button>
           </div>
           <canvas id="chartCpu"></canvas>
-          <div class="legendas">
+          <div id="legenda2" class="legendas">
             <div class="item_legend">
               <div class="ideal"></div>
               <p style="font-size: 15px">Zona Ideal</p>
@@ -191,7 +191,7 @@
             <button onclick="download_graph_disco()">Exportar como PNG</button>
           </div>
           <canvas id="chartDisco"></canvas>
-          <div class="legendas">
+          <div id="legenda3" class="legendas">
             <div class="item_legend">
               <div class="ideal"></div>
               <p style="font-size: 15px">Zona Ideal</p>
@@ -210,14 +210,15 @@
 
       <div class="bloco4">
         <p>Processos ativos no sistema</p>
+        <input type="search" id="inputSearch" oninput="searchProcess()" placeholder="Procure um processo..">
         <div class="lista_processos">
           <div id="painel" class="painel">
-            <table>
+            <table id="tableProcess">
               <thead>
                 <tr>
-                  <th>NOME</th>
-                  <th>CPU</th>
-                  <th>MEMORIA</th>
+                  <th class="filterProcess"><label for="">NOME</label><span id="title_nome" onclick="filterTablePerName(this)">▲</span></th>
+                  <th class="filterProcess"><label for="">CPU</label><span id="title_cpu" onclick="filterTablePerName(this)">▲</span></th>
+                  <th class="filterProcess"><label for="">MEMORIA</label><span id="title_memoria" onclick="filterTablePerName(this)">▲</span></th>
                   <th></th>
                 </tr>
               </thead>
