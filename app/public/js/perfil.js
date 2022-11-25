@@ -8,6 +8,8 @@ function enabledisable() {
   id_input8.disabled = !id_input8.disabled
   id_input10.disabled = !id_input10.disabled
   id_input11.disabled = !id_input11.disabled
+  id_input11.disabled = !id_input12.disabled
+  id_input11.disabled = !id_input13.disabled
 }
 
 function onoff() {
@@ -25,6 +27,8 @@ function onoff() {
     document.getElementById("id_input8").style.border = "none"
     document.getElementById("id_input10").style.border = "none"
     document.getElementById("id_input11").style.border = "none"
+    document.getElementById("id_input12").style.border = "none"
+    document.getElementById("id_input13").style.border = "none"
 
     document.getElementById("id_input1").style.margin = "0"
     document.getElementById("id_input3").style.margin = "0"
@@ -35,6 +39,8 @@ function onoff() {
     document.getElementById("id_input8").style.margin = "0"
     document.getElementById("id_input10").style.margin = "0"
     document.getElementById("id_input11").style.margin = "0"
+    document.getElementById("id_input12").style.margin = "0"
+    document.getElementById("id_input13").style.margin = "0"
 
     document.getElementById("id_input2").style.cursor = "default"
     document.getElementById("id_input3").style.cursor = "default"
@@ -45,6 +51,8 @@ function onoff() {
     document.getElementById("id_input8").style.cursor = "default"
     document.getElementById("id_input10").style.cursor = "default"
     document.getElementById("id_input11").style.cursor = "default"
+    document.getElementById("id_input12").style.cursor = "default"
+    document.getElementById("id_input13").style.cursor = "default"
 
     document.getElementById("id_input2").style.boxShadow = "none";
     document.getElementById("id_input3").style.boxShadow = "none";
@@ -55,6 +63,8 @@ function onoff() {
     document.getElementById("id_input8").style.boxShadow = "none";
     document.getElementById("id_input10").style.boxShadow = "none";
     document.getElementById("id_input11").style.boxShadow = "none";
+    document.getElementById("id_input12").style.boxShadow = "none";
+    document.getElementById("id_input13").style.boxShadow = "none";
 
     document.getElementById("id_input2").style.color = "#525252";
     document.getElementById("id_input3").style.color = "#525252";
@@ -65,6 +75,8 @@ function onoff() {
     document.getElementById("id_input8").style.color = "#525252";
     document.getElementById("id_input10").style.color = "#525252";
     document.getElementById("id_input11").style.color = "#525252";
+    document.getElementById("id_input12").style.color = "#525252";
+    document.getElementById("id_input13").style.color = "#525252";
 
     document.getElementById("onoff").style.backgroundColor = "#15CDD3";
     document.getElementById("onoff").style.color = "white";
@@ -80,6 +92,8 @@ function onoff() {
     document.getElementById("id_input8").style.border = "1px solid grey"
     document.getElementById("id_input10").style.border = "1px solid grey"
     document.getElementById("id_input11").style.border = "1px solid grey"
+    document.getElementById("id_input12").style.border = "1px solid grey"
+    document.getElementById("id_input13").style.border = "1px solid grey"
 
     document.getElementById("id_input1").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input3").style.margin = "-1px 0 -1px 0"
@@ -90,6 +104,8 @@ function onoff() {
     document.getElementById("id_input8").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input10").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input11").style.margin = "-1px 0 -1px 0"
+    document.getElementById("id_input12").style.margin = "-1px 0 -1px 0"
+    document.getElementById("id_input13").style.margin = "-1px 0 -1px 0"
 
     document.getElementById("id_input2").style.cursor = "auto"
     document.getElementById("id_input3").style.cursor = "auto"
@@ -100,6 +116,8 @@ function onoff() {
     document.getElementById("id_input8").style.cursor = "auto"
     document.getElementById("id_input10").style.cursor = "auto"
     document.getElementById("id_input11").style.cursor = "auto"
+    document.getElementById("id_input12").style.cursor = "auto"
+    document.getElementById("id_input13").style.cursor = "auto"
 
     document.getElementById("id_input2").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input3").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
@@ -110,6 +128,8 @@ function onoff() {
     document.getElementById("id_input8").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input10").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input11").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
+    document.getElementById("id_input12").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
+    document.getElementById("id_input13").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
 
     document.getElementById("id_input2").style.color = "black";
     document.getElementById("id_input3").style.color = "black";
@@ -120,6 +140,8 @@ function onoff() {
     document.getElementById("id_input8").style.color = "black";
     document.getElementById("id_input10").style.color = "black";
     document.getElementById("id_input11").style.color = "black";
+    document.getElementById("id_input12").style.color = "black";
+    document.getElementById("id_input13").style.color = "black";
 
     document.getElementById("onoff").style.color = "white";
     document.getElementById("onoff").style.backgroundColor = "#1A6969";

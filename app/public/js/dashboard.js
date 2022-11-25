@@ -22,20 +22,8 @@ window.onclick = function (event) {
   }
 }
 
-function DescriptografiaJWT() {
-  const data = window.sessionStorage.getItem('Token');
-  dadosjwt = parseJwt(data).data;
-}
-
-function preenchimentoNome() {
-  nomeClinica.innerHTML = "Olá " + dadosjwt.fantasyName;
-}
 
 myTimeout = setTimeout(esconderLoading, 1500);
-
-function esconderLoading() {
-  div_loading.style.display = "none";
-}
 
 function searchProcess() {
   var input, filter, table, tr, td, i, txtValue;
@@ -63,3 +51,15 @@ function searchProcess() {
 function filterTablePerName(element){
   
 }
+  function DescriptografiaJWT() {
+    const data = window.sessionStorage.getItem('Token');
+    dadosjwt = parseJwt(data).data;
+  }
+
+  function preenchimentoNome() {
+nomeClinica.innerHTML = "Olá "+dadosjwt.fantasyName;
+  }
+
+  function esconderLoading() {
+    div_loading.style.display = "none";
+  }
