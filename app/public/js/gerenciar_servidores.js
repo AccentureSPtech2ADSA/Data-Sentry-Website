@@ -28,7 +28,7 @@ const loadServers = async () => {
           var date_join = date_unformated_indexed.reverse().join('/');
           
 
-          if (item.isActive == "s"){
+          if (item.isActive == "A"){
             statusServer = "<button class='button-ativo'><span>Ativo</span></button>"
           } else {
             statusServer = "<button class='button-parado'><span>Parado</span></button>"

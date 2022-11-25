@@ -202,6 +202,16 @@ function deletarUser(element){
 
 }
 
-
 document.body.onload = loadUsers;
 
+let json = sessionStorage.getItem("Token")
+let data = parseJwt(json)
+
+if (data.data.patent == "analist") {
+  btn_cadastrar.style.display = "none"
+  btn_gerenciar.innerHTML = "Usuários Analistas"
+  btn_gerenciar.style.width = "80%"
+  area_buttons.style.width = "57%"
+  area_buttons.style.justifyContent = "center";
+  area_buttons.style.padding = "0 30px 0 30px"
+}
