@@ -37,8 +37,11 @@ function moldarDash(serversData) {
         server._serialServer
       }')" >#${server._serialServer} - ${index + 1}</a>`;
     });
+    tela_sem_servidores.style.display = "none"
+    tela_completa_dashboard.style.display = "block"
   } else {
-    alertar("Ops", "Voce nao tem servidores", "warning", "Ok");
+    tela_sem_servidores.style.display = "block"
+    tela_completa_dashboard.style.display = "none"
   }
 
   esconderLoading();

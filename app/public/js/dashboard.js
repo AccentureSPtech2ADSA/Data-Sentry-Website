@@ -31,9 +31,6 @@ function myFunction() {
 nomeClinica.innerHTML = "Olá "+dadosjwt.fantasyName;
   }
 
-  myTimeout = setTimeout(esconderLoading, 1500);
-
   function esconderLoading() {
     div_loading.style.display = "none";
   }
-
