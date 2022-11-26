@@ -51,15 +51,22 @@ async function changePassUser({id=0, newPass=''}){
 }
 
 async function updateAnalist({name, email, telefone, id}){
-  console.log(name);
-  console.log(email);
-  console.log(telefone);
-  console.log(id);
   let query = `
   CALL sp_updateAnalist '${name}', '${email}', '${telefone}', ${id};
   `;
   if (database.isAmbienteProducao) {
     query = `EXEC sp_updateAnalist '${name}', '${email}', '${telefone}', ${id};`;
+  }
+  // query mysql
+  return await database.execute(query);
+}
+
+async function updateAdmin({fantasyName, cep, complement, unit, cnpj, fkHospital, name, email, telefone, idUserHospital}){
+  let query = `
+  CALL sp_updateAdmin '${fantasyName}', '${cep}', '${complement}', '${unit}', '${cnpj}', ${fkHospital}, '${name}', '${email}', '${telefone}', ${idUserHospital};
+  `;
+  if (database.isAmbienteProducao) {
+    query = `EXEC sp_updateAdmin '${fantasyName}', '${cep}', '${complement}', '${unit}', '${cnpj}', ${fkHospital}, '${name}', '${email}', '${telefone}', ${idUserHospital};`;
   }
   // query mysql
   return await database.execute(query);
@@ -96,5 +103,6 @@ module.exports = {
   changePassUser,
   getListAnalists,
   deleteUser,
-  updateAnalist
+  updateAnalist,
+  updateAdmin,
 };
