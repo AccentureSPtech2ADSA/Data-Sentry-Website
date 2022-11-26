@@ -291,3 +291,46 @@ function updateAnalist(name, email, telefone){
   });
   return res;
 }
+
+
+function updateAdmin(fantasyName, cep, complement, unit, cnpj, fkHospital, name, email, telefone, id){
+  fantasyName = document.getElementById("id_input2").value;
+  cep = document.getElementById("id_input7").value;
+  complement = null;
+  unit = null;
+  cnpj = document.getElementById("id_input11").value;
+  name = document.getElementById("id_input12").value;
+  email = document.getElementById("id_input3").value;
+  telefone = document.getElementById("id_input10").value;
+  const data = window.sessionStorage.getItem("Token");
+  const dados = parseJwt(data).data;
+  let id = dados.id;
+  let fkHospital = dados.fkHospital;
+
+  console.log(data);
+  let req = fetch("/user/updateAdmin", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json", //necessario utilizar essas linha e a de baixo, sempre que tiver o "authJwt" na rota.
+      Authorization: `Bearer ${data}`,
+    },
+    body: JSON.stringify({
+      fantasyName: fantasyName,
+      cep: cep,
+      complement: complement,
+      unit: unit,
+      cnpj: cnpj,
+      name: name,
+      email: email,
+      telefone: telefone,
+      id: id,
+      fkHospital: fkHospital
+    }),
+  });
+  let res = req.then((val) => val.json());
+  res.then((json) => {
+    console.log(json);
+    if (json.status == 200) {}
+  });
+  return res;
+}

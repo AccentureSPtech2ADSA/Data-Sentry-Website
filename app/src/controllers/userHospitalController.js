@@ -210,6 +210,52 @@ async function updateAnalist(req, res) {
     }
   }
 }
+async function updateAdmin(req, res) {
+  const fantasyName = req.body.fantasyName;
+  const cep = req.body.cep;
+  const complement = req.body.complement;
+  const unit = req.body.unit;
+  const cnpj = req.body.cnpj;
+  const fkHospital = req.body.fkHospital;
+  const name = req.body.name;
+  const email = req.body.email;
+  const telefone = req.body.telefone;
+  const idUserHospital = req.body.id;
+  if (
+    Object.values(req.body).length !== 10) {
+    const msg =
+      "Campos invalidos, valide no arquivo updateAdmin quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const updateAdmin = await userHospitalModel.updateAdmin({
+      fantasyName,
+      cep,
+      complement,
+      unit,
+      cnpj,
+      fkHospital,
+      name,
+      email,
+      telefone,
+      idUserHospital
+    });
+    console.dir(updateAdmin);
+    if (updateAdmin.status == 200 || updateAdmin.status == 201) {
+      updateAdmin.longMessage = `Analista atualizado com sucesso!`;
+      updateAdmin.shortMessage = `Analista atualizado.`;
+      res.json(updateAdmin);
+    } else {
+      res.status(updateAdmin.status);
+      res.json(updateAdmin);
+    }
+  }
+}
 async function deleteUser(req, res) {
   const id = req.body.id;
   const fk = req.body.fk || 0;
@@ -278,4 +324,5 @@ module.exports = {
   getListAnalists,
   deleteUser,
   updateAnalist,
+  updateAdmin,
 };
