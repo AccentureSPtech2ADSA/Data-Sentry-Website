@@ -50,6 +50,21 @@ async function changePassUser({id=0, newPass=''}){
   return await database.execute(query);
 }
 
+async function updateAnalist({name, email, telefone, id}){
+  console.log(name);
+  console.log(email);
+  console.log(telefone);
+  console.log(id);
+  let query = `
+  CALL sp_updateAnalist '${name}', '${email}', '${telefone}', ${id};
+  `;
+  if (database.isAmbienteProducao) {
+    query = `EXEC sp_updateAnalist '${name}', '${email}', '${telefone}', ${id};`;
+  }
+  // query mysql
+  return await database.execute(query);
+}
+
 async function getListAnalists({fkHospital}){
   let query = `EXEC sp_getListAnalistPerManager ${fkHospital};`;
   if (database.isAmbienteProducao) {
@@ -80,5 +95,6 @@ module.exports = {
   isEmailsExitsInDatabase,
   changePassUser,
   getListAnalists,
-  deleteUser
+  deleteUser,
+  updateAnalist
 };

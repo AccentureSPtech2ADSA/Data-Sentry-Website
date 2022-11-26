@@ -176,6 +176,40 @@ async function changePassword(req, res) {
     }
   }
 }
+async function updateAnalist(req, res) {
+  const name = req.body.name;
+  const email = req.body.email;
+  const telefone = req.body.telefone;
+  const id = req.body.id;
+  if (
+    Object.values(req.body).length !== 4) {
+    const msg =
+      "Campos invalidos, valide no arquivo updateAnalist quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const updAnalistResult = await userHospitalModel.updateAnalist({
+      name,
+      email,
+      telefone,
+      id,
+    });
+    console.dir(updAnalistResult);
+    if (updAnalistResult.status == 200 || updAnalistResult.status == 201) {
+      updAnalistResult.longMessage = `Analista atualizado com sucesso!`;
+      updAnalistResult.shortMessage = `Analista atualizado.`;
+      res.json(updAnalistResult);
+    } else {
+      res.status(updAnalistResult.status);
+      res.json(updAnalistResult);
+    }
+  }
+}
 async function deleteUser(req, res) {
   const id = req.body.id;
   const fk = req.body.fk || 0;
@@ -243,4 +277,5 @@ module.exports = {
   changePassword,
   getListAnalists,
   deleteUser,
+  updateAnalist,
 };
