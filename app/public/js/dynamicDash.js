@@ -63,7 +63,9 @@ async function loadDashByServer(server) {
   loadChartsCPU(server);
   loadChartsRAM(server);
   loadChartsDISCO(server);
-
+  loadKpiDisco(server);
+  loadKpiRam(server);
+  loadKpiCpu(server)
   esconderLoading();
 }
 function loadChartsCPU(server) {
@@ -133,6 +135,27 @@ async function fazerRequisicaoLoadChart(server, component) {
   throw new Error(res.msg);
 }
 
+async function fazerRequisicaoLoadKpi(server, component) {
+  let req = await fetch("/dashboard/getPercentageUsePerCompenent", {
+    method: "POST",
+    body: JSON.stringify({
+      component: component,
+      idServer: server,
+      dataInicio: "last",
+      dataFim: "last",
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  let res = await req.json();
+  if (res.status == 200) {
+    return res.data;
+  }
+  throw new Error(res.msg);
+}
 
 async function loadTableProcessPerComponents(server) {
   mostrarLoading();
@@ -195,32 +218,67 @@ async function getPercentagePerComponent(
   throw new Error(res.msg);
 }
 
-async function getUsePerComponentForKpi(
-  component,
-  idServer,
-  token = window.sessionStorage.getItem("Token"),
-  dataInicio = "last",
-  dataFim = "last"
-) {
-  let req = await fetch("/dashboard/getPercentageUsePerCompenent", {
-    method: "POST",
-    body: JSON.stringify({
-      component: component,
-      idServer: idServer,
-      dataInicio: dataInicio,
-      dataFim: dataFim,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+async function loadKpiDisco(server) {
+  let html = document.getElementById("myChart3").parentElement;
+  html.removeChild(html.querySelector("canvas"));
+  html.innerHTML = `
+    <canvas id="myChart3"></canvas>
+  `;
 
-  let res = await req.json();
-  if (res.status == 200) {
-    return res;
-  }
-  throw new Error(res.msg);
+  let dataHtmlDiscoUsoAtual = document.getElementById("usoAtualDisco");
+  let dataHtmlDiscoUsoMaximo = document.getElementById("usoMaxDisco");
+  let dataHtmlDiscoPorcentagemUso = document.getElementById("usoTotalDisco");
+
+  let dataDisco = await fazerRequisicaoLoadKpi(server, "DISCO");
+  console.log(dataDisco[0][0]);
+  config3.data.datasets[0].data = [+dataDisco[0][0].Uso.replace("GBs",""), +dataDisco[0][0].MaximoUso.replace("GBs","") - +dataDisco[0][0].Uso.replace("GBs","")]
+  new Chart(document.getElementById("myChart3"), config3);
+
+  dataHtmlDiscoUsoAtual.innerHTML = `${dataDisco[0][0].Uso.replace("GBs","")}`;
+  dataHtmlDiscoUsoMaximo.innerHTML = `${dataDisco[0][0].MaximoUso}`;
+  dataHtmlDiscoPorcentagemUso.innerHTML = `${dataDisco[0][0].Percentagem}%`;
 }
+
+async function loadKpiRam(server) {
+  let html = document.getElementById("myChart2").parentElement;
+  html.removeChild(html.querySelector("canvas"));
+  html.innerHTML = `
+    <canvas id="myChart2"></canvas>
+  `;
+
+  let dataHtmlRamUsoAtual = document.getElementById("usoAtualRam");
+  let dataHtmlRamUsoMaximo = document.getElementById("usoMaxRam");
+  let dataHtmlRamPorcentagemUso = document.getElementById("usoTotalRam");
+
+  let dataRam = await fazerRequisicaoLoadKpi(server, "RAM");
+  config2.data.datasets[0].data = [+dataRam[0][0].Uso.replace("GBs",""), +dataRam[0][0].MaximoUso.replace("GBs","") - +dataRam[0][0].Uso.replace("GBs","")]
+  new Chart(document.getElementById("myChart2"), config2);
+
+  dataHtmlRamUsoAtual.innerHTML = `${dataRam[0][0].Uso.replace("GBs","")}`;
+  dataHtmlRamUsoMaximo.innerHTML = `${dataRam[0][0].MaximoUso}`;
+  dataHtmlRamPorcentagemUso.innerHTML = `${dataRam[0][0].Percentagem}%`;
+}
+
+async function loadKpiCpu(server) {
+  let html = document.getElementById("myChart1").parentElement;
+  html.removeChild(html.querySelector("canvas"));
+  html.innerHTML = `
+    <canvas id="myChart1"></canvas>
+  `;
+
+  let dataHtmlCpuUsoAtual = document.getElementById("usoAtualCpu");
+  let dataHtmlCpuUsoMaximo = document.getElementById("usoMaxCpu");
+  let dataHtmlCpuPorcentagemUso = document.getElementById("usoTotalCpu");
+
+  let dataCpu = await fazerRequisicaoLoadKpi(server, "CPU");
+  console.log(dataCpu[0][0]);
+  config1.data.datasets[0].data = [+dataCpu[0][0].Uso.replace("MHz",""), +dataCpu[0][0].MaximoUso.replace("MHz","") - +dataCpu[0][0].Uso.replace("MHz","")]
+  new Chart(document.getElementById("myChart1"), config1);
+
+  dataHtmlCpuUsoAtual.innerHTML = `${dataCpu[0][0].Uso.replace("MHz","")}`;
+  dataHtmlCpuUsoMaximo.innerHTML = `${dataCpu[0][0].MaximoUso}`;
+  dataHtmlCpuPorcentagemUso.innerHTML = `${dataCpu[0][0].Percentagem}%`;
+}
+
 
 document.body.onload = getServers();

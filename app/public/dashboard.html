@@ -130,8 +130,8 @@
           <div class="chart_kpi">
             <canvas id="myChart1"></canvas>
           </div>
-          <span class="kpi_texto_inferior" id="usoTotalCpu">64%</span>
-          <span class="kpi_texto_inferior2" id="usoAtual_Max_Cpu">2.44/3.80 GHz</span>
+          <span class="kpi_texto_inferior" id="usoTotalCpu">70%</span>
+          <span class="kpi_texto_inferior2" id="usoAtual_Max_Cpu"><span id="usoAtualCpu">2.44</span>/<span id="usoMaxCpu">3.80</span></span>
         </div>
 
         <div class="kpi_card">
@@ -140,7 +140,7 @@
             <canvas id="myChart2"></canvas>
           </div>
           <span class="kpi_texto_inferior" id="usoTotalRam">28%</span>
-          <span class="kpi_texto_inferior2" id="usoAtual_Max_Ram">8.96/32 GB</span>
+          <span class="kpi_texto_inferior2" id="usoAtual_Max_Ram"><span id="usoAtualRam">8.96</span>/<span id="usoMaxRam">32</span></span>
         </div>
 
         <div class="kpi_card">
@@ -149,7 +149,7 @@
             <canvas id="myChart3"></canvas>
           </div>
           <span class="kpi_texto_inferior_disco" id="usoTotalDisco">37%</span>
-          <span class="kpi_texto_inferior2_disco" id="usoAtual_Max_Disco">754/2048 GB</span>
+          <span class="kpi_texto_inferior2_disco" id="usoAtual_Max_Disco"><span id="usoAtualDisco">754</span>/<span id="usoMaxDisco">2048</span></span>
         </div>
       </div>
 
@@ -287,7 +287,7 @@
 
 <script>
   /* Setup KPI CPU (chart1)*/
-  const labels1 = ["Utilizado", "Livre"];
+  const labels1 = ["Mhz Utilizado", "Mhz Livre"];
 
   const data1 = {
     labels: labels1,
@@ -295,34 +295,34 @@
       {
         label: "CPU",
         backgroundColor: ["#17EBE6", "#e0e0e0"],
-        data: [64, 100 - 64],
+        data: [],
       },
     ],
   };
 
   /* Setup KPI RAM (chart2)*/
-  const labels2 = ["Utilizado", "Livre"];
+  const labels2 = ["GBs Utilizado", "GBs Livre"];
 
   const data2 = {
-    labels: labels1,
+    labels: labels2,
     datasets: [
       {
         label: "RAM",
         backgroundColor: ["#17EBE6", "#e0e0e0"],
-        data: [28, 100 - 28],
+        data: [],
       },
     ],
   };
 
   /* Setup KPI Disco (chart3)*/
-  const labels3 = ["Utilizado", "Livre"];
+  const labels3 = ["GBs Utilizado", "GBs Livre"];
 
-  const data3 = {
+  let data3 = {
     labels: labels3,
     datasets: [
       {
         backgroundColor: ["#17EBE6", "#e0e0e0"],
-        data: [28, 72],
+        data: [],
       },
     ],
   };
@@ -424,7 +424,7 @@
   };
 
   /* config chart 3 (disco)*/
-  const config3 = {
+  let config3 = {
     type: "doughnut",
     data: data3,
     options: {
@@ -471,11 +471,11 @@
   };
 
   /* Renderizar chart */
-  const myChart1 = new Chart(document.getElementById("myChart1"), config1);
+  // const myChart1 = new Chart(document.getElementById("myChart1"), config1);
 
-  const myChart2 = new Chart(document.getElementById("myChart2"), config2);
+  // const myChart2 = new Chart(document.getElementById("myChart2"), config2);
 
-  const myChart3 = new Chart(document.getElementById("myChart3"), config3);
+  // const myChart3 = new Chart(document.getElementById("myChart3"), config3);
 
   // const myChart4 = new Chart(document.getElementById("myChart4"), config4);
 

@@ -22,6 +22,7 @@ async function insertUsuario(req, res) {
     const parametros = {
       name: req.body.name,
       email: req.body.email,
+      telefone: req.body.telefone,
       password: req.body.password,
       manager: req.body.manager || null,
       hospital: req.body.hospital || null,

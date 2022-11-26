@@ -3,16 +3,16 @@ async function insertUsuario({
   name = "",
   email = "",
   password = "",
-  phone = "",
+  telefone = "",
   manager = null,
   hospital = null,
 }) {
   // query vai ser nosso comando sql -> para inserir -> insert into
 
-  let query = `CALL sp_insereUser("${name}", "${email}", '${password}', '${phone}', ${hospital}, ${manager});`;
+  let query = `CALL sp_insereUser("${name}", "${email}", '${password}', '${telefone}', ${hospital}, ${manager});`;
 
   if (database.isAmbienteProducao) {
-    query = `sp_insereUser '${name}', '${email}', '${password}', '${phone}', ${manager}, ${hospital};`;
+    query = `sp_insereUser '${name}', '${email}', '${password}', '${telefone}', ${manager}, ${hospital};`;
   }
 
   return await database.execute(query);

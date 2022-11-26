@@ -121,7 +121,7 @@ function onoff() {
     fazerRequisicaoInserirUser(
       nome,
       email,
-      telefone,
+      telefone.replaceAll("\)","").replaceAll("\(", "").replaceAll(" ", "").replaceAll("-", ""),
       senha,
       user.data.id,
       user.data.fkHospital
@@ -166,7 +166,7 @@ async function fazerRequisicaoInserirUser(
     body: JSON.stringify({
       name: nome,
       email: email,
-      // telefone : telefone,
+      telefone : telefone,
       password: senha,
       manager: manager,
       hospital: hospital,
