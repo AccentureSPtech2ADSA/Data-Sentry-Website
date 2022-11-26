@@ -261,3 +261,33 @@ function fechar_popup_login() {
 function trocarSenha() {
   window.open("/esqueceu_senha.html", "_self");
 }
+
+function updateAnalist(name, email, telefone){
+  name = document.getElementById("id_input12");
+  email = document.getElementById("id_input3");
+  telefone = document.getElementById("id_input10");
+  const data = window.sessionStorage.getItem("Token");
+  const dados = parseJwt(data).data;
+  let id = dados.id;
+
+  console.log(data);
+  let req = fetch("/user/updateAnalist", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json", //necessario utilizar essas linha e a de baixo, sempre que tiver o "authJwt" na rota.
+      Authorization: `Bearer ${data}`,
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      telefone: telefone,
+      id: id
+    }),
+  });
+  let res = req.then((val) => val.json());
+  res.then((json) => {
+    console.log(json);
+    if (json.status == 200) {}
+  });
+  return res;
+}

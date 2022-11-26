@@ -22,6 +22,10 @@ router.put('/changePassword', authJwt, (req,res)=>{
   console.log('estou na rota de changePassword do userHospital');
   userHospitalController.changePassword(req,res);
 });
+router.put('/updateAnalist', authJwt, (req,res)=>{
+  console.log('estou na rota de updateAnalist do userHospital');
+  userHospitalController.updateAnalist(req,res);
+});
 router.get("/getListAnalists/:fkHospital", authJwt, (req,res)=>{
   console.log(`Estou na rota /getListAnalists/{fkHospital}...`);
   userHospitalController.getListAnalists(req,res);
