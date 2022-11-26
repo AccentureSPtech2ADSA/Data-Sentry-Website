@@ -1,3 +1,12 @@
+let arrayProcessosCPU = []
+let arrayProcessosRAM = []
+let arrayProcessosNOME = []
+
+let serverSerial = 0;
+
+let dataCpuProcess = []
+let dataRamProcess = []
+
 function esconderLoading() {
   div_loading.style.display = "none";
 }
@@ -29,13 +38,14 @@ async function getServers() {
 function moldarDash(serversData) {
   mostrarLoading();
   if (serversData.length > 0) {
+
+    serverSerial = serversData[0]._serialServer;
     loadDashByServer(serversData[0]._serialServer);
     let dropdown = document.querySelector("#myDropdown");
     dropdown.innerHTML = "";
     serversData.forEach((server, index) => {
-      dropdown.innerHTML += `<a onclick="loadDashByServer('${
-        server._serialServer
-      }')" >#${server._serialServer} - ${index + 1}</a>`;
+      dropdown.innerHTML += `<a onclick="loadDashByServer('${server._serialServer
+        }')" >#${server._serialServer} - ${index + 1}</a>`;
     });
     tela_sem_servidores.style.display = "none"
     tela_completa_dashboard.style.display = "block"
@@ -159,16 +169,19 @@ async function fazerRequisicaoLoadKpi(server, component) {
 
 async function loadTableProcessPerComponents(server) {
   mostrarLoading();
-  let ram = await getPercentagePerComponent("RAM", server);
-  let cpu = await getPercentagePerComponent("CPU", server);
+  dataRamProcess = await getPercentagePerComponent("RAM", server);
+  dataCpuProcess = await getPercentagePerComponent("CPU", server);
   let tbody = document.querySelector("tbody#tbody-process");
-  console.log({ ram, cpu });
   tbody.innerHTML = "";
+  console.log({ dataRamProcess, dataCpuProcess });
 
-  cpu[0].forEach((item, index) => {
-    let RamProcesso = ram[0].find((itemRam) => {
+  dataCpuProcess[0].forEach((item, index) => {
+    arrayProcessosCPU.push(item.Percentagem)
+    let RamProcesso = dataRamProcess[0].find((itemRam) => {
       return itemRam.Processo == item.Processo;
     });
+    arrayProcessosRAM.push(RamProcesso.Percentagem)
+    arrayProcessosNOME.push(item.Processo)
 
     tbody.innerHTML += `
         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
@@ -282,3 +295,124 @@ async function loadKpiCpu(server) {
 
 
 document.body.onload = getServers();
+
+// filterTablePerName()
+// filterTablePerName(false)
+var crescente = true;
+
+////////////////////////// FILTER ORDER NOME
+function filterTablePerName() {
+  let tbody = document.querySelector("tbody#tbody-process");
+  tbody.innerHTML = "";
+  let dataFiltered = crescente ?
+   arrayProcessosNOME.sort() :
+    arrayProcessosNOME.sort().reverse();
+
+    /**
+     * @type {HTMLSpanElement}
+     */
+    let triangle = document.querySelector('#title_nome')
+    triangle.innerHTML = crescente ? "▲" : "▼";
+
+ crescente = !crescente; 
+
+  dataFiltered
+ .forEach((item, index)=>{
+  let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Processo == item);
+  let ram = dataRamProcess[0].find(itemRam => itemRam.Processo == item);
+
+  tbody.innerHTML += `
+        <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
+                <td>${item}</td>
+                <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
+                <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
+                <td>
+                  <button
+                    class="button_kill"
+                    onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
+                  >
+                    Encerrar
+                  </button>
+                </td>
+              </tr>
+        `;
+ })
+}
+
+////////////////////////// FILTER ORDER CPU
+function filterTablePerCpu() {
+  let tbody = document.querySelector("tbody#tbody-process");
+  tbody.innerHTML = "";
+  let dataFiltered = crescente ?
+  arrayProcessosCPU.sort((a,b) => a - b) :
+  arrayProcessosCPU.sort((a,b) => b - a);
+
+    /**
+     * @type {HTMLSpanElement}
+     */
+    let triangle = document.querySelector('#title_cpu')
+    triangle.innerHTML = crescente ? "▲" : "▼";
+
+ crescente = !crescente; 
+
+  dataFiltered
+ .forEach((item, index)=>{
+  let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Percentagem == item);
+  let ram = dataRamProcess[0].find(itemRam => itemRam.Processo == cpu.Processo);
+
+  tbody.innerHTML += `
+        <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
+                <td>${cpu.Processo}</td>
+                <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
+                <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
+                <td>
+                  <button
+                    class="button_kill"
+                    onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
+                  >
+                    Encerrar
+                  </button>
+                </td>
+              </tr>
+        `;
+ })
+}
+
+////////////////////////// FILTER ORDER MEMORIA
+function filterTablePerMemoria() {
+  let tbody = document.querySelector("tbody#tbody-process");
+  tbody.innerHTML = "";
+  let dataFiltered = crescente ?
+    arrayProcessosRAM.sort((a,b) => a - b) :
+    arrayProcessosRAM.sort((a,b) => b - a);
+    console.log(dataFiltered)
+    /**
+     * @type {HTMLSpanElement}
+     */
+    let triangle = document.querySelector('#title_memoria')
+    triangle.innerHTML = crescente ? "▲" : "▼";
+
+ crescente = !crescente; 
+
+  dataFiltered
+ .forEach((item, index)=>{
+  let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Percentagem == item);
+  let ram = dataRamProcess[0].find(itemRam => itemRam.Percentagem == item);
+
+  tbody.innerHTML += `
+        <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
+                <td>${item}</td>
+                <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
+                <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
+                <td>
+                  <button
+                    class="button_kill"
+                    onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
+                  >
+                    Encerrar
+                  </button>
+                </td>
+              </tr>
+        `;
+ })
+}

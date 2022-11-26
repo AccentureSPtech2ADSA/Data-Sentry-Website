@@ -48,9 +48,6 @@ function searchProcess() {
   }
 }
 
-function filterTablePerName(element){
-  
-}
   function DescriptografiaJWT() {
     const data = window.sessionStorage.getItem('Token');
     dadosjwt = parseJwt(data).data;
