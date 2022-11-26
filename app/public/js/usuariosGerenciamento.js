@@ -42,7 +42,6 @@ const loadUsers = async () => {
     esconderLoading();
 }
 
-
 function fazerRequisicaoRemoverUser(id){
   const data = window.sessionStorage.getItem('Token');
   let req = fetch("/user/deleteUser", {
@@ -80,9 +79,9 @@ function irparaCadastro() {
   painel_cadastro.style.display = "block";
   btn_gerenciar.style.backgroundColor = "#c4e4e4";
   btn_cadastrar.style.backgroundColor = "#FFFFFF";
-  area_painel.style.width = "55%";
   area_painel.style.height = "440px";
-
+  btn_gerenciar.style.zIndex = "0"
+  btn_cadastrar.style.zIndex = "1"
 }
 
 function logout() {
@@ -95,9 +94,9 @@ function irparaGerenciar() {
   painel_cadastro.style.display = "none";
   btn_gerenciar.style.backgroundColor = "#FFFFFF";
   btn_cadastrar.style.backgroundColor = "#c4e4e4";
-  area_painel.style.width = "57%";
   area_painel.style.height = "auto";
-
+  btn_gerenciar.style.zIndex = "1"
+  btn_cadastrar.style.zIndex = "0"
   loadUsers();
 }
 
@@ -209,9 +208,9 @@ let data = parseJwt(json)
 
 if (data.data.patent == "analist") {
   btn_cadastrar.style.display = "none"
-  btn_gerenciar.innerHTML = "Usuários Analistas"
-  btn_gerenciar.style.width = "80%"
-  area_buttons.style.width = "57%"
+  btn_gerenciar.style.display = "none"
+  titulo_tabela.innerHTML = "Outros analistas em sua empresa"
   area_buttons.style.justifyContent = "center";
   area_buttons.style.padding = "0 30px 0 30px"
+  area_painel.style.borderRadius = "15px"
 }

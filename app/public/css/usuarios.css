@@ -20,10 +20,6 @@ body {
     position: fixed;
 }
 
-#area_buttons {
-    display: flex;
-}
-
 :root {
     --color-bg: #eaeaea;
     --color-loader: #2fbdc2;
@@ -93,12 +89,54 @@ button{
     background-color: #c4e4e4;
     border: none;
     width: 20vw;
-    height: 5vh;
-    margin: 0px 30px;
-    border-radius: 20px 20px 0 0 ;
+    height: 6vh;
+    border-radius: 20px 20px 0 0;
     transition: all 0.5s;
     transform: translate();
 }
+
+#titulo_tabela {
+    padding: 10px 0;
+    margin: 0;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #404040;
+    font-family: raleway, sans-serif;
+    font-weight: 600;
+}
+
+table {
+    border-collapse:separate;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    cursor: default;
+}
+
+tr {
+    font-size: 15px;
+    color: rgb(107, 107, 107);
+    line-height: 1.8;
+    font-weight: unset;
+    transition: all 0.1s;
+}
+
+th {
+    background-color: #00B5C3;
+    height: 40px;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: unset;
+}
+
+td:first-child, th:first-child {
+     border-left: none;
+}
+
 .btn-ativo{
     background-color: #fff;
 }
@@ -110,44 +148,72 @@ button:hover{
 .area-painel{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     background-color: white;
-    padding: 30px;
-    width: 57%;
+    margin-top: 38px;
+    padding: 10px 50px 30px 50px;
+    width: 70%;
     border-radius: 17px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     -webkit-box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
     -moz-box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
     box-shadow: 0 5px 5px 0px rgba(45, 45, 45, 0.55);
 }
+
+#area_buttons {
+    display: flex;
+    justify-content: space-between;
+    width: calc(70% + 100px);
+    position: relative;
+}
+
+#btn_gerenciar {
+    font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    width: 54%;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    color: #404040;
+}
+
+#btn_cadastrar {
+    font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    z-index: 0;
+    color: #404040;
+}
+
 .painel{display: flex;}
 .painel table{ /*----Tabela------*/
     border-spacing: 0px!important;
     border-collapse: none!important;
     color: #252b2b;
 }
-.painel thead{ /*----Cabeçalho------*/
-    background-color: #629d9c;
-    color: #fff;
-}
 .painel th{ /*----Titulo------*/
-    width: 20vw;
+    width: 30vw;
     text-align: left;
-    padding: 13px 9px 0px 25px;
-    font-size: 17px;
+    padding: 6px 30px 6px 30px;
+    font-size: 18px;
 }
 .painel td{ /*----Conteúdo------*/
-    padding: 6px 25px 0px 25px;
+    padding: 6px 30px 6px 30px;
     font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 15px;
 }
 .delete{
-    color: rgb(112, 5, 5);
+    color: #404040;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 15px;
 }
 .delete:hover{
     cursor: pointer;
     text-decoration:underline;
-    color: rgb(173, 20, 20);
+    color: black;
     font-weight: 0;
 }
 /*----Icone de Deletar------*/
@@ -155,10 +221,10 @@ button:hover{
 .painel .icone-delete:hover{cursor: pointer;}
 
 /*----Cor de fundo zebrada----*/
-.colorGray{background-color: #e9e9e9;}
-.colorBebe{background-color: #c7c7c7;}
-.colorGray:hover{background-color: rgb(163, 163, 163);}
-.colorBebe:hover{background-color: rgb(163, 163, 163);}
+.colorGray{background-color: #f0f0f0;}
+.colorBebe{background-color: #FFFFFF;}
+.colorGray:hover{background-color: #f0f0f0;}
+.colorBebe:hover{background-color: #f0f0f0;}
 
 /* Tela de cadastrar usuário */
 .painel_cadastro {
@@ -231,16 +297,6 @@ button:hover{
 
 .btn_salvar:hover {
     box-shadow: 8px 8px 18px rgb(189, 189, 189);
-}
-
-#btn_gerenciar {
-    font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 16px;
-}
-
-#btn_cadastrar {
-    font-family: Roboto, "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 16px; 
 }
 
 @media screen and (max-width: 760px){
