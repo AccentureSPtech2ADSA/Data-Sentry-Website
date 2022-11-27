@@ -82,7 +82,7 @@ function loadChartsCPU(server) {
   fazerRequisicaoLoadChart(server, "CPU").then((dataCpu) => {
     let html = document.getElementById("chartCpu").parentElement;
     html.removeChild(html.querySelector("canvas"));
-    html.innerHTML = `
+    html.innerHTML += `
       <canvas id="chartCpu"></canvas>
     `;
     labels6 = dataCpu[0].map(
@@ -99,7 +99,7 @@ function loadChartsCPU(server) {
 async function loadChartsRAM(server) {
   let html = document.getElementById("chartRam").parentElement;
   html.removeChild(html.querySelector("canvas"));
-  html.innerHTML = `
+  html.innerHTML += `
     <canvas id="chartRam"></canvas>
   `;
   let dataRam = await fazerRequisicaoLoadChart(server, "RAM");
@@ -113,7 +113,7 @@ async function loadChartsRAM(server) {
 async function loadChartsDISCO(server) {
   let html = document.getElementById("chartDisco").parentElement;
   html.removeChild(html.querySelector("canvas"));
-  html.innerHTML = `
+  html.innerHTML += `
     <canvas id="chartDisco"></canvas>
   `;
   let dataDisco = await fazerRequisicaoLoadChart(server, "DISCO");
@@ -122,7 +122,7 @@ async function loadChartsDISCO(server) {
   );
   config7.data.labels = labels7.reverse();
   config7.data.datasets[0].data = dataDisco[0]
-    .map((item) => item.Percentagem * Math.random() * 8)
+    .map((item) => item.Percentagem * 10)
     .reverse();
   new Chart(document.getElementById("chartDisco"), config7);
 
@@ -230,7 +230,7 @@ async function loadKpiDisco(server) {
 
   let html = document.getElementById("myChart3").parentElement;
   html.removeChild(html.querySelector("canvas"));
-  html.innerHTML = `
+  html.innerHTML += `
     <canvas id="myChart3"></canvas>
   `;
 
@@ -249,14 +249,14 @@ async function loadKpiDisco(server) {
   
     dataHtmlDiscoUsoAtual.innerHTML = `${dataDisco[0][0].Uso.replace("GBs", "")}`;
     dataHtmlDiscoUsoMaximo.innerHTML = `${dataDisco[0][0].MaximoUso}`;
-    dataHtmlDiscoPorcentagemUso.innerHTML = `${dataDisco[0][0].Percentagem}%`;
+    dataHtmlDiscoPorcentagemUso.innerHTML = `${dataDisco[0][0].Percentagem * 10}%`;
   }
 }
 
 async function loadKpiRam(server) {
   let html = document.getElementById("myChart2").parentElement;
   html.removeChild(html.querySelector("canvas"));
-  html.innerHTML = `
+  html.innerHTML += `
     <canvas id="myChart2"></canvas>
   `;
 
@@ -282,7 +282,7 @@ async function loadKpiRam(server) {
 async function loadKpiCpu(server) {
   let html = document.getElementById("myChart1").parentElement;
   html.removeChild(html.querySelector("canvas"));
-  html.innerHTML = `
+  html.innerHTML += `
     <canvas id="myChart1"></canvas>
   `;
 

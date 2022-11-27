@@ -55,7 +55,7 @@ function searchProcess() {
   }
 
   function preenchimentoNome() {
-nomeClinica.innerHTML = "Olá "+dadosjwt.fantasyName;
+nomeClinica.innerHTML = "Olá "+dadosjwt.name;
   }
 
   function esconderLoading() {
