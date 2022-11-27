@@ -63,7 +63,6 @@ let config5 = {
                         type: "box",
                         xMin: 0,
                         xMax: 10,
-                        yMax: 100,
                         yMin: 95,
                         backgroundColor: "rgba(255, 0, 0, 0.1)"
                     },

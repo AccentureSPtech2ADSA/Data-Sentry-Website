@@ -15,6 +15,7 @@
     <script src="./js/jquery.mask.js"></script>
     <script src="//code.jivosite.com/widget/K7RJgm8xzE" async></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/via-cep.js"></script>
     <script src="./js/perfil.js"></script>
     <script src="./js/validacaoLogin.js"></script>
   </head>
@@ -105,7 +106,7 @@
       <!-- Bloco de foto de perfil/editar foto -->
       <div class="div_fotoUser">
         <div class="user">
-          <div class="editar_foto">
+          <!-- <div class="editar_foto">
             <div class="tooltip">
               <svg id="svg_editar_foto" viewBox="0 0 24 24" fill="white">
                 <path
@@ -114,7 +115,7 @@
               </svg>
               <span id="tooltip_perfil" class="tooltiptext">Alterar</span>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -142,6 +143,23 @@
       <div class="bloco_unico">
         <div id="titulo_endereco" class="ipt_titulo">Endereço</div>
         <input id="id_input4" type="text" placeholder="" disabled="true" />
+      </div>
+
+      <div id="id_blocoEnd_numEndereco" class="bloco_unico">
+        <div id="titulo_numeroEndereco" class="ipt_titulo">Número de Endereço</div>
+        <input id="input_NumEndereco" type="text" placeholder="" disabled="true" />
+      </div>
+
+      <div id="id_blocoEnd0" class="bloco_duplo">
+        <div class="div_primeiro_nome">
+          <div id="titulo_complemento" class="ipt_titulo">Complemento</div>
+          <input id="input_complemento" type="text" placeholder="" disabled="true" />
+        </div>
+
+        <div class="div_sobrenome">
+          <div class="ipt_titulo">Unidade</div>
+          <input id="input_unidade" type="text" placeholder="" disabled="true" />
+        </div>
       </div>
 
       <div id="id_blocoEnd1" class="bloco_duplo">
@@ -192,10 +210,10 @@
         </div>
       </div>
 
-      <div id="num_contato" class="bloco_unico">
+      <!-- <div id="num_contato" class="bloco_unico">
         <div id="titulo_numContato" class="ipt_titulo">Número de Contato</div>
-        <input id="id_input13" type="text" placeholder="" disabled="true" />
-      </div>
+        <input id="id_input12" type="text" placeholder="" disabled="true" />
+      </div> -->
 
       <div class="bloco_unico">
         <div class="ipt_titulo">Senha</div>

@@ -61,19 +61,19 @@ async function updateAnalist({name, email, telefone, id}){
   return await database.execute(query);
 }
 
-async function updateAdmin({fantasyName, cep, numberAddress, complement, unit, cnpj, fkHospital, name, email, telefone, idUserHospital}){
+async function updateAdmin({fantasyName, cep, numberAddress, complement, unit, cnpj, fkHospital, email, telefone, idUserHospital}){
   let query = `
-  CALL sp_updateAdmin '${fantasyName}', '${cep}', '${numberAddress}', '${complement}', '${unit}', '${cnpj}', ${fkHospital}, '${name}', '${email}', '${telefone}', ${idUserHospital};
+  CALL sp_updateAdmin '${fantasyName}', '${cep}', '${numberAddress}', '${complement}', '${unit}', '${cnpj}', ${fkHospital}, '${email}', '${telefone}', ${idUserHospital};
   `;
   if (database.isAmbienteProducao) {
-    query = `EXEC sp_updateAdmin '${fantasyName}', '${cep}', '${numberAddress}', '${complement}', '${unit}', '${cnpj}', ${fkHospital}, '${name}', '${email}', '${telefone}', ${idUserHospital};`;
+    query = `EXEC sp_updateAdmin '${fantasyName}', '${cep}', '${numberAddress}', '${complement}', '${unit}', '${cnpj}', ${fkHospital}, '${email}', '${telefone}', ${idUserHospital};`;
   }
   // query mysql
   return await database.execute(query);
 }
 
 async function captarDadosUsuario({id}){
-  let query = `SELECT _idUserHospital id, name, email, contactPhone, 
+  let query = `SELECT _idUserHospital id, unit, name, email, contactPhone, 
   fkHospital, cnpj, cep, numberAddress, complement, fantasyName, corporateName,
   CASE
       WHEN fkManager IS NULL THEN 'admin'
