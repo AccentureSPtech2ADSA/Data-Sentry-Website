@@ -258,7 +258,6 @@ function valoresInputs() {
   .then(json=>{
     console.log(json);
   document.getElementById("id_input4").value = json.logradouro;
-  document.getElementById("id_input6").value = json.uf;
   document.getElementById("id_input8").value = json.bairro;
   document.getElementById("id_input5").value = json.localidade;
 })
@@ -269,11 +268,11 @@ document.getElementById("id_input7").value = dadosjwt.cep;
 document.getElementById("input_complemento").value = dadosjwt.complement;
 document.getElementById("input_unidade").value = dadosjwt.unit;
 document.getElementById("input_NumEndereco").value = dadosjwt.numberAddress;
+  })
   document.getElementById("id_input9").value = "***************";
   document.getElementById("id_input10").value = dadosjwt.contactPhone;
   document.getElementById("id_input11").value = dadosjwt.cnpj;
   document.getElementById("id_input12").value = dadosjwt.name;
-  // document.getElementById("id_input13").value = dadosjwt.contactPhone;
 }
 
 function esconderLoading() {

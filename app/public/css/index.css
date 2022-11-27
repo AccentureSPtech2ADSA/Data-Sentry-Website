@@ -16,6 +16,11 @@ body{
   position: fixed;
 }
 
+#menu_lateral a {
+  width: 100%;
+  text-decoration: none;
+}
+
 /* Hero */
 .hero {
   background-image: url("../assets/background-hero.jpg");
