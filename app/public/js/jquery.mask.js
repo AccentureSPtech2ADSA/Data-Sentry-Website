@@ -572,6 +572,7 @@ $(document).ready(function () {
 
     // Pagina para inserir usuários no sistema
     $("#dateAtt").mask("0000-00-00")
+
 })
 
 function limparMascara(){

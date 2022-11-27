@@ -221,12 +221,11 @@ async function updateAdmin(req, res) {
   const unit = req.body.unit;
   const cnpj = req.body.cnpj;
   const fkHospital = req.body.fkHospital;
-  const name = req.body.name;
   const email = req.body.email;
   const telefone = req.body.telefone;
   const idUserHospital = req.body.id;
   if (
-    Object.values(req.body).length !== 11) {
+    Object.values(req.body).length !== 10) {
     const msg =
       "Campos invalidos, valide no arquivo updateAdmin quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
     res
@@ -245,7 +244,6 @@ async function updateAdmin(req, res) {
       unit,
       cnpj,
       fkHospital,
-      name,
       email,
       telefone,
       idUserHospital
