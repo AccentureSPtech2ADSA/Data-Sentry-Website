@@ -1,16 +1,11 @@
 // var tabela_isOriginal = true;
 // var originalHTML = "";
 
-let arrayProcessosCPU = [];
-let arrayProcessosRAM = [];
-let arrayProcessosNOME = [];
-
 let serverSerial = 0;
 
-let dataCpuProcess = [];
-let dataRamProcess = [];
-
 let arrayProccessPerRow = [];
+
+let arrayTresholds = [];
 
 function esconderLoading() {
   div_loading.style.display = "none";
@@ -75,6 +70,7 @@ async function loadDashByServer(server) {
   document.getElementById("chartDisco").innerHTML = "";
   document.getElementById("chartCpu").innerHTML = "";
   document.getElementById("chartRam").innerHTML = "";
+  arrayTresholds = await getTresholdsBasic(serverSerial);
   loadChartsCPU(server);
   loadChartsRAM(server);
   loadChartsDISCO(server);
@@ -95,6 +91,7 @@ function loadChartsCPU(server) {
     );
     config6.data.labels = labels6.reverse();
     config6.data.datasets[0].data = dataCpu[0]
+    // config6.options.plugins.annotation.annotations.
       .map((item) => item.Percentagem)
       .reverse();
     new Chart(document.getElementById("chartCpu"), config6);
@@ -174,41 +171,24 @@ async function fazerRequisicaoLoadKpi(server, component) {
 
 async function loadTableProcessPerComponents(server) {
   mostrarLoading();
-  dataRamProcess = await getPercentagePerComponent("RAM", server);
-  dataCpuProcess = await getPercentagePerComponent("CPU", server);
+  let dataRamProcess = await getPercentagePerComponent("RAM", server);
+  let dataCpuProcess = await getPercentagePerComponent("CPU", server);
   let tbody = document.querySelector("tbody#tbody-process");
   tbody.innerHTML = "";
-  console.log({ dataRamProcess, dataCpuProcess });
 
   dataCpuProcess[0].forEach((item, index) => {
-    arrayProcessosCPU.push(item.Percentagem);
     let RamProcesso = dataRamProcess[0].find((itemRam) => {
       return itemRam.Processo == item.Processo;
     });
-    arrayProcessosRAM.push(RamProcesso.Percentagem);
-    arrayProcessosNOME.push(item.Processo);
-
     arrayProccessPerRow.push({
       nome: item.Processo,
       ram: RamProcesso.Percentagem,
       cpu: item.Percentagem,
     });
-    tbody.innerHTML += `
-        <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
-                <td>${item.Processo}</td>
-                <td>${(item.Percentagem + "").replace(".", ",")}%</td> 
-                <td>${(RamProcesso.Percentagem + "").replace(".", ",")}%</td>
-                <td>
-                  <button
-                    class="button_kill"
-                    onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
-                  >
-                    Encerrar
-                  </button>
-                </td>
-              </tr>
-        `;
+    
   });
+
+  filterTable(arrayProccessPerRow)
   // let tableAtual = document.querySelector("tbody#tbody-process");
   // originalHTML = tableAtual
   esconderLoading();
@@ -254,17 +234,20 @@ async function loadKpiDisco(server) {
   let dataHtmlDiscoPorcentagemUso = document.getElementById("usoTotalDisco");
 
   let dataDisco = await fazerRequisicaoLoadKpi(server, "DISCO");
-  console.log(dataDisco[0][0]);
-  config3.data.datasets[0].data = [
-    +dataDisco[0][0].Uso.replace("GBs", ""),
-    +dataDisco[0][0].MaximoUso.replace("GBs", "") -
-      +dataDisco[0][0].Uso.replace("GBs", ""),
-  ];
-  new Chart(document.getElementById("myChart3"), config3);
 
-  dataHtmlDiscoUsoAtual.innerHTML = `${dataDisco[0][0].Uso.replace("GBs", "")}`;
-  dataHtmlDiscoUsoMaximo.innerHTML = `${dataDisco[0][0].MaximoUso}`;
-  dataHtmlDiscoPorcentagemUso.innerHTML = `${dataDisco[0][0].Percentagem}%`;
+  console.log({dataDisco});
+  if(dataDisco[0][0]){
+    config3.data.datasets[0].data = [
+      +dataDisco[0][0].Uso.replace("GBs", ""),
+      +dataDisco[0][0].MaximoUso.replace("GBs", "") -
+        +dataDisco[0][0].Uso.replace("GBs", ""),
+    ];
+    new Chart(document.getElementById("myChart3"), config3);
+  
+    dataHtmlDiscoUsoAtual.innerHTML = `${dataDisco[0][0].Uso.replace("GBs", "")}`;
+    dataHtmlDiscoUsoMaximo.innerHTML = `${dataDisco[0][0].MaximoUso}`;
+    dataHtmlDiscoPorcentagemUso.innerHTML = `${dataDisco[0][0].Percentagem}%`;
+  }
 }
 
 async function loadKpiRam(server) {
@@ -279,16 +262,18 @@ async function loadKpiRam(server) {
   let dataHtmlRamPorcentagemUso = document.getElementById("usoTotalRam");
 
   let dataRam = await fazerRequisicaoLoadKpi(server, "RAM");
-  config2.data.datasets[0].data = [
-    +dataRam[0][0].Uso.replace("GBs", ""),
-    +dataRam[0][0].MaximoUso.replace("GBs", "") -
+  if(dataRam[0][0]){
+    config2.data.datasets[0].data = [
       +dataRam[0][0].Uso.replace("GBs", ""),
-  ];
-  new Chart(document.getElementById("myChart2"), config2);
-
-  dataHtmlRamUsoAtual.innerHTML = `${dataRam[0][0].Uso.replace("GBs", "")}`;
-  dataHtmlRamUsoMaximo.innerHTML = `${dataRam[0][0].MaximoUso}`;
-  dataHtmlRamPorcentagemUso.innerHTML = `${dataRam[0][0].Percentagem}%`;
+      +dataRam[0][0].MaximoUso.replace("GBs", "") -
+        +dataRam[0][0].Uso.replace("GBs", ""),
+    ];
+    new Chart(document.getElementById("myChart2"), config2);
+  
+    dataHtmlRamUsoAtual.innerHTML = `${dataRam[0][0].Uso.replace("GBs", "")}`;
+    dataHtmlRamUsoMaximo.innerHTML = `${dataRam[0][0].MaximoUso}`;
+    dataHtmlRamPorcentagemUso.innerHTML = `${dataRam[0][0].Percentagem}%`;
+  }
 }
 
 async function loadKpiCpu(server) {
@@ -303,17 +288,20 @@ async function loadKpiCpu(server) {
   let dataHtmlCpuPorcentagemUso = document.getElementById("usoTotalCpu");
 
   let dataCpu = await fazerRequisicaoLoadKpi(server, "CPU");
-  console.log(dataCpu[0][0]);
-  config1.data.datasets[0].data = [
-    +dataCpu[0][0].Uso.replace("MHz", ""),
-    +dataCpu[0][0].MaximoUso.replace("MHz", "") -
+  if(dataCpu[0][0]){
+    console.log(dataCpu[0][0]);
+    config1.data.datasets[0].data = [
       +dataCpu[0][0].Uso.replace("MHz", ""),
-  ];
-  new Chart(document.getElementById("myChart1"), config1);
+      +dataCpu[0][0].MaximoUso.replace("MHz", "") -
+        +dataCpu[0][0].Uso.replace("MHz", ""),
+    ];
+    new Chart(document.getElementById("myChart1"), config1);
+  
+    dataHtmlCpuUsoAtual.innerHTML = `${dataCpu[0][0].Uso.replace("MHz", "")}`;
+    dataHtmlCpuUsoMaximo.innerHTML = `${dataCpu[0][0].MaximoUso}`;
+    dataHtmlCpuPorcentagemUso.innerHTML = `${dataCpu[0][0].Percentagem}%`;
+  }
 
-  dataHtmlCpuUsoAtual.innerHTML = `${dataCpu[0][0].Uso.replace("MHz", "")}`;
-  dataHtmlCpuUsoMaximo.innerHTML = `${dataCpu[0][0].MaximoUso}`;
-  dataHtmlCpuPorcentagemUso.innerHTML = `${dataCpu[0][0].Percentagem}%`;
 }
 
 document.body.onload = getServers();
@@ -343,12 +331,14 @@ function filterTablePerMemoria() {
   filterTable(filteredTable, document.querySelector("#title_memoria"));
 }
 crescente = true;
-function filterTable(array, triangle) {
+function filterTable(array, triangle=null) {
   let tbody = document.querySelector("tbody#tbody-process");
   tbody.innerHTML = "";
 
   array = crescente ? array : array.reverse();
-  triangle.innerHTML = !crescente ? "▲" : "▼";
+  if(triangle != null){
+    triangle.innerHTML = !crescente ? "▲" : "▼";
+  }
 
   crescente = !crescente;
   array.forEach((item, index) => {
@@ -371,159 +361,22 @@ function filterTable(array, triangle) {
   });
 }
 
-// var crescente = true;
-// var asc = true;
+async function getTresholdsBasic(
+  idServer,
+  token = window.sessionStorage.getItem("Token"),
+) {
+  let req = await fetch(`/dashboard/getThresholdsBasic/${idServer}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-// function filterTablePerName() {
-//   if(tabela_isOriginal == false){
-//     console.log('Não é original')
-//     console.log(originalHTML)
-//     var tableAtual = document.getElementById("tbody-process")
-//     tableAtual.innerHTML = originalHTML
-//   } else {
-//     tabela_isOriginal = true
-//   }
+  let res = await req.json();
+  if (res.status == 200) {
+    return res.data;
+  }
+  throw new Error(res.msg);
+}
 
-//   asc = !asc
-
-//   let triangleNOME = document.querySelector('#title_nome')
-//   triangleNOME.innerHTML = asc ? "▲" : "▼";
-//   let triangleCPU = document.querySelector('#title_cpu')
-//   triangleCPU.innerHTML = "-";
-//   let triangleMEMORIA = document.querySelector('#title_memoria')
-//   triangleMEMORIA.innerHTML = "-";
-
-//   const index = 0;    // coluna pela qual se quer ordenar
-//   const tabela = document.getElementById('tableProcess');
-
-//   const arr = Array.from(tabela.querySelectorAll('tbody tr'));
-//   const th_elem = tabela.querySelectorAll('th');
-
-//   arr.sort((a, b) => {
-//     const a_val = a.children[index].innerText
-//     const b_val = b.children[index].innerText
-//     return (asc) ? a_val.localeCompare(b_val) : b_val.localeCompare(a_val)
-//   })
-//   arr.forEach(elem => {
-//     tabela.appendChild(elem)
-//   });
-
-//   tabela_isOriginal = false;
-// }
-
-// ////////////////////////// FILTER ORDER NOME
-// function filterTablePerName() {
-//   let tbody = document.querySelector("tbody#tbody-process");
-//   tbody.innerHTML = "";
-//   let dataFiltered = crescente ?
-//    arrayProcessosNOME.sort() :
-//     arrayProcessosNOME.sort().reverse();
-
-//     /**
-//      * @type {HTMLSpanElement}
-//      */
-//     let triangle = document.querySelector('#title_nome')
-//     triangle.innerHTML = crescente ? "▲" : "▼";
-
-//  crescente = !crescente;
-
-//   dataFiltered
-//  .forEach((item, index)=>{
-//   let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Processo == item);
-//   let ram = dataRamProcess[0].find(itemRam => itemRam.Processo == item);
-
-//   tbody.innerHTML += `
-//         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
-//                 <td>${item}</td>
-//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td>
-//                 <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
-//                 <td>
-//                   <button
-//                     class="button_kill"
-//                     onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
-//                   >
-//                     Encerrar
-//                   </button>
-//                 </td>
-//               </tr>
-//         `;
-//  })
-// }
-
-// ////////////////////////// FILTER ORDER CPU
-// function filterTablePerCpu() {
-//   let tbody = document.querySelector("tbody#tbody-process");
-//   tbody.innerHTML = "";
-//   let dataFiltered = crescente ?
-//   arrayProcessosCPU.sort((a,b) => a - b) :
-//   arrayProcessosCPU.sort((a,b) => b - a);
-
-//     /**
-//      * @type {HTMLSpanElement}
-//      */
-//     let triangle = document.querySelector('#title_cpu')
-//     triangle.innerHTML = crescente ? "▲" : "▼";
-
-//  crescente = !crescente;
-
-//   dataFiltered
-//  .forEach((item, index)=>{
-//   let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Percentagem == item);
-//   let ram = dataRamProcess[0].find(itemRam => itemRam.Processo == cpu.Processo);
-
-//   tbody.innerHTML += `
-//         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
-//                 <td>${cpu.Processo}</td>
-//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td>
-//                 <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
-//                 <td>
-//                   <button
-//                     class="button_kill"
-//                     onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
-//                   >
-//                     Encerrar
-//                   </button>
-//                 </td>
-//               </tr>
-//         `;
-//  })
-// }
-
-// ////////////////////////// FILTER ORDER MEMORIA
-// function filterTablePerMemoria() {
-//   let tbody = document.querySelector("tbody#tbody-process");
-//   tbody.innerHTML = "";
-//   let dataFiltered = crescente ?
-//     arrayProcessosRAM.sort((a,b) => a - b) :
-//     arrayProcessosRAM.sort((a,b) => b - a);
-//     console.log(dataFiltered)
-//     /**
-//      * @type {HTMLSpanElement}
-//      */
-//     let triangle = document.querySelector('#title_memoria')
-//     triangle.innerHTML = crescente ? "▲" : "▼";
-
-//  crescente = !crescente;
-
-//   dataFiltered
-//  .forEach((item, index)=>{
-//   let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Percentagem == item);
-//   let ram = dataRamProcess[0].find(itemRam => itemRam.Percentagem == item);
-
-//   tbody.innerHTML += `
-//         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
-//                 <td>${item}</td>
-//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td>
-//                 <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
-//                 <td>
-//                   <button
-//                     class="button_kill"
-//                     onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
-//                   >
-//                     Encerrar
-//                   </button>
-//                 </td>
-//               </tr>
-//         `;
-//  })
-// }
