@@ -1,3 +1,7 @@
+
+// var tabela_isOriginal = true;
+// var originalHTML = "";
+
 let arrayProcessosCPU = []
 let arrayProcessosRAM = []
 let arrayProcessosNOME = []
@@ -199,7 +203,8 @@ async function loadTableProcessPerComponents(server) {
               </tr>
         `;
   });
-
+  // let tableAtual = document.querySelector("tbody#tbody-process");
+  // originalHTML = tableAtual
   esconderLoading();
 }
 
@@ -296,123 +301,176 @@ async function loadKpiCpu(server) {
 
 document.body.onload = getServers();
 
-// filterTablePerName()
-// filterTablePerName(false)
-var crescente = true;
 
-////////////////////////// FILTER ORDER NOME
-function filterTablePerName() {
-  let tbody = document.querySelector("tbody#tbody-process");
-  tbody.innerHTML = "";
-  let dataFiltered = crescente ?
-   arrayProcessosNOME.sort() :
-    arrayProcessosNOME.sort().reverse();
+function filterTablePerName(){
 
-    /**
-     * @type {HTMLSpanElement}
-     */
-    let triangle = document.querySelector('#title_nome')
-    triangle.innerHTML = crescente ? "▲" : "▼";
-
- crescente = !crescente; 
-
-  dataFiltered
- .forEach((item, index)=>{
-  let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Processo == item);
-  let ram = dataRamProcess[0].find(itemRam => itemRam.Processo == item);
-
-  tbody.innerHTML += `
-        <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
-                <td>${item}</td>
-                <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
-                <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
-                <td>
-                  <button
-                    class="button_kill"
-                    onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
-                  >
-                    Encerrar
-                  </button>
-                </td>
-              </tr>
-        `;
- })
 }
 
-////////////////////////// FILTER ORDER CPU
-function filterTablePerCpu() {
-  let tbody = document.querySelector("tbody#tbody-process");
-  tbody.innerHTML = "";
-  let dataFiltered = crescente ?
-  arrayProcessosCPU.sort((a,b) => a - b) :
-  arrayProcessosCPU.sort((a,b) => b - a);
 
-    /**
-     * @type {HTMLSpanElement}
-     */
-    let triangle = document.querySelector('#title_cpu')
-    triangle.innerHTML = crescente ? "▲" : "▼";
 
- crescente = !crescente; 
 
-  dataFiltered
- .forEach((item, index)=>{
-  let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Percentagem == item);
-  let ram = dataRamProcess[0].find(itemRam => itemRam.Processo == cpu.Processo);
 
-  tbody.innerHTML += `
-        <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
-                <td>${cpu.Processo}</td>
-                <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
-                <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
-                <td>
-                  <button
-                    class="button_kill"
-                    onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
-                  >
-                    Encerrar
-                  </button>
-                </td>
-              </tr>
-        `;
- })
-}
+// var crescente = true;
+// var asc = true;
 
-////////////////////////// FILTER ORDER MEMORIA
-function filterTablePerMemoria() {
-  let tbody = document.querySelector("tbody#tbody-process");
-  tbody.innerHTML = "";
-  let dataFiltered = crescente ?
-    arrayProcessosRAM.sort((a,b) => a - b) :
-    arrayProcessosRAM.sort((a,b) => b - a);
-    console.log(dataFiltered)
-    /**
-     * @type {HTMLSpanElement}
-     */
-    let triangle = document.querySelector('#title_memoria')
-    triangle.innerHTML = crescente ? "▲" : "▼";
+// function filterTablePerName() {
+//   if(tabela_isOriginal == false){
+//     console.log('Não é original')
+//     console.log(originalHTML)
+//     var tableAtual = document.getElementById("tbody-process")
+//     tableAtual.innerHTML = originalHTML
+//   } else {
+//     tabela_isOriginal = true
+//   }
 
- crescente = !crescente; 
+//   asc = !asc
 
-  dataFiltered
- .forEach((item, index)=>{
-  let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Percentagem == item);
-  let ram = dataRamProcess[0].find(itemRam => itemRam.Percentagem == item);
+  
+//   let triangleNOME = document.querySelector('#title_nome')
+//   triangleNOME.innerHTML = asc ? "▲" : "▼";
+//   let triangleCPU = document.querySelector('#title_cpu')
+//   triangleCPU.innerHTML = "-";
+//   let triangleMEMORIA = document.querySelector('#title_memoria')
+//   triangleMEMORIA.innerHTML = "-";
 
-  tbody.innerHTML += `
-        <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
-                <td>${item}</td>
-                <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
-                <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
-                <td>
-                  <button
-                    class="button_kill"
-                    onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
-                  >
-                    Encerrar
-                  </button>
-                </td>
-              </tr>
-        `;
- })
-}
+//   const index = 0;    // coluna pela qual se quer ordenar
+//   const tabela = document.getElementById('tableProcess');
+
+//   const arr = Array.from(tabela.querySelectorAll('tbody tr'));
+//   const th_elem = tabela.querySelectorAll('th');
+
+//   arr.sort((a, b) => {
+//     const a_val = a.children[index].innerText
+//     const b_val = b.children[index].innerText
+//     return (asc) ? a_val.localeCompare(b_val) : b_val.localeCompare(a_val)
+//   })
+//   arr.forEach(elem => {
+//     tabela.appendChild(elem)
+//   });
+
+//   tabela_isOriginal = false;
+// }
+
+
+
+
+
+
+
+
+// ////////////////////////// FILTER ORDER NOME
+// function filterTablePerName() {
+//   let tbody = document.querySelector("tbody#tbody-process");
+//   tbody.innerHTML = "";
+//   let dataFiltered = crescente ?
+//    arrayProcessosNOME.sort() :
+//     arrayProcessosNOME.sort().reverse();
+
+//     /**
+//      * @type {HTMLSpanElement}
+//      */
+//     let triangle = document.querySelector('#title_nome')
+//     triangle.innerHTML = crescente ? "▲" : "▼";
+
+//  crescente = !crescente; 
+
+//   dataFiltered
+//  .forEach((item, index)=>{
+//   let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Processo == item);
+//   let ram = dataRamProcess[0].find(itemRam => itemRam.Processo == item);
+
+//   tbody.innerHTML += `
+//         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
+//                 <td>${item}</td>
+//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
+//                 <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
+//                 <td>
+//                   <button
+//                     class="button_kill"
+//                     onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
+//                   >
+//                     Encerrar
+//                   </button>
+//                 </td>
+//               </tr>
+//         `;
+//  })
+// }
+
+// ////////////////////////// FILTER ORDER CPU
+// function filterTablePerCpu() {
+//   let tbody = document.querySelector("tbody#tbody-process");
+//   tbody.innerHTML = "";
+//   let dataFiltered = crescente ?
+//   arrayProcessosCPU.sort((a,b) => a - b) :
+//   arrayProcessosCPU.sort((a,b) => b - a);
+
+//     /**
+//      * @type {HTMLSpanElement}
+//      */
+//     let triangle = document.querySelector('#title_cpu')
+//     triangle.innerHTML = crescente ? "▲" : "▼";
+
+//  crescente = !crescente; 
+
+//   dataFiltered
+//  .forEach((item, index)=>{
+//   let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Percentagem == item);
+//   let ram = dataRamProcess[0].find(itemRam => itemRam.Processo == cpu.Processo);
+
+//   tbody.innerHTML += `
+//         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
+//                 <td>${cpu.Processo}</td>
+//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
+//                 <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
+//                 <td>
+//                   <button
+//                     class="button_kill"
+//                     onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
+//                   >
+//                     Encerrar
+//                   </button>
+//                 </td>
+//               </tr>
+//         `;
+//  })
+// }
+
+// ////////////////////////// FILTER ORDER MEMORIA
+// function filterTablePerMemoria() {
+//   let tbody = document.querySelector("tbody#tbody-process");
+//   tbody.innerHTML = "";
+//   let dataFiltered = crescente ?
+//     arrayProcessosRAM.sort((a,b) => a - b) :
+//     arrayProcessosRAM.sort((a,b) => b - a);
+//     console.log(dataFiltered)
+//     /**
+//      * @type {HTMLSpanElement}
+//      */
+//     let triangle = document.querySelector('#title_memoria')
+//     triangle.innerHTML = crescente ? "▲" : "▼";
+
+//  crescente = !crescente; 
+
+//   dataFiltered
+//  .forEach((item, index)=>{
+//   let cpu = dataCpuProcess[0].find(itemCpu => itemCpu.Percentagem == item);
+//   let ram = dataRamProcess[0].find(itemRam => itemRam.Percentagem == item);
+
+//   tbody.innerHTML += `
+//         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
+//                 <td>${item}</td>
+//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
+//                 <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
+//                 <td>
+//                   <button
+//                     class="button_kill"
+//                     onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
+//                   >
+//                     Encerrar
+//                   </button>
+//                 </td>
+//               </tr>
+//         `;
+//  })
+// }
