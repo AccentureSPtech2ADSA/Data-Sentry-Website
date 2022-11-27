@@ -203,6 +203,9 @@ async function updateAnalist(req, res) {
     if (updAnalistResult.status == 200 || updAnalistResult.status == 201) {
       updAnalistResult.longMessage = `Analista atualizado com sucesso!`;
       updAnalistResult.shortMessage = `Analista atualizado.`;
+      const userData = await userHospitalModel.captarDadosUsuario({id});
+      const token = sign(userData.data[0][0]);
+      updAnalistResult.token = token;
       res.json(updAnalistResult);
     } else {
       res.status(updAnalistResult.status);
@@ -213,6 +216,7 @@ async function updateAnalist(req, res) {
 async function updateAdmin(req, res) {
   const fantasyName = req.body.fantasyName;
   const cep = req.body.cep;
+  const numberAddress = req.body.numberAddress;
   const complement = req.body.complement;
   const unit = req.body.unit;
   const cnpj = req.body.cnpj;
@@ -222,7 +226,7 @@ async function updateAdmin(req, res) {
   const telefone = req.body.telefone;
   const idUserHospital = req.body.id;
   if (
-    Object.values(req.body).length !== 10) {
+    Object.values(req.body).length !== 11) {
     const msg =
       "Campos invalidos, valide no arquivo updateAdmin quais os campos que essa requisicao pede. (funcão login de userHospitalController.js)";
     res
@@ -236,6 +240,7 @@ async function updateAdmin(req, res) {
     const updateAdmin = await userHospitalModel.updateAdmin({
       fantasyName,
       cep,
+      numberAddress,
       complement,
       unit,
       cnpj,

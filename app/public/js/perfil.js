@@ -8,12 +8,14 @@ function enabledisable() {
   id_input8.disabled = !id_input8.disabled
   id_input10.disabled = !id_input10.disabled
   id_input11.disabled = !id_input11.disabled
-  id_input11.disabled = !id_input12.disabled
-  id_input11.disabled = !id_input13.disabled
+  id_input12.disabled = !id_input12.disabled
+  id_input13.disabled = !id_input13.disabled
 }
 
 function onoff() {
   currentvalue = document.getElementById("onoff").value;
+  const data = window.sessionStorage.getItem("Token");
+  const dados = parseJwt(data).data;
   if (currentvalue == "Salvar") {
     //Perfil salvo
     document.getElementById("onoff").value = "Editar";
@@ -80,6 +82,10 @@ function onoff() {
 
     document.getElementById("onoff").style.backgroundColor = "#15CDD3";
     document.getElementById("onoff").style.color = "white";
+
+    if(dados.patent == "analist"){
+      updateAnalist();
+    }
   } else {
     // perfil no modo edição
     document.getElementById("onoff").value = "Salvar";
@@ -263,9 +269,9 @@ function trocarSenha() {
 }
 
 function updateAnalist(name, email, telefone){
-  name = document.getElementById("id_input12");
-  email = document.getElementById("id_input3");
-  telefone = document.getElementById("id_input10");
+  name = document.getElementById("id_input12").value;
+  email = document.getElementById("id_input3").value;
+  telefone = document.getElementById("id_input10").value;
   const data = window.sessionStorage.getItem("Token");
   const dados = parseJwt(data).data;
   let id = dados.id;
@@ -287,15 +293,20 @@ function updateAnalist(name, email, telefone){
   let res = req.then((val) => val.json());
   res.then((json) => {
     console.log(json);
-    if (json.status == 200) {}
+    if (json.status == 200) {
+      sessionStorage.removeItem("Token");
+      sessionStorage.setItem("Token", json.token);
+      window.location.reload();
+    }
   });
   return res;
 }
 
 
-function updateAdmin(fantasyName, cep, complement, unit, cnpj, name, email, telefone){
+function updateAdmin(fantasyName, cep, numberAddress, complement, unit, cnpj, name, email, telefone){
   fantasyName = document.getElementById("id_input2").value;
   cep = document.getElementById("id_input7").value;
+  numberAddress = null;
   complement = null;
   unit = null;
   cnpj = document.getElementById("id_input11").value;
@@ -317,6 +328,7 @@ function updateAdmin(fantasyName, cep, complement, unit, cnpj, name, email, tele
     body: JSON.stringify({
       fantasyName: fantasyName,
       cep: cep,
+      numberAddress: numberAddress,
       complement: complement,
       unit: unit,
       cnpj: cnpj,
