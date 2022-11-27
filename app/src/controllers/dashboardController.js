@@ -92,8 +92,35 @@ async function getPercentageUsePerCompenent(req, res) {
   }
 }
 
+async function getThresholdsBasic(req, res) {
+  console.log(req.body)
+  let idServer = req.params.server;
+
+  if (Object.values(req.params).length !== 1) {
+    const msg =
+      "Campos invalidos, valide no arquivo dashboard quais os campos que essa requisicao pede. (funcão getThresholdsBasic de dashboard.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const parametros = {
+        idServer : idServer,
+    };
+    const resultgetThresholdsBasic = await model.getThresholdsBasic(
+      parametros
+    );
+    res.json(resultgetThresholdsBasic).status(resultgetThresholdsBasic.status);
+  }
+}
+
+
 module.exports = {
     getPercentagePerComponent,
     getDataChart,
     getPercentageUsePerCompenent,
+    getThresholdsBasic
 };
