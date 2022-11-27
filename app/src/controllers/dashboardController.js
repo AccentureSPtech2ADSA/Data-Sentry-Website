@@ -93,7 +93,6 @@ async function getPercentageUsePerCompenent(req, res) {
 }
 
 async function getThresholdsBasic(req, res) {
-  console.log(req.body)
   let idServer = req.params.server;
 
   if (Object.values(req.params).length !== 1) {

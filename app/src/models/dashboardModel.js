@@ -7,7 +7,7 @@ async function getPercentagePerComponent({
   dataFim = "last",
   idServer,
 }) {
-  let time = await getLastTimeInserted();
+  let time = await getLastTimeInserted(idServer);
   console.log({ time });
   const query = `exec sp_getPercentagePerProcess
    '${component}', '${idServer}', '${
@@ -29,18 +29,23 @@ async function getPercentageUsePerCompenent({
   dataInicio = "last",
   dataFim = "last",
 }) {
-  let time = await getLastTimeInserted();
+  let time = await getLastTimeInserted(idServer);
   console.log(time);
   const query = `exec sp_getPercentagePerComponent
 '${component}', '${idServer}', '${
     dataInicio == "last" ? time[0] : dataInicio
-  }', '${dataFim == "last" ? time[2] : dataFim}';`;
+  }', '${dataFim == "last" ? time[1] : dataFim}';`;
   return await database.execute(query);
 }
 
-async function getLastTimeInserted() {
-  const query = `select top 4 createdAt Horario from LogComponentPerProcess lcpp group by createdAt order by createdAt desc;`;
+async function getLastTimeInserted(server) {
+  const query = `select top 4 lcpp.createdAt Horario, cs.fkServer server from LogComponentPerProcess lcpp 
+  join ComponentServer cs on cs.[_idComponentServer] = lcpp.fkComponentServer
+  where cs.fkServer = '${server}'
+  group by  cs.fkServer, lcpp.createdAt 
+  order by lcpp.createdAt desc;`
   let data = await database.execute(query);
+
 
   /**
    * @type Date
