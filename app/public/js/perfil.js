@@ -226,19 +226,21 @@ function valoresInputs() {
   .then(json=>{
     console.log(json);
   document.getElementById("id_input4").value = json.logradouro;
-  document.getElementById("id_input6").value = json.uf;
   document.getElementById("id_input8").value = json.bairro;
   document.getElementById("id_input5").value = json.localidade;
   })
   document.getElementById("id_input1").value = dadosjwt.corporateName;
   document.getElementById("id_input2").value = dadosjwt.fantasyName;
   document.getElementById("id_input3").value = dadosjwt.email;
+  document.getElementById("id_input6").value = dadosjwt.numberAddress;
   document.getElementById("id_input7").value = dadosjwt.cep;
   document.getElementById("id_input9").value = "***************";
   document.getElementById("id_input10").value = dadosjwt.contactPhone;
   document.getElementById("id_input11").value = dadosjwt.cnpj;
   document.getElementById("id_input12").value = dadosjwt.name;
   document.getElementById("id_input13").value = dadosjwt.contactPhone;
+  document.getElementById("id_input14").value = dadosjwt.complement;
+  document.getElementById("id_input15").value = dadosjwt.unit;
 }
 
 function esconderLoading() {
