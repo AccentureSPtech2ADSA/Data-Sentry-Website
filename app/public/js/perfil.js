@@ -28,6 +28,10 @@ function onoff() {
     //Perfil salvo
     document.getElementById("onoff").value = "Editar";
 
+    document.getElementById("id_input1").style.border = "none"
+    document.getElementById("input_NumEndereco").style.border = "none"
+    document.getElementById("input_complemento").style.border = "none"
+    document.getElementById("input_unidade").style.border = "none"
     document.getElementById("id_input2").style.border = "none"
     document.getElementById("id_input3").style.border = "none"
     document.getElementById("id_input4").style.border = "none"
@@ -270,7 +274,7 @@ document.getElementById("id_input7").value = dadosjwt.cep;
 document.getElementById("input_complemento").value = dadosjwt.complement;
 document.getElementById("input_unidade").value = dadosjwt.unit;
 document.getElementById("input_NumEndereco").value = dadosjwt.numberAddress;
-  })
+
   document.getElementById("id_input9").value = "***************";
   document.getElementById("id_input10").value = dadosjwt.contactPhone;
   document.getElementById("id_input11").value = dadosjwt.cnpj;
