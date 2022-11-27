@@ -34,7 +34,7 @@ async function getPercentageUsePerCompenent({
   const query = `exec sp_getPercentagePerComponent
 '${component}', '${idServer}', '${
     dataInicio == "last" ? time[0] : dataInicio
-  }', '${dataFim == "last" ? time[1] : dataFim}';`;
+  }', '${dataFim == "last" ? time[2] : dataFim}';`;
   return await database.execute(query);
 }
 

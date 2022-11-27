@@ -1,6 +1,10 @@
 // Abre tela de login
 function popup_login() {
-  div_login.style.display = "flex";
+  if (sessionStorage.length == 0) {
+    div_login.style.display = "flex";
+  } else {
+    window.open("/perfil.html", "_self");
+  }
 }
 
 // Fecha tela de login

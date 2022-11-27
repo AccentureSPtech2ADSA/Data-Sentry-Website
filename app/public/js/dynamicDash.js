@@ -41,7 +41,6 @@ function moldarDash(serversData) {
     serverSerial = serversData[0]._serialServer;
     loadDashByServer(serversData[0]._serialServer);
     let dropdown = document.querySelector("#myDropdown");
-    dropdown.innerHTML = "";
     serversData.forEach((server, index) => {
       dropdown.innerHTML += `<a onclick="loadDashByServer('${
         server._serialServer
@@ -54,7 +53,6 @@ function moldarDash(serversData) {
     tela_completa_dashboard.style.display = "none";
   }
 
-  esconderLoading();
 }
 
 /**
@@ -62,8 +60,6 @@ function moldarDash(serversData) {
  * @param {String} server
  */
 async function loadDashByServer(server) {
-  mostrarLoading();
-  console.log("carregar dash dinamic");
 
   loadTableProcessPerComponents(server);
 
@@ -71,13 +67,16 @@ async function loadDashByServer(server) {
   document.getElementById("chartCpu").innerHTML = "";
   document.getElementById("chartRam").innerHTML = "";
   arrayTresholds = await getTresholdsBasic(serverSerial);
-  loadChartsCPU(server);
-  loadChartsRAM(server);
-  loadChartsDISCO(server);
+  document.getElementById("btn_drop").innerHTML = `#Servidor: ` + server;
+  //document.getElementById("btn_drop").innerHTML = `#Servidor: ${server} - ${index + 1}`
   loadKpiDisco(server);
   loadKpiRam(server);
   loadKpiCpu(server);
-  esconderLoading();
+
+  loadChartsCPU(server);
+  loadChartsRAM(server);
+  loadChartsDISCO(server);
+
 }
 function loadChartsCPU(server) {
   fazerRequisicaoLoadChart(server, "CPU").then((dataCpu) => {
@@ -126,6 +125,8 @@ async function loadChartsDISCO(server) {
     .map((item) => item.Percentagem * Math.random() * 8)
     .reverse();
   new Chart(document.getElementById("chartDisco"), config7);
+
+  esconderLoading();
 }
 async function fazerRequisicaoLoadChart(server, component) {
   let req = await fetch("/dashboard/getDataChart", {
@@ -176,7 +177,7 @@ async function loadTableProcessPerComponents(server) {
   let tbody = document.querySelector("tbody#tbody-process");
   tbody.innerHTML = "";
 
-  dataCpuProcess[0].forEach((item, index) => {
+  dataCpuProcess[0].forEach((item) => {
     let RamProcesso = dataRamProcess[0].find((itemRam) => {
       return itemRam.Processo == item.Processo;
     });
@@ -223,6 +224,10 @@ async function getPercentagePerComponent(
 }
 
 async function loadKpiDisco(server) {
+  let dataDisco = await fazerRequisicaoLoadKpi(server, "DISCO");
+
+  if(dataDisco[0][0]){
+
   let html = document.getElementById("myChart3").parentElement;
   html.removeChild(html.querySelector("canvas"));
   html.innerHTML = `
@@ -233,10 +238,8 @@ async function loadKpiDisco(server) {
   let dataHtmlDiscoUsoMaximo = document.getElementById("usoMaxDisco");
   let dataHtmlDiscoPorcentagemUso = document.getElementById("usoTotalDisco");
 
-  let dataDisco = await fazerRequisicaoLoadKpi(server, "DISCO");
 
   console.log({dataDisco});
-  if(dataDisco[0][0]){
     config3.data.datasets[0].data = [
       +dataDisco[0][0].Uso.replace("GBs", ""),
       +dataDisco[0][0].MaximoUso.replace("GBs", "") -

@@ -1,4 +1,5 @@
 /* Botão de seleção de servidor */
+window.onload = validacaoLogin();
 const token = window.sessionStorage.getItem('Token');
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
