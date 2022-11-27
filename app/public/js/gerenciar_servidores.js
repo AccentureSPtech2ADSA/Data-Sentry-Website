@@ -5,6 +5,12 @@ function esconderLoading() {
     div_loading.style.display = "none";
 }
 
+
+function logout() {
+  sessionStorage.clear();
+  window.open("/index.html", "_self");
+}
+
 const loadServers = async () => {
   const token = sessionStorage.getItem("Token");
   const user = parseJwt(token);

@@ -252,6 +252,10 @@ async function updateAdmin(req, res) {
     if (updateAdmin.status == 200 || updateAdmin.status == 201) {
       updateAdmin.longMessage = `Analista atualizado com sucesso!`;
       updateAdmin.shortMessage = `Analista atualizado.`;
+      const userData = await userHospitalModel.captarDadosUsuario({id: idUserHospital});
+      console.dir(userData);
+      const token = sign(userData.data[0][0]);
+      updateAdmin.token = token;
       res.json(updateAdmin);
     } else {
       res.status(updateAdmin.status);
@@ -308,7 +312,6 @@ async function getListAnalists(req, res) {
     const listAnalists = await userHospitalModel.getListAnalists({
       fkHospital,
     });
-    console.dir(listAnalists);
     if (listAnalists.status == 200 || listAnalists.status == 201) {
       listAnalists.longMessage = `Lista de usuarios analistas do hosital ${fkHospital}`;
       listAnalists.shortMessage = `Lista de analistas.`;
