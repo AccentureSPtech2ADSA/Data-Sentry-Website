@@ -183,7 +183,7 @@ function validarPatente() {
 function deleteUser() {
   const data = window.sessionStorage.getItem("Token");
   const dados = parseJwt(data).data;
-  var id = dados.id;
+  let id = dados.id;
   let fk = dados.fkHospital;
 
   console.log(data);
@@ -293,7 +293,7 @@ function updateAnalist(name, email, telefone){
 }
 
 
-function updateAdmin(fantasyName, cep, complement, unit, cnpj, fkHospital, name, email, telefone, id){
+function updateAdmin(fantasyName, cep, complement, unit, cnpj, name, email, telefone){
   fantasyName = document.getElementById("id_input2").value;
   cep = document.getElementById("id_input7").value;
   complement = null;
