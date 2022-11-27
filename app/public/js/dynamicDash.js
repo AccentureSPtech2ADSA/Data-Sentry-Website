@@ -46,7 +46,6 @@ function moldarDash(serversData) {
     serverSerial = serversData[0]._serialServer;
     loadDashByServer(serversData[0]._serialServer);
     let dropdown = document.querySelector("#myDropdown");
-    dropdown.innerHTML = "";
     serversData.forEach((server, index) => {
       dropdown.innerHTML += `<a onclick="loadDashByServer('${
         server._serialServer
@@ -75,12 +74,16 @@ async function loadDashByServer(server) {
   document.getElementById("chartDisco").innerHTML = "";
   document.getElementById("chartCpu").innerHTML = "";
   document.getElementById("chartRam").innerHTML = "";
+  document.getElementById("btn_drop").innerHTML = `#Servidor: ` + server;
+  //document.getElementById("btn_drop").innerHTML = `#Servidor: ${server} - ${index + 1}`
+
   loadChartsCPU(server);
   loadChartsRAM(server);
   loadChartsDISCO(server);
   loadKpiDisco(server);
   loadKpiRam(server);
   loadKpiCpu(server);
+  
   esconderLoading();
 }
 function loadChartsCPU(server) {
