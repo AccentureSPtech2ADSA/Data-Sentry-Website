@@ -1,6 +1,7 @@
 function validacaoLogin() {
-    if (sessionStorage.length == 0) {
-        window.open("./index.html", "_self")
+    console.log('execute validate');
+    if (!sessionStorage.getItem('Token')) {
+        window.location.href = "/";
     }
 }
 

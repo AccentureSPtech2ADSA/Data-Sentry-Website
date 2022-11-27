@@ -1,3 +1,4 @@
+window.onload = validacaoLogin();
 
 function esconderLoading(){
   document.querySelector(`#div_loading`).style.display = "none";

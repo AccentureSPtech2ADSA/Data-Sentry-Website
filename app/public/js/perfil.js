@@ -1,3 +1,5 @@
+window.onload = validacaoLogin();
+
 function enabledisable() {
   id_input1.disabled = !id_input1.disabled //RazaoSocial
   id_input2.disabled = !id_input2.disabled
