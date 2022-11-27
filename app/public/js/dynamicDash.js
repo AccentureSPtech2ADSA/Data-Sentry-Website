@@ -1,15 +1,16 @@
-
 // var tabela_isOriginal = true;
 // var originalHTML = "";
 
-let arrayProcessosCPU = []
-let arrayProcessosRAM = []
-let arrayProcessosNOME = []
+let arrayProcessosCPU = [];
+let arrayProcessosRAM = [];
+let arrayProcessosNOME = [];
 
 let serverSerial = 0;
 
-let dataCpuProcess = []
-let dataRamProcess = []
+let dataCpuProcess = [];
+let dataRamProcess = [];
+
+let arrayProccessPerRow = [];
 
 function esconderLoading() {
   div_loading.style.display = "none";
@@ -42,20 +43,20 @@ async function getServers() {
 function moldarDash(serversData) {
   mostrarLoading();
   if (serversData.length > 0) {
-
     serverSerial = serversData[0]._serialServer;
     loadDashByServer(serversData[0]._serialServer);
     let dropdown = document.querySelector("#myDropdown");
     dropdown.innerHTML = "";
     serversData.forEach((server, index) => {
-      dropdown.innerHTML += `<a onclick="loadDashByServer('${server._serialServer
-        }')" >#${server._serialServer} - ${index + 1}</a>`;
+      dropdown.innerHTML += `<a onclick="loadDashByServer('${
+        server._serialServer
+      }')" >#${server._serialServer} - ${index + 1}</a>`;
     });
-    tela_sem_servidores.style.display = "none"
-    tela_completa_dashboard.style.display = "block"
+    tela_sem_servidores.style.display = "none";
+    tela_completa_dashboard.style.display = "block";
   } else {
-    tela_sem_servidores.style.display = "block"
-    tela_completa_dashboard.style.display = "none"
+    tela_sem_servidores.style.display = "block";
+    tela_completa_dashboard.style.display = "none";
   }
 
   esconderLoading();
@@ -79,7 +80,7 @@ async function loadDashByServer(server) {
   loadChartsDISCO(server);
   loadKpiDisco(server);
   loadKpiRam(server);
-  loadKpiCpu(server)
+  loadKpiCpu(server);
   esconderLoading();
 }
 function loadChartsCPU(server) {
@@ -180,13 +181,18 @@ async function loadTableProcessPerComponents(server) {
   console.log({ dataRamProcess, dataCpuProcess });
 
   dataCpuProcess[0].forEach((item, index) => {
-    arrayProcessosCPU.push(item.Percentagem)
+    arrayProcessosCPU.push(item.Percentagem);
     let RamProcesso = dataRamProcess[0].find((itemRam) => {
       return itemRam.Processo == item.Processo;
     });
-    arrayProcessosRAM.push(RamProcesso.Percentagem)
-    arrayProcessosNOME.push(item.Processo)
+    arrayProcessosRAM.push(RamProcesso.Percentagem);
+    arrayProcessosNOME.push(item.Processo);
 
+    arrayProccessPerRow.push({
+      nome: item.Processo,
+      ram: RamProcesso.Percentagem,
+      cpu: item.Percentagem,
+    });
     tbody.innerHTML += `
         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
                 <td>${item.Processo}</td>
@@ -249,10 +255,14 @@ async function loadKpiDisco(server) {
 
   let dataDisco = await fazerRequisicaoLoadKpi(server, "DISCO");
   console.log(dataDisco[0][0]);
-  config3.data.datasets[0].data = [+dataDisco[0][0].Uso.replace("GBs",""), +dataDisco[0][0].MaximoUso.replace("GBs","") - +dataDisco[0][0].Uso.replace("GBs","")]
+  config3.data.datasets[0].data = [
+    +dataDisco[0][0].Uso.replace("GBs", ""),
+    +dataDisco[0][0].MaximoUso.replace("GBs", "") -
+      +dataDisco[0][0].Uso.replace("GBs", ""),
+  ];
   new Chart(document.getElementById("myChart3"), config3);
 
-  dataHtmlDiscoUsoAtual.innerHTML = `${dataDisco[0][0].Uso.replace("GBs","")}`;
+  dataHtmlDiscoUsoAtual.innerHTML = `${dataDisco[0][0].Uso.replace("GBs", "")}`;
   dataHtmlDiscoUsoMaximo.innerHTML = `${dataDisco[0][0].MaximoUso}`;
   dataHtmlDiscoPorcentagemUso.innerHTML = `${dataDisco[0][0].Percentagem}%`;
 }
@@ -269,10 +279,14 @@ async function loadKpiRam(server) {
   let dataHtmlRamPorcentagemUso = document.getElementById("usoTotalRam");
 
   let dataRam = await fazerRequisicaoLoadKpi(server, "RAM");
-  config2.data.datasets[0].data = [+dataRam[0][0].Uso.replace("GBs",""), +dataRam[0][0].MaximoUso.replace("GBs","") - +dataRam[0][0].Uso.replace("GBs","")]
+  config2.data.datasets[0].data = [
+    +dataRam[0][0].Uso.replace("GBs", ""),
+    +dataRam[0][0].MaximoUso.replace("GBs", "") -
+      +dataRam[0][0].Uso.replace("GBs", ""),
+  ];
   new Chart(document.getElementById("myChart2"), config2);
 
-  dataHtmlRamUsoAtual.innerHTML = `${dataRam[0][0].Uso.replace("GBs","")}`;
+  dataHtmlRamUsoAtual.innerHTML = `${dataRam[0][0].Uso.replace("GBs", "")}`;
   dataHtmlRamUsoMaximo.innerHTML = `${dataRam[0][0].MaximoUso}`;
   dataHtmlRamPorcentagemUso.innerHTML = `${dataRam[0][0].Percentagem}%`;
 }
@@ -290,25 +304,72 @@ async function loadKpiCpu(server) {
 
   let dataCpu = await fazerRequisicaoLoadKpi(server, "CPU");
   console.log(dataCpu[0][0]);
-  config1.data.datasets[0].data = [+dataCpu[0][0].Uso.replace("MHz",""), +dataCpu[0][0].MaximoUso.replace("MHz","") - +dataCpu[0][0].Uso.replace("MHz","")]
+  config1.data.datasets[0].data = [
+    +dataCpu[0][0].Uso.replace("MHz", ""),
+    +dataCpu[0][0].MaximoUso.replace("MHz", "") -
+      +dataCpu[0][0].Uso.replace("MHz", ""),
+  ];
   new Chart(document.getElementById("myChart1"), config1);
 
-  dataHtmlCpuUsoAtual.innerHTML = `${dataCpu[0][0].Uso.replace("MHz","")}`;
+  dataHtmlCpuUsoAtual.innerHTML = `${dataCpu[0][0].Uso.replace("MHz", "")}`;
   dataHtmlCpuUsoMaximo.innerHTML = `${dataCpu[0][0].MaximoUso}`;
   dataHtmlCpuPorcentagemUso.innerHTML = `${dataCpu[0][0].Percentagem}%`;
 }
 
-
 document.body.onload = getServers();
 
+function filterTablePerName() {
 
-function filterTablePerName(){
+  filteredTable = arrayProccessPerRow.sort((a, b) =>
+    a.nome > b.nome ? 1 : b.nome > a.nome ? -1 : 0
+  );
 
+  let triangleNOME = document.querySelector("#title_nome");
+  
+  filterTable(filteredTable, triangleNOME);
 }
+function filterTablePerCpu() {
+  filteredTable = arrayProccessPerRow.sort((a, b) =>
+    a.cpu > b.cpu ? 1 : b.cpu > a.cpu ? -1 : 0
+  );
 
+  filterTable(filteredTable, document.querySelector("#title_cpu"));
+}
+function filterTablePerMemoria() {
+  filteredTable = arrayProccessPerRow.sort((a, b) =>
+    a.ram > b.ram ? 1 : b.ram > a.ram ? -1 : 0
+  );
 
+  filterTable(filteredTable, document.querySelector("#title_memoria"));
+}
+crescente = true;
+function filterTable(array, triangle) {
+  let tbody = document.querySelector("tbody#tbody-process");
+  tbody.innerHTML = "";
 
+  array = crescente ? array : array.reverse();
+  triangle.innerHTML = !crescente ? "▲" : "▼";
 
+  crescente = !crescente;
+  array.forEach((item, index) => {
+    tbody.innerHTML += `
+          <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
+                  <td>${item.nome}</td>
+                  <td>${(item.cpu + "").replace(".", ",")}%</td> 
+                  <td>${(item.ram + "").replace(".", ",")}%</td>
+                  <td>
+                  <button
+                    class="button_kill"
+                    onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
+                  >
+                    Encerrar
+                  </button>
+                </td>
+                </tr>
+               
+          `;
+  });
+}
 
 // var crescente = true;
 // var asc = true;
@@ -325,7 +386,6 @@ function filterTablePerName(){
 
 //   asc = !asc
 
-  
 //   let triangleNOME = document.querySelector('#title_nome')
 //   triangleNOME.innerHTML = asc ? "▲" : "▼";
 //   let triangleCPU = document.querySelector('#title_cpu')
@@ -351,13 +411,6 @@ function filterTablePerName(){
 //   tabela_isOriginal = false;
 // }
 
-
-
-
-
-
-
-
 // ////////////////////////// FILTER ORDER NOME
 // function filterTablePerName() {
 //   let tbody = document.querySelector("tbody#tbody-process");
@@ -372,7 +425,7 @@ function filterTablePerName(){
 //     let triangle = document.querySelector('#title_nome')
 //     triangle.innerHTML = crescente ? "▲" : "▼";
 
-//  crescente = !crescente; 
+//  crescente = !crescente;
 
 //   dataFiltered
 //  .forEach((item, index)=>{
@@ -382,7 +435,7 @@ function filterTablePerName(){
 //   tbody.innerHTML += `
 //         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
 //                 <td>${item}</td>
-//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
+//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td>
 //                 <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
 //                 <td>
 //                   <button
@@ -411,7 +464,7 @@ function filterTablePerName(){
 //     let triangle = document.querySelector('#title_cpu')
 //     triangle.innerHTML = crescente ? "▲" : "▼";
 
-//  crescente = !crescente; 
+//  crescente = !crescente;
 
 //   dataFiltered
 //  .forEach((item, index)=>{
@@ -421,7 +474,7 @@ function filterTablePerName(){
 //   tbody.innerHTML += `
 //         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
 //                 <td>${cpu.Processo}</td>
-//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
+//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td>
 //                 <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
 //                 <td>
 //                   <button
@@ -450,7 +503,7 @@ function filterTablePerName(){
 //     let triangle = document.querySelector('#title_memoria')
 //     triangle.innerHTML = crescente ? "▲" : "▼";
 
-//  crescente = !crescente; 
+//  crescente = !crescente;
 
 //   dataFiltered
 //  .forEach((item, index)=>{
@@ -460,7 +513,7 @@ function filterTablePerName(){
 //   tbody.innerHTML += `
 //         <tr class="${index % 2 == 0 ? "colorGray" : "colorBebe"}">
 //                 <td>${item}</td>
-//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td> 
+//                 <td>${(cpu.Percentagem + "").replace(".", ",")}%</td>
 //                 <td>${(ram.Percentagem + "").replace(".", ",")}%</td>
 //                 <td>
 //                   <button
