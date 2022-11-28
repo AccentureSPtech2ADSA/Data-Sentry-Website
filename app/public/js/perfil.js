@@ -228,9 +228,10 @@ function validarPatente() {
     id_input4.style.display = "none";
     id_blocoEnd1.style.display = "none";
     id_blocoEnd2.style.display = "none";
+    input_complemento.style.display = 'none'
+    id_blocoEnd0.style.display = 'none'
     id_blocoEnd3.style.display = "none";
-    id_blocoEnd_numEndereco.style.display = "none";
-    id_blocoEnd0.style.display = "none";
+    // id_blocoEnd_numEndereco.style.display = "none";
   }
 }
 
@@ -359,9 +360,11 @@ function updateAdmin() {
   numberAddress = document.getElementById("input_NumEndereco").value;
   complement = document.getElementById("input_complemento").value;
   unit = document.getElementById("input_unidade").value;
-  cnpj = document.getElementById("id_input11").value;
+  cnpj = document.getElementById("id_input11").value.replaceAll("/", "")
+  .replaceAll(" ", "").replaceAll('.','').replaceAll('-','');
   email = document.getElementById("id_input3").value;
-  telefone = document.getElementById("id_input10").value;
+  telefone = document.getElementById("id_input10").value.replaceAll("\(", "")
+  .replaceAll(" ", "").replaceAll("\)", "").replaceAll("-", "");;
   const data = window.sessionStorage.getItem("Token");
   const dados = parseJwt(data).data;
   let id = dados.id;

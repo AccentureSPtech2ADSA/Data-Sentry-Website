@@ -581,3 +581,80 @@ body {
     }
   }
   
+
+  #messages_alerts{
+    position: fixed;
+    top: 3vh;
+    right: 1vw;
+
+    max-width: 400px;
+    width: 90%;
+    opacity: .98;
+    border-radius: 8px;
+
+    background-color: #e2e2e2;
+    border: 1px solid #a2a2a288;
+
+    padding: 6px;
+    z-index: 99999;
+
+    box-shadow: 0 2px 8px #3338;
+
+    display: none;
+  }
+
+  #messages_alerts > div{
+    margin: 2px;
+    border-radius: 8px;
+    padding: 4px;
+    text-align: center;
+    position: relative;
+    color: #212121;
+  }
+  #messages_alerts h4{
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+  
+  }
+  #messages_alerts span.close{
+    cursor: pointer;
+    position: absolute;
+    font-weight: bold;
+    border: 2px solid #212121;
+    padding: 0 5px;
+    border-radius: 50%;
+    top: 4px;
+    right: 8px;
+  }
+  #messages_alerts button{
+    margin-top: 8px;
+    font-size: .8rem;
+    padding: 4px 16px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: 500;
+    border: 1px solid #21212188;
+  }
+  #messages_alerts p{
+    font-size: .85rem;
+    padding: 0;
+    margin: 0;
+  }
+  #messages_alerts > div.warning{
+    background-color: #fff4dd;
+    border: 2px solid #ffe798;
+  }
+  #messages_alerts > div.error{
+    background-color: #ffdee0;
+    border: 2px solid #ffa5ae;
+  }
+  #messages_alerts div.warning button{
+    background-color: #ffe588;
+    color: #433501;
+  }
+  #messages_alerts div.error button{
+    background-color: #fc9aa4;
+    color: #5c0b13;
+  }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/dashboard.css" />
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <!---JIVOCHAT---->
-    <script src="//code.jivosite.com/widget/K7RJgm8xzE" async></script>
+    <!-- <script src="//code.jivosite.com/widget/K7RJgm8xzE" async></script> -->
 
     <!---Chart JS minificado---->
     <script
@@ -45,6 +45,8 @@
         <span></span>
       </div>
     </div>
+
+    <div id="messages_alerts"></div>
 
     <!-- Navbar Lateral -->
     <div class="navbar">
@@ -206,6 +208,7 @@
           <div class="area-button">
             <button onclick="download_graph_ram()">Exportar como PNG</button>
           </div>
+
           <canvas id="chartRam"></canvas>
           <div id="legenda1" class="legendas">
             <div class="item_legend">
@@ -231,7 +234,7 @@
             <button onclick="download_graph_cpu()">Exportar como PNG</button>
           </div>
           <canvas id="chartCpu"></canvas>
-          <div id="legenda2" class="legendas">
+          <div id="legenda1" class="legendas">
             <div class="item_legend">
               <div class="ideal"></div>
               <p style="font-size: 15px">Zona Ideal</p>
@@ -255,7 +258,7 @@
             <button onclick="download_graph_disco()">Exportar como PNG</button>
           </div>
           <canvas id="chartDisco"></canvas>
-          <div id="legenda3" class="legendas">
+          <div id="legenda1" class="legendas">
             <div class="item_legend">
               <div class="ideal"></div>
               <p style="font-size: 15px">Zona Ideal</p>
