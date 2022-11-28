@@ -116,10 +116,53 @@ async function getThresholdsBasic(req, res) {
   }
 }
 
+function getDateInit(){
+  let date = new Date();
+  let dataDeInicio = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + '00:00:00';
+  
+  return dataDeInicio;
+}
+
+function getEndDate () {
+  let date = new Date();
+  let dataDeFim = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + '23:59:59';
+
+  return dataDeFim;
+}
+
+async function getLastsLogsPerDay(req, res) {
+  let idServer = req.params.server;
+  let dataInit = getDateInit();
+  let dataEnd = getEndDate();
+
+  if (Object.values(req.params).length !== 1) {
+    const msg =
+      "Campos invalidos, valide no arquivo dashboard quais os campos que essa requisicao pede. (funcão getLastsLogsPerDay de dashboard.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const parametros = {
+        idServer : idServer,
+        dataInit: dataInit,
+        dataEnd: dataEnd
+    };
+    const resultgetLastsLogsPerDay = await model.getLastsLogsPerDay(
+      parametros
+    );
+    res.json(resultgetLastsLogsPerDay).status(resultgetLastsLogsPerDay.status);
+  }
+}
+
 
 module.exports = {
     getPercentagePerComponent,
     getDataChart,
     getPercentageUsePerCompenent,
-    getThresholdsBasic
+    getThresholdsBasic,
+    getLastsLogsPerDay
 };

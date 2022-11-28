@@ -8,6 +8,8 @@
     <title>Dashboard - Data Sentry</title>
     <link rel="stylesheet" href="./css/navbarLateral.css" />
     <link rel="stylesheet" href="./css/dashboard.css" />
+    <!-- IMPORTAÇÃO PARA DONWLOAD EXCEL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js" integrity="sha512-jDEmOIskGs/j5S3wBWQAL4pOYy3S5a0y3Vav7BgXHnCVcUBXkf1OqzYS6njmDiKyqes22QEX8GSIZZ5pGk+9nA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <!---JIVOCHAT---->
     <script src="//code.jivosite.com/widget/K7RJgm8xzE" async></script>
@@ -153,6 +155,7 @@
     <div id="tela_completa_dashboard" class="body_container">
       <div class="bloco1">
         <p id="nomeClinica">Clínica Cirúrgica Santa Efigênia</p>
+        <button onclick="getExcel()">Exportar Excel do Ultimo Dia</button>
         <div class="dropdown">
           <button onclick="myFunction()" id="btn_drop" class="dropbtn"></button>
           <div id="myDropdown" class="dropdown-content"></div>

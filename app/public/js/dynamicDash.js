@@ -383,3 +383,44 @@ async function getTresholdsBasic(
   throw new Error(res.msg);
 }
 
+async function getExcel() {
+  let req = await fetch(`/dashboard/getLastsLogsPerDay/${serverSerial}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  let res = await req.json();
+  if (res.status == 200) {
+    console.log(res.data);
+      const wb = XLSX.utils.book_new();
+      
+      wb.Props = {
+        Title: 'Data Sentry',
+        Subject: 'Dados de Utilização',
+        Author: 'Data Sentry',
+        CreatedDate: new Date(),
+      };
+      
+      wb.SheetNames.push('Relatório 1');
+      
+      let datas = res.data[0];
+      let labels = Object.entries(datas[0]).map(item => item[0]);
+      
+      let rows = [];
+      rows.push(labels);
+      datas.forEach(item => rows.push(Object.values(item)));
+
+      let dados = rows;
+
+      const ws = XLSX.utils.aoa_to_sheet(dados);
+      
+      wb.Sheets['Relatório 1'] = ws;
+      
+      XLSX.writeFile(wb, 'datasentry-alertas.xlsx', { bookType: 'xlsx', type: 'bynary'});
+      
+    }
+    throw new Error(res.msg);
+}
