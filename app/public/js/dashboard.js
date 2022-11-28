@@ -22,7 +22,6 @@ window.onclick = function (event) {
   }
 }
 
-
 myTimeout = setTimeout(esconderLoading, 1500);
 
 function searchProcess() {

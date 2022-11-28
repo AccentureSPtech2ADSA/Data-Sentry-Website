@@ -19,7 +19,7 @@ body {
 }
 
 #tela_completa_dashboard {
-    display: block;
+    display: none;
 }
 
 #tela_sem_servidores {

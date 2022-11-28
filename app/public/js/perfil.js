@@ -270,7 +270,7 @@ function trocarSenha() {
   window.open("/esqueceu_senha.html", "_self");
 }
 
-function updateAnalist(name, email, telefone){
+function updateAnalist(name, email, telefone) {
   name = document.getElementById("id_input12").value;
   email = document.getElementById("id_input3").value;
   telefone = document.getElementById("id_input10").value;
@@ -289,7 +289,7 @@ function updateAnalist(name, email, telefone){
       name: name,
       email: email,
       telefone: telefone,
-      id: id
+      id: id,
     }),
   });
   let res = req.then((val) => val.json());
@@ -304,23 +304,25 @@ function updateAnalist(name, email, telefone){
   return res;
 }
 
-
-function updateAdmin(fantasyName, cep, numberAddress, complement, unit, cnpj, name, email, telefone){
+function updateAdmin() {
   fantasyName = document.getElementById("id_input2").value;
-  cep = document.getElementById("id_input7").value;
-  numberAddress = null;
-  complement = null;
-  unit = null;
-  cnpj = document.getElementById("id_input11").value;
-  name = document.getElementById("id_input12").value;
+  cep = document
+    .getElementById("id_input7")
+    .value.replaceAll("-", "")
+    .replaceAll(" ", "");
+  numberAddress = document.getElementById("id_input6").value;
+  complement = document.getElementById("id_input14").value;
+  unit = document.getElementById("id_input15").value;
+  cnpj = document.getElementById("id_input11").value.replaceAll("/", "")
+  .replaceAll(" ", "").replaceAll('.','').replaceAll('-','');
   email = document.getElementById("id_input3").value;
-  telefone = document.getElementById("id_input10").value;
+  telefone = document.getElementById("id_input10").value.replaceAll("\(", "")
+  .replaceAll(" ", "").replaceAll("\)", "").replaceAll("-", "");;
   const data = window.sessionStorage.getItem("Token");
   const dados = parseJwt(data).data;
   let id = dados.id;
   let fkHospital = dados.fkHospital;
 
-  console.log(data);
   let req = fetch("/user/updateAdmin", {
     method: "PUT",
     headers: {
@@ -334,17 +336,20 @@ function updateAdmin(fantasyName, cep, numberAddress, complement, unit, cnpj, na
       complement: complement,
       unit: unit,
       cnpj: cnpj,
-      name: name,
       email: email,
       telefone: telefone,
       id: id,
-      fkHospital: fkHospital
+      fkHospital: fkHospital,
     }),
   });
   let res = req.then((val) => val.json());
   res.then((json) => {
     console.log(json);
-    if (json.status == 200) {}
+    if (json.status == 200) {
+      sessionStorage.removeItem("Token");
+      sessionStorage.setItem("Token", json.token);
+      window.location.reload();
+    }
   });
   return res;
 }
