@@ -158,11 +158,38 @@ async function getLastsLogsPerDay(req, res) {
   }
 }
 
+async function changeIsActiveServer(req, res){
+  let idServer = req.body.idServer;
+  let isActive = req.body.isActive;
+
+  if (Object.values(req.body).length !== 2) {
+    const msg =
+      "Campos invalidos, valide no arquivo dashboard quais os campos que essa requisicao pede. (funcão getThresholdsBasic de dashboard.js)";
+    res
+      .json({
+        data: null,
+        msg: msg,
+        status: 404,
+      })
+      .status(404);
+  } else {
+    const parametros = {
+        idServer: idServer,
+        isActive: isActive
+    };
+    const resultchangeIsActiveServer = await model.changeIsActiveServer(
+      parametros
+    );
+    res.json(resultchangeIsActiveServer).status(resultchangeIsActiveServer.status);
+  }
+
+}
 
 module.exports = {
     getPercentagePerComponent,
     getDataChart,
     getPercentageUsePerCompenent,
     getThresholdsBasic,
-    getLastsLogsPerDay
+    getLastsLogsPerDay,
+    changeIsActiveServer,
 };
