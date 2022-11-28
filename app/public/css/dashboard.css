@@ -463,6 +463,11 @@ body {
     .button_kill{
         width: auto;
     }
+
+    #inputSearch{
+      width: 100%;
+      height: 5vh;
+    }
 }
   
   #notfound {
