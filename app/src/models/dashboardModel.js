@@ -73,9 +73,24 @@ async function getThresholdsBasic({
   const query = `EXEC sp_getThresholdsBasic '${idServer}'`;
   return await database.execute(query);
 }
+
+async function getLastsLogsPerDay({
+  // KPI
+  idServer,
+  dataInit,
+  dataEnd
+}) {
+  console.log(idServer);
+  console.log(dataInit);
+  console.log(dataEnd);
+  const query = `EXEC sp_getLastsLogsPerDay '${idServer}', '${dataInit}', '${dataEnd}';`;
+  return await database.execute(query);
+}
+
 module.exports = {
   getPercentagePerComponent,
   getDataChart,
   getPercentageUsePerCompenent,
   getThresholdsBasic,
+  getLastsLogsPerDay,
 };

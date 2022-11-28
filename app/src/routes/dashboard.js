@@ -26,4 +26,9 @@ router.get("/getThresholdsBasic/:server", authJwt, (req, res) => {
   dashboardController.getThresholdsBasic(req, res);
 });
   
+router.get("/getLastsLogsPerDay/:server", authJwt, (req, res) => {
+  console.log("estou na rota de getLastsLogsPerDay da dashboard");
+  dashboardController.getLastsLogsPerDay(req, res);
+});
+
 module.exports = router;
