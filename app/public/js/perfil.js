@@ -3,19 +3,19 @@ window.onload = validacaoLogin();
 function enabledisable() {
   id_input1.disabled = !id_input1.disabled; //RazaoSocial
   id_input2.disabled = !id_input2.disabled;
-  input_NumEndereco.disabled = !input_NumEndereco.disabled; //Numero de endereço
+  id_input6.disabled = !id_input6.disabled; //Numero de endereço
   input_complemento.disabled = !input_complemento.disabled; //Complemento
   input_unidade.disabled = !input_unidade.disabled; //Unidade
   id_input3.disabled = !id_input3.disabled;
-  // id_input4.disabled = !id_input4.disabled
-  // id_input5.disabled = !id_input5.disabled
-  // id_input6.disabled = !id_input6.disabled
+  id_input4.disabled = !id_input4.disabled
+  id_input5.disabled = !id_input5.disabled
+  id_input6.disabled = !id_input6.disabled
   id_input7.disabled = !id_input7.disabled;
-  // id_input8.disabled = !id_input8.disabled
+  id_input8.disabled = !id_input8.disabled
   id_input10.disabled = !id_input10.disabled;
   id_input11.disabled = !id_input11.disabled;
   id_input12.disabled = !id_input12.disabled;
-  // id_input13.disabled = !id_input13.disabled
+  id_input13.disabled = !id_input13.disabled
 }
 
 function onoff() {
@@ -29,9 +29,9 @@ function onoff() {
     document.getElementById("onoff").value = "Editar";
 
     document.getElementById("id_input1").style.border = "none";
-    document.getElementById("input_NumEndereco").style.border = "none";
-    document.getElementById("input_complemento").style.border = "none";
-    document.getElementById("input_unidade").style.border = "none";
+    document.getElementById("id_input6").style.border = "none";
+    document.getElementById("id_input14").style.border = "none";
+    document.getElementById("id_input15").style.border = "none";
     document.getElementById("id_input2").style.border = "none";
     document.getElementById("id_input3").style.border = "none";
     document.getElementById("id_input4").style.border = "none";
@@ -104,11 +104,11 @@ function onoff() {
     // perfil no modo edição
     document.getElementById("onoff").value = "Salvar";
     document.getElementById("id_input1").style.border = "1px solid grey";
-    document.getElementById("input_NumEndereco").style.border =
+    document.getElementById("id_input6").style.border =
       "1px solid grey";
-    document.getElementById("input_complemento").style.border =
+    document.getElementById("id_input14").style.border =
       "1px solid grey";
-    document.getElementById("input_unidade").style.border = "1px solid grey";
+    document.getElementById("id_input15").style.border = "1px solid grey";
     document.getElementById("id_input2").style.border = "1px solid grey";
     document.getElementById("id_input3").style.border = "1px solid grey";
     // document.getElementById("id_input4").style.border = "1px solid grey"
@@ -122,9 +122,9 @@ function onoff() {
     // document.getElementById("id_input13").style.border = "1px solid grey"
 
     document.getElementById("id_input1").style.margin = "-1px 0 -1px 0";
-    document.getElementById("input_NumEndereco").style.margin = "-1px 0 -1px 0";
-    document.getElementById("input_complemento").style.margin = "-1px 0 -1px 0";
-    document.getElementById("input_unidade").style.margin = "-1px 0 -1px 0";
+    document.getElementById("id_input6").style.margin = "-1px 0 -1px 0";
+    document.getElementById("id_input14").style.margin = "-1px 0 -1px 0";
+    document.getElementById("id_input15").style.margin = "-1px 0 -1px 0";
     document.getElementById("id_input1").style.margin = "-1px 0 -1px 0";
     document.getElementById("id_input3").style.margin = "-1px 0 -1px 0";
     // document.getElementById("id_input4").style.margin = "-1px 0 -1px 0"
@@ -138,9 +138,9 @@ function onoff() {
     // document.getElementById("id_input13").style.margin = "-1px 0 -1px 0"
 
     document.getElementById("id_input1").style.cursor = "auto";
-    document.getElementById("input_NumEndereco").style.cursor = "auto";
-    document.getElementById("input_complemento").style.cursor = "auto";
-    document.getElementById("input_unidade").style.cursor = "auto";
+    document.getElementById("id_input6").style.cursor = "auto";
+    document.getElementById("id_input14").style.cursor = "auto";
+    document.getElementById("id_input15").style.cursor = "auto";
     document.getElementById("id_input2").style.cursor = "auto";
     document.getElementById("id_input3").style.cursor = "auto";
     // document.getElementById("id_input4").style.cursor = "auto"
@@ -155,11 +155,11 @@ function onoff() {
 
     document.getElementById("id_input1").style.boxShadow =
       "8px 8px 18px rgb(221, 221, 221)";
-    document.getElementById("input_NumEndereco").style.boxShadow =
+    document.getElementById("id_input6").style.boxShadow =
       "8px 8px 18px rgb(221, 221, 221)";
-    document.getElementById("input_complemento").style.boxShadow =
+    document.getElementById("id_input14").style.boxShadow =
       "8px 8px 18px rgb(221, 221, 221)";
-    document.getElementById("input_unidade").style.boxShadow =
+    document.getElementById("id_input15").style.boxShadow =
       "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input2").style.boxShadow =
       "8px 8px 18px rgb(221, 221, 221)";
@@ -180,9 +180,9 @@ function onoff() {
     // document.getElementById("id_input13").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
 
     document.getElementById("id_input1").style.color = "black";
-    document.getElementById("input_NumEndereco").style.color = "black";
-    document.getElementById("input_complemento").style.color = "black";
-    document.getElementById("input_unidade").style.color = "black";
+    document.getElementById("id_input6").style.color = "black";
+    document.getElementById("id_input14").style.color = "black";
+    document.getElementById("id_input15").style.color = "black";
     document.getElementById("id_input2").style.color = "black";
     document.getElementById("id_input3").style.color = "black";
     // document.getElementById("id_input4").style.color = "black";
@@ -217,8 +217,10 @@ function validarPatente() {
     nome_analista.style.display = "none";
     // num_contato.style.display = "none"
   } else if (dadosjwt.patent == "analist") {
+    // ipt_titulo.style.display = 'none'
+    
+    id_input15.style.display = 'none'
     nome_analista.style.display = "block";
-    // num_contato.style.display = "block"
     texto_patente.innerHTML = "Perfil de Analista";
     titulo_nome_fantasia.style.display = "none";
     id_input2.style.display = "none";
@@ -228,10 +230,8 @@ function validarPatente() {
     id_input4.style.display = "none";
     id_blocoEnd1.style.display = "none";
     id_blocoEnd2.style.display = "none";
-    input_complemento.style.display = 'none'
-    id_blocoEnd0.style.display = 'none'
+    id_input14.style.display = 'none'
     id_blocoEnd3.style.display = "none";
-    // id_blocoEnd_numEndereco.style.display = "none";
   }
 }
 
@@ -281,9 +281,9 @@ function valoresInputs() {
   document.getElementById("id_input2").value = dadosjwt.fantasyName;
   document.getElementById("id_input3").value = dadosjwt.email;
   document.getElementById("id_input7").value = dadosjwt.cep;
-  document.getElementById("input_complemento").value = dadosjwt.complement;
-  document.getElementById("input_unidade").value = dadosjwt.unit;
-  document.getElementById("input_NumEndereco").value = dadosjwt.numberAddress;
+  document.getElementById("id_input14").value = dadosjwt.complement;
+  document.getElementById("id_input15").value = dadosjwt.unit;
+  document.getElementById("id_input6").value = dadosjwt.numberAddress;
   document.getElementById("id_input9").value = "***************";
   document.getElementById("id_input10").value = dadosjwt.contactPhone;
   document.getElementById("id_input11").value = dadosjwt.cnpj;
@@ -357,9 +357,9 @@ function updateAdmin() {
     .getElementById("id_input7")
     .value.replaceAll("-", "")
     .replaceAll(" ", "");
-  numberAddress = document.getElementById("input_NumEndereco").value;
-  complement = document.getElementById("input_complemento").value;
-  unit = document.getElementById("input_unidade").value;
+  numberAddress = document.getElementById("id_input6").value;
+  complement = document.getElementById("id_input14").value;
+  unit = document.getElementById("id_input15").value;
   cnpj = document.getElementById("id_input11").value.replaceAll("/", "")
   .replaceAll(" ", "").replaceAll('.','').replaceAll('-','');
   email = document.getElementById("id_input3").value;

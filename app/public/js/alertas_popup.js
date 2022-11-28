@@ -11,32 +11,29 @@ const Toast = Swal.mixin({
   },
 });
 //______Popup
-function alertarQ(
-  title = "",
-  text = "",
-  icon = "",
-  confirmButtonText = "",
-  cancelButtonText = ""
-) {
-  if (icon == "warning") {
-    iconColor = "#FFBF00";
-  } else if (icon == "error") {
-    iconColor = "#8B0000";
-  } else if (icon == "success") {
-    iconColor = "green";
-  }
-  Swal.fire({
-    title: title,
-    text: text,
-    icon: icon,
-    iconColor: iconColor,
-    showCancelButton: true,
-    confirmButtonText: confirmButtonText,
-    cancelButtonText: cancelButtonText,
-    confirmButtonColor: "#1a6969",
-    timer: "20000",
-    timerProgressBar: true,
-  });
+function alertarQ(title = '', text = '', icon = '', confirmButtonText = '', cancelButtonText = ''){
+    if(icon == 'warning'){
+        iconColor = '#FFBF00'
+
+    } else if (icon == 'error'){
+        iconColor = '#8B0000'
+
+    } else if (icon == 'success'){
+        iconColor = 'green'
+
+    }
+    return Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        iconColor: iconColor,
+        showCancelButton: true,
+        confirmButtonText: confirmButtonText,
+        cancelButtonText: cancelButtonText,
+        confirmButtonColor: '#1a6969',
+        timer: '20000',
+        timerProgressBar: true
+    })
 }
 function alertar(
   title = "",
@@ -65,22 +62,6 @@ function alertar(
     timerProgressBar: true,
   });
 }
-
-async function toastWarning() {
-  
-}
-/*
-TEMPLATE Script para chamar o alerta popup
-
-    alertar(
-        'Titulo',
-        'Texto',
-        'Icone',
-        'Texto no Botão'
-    );
-
-*/
-
 
 function addMessage(title, message, type = 'warning'){
     /**

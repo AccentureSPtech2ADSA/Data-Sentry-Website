@@ -49,15 +49,15 @@ function searchProcess() {
   }
 }
 
-  function DescriptografiaJWT() {
-    const data = window.sessionStorage.getItem('Token');
-    dadosjwt = parseJwt(data).data;
-  }
+function DescriptografiaJWT() {
+  const data = window.sessionStorage.getItem('Token');
+  dadosjwt = parseJwt(data).data;
+}
 
-  function preenchimentoNome() {
-nomeClinica.innerHTML = "Olá "+dadosjwt.name;
-  }
+function preenchimentoNome() {
+  nomeClinica.innerHTML = "Olá " + dadosjwt.name;
+}
 
-  function esconderLoading() {
-    div_loading.style.display = "none";
-  }
+function esconderLoading() {
+  div_loading.style.display = "none";
+}
