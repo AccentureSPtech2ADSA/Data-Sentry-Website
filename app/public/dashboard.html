@@ -218,25 +218,60 @@
             <div class="atencao"></div>
             <p style="font-size: 15px">Zona de Atenção</p>
           </div>
-          <div class="item_legend">
-            <div class="critico"></div>
-            <p style="font-size: 15px">Zona Crítica</p>
+          <span class="kpi_texto_inferior" id="usoTotalRam">%</span>
+          <span class="kpi_texto_inferior2" id="usoAtual_Max_Ram"
+            ><span id="usoAtualRam">...</span>/<span id="usoMaxRam"
+              >...</span
+            ></span
+          >
+        </div>
+
+        <div class="kpi_card">
+          <span class="kpi_texto_disco">Espaço em disco utilizado</span>
+          <div class="chart_kpi_disco">
+            <canvas id="myChart3"></canvas>
+          </div>
+          <span class="kpi_texto_inferior_disco" id="usoTotalDisco">%</span>
+          <span class="kpi_texto_inferior2_disco" id="usoAtual_Max_Disco"
+            ><span id="usoAtualDisco">...</span>/<span id="usoMaxDisco"
+              >...</span
+            ></span
+          >
+        </div>
+      </div>
+
+      <div class="bloco3">
+        <p>Visão geral do uso de RAM</p>
+        <div class="graph_treshoulds">
+          <div class="area-button">
+            <span id="horarioDeUtilizacaoRam"></span>
+            <button onclick="download_graph_ram()">Exportar como PNG</button>
+          </div>
+          <canvas id="chartRam"></canvas>
+          <div id="legenda1" class="legendas">
+            <div class="item_legend">
+              <div class="ideal"></div>
+              <p style="font-size: 15px">Zona Ideal</p>
+            </div>
+            <div class="item_legend">
+              <div class="atencao"></div>
+              <p style="font-size: 15px">Zona de Atenção</p>
+            </div>
+            <div class="item_legend">
+              <div class="critico"></div>
+              <p style="font-size: 15px">Zona Crítica</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="bloco3">
-      <p>Visão geral do uso de DISCO</p>
-      <div class="graph_treshoulds">
-        <div class="area-button">
-          <button onclick="download_graph_disco()">Exportar como PNG</button>
-        </div>
-        <canvas id="chartDisco"></canvas>
-        <div id="legenda3" class="legendas">
-          <div class="item_legend">
-            <div class="ideal"></div>
-            <p style="font-size: 15px">Zona Ideal</p>
+      <div class="bloco3">
+        <p>Visão geral do uso de CPU</p>
+        <div class="graph_treshoulds">
+          <div class="area-button">
+            <span id="horarioDeUtilizacaoCpu"></span>
+            <button onclick="download_graph_cpu()">Exportar como PNG</button>
           </div>
           <div class="item_legend">
             <div class="atencao"></div>
@@ -250,6 +285,69 @@
       </div>
     </div>
 
+      <div class="bloco3">
+        <p>Visão geral do uso de DISCO</p>
+        <div class="graph_treshoulds">
+          <div class="area-button">
+            <span id="horarioDeUtilizacaoDisco"></span>
+            <button onclick="download_graph_disco()">Exportar como PNG</button>
+          </div>
+          <canvas id="chartDisco"></canvas>
+          <div id="legenda3" class="legendas">
+            <div class="item_legend">
+              <div class="ideal"></div>
+              <p style="font-size: 15px">Zona Ideal</p>
+            </div>
+            <div class="item_legend">
+              <div class="atencao"></div>
+              <p style="font-size: 15px">Zona de Atenção</p>
+            </div>
+            <div class="item_legend">
+              <div class="critico"></div>
+              <p style="font-size: 15px">Zona Crítica</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bloco4">
+        <p>Processos ativos no sistema</p>
+        <input
+          type="search"
+          id="inputSearch"
+          oninput="searchProcess()"
+          placeholder="Procure um processo.."
+        />
+        <div class="lista_processos">
+          <div id="painel" class="painel">
+            <table id="tableProcess">
+              <thead>
+                <tr>
+                  <th class="filterProcess">
+                    <label for="">NOME</label
+                    ><span id="title_nome" onclick="filterTablePerName(this)"
+                      >▲</span
+                    >
+                  </th>
+                  <th class="filterProcess">
+                    <label for="">CPU</label
+                    ><span id="title_cpu" onclick="filterTablePerCpu(this)"
+                      >▲</span
+                    >
+                  </th>
+                  <th class="filterProcess">
+                    <label for="">MEMORIA</label
+                    ><span
+                      id="title_memoria"
+                      onclick="filterTablePerMemoria(this)"
+                      >▲</span
+                    >
+                  </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbody-process"></tbody>
+              <!-- <tr class="colorGray">
     <div class="bloco4">
       <p>Processos ativos no sistema</p>
       <input type="search" id="inputSearch" oninput="searchProcess()" placeholder="Procure um processo.." />
