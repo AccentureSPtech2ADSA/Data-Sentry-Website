@@ -1,15 +1,8 @@
 ////////////////////////////////// GRÁFICO DA RAM COM TRESHOULDS ////////////////////////////////
 
 // ---- Transformando os dados do eixo (Y) em String
-let valorMaximoGb = 100;
-var listaDadosGigaByte = [];
-var gigaByte = 0;
-var eixoYram = listaDadosGigaByte;
-
-for (; gigaByte <= valorMaximoGb; gigaByte++) {
-  listaDadosGigaByte.push(`${gigaByte} %`);
-}
-
+let valorMaximoGb;
+let valorMaximoGbDisco;
 // ---- Labels do eixo (X)
 let labels5 = [
   "00:00",
@@ -61,81 +54,81 @@ let config5 = {
         annotations: {
           ///////////// Treshould - Crítico /////////////////
           zona_critica: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 100,
-            yMin: 90,
-            backgroundColor: "rgba(255, 0, 0, 0.1)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           linha_critica: {
-            type: "line",
-            yMax: 90,
-            yMin: 90,
-            borderColor: "rgb(255, 99, 132)",
-            borderWidth: 2,
+            type: null,
+            yMax: null,
+            yMin: null,
+            borderColor: null,
+            borderWidth: null,
           },
           ///////////// Treshould - Atenção /////////////////
           zona_atencao: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 90,
-            yMin: 80,
-            backgroundColor: "rgba(255, 224, 113,0.2)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           ///////////// Treshould - Ideal /////////////////
           linha_ideal_1: {
-            type: "line",
-            yMax: 80,
-            yMin: 80,
-            borderColor: "rgba(46, 204, 113,0.5)",
-            borderWidth: 2,
+            type: null,
+            yMax: null,
+            yMin: null,
+            borderColor: null,
+            borderWidth: null,
           },
           zona_ideal: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 80,
-            yMin: 20,
-            backgroundColor: "rgba(46, 204, 113,0.1)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           linha_ideal_2: {
-            type: "line",
-            yMax: 20,
-            yMin: 20,
-            borderColor: "rgba(46, 204, 113,0.5)",
-            borderWidth: 2,
+            type: null,
+            yMax: null,
+            yMin: null,
+            borderColor: null,
+            borderWidth: null,
           },
           ///////////// Treshould - Atenção /////////////////
           zona_atencao_2: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 20,
-            yMin: 10,
-            backgroundColor: "rgba(255, 224, 113,0.2)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           ///////////// Treshould - Crítico /////////////////
           zona_critica_2: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 10,
-            yMin: 0,
-            backgroundColor: "rgba(255, 0, 0, 0.1)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           linha_critica_2: {
-            type: "line",
-            yMax: 10,
-            yMin: 10,
-            borderColor: "rgb(255, 99, 132)",
-            borderWidth: 2,
+            type: null,
+            yMax: null,
+            yMin: null,
+            borderColor: null,
+            borderWidth: null,
           },
         },
       },
@@ -158,9 +151,9 @@ let config5 = {
           padding: { top: 10, left: 0, right: 0, bottom: 20 },
         },
         ticks: {
-          callback: function (value, index, values) {
-            return eixoYram[value];
-          },
+            suggestedMin: 0,
+            beginAtZero: true,
+            suggestedMax: valorMaximoGb
         },
       },
       x: {
@@ -375,7 +368,7 @@ let config6 = {
 
 ////////////////////////////////// GRÁFICO DO DISCO COM TRESHOULDS ////////////////////////////////
 
-var eixoYdisco = listaDadosGigaByte;
+var eixoYdisco = valorMaximoGbDisco;
 
 // ---- Labels do eixo (X)
 let labels7 = [
@@ -428,81 +421,81 @@ let config7 = {
         annotations: {
           ///////////// Treshould - Crítico /////////////////
           zona_critica: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 100,
-            yMin: 90,
-            backgroundColor: "rgba(255, 0, 0, 0.1)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           linha_critica: {
-            type: "line",
-            yMax: 90,
-            yMin: 90,
-            borderColor: "rgb(255, 99, 132)",
-            borderWidth: 2,
+            type: null,
+            yMax: null,
+            yMin: null,
+            borderColor: null,
+            borderWidth: null,
           },
           ///////////// Treshould - Atenção /////////////////
           zona_atencao: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 90,
-            yMin: 80,
-            backgroundColor: "rgba(255, 224, 113,0.2)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           ///////////// Treshould - Ideal /////////////////
           linha_ideal_1: {
-            type: "line",
-            yMax: 80,
-            yMin: 80,
-            borderColor: "rgba(46, 204, 113,0.5)",
-            borderWidth: 2,
+            type: null,
+            yMax: null,
+            yMin: null,
+            borderColor: null,
+            borderWidth: null,
           },
           zona_ideal: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 80,
-            yMin: 20,
-            backgroundColor: "rgba(46, 204, 113,0.1)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           linha_ideal_2: {
-            type: "line",
-            yMax: 20,
-            yMin: 20,
-            borderColor: "rgba(46, 204, 113,0.5)",
-            borderWidth: 2,
+            type: null,
+            yMax: null,
+            yMin: null,
+            borderColor: null,
+            borderWidth: null,
           },
           ///////////// Treshould - Atenção /////////////////
           zona_atencao_2: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 20,
-            yMin: 10,
-            backgroundColor: "rgba(255, 224, 113,0.2)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           ///////////// Treshould - Crítico /////////////////
           zona_critica_2: {
-            drawTime: "beforeDatasetsDraw",
-            type: "box",
-            xMin: 0,
-            xMax: 10,
-            yMax: 10,
-            yMin: 0,
-            backgroundColor: "rgba(255, 0, 0, 0.1)",
+            drawTime: null,
+            type: null,
+            xMin: null,
+            xMax: null,
+            yMax: null,
+            yMin: null,
+            backgroundColor: null,
           },
           linha_critica_2: {
-            type: "line",
-            yMax: 10,
-            yMin: 10,
-            borderColor: "rgb(255, 99, 132)",
-            borderWidth: 2,
+            type: null,
+            yMax: null,
+            yMin: null,
+            borderColor: null,
+            borderWidth: null,
           },
         },
       },
@@ -510,7 +503,7 @@ let config7 = {
     scales: {
       y: {
         min: 0,
-        max: valorMaximoGb,
+        max: valorMaximoGbDisco,
         grid: { display: true },
         title: {
           display: true,
@@ -525,9 +518,9 @@ let config7 = {
           padding: { top: 10, left: 0, right: 0, bottom: 20 },
         },
         ticks: {
-          callback: function (value, index, values) {
-            return eixoYdisco[value];
-          },
+            suggestedMin: 0,
+            beginAtZero: true,
+            suggestedMax: valorMaximoGbDisco
         },
       },
       x: {

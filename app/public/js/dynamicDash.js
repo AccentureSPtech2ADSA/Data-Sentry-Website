@@ -70,6 +70,7 @@ async function loadDashByServer(server) {
   document.getElementById("chartDisco").innerHTML = "";
   document.getElementById("chartCpu").innerHTML = "";
   document.getElementById("chartRam").innerHTML = "";
+
   arrayTresholds = await getTresholdsBasic(serverSerial);
   document.getElementById("btn_drop").innerHTML = `#Servidor: ` + server;
   //document.getElementById("btn_drop").innerHTML = `#Servidor: ${server} - ${index + 1}`
@@ -94,7 +95,6 @@ function loadChartsCPU(server) {
     config6.data.labels = labels6.reverse();
     let percentages = dataCpu[0].map((item) => item.Percentagem).reverse();
 
-    console.log(dataCpu[0]);
 
     let dataUse = dataCpu[0]
       .map((item) => +item.Uso.replace("MHz", ""))
@@ -102,8 +102,6 @@ function loadChartsCPU(server) {
     let threshold = arrayTresholds[0].find((item) => item.Type == "CPU");
     let lastUse = dataUse.at(-1);
 
-    console.log(lastUse)
-    console.log(threshold)
     if (lastUse > threshold.AlertHigh90) {
       let msg = `Seu CPU está acima de 90%.\n Tome cuidado e fique atento nos processos.`;
       addMessage("PROBLEMA CPU ACIMA DE 90%!!", msg, "error");
@@ -119,6 +117,7 @@ function loadChartsCPU(server) {
     }
     config6.data.datasets[0].data = percentages;
     new Chart(document.getElementById("chartCpu"), config6);
+    document.getElementById("horarioDeUtilizacaoCpu").innerHTML = `${dataCpu[0][0].Horario.split('T')[0]}`;
   });
 }
 async function loadChartsRAM(server) {
@@ -131,7 +130,7 @@ async function loadChartsRAM(server) {
   labels5 = dataRam[0].map((item) => item.Horario.split("T")[1].split(".")[0]);
   config5.data.labels = labels5.reverse();
   config5.data.datasets[0].data = dataRam[0]
-    .map((item) => item.Percentagem)
+    .map((item) => item.Uso.split('G')[0])
     .reverse();
 
   let dataUse = dataRam[0]
@@ -152,7 +151,21 @@ async function loadChartsRAM(server) {
     let msg = `Sua memoria RAM está abaixo de 20%.\n Tome cuidado e fique atento nos processos.`;
     addMessage("Tome cuidado", msg, "warning");
   }
+    config5.options.scales.y.max = valorMaximoGb = +dataRam[0][0].MaximoUso.split('G')[0];
+
+    config5.options.plugins.annotation.annotations.zona_critica = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][1].Max, yMin: arrayTresholds[0][1].AlertHigh90, backgroundColor: "rgba(255, 0, 0, 0.1)",};
+    config5.options.plugins.annotation.annotations.linha_critica = {type: "line", yMax: arrayTresholds[0][1].AlertHigh90, yMin: arrayTresholds[0][1].AlertHigh90, borderColor: "rgb(255, 99, 132)", borderWidth: 2,};
+    config5.options.plugins.annotation.annotations.zona_atencao = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][1].AlertHigh90, yMin: arrayTresholds[0][1].WarningHigh80, backgroundColor: "rgba(255, 224, 113,0.2)",};
+    config5.options.plugins.annotation.annotations.linha_ideal_1 = {type: "line", yMax: arrayTresholds[0][1].WarningHigh80, yMin: arrayTresholds[0][1].WarningHigh80, borderColor: "rgba(46, 204, 113,0.5)", borderWidth: 2,};
+    config5.options.plugins.annotation.annotations.zona_ideal = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][1].WarningHigh80, yMin: arrayTresholds[0][1].WarningLow20, backgroundColor: "rgba(46, 204, 113,0.1)",};
+    config5.options.plugins.annotation.annotations.linha_ideal_2 = {type: "line", yMax: arrayTresholds[0][1].WarningLow20, yMin: arrayTresholds[0][1].WarningLow20, borderColor: "rgba(46, 204, 113,0.5)", borderWidth: 2,};
+    config5.options.plugins.annotation.annotations.zona_atencao_2 = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][1].WarningLow20, yMin: arrayTresholds[0][1].AlertLow10, backgroundColor: "rgba(255, 224, 113,0.2)",};
+    config5.options.plugins.annotation.annotations.zona_critica_2 = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][1].AlertLow10, yMin: 0, backgroundColor: "rgba(255, 0, 0, 0.1)",};
+    config5.options.plugins.annotation.annotations.linha_critica_2 = {type: "line", yMax: arrayTresholds[0][1].AlertLow10, yMin: arrayTresholds[0][1].AlertLow10, borderColor: "rgb(255, 99, 132)", borderWidth: 2,};
+
   new Chart(document.getElementById("chartRam"), config5);
+
+  document.getElementById("horarioDeUtilizacaoRam").innerHTML = `${dataRam[0][0].Horario.split('T')[0]}`;
 }
 async function loadChartsDISCO(server) {
   let html = document.getElementById("chartDisco").parentElement;
@@ -166,12 +179,11 @@ async function loadChartsDISCO(server) {
   labels7 = dataDisco[0].map(
     (item) => item.Horario.split("T")[1].split(".")[0]
   );
+
   config7.data.labels = labels7.reverse();
-  config7.data.datasets[0].data = dataDisco[0]
-    .map((item) => item.Percentagem )
+  config7.data.datasets[0].data = dataDisco[0].map((item) => +item.Uso.split('G')[0] * 10)
     .reverse();
-  let dataUse = dataDisco[0]
-    .map((item) => +item.Uso.replace("GBs", "") )
+    let dataUse = dataDisco[0].map((item) => +item.Uso.split('G')[0] * 10)
     .reverse();
   let threshold = arrayTresholds[0].find((item) => item.Type == "DISCO");
   let lastUse = dataUse.at(-1);
@@ -188,7 +200,22 @@ async function loadChartsDISCO(server) {
     let msg = `Seu DISCO está abaixo de 20%.\n Tome cuidado e fique atento nos processos.`;
     addMessage("Tome cuidado", msg, "warning");
   }
+  
+    config7.options.scales.y.max = valorMaximoGbDisco = +dataDisco[0][0].MaximoUso.split('G')[0];
+
+    config7.options.plugins.annotation.annotations.zona_critica = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][2].Max, yMin: arrayTresholds[0][2].AlertHigh90, backgroundColor: "rgba(255, 0, 0, 0.1)",};
+    config7.options.plugins.annotation.annotations.linha_critica = {type: "line", yMax: arrayTresholds[0][2].AlertHigh90, yMin: arrayTresholds[0][2].AlertHigh90, borderColor: "rgb(255, 99, 132)", borderWidth: 2,};
+    config7.options.plugins.annotation.annotations.zona_atencao = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][2].AlertHigh90, yMin: arrayTresholds[0][2].WarningHigh80, backgroundColor: "rgba(255, 224, 113,0.2)",};
+    config7.options.plugins.annotation.annotations.linha_ideal_1 = {type: "line", yMax: arrayTresholds[0][2].WarningHigh80, yMin: arrayTresholds[0][2].WarningHigh80, borderColor: "rgba(46, 204, 113,0.5)", borderWidth: 2,};
+    config7.options.plugins.annotation.annotations.zona_ideal = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][2].WarningHigh80, yMin: arrayTresholds[0][2].WarningLow20, backgroundColor: "rgba(46, 204, 113,0.1)",};
+    config7.options.plugins.annotation.annotations.linha_ideal_2 = {type: "line", yMax: arrayTresholds[0][2].WarningLow20, yMin: arrayTresholds[0][2].WarningLow20, borderColor: "rgba(46, 204, 113,0.5)", borderWidth: 2,};
+    config7.options.plugins.annotation.annotations.zona_atencao_2 = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][2].WarningLow20, yMin: arrayTresholds[0][2].AlertLow10, backgroundColor: "rgba(255, 224, 113,0.2)",};
+    config7.options.plugins.annotation.annotations.zona_critica_2 = {drawTime: "beforeDatasetsDraw", type: "box", xMax: 10, xMin: 0, yMax: arrayTresholds[0][2].AlertLow10, yMin: 0, backgroundColor: "rgba(255, 0, 0, 0.1)",};
+    config7.options.plugins.annotation.annotations.linha_critica_2 = {type: "line", yMax: arrayTresholds[0][2].AlertLow10, yMin: arrayTresholds[0][2].AlertLow10, borderColor: "rgb(255, 99, 132)", borderWidth: 2,};
+
   new Chart(document.getElementById("chartDisco"), config7);
+  
+  document.getElementById("horarioDeUtilizacaoDisco").innerHTML = `${dataDisco[0][0].Horario.split('T')[0]}`;
 
   esconderLoading();
 }
@@ -341,6 +368,7 @@ async function loadKpiRam(server) {
     dataHtmlRamUsoAtual.innerHTML = `${dataRam[0][0].Uso.replace("GBs", "")}`;
     dataHtmlRamUsoMaximo.innerHTML = `${dataRam[0][0].MaximoUso}`;
     dataHtmlRamPorcentagemUso.innerHTML = `${dataRam[0][0].Percentagem}%`;
+
   }
 }
 
@@ -443,4 +471,46 @@ async function getTresholdsBasic(
     return res.data;
   }
   throw new Error(res.msg);
+}
+
+async function getExcel() {
+  let req = await fetch(`/dashboard/getLastsLogsPerDay/${serverSerial}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  let res = await req.json();
+  if (res.status == 200) {
+    console.log(res.data);
+      const wb = XLSX.utils.book_new();
+      
+      wb.Props = {
+        Title: 'Data Sentry',
+        Subject: 'Dados de Utilização',
+        Author: 'Data Sentry',
+        CreatedDate: new Date(),
+      };
+      
+      wb.SheetNames.push('Relatório 1');
+      
+      let datas = res.data[0];
+      let labels = Object.entries(datas[0]).map(item => item[0]);
+      
+      let rows = [];
+      rows.push(labels);
+      datas.forEach(item => rows.push(Object.values(item)));
+
+      let dados = rows;
+
+      const ws = XLSX.utils.aoa_to_sheet(dados);
+      
+      wb.Sheets['Relatório 1'] = ws;
+      
+      XLSX.writeFile(wb, 'datasentry-alertas.xlsx', { bookType: 'xlsx', type: 'bynary'});
+      
+    }
+    throw new Error(res.msg);
 }

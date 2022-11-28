@@ -8,9 +8,16 @@
     <title>Dashboard - Data Sentry</title>
     <link rel="stylesheet" href="./css/navbarLateral.css" />
     <link rel="stylesheet" href="./css/dashboard.css" />
+    <!-- IMPORTAÇÃO PARA DONWLOAD EXCEL -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"
+      integrity="sha512-jDEmOIskGs/j5S3wBWQAL4pOYy3S5a0y3Vav7BgXHnCVcUBXkf1OqzYS6njmDiKyqes22QEX8GSIZZ5pGk+9nA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <!---JIVOCHAT---->
-    <!-- <script src="//code.jivosite.com/widget/K7RJgm8xzE" async></script> -->
+    <script src="//code.jivosite.com/widget/K7RJgm8xzE" async></script>
 
     <!---Chart JS minificado---->
     <script
@@ -155,6 +162,9 @@
     <div id="tela_completa_dashboard" class="body_container">
       <div class="bloco1">
         <p id="nomeClinica">Clínica Cirúrgica Santa Efigênia</p>
+        <button id="botao_excel" onclick="getExcel()">
+          Exportar Excel do último dia
+        </button>
         <div class="dropdown">
           <button onclick="myFunction()" id="btn_drop" class="dropbtn"></button>
           <div id="myDropdown" class="dropdown-content"></div>
@@ -206,129 +216,121 @@
         <p>Visão geral do uso de RAM</p>
         <div class="graph_treshoulds">
           <div class="area-button">
+            <span id="horarioDeUtilizacaoRam"></span>
             <button onclick="download_graph_ram()">Exportar como PNG</button>
           </div>
-
-          <canvas id="chartRam"></canvas>
-          <div id="legenda1" class="legendas">
-            <div class="item_legend">
-              <div class="ideal"></div>
-              <p style="font-size: 15px">Zona Ideal</p>
-            </div>
-            <div class="item_legend">
-              <div class="atencao"></div>
-              <p style="font-size: 15px">Zona de Atenção</p>
-            </div>
-            <div class="item_legend">
-              <div class="critico"></div>
-              <p style="font-size: 15px">Zona Crítica</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bloco3">
-        <p>Visão geral do uso de CPU</p>
-        <div class="graph_treshoulds">
-          <div class="area-button">
-            <button onclick="download_graph_cpu()">Exportar como PNG</button>
-          </div>
-          <canvas id="chartCpu"></canvas>
-          <div id="legenda1" class="legendas">
-            <div class="item_legend">
-              <div class="ideal"></div>
-              <p style="font-size: 15px">Zona Ideal</p>
-            </div>
-            <div class="item_legend">
-              <div class="atencao"></div>
-              <p style="font-size: 15px">Zona de Atenção</p>
-            </div>
-            <div class="item_legend">
-              <div class="critico"></div>
-              <p style="font-size: 15px">Zona Crítica</p>
+            <canvas id="chartRam"></canvas>
+            <div id="legenda1" class="legendas">
+              <div class="item_legend">
+                <div class="ideal"></div>
+                <p style="font-size: 15px">Zona Ideal</p>
+              </div>
+              <div class="item_legend">
+                <div class="atencao"></div>
+                <p style="font-size: 15px">Zona de Atenção</p>
+              </div>
+              <div class="item_legend">
+                <div class="critico"></div>
+                <p style="font-size: 15px">Zona Crítica</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="bloco3">
-        <p>Visão geral do uso de DISCO</p>
-        <div class="graph_treshoulds">
-          <div class="area-button">
-            <button onclick="download_graph_disco()">Exportar como PNG</button>
+        <div class="bloco3">
+          <p>Visão geral do uso de CPU</p>
+          <div class="graph_treshoulds">
+            <div class="area-button">
+              <span id="horarioDeUtilizacaoCpu"></span>
+              <button onclick="download_graph_cpu()">Exportar como PNG</button>
+            </div>
+              <canvas id="chartCpu"></canvas>
+              <div id="legenda1" class="legendas">
+                <div class="item_legend">
+                  <div class="ideal"></div>
+                  <p style="font-size: 15px">Zona Ideal</p>
+                </div>
+                <div class="item_legend">
+                  <div class="atencao"></div>
+                  <p style="font-size: 15px">Zona de Atenção</p>
+                </div>
+                <div class="item_legend">
+                  <div class="critico"></div>
+                  <p style="font-size: 15px">Zona Crítica</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <canvas id="chartDisco"></canvas>
-          <div id="legenda1" class="legendas">
-            <div class="item_legend">
-              <div class="ideal"></div>
-              <p style="font-size: 15px">Zona Ideal</p>
+          <div class="bloco3">
+            <p>Visão geral do uso de DISCO</p>
+            <div class="graph_treshoulds">
+              <div class="area-button">
+                <span id="horarioDeUtilizacaoDisco"></span>
+                <button onclick="download_graph_disco()">Exportar como PNG</button>
+              </div>
+              <canvas id="chartDisco"></canvas>
+              <div id="legenda1" class="legendas">
+                <div class="item_legend">
+                  <div class="ideal"></div>
+                  <p style="font-size: 15px">Zona Ideal</p>
+                </div>
+                <div class="item_legend">
+                  <div class="atencao"></div>
+                  <p style="font-size: 15px">Zona de Atenção</p>
+                </div>
+                <div class="item_legend">
+                  <div class="critico"></div>
+                  <p style="font-size: 15px">Zona Crítica</p>
+                </div>
+              </div>
             </div>
-            <div class="item_legend">
-              <div class="atencao"></div>
-              <p style="font-size: 15px">Zona de Atenção</p>
-            </div>
-            <div class="item_legend">
-              <div class="critico"></div>
-              <p style="font-size: 15px">Zona Crítica</p>
+          </div>
+    
+          <div class="bloco4">
+            <p>Processos ativos no sistema</p>
+            <input
+              type="search"
+              id="inputSearch"
+              oninput="searchProcess()"
+              placeholder="Procure um processo.."
+            />
+            <div class="lista_processos">
+              <div id="painel" class="painel">
+                <table id="tableProcess">
+                  <thead>
+                    <tr>
+                      <th class="filterProcess">
+                        <label for="">NOME</label
+                        ><span id="title_nome" onclick="filterTablePerName(this)"
+                          >▲</span
+                        >
+                      </th>
+                      <th class="filterProcess">
+                        <label for="">CPU</label
+                        ><span id="title_cpu" onclick="filterTablePerCpu(this)"
+                          >▲</span
+                        >
+                      </th>
+                      <th class="filterProcess">
+                        <label for="">MEMORIA</label
+                        ><span
+                          id="title_memoria"
+                          onclick="filterTablePerMemoria(this)"
+                          >▲</span
+                        >
+                      </th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-process"></tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
+  
+        
       </div>
 
-      <div class="bloco4">
-        <p>Processos ativos no sistema</p>
-        <input
-          type="search"
-          id="inputSearch"
-          oninput="searchProcess()"
-          placeholder="Procure um processo.."
-        />
-        <div class="lista_processos">
-          <div id="painel" class="painel">
-            <table id="tableProcess">
-              <thead>
-                <tr>
-                  <th class="filterProcess">
-                    <label for="">NOME</label
-                    ><span id="title_nome" onclick="filterTablePerName(this)"
-                      >▲</span
-                    >
-                  </th>
-                  <th class="filterProcess">
-                    <label for="">CPU</label
-                    ><span id="title_cpu" onclick="filterTablePerCpu(this)"
-                      >▲</span
-                    >
-                  </th>
-                  <th class="filterProcess">
-                    <label for="">MEMORIA</label
-                    ><span
-                      id="title_memoria"
-                      onclick="filterTablePerMemoria(this)"
-                      >▲</span
-                    >
-                  </th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="tbody-process"></tbody>
-              <!-- <tr class="colorGray">
-                <td>Google Chrome</td>
-                <td>20%</td>
-                <td>40%</td>
-                <td>
-                  <button
-                    class="button_kill"
-                    onclick="alertarQ('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
-                  >
-                    Encerrar
-                  </button>
-                </td>
-              </tr> -->
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
     <script src="./js/dashboard.js"></script>
 
@@ -338,184 +340,185 @@
 
     <script src="./js/dynamicDash.js"></script>
   </body>
+  <script>
+    
+    /* Setup KPI CPU (chart1)*/
+    const labels1 = ["Mhz Utilizado", "Mhz Livre"];
+  
+    const data1 = {
+      labels: labels1,
+      datasets: [
+        {
+          label: "CPU",
+          backgroundColor: ["#17EBE6", "#e0e0e0"],
+          data: [],
+        },
+      ],
+    };
+  
+    /* Setup KPI RAM (chart2)*/
+    const labels2 = ["GBs Utilizado", "GBs Livre"];
+  
+    const data2 = {
+      labels: labels2,
+      datasets: [
+        {
+          label: "RAM",
+          backgroundColor: ["#17EBE6", "#e0e0e0"],
+          data: [],
+        },
+      ],
+    };
+  
+    /* Setup KPI Disco (chart3)*/
+    const labels3 = ["GBs Utilizado", "GBs Livre"];
+  
+    let data3 = {
+      labels: labels3,
+      datasets: [
+        {
+          backgroundColor: ["#17EBE6", "#e0e0e0"],
+          data: [],
+        },
+      ],
+    };
+  
+    /* Setup visão geral (chart4)*/
+    const labels4 = [];
+  
+    const data4 = {
+      labels: labels4,
+      datasets: [
+        {
+          label: "CPU",
+          borderColor: ["#009492"],
+          backgroundColor: "rgba(0, 148, 146, 0.5)",
+          data: [],
+          fill: true,
+        },
+  
+        {
+          label: "RAM",
+          borderColor: ["#17EBE6"],
+          backgroundColor: "rgba(23, 235, 230, 0.5)",
+          data: [],
+          fill: true,
+        },
+  
+        {
+          label: "Disco",
+          borderColor: ["#174366"],
+          backgroundColor: "rgba(23, 67, 102, 0.5)",
+          data: [],
+          fill: true,
+        },
+      ],
+    };
+  
+    /* config chart 1 (CPU)*/
+    const config1 = {
+      type: "doughnut",
+      data: data1,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        rotation: -90,
+        circumference: 180,
+        cutout: 55,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    };
+  
+    /* config chart 2 (RAM)*/
+    const config2 = {
+      type: "doughnut",
+      data: data2,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        rotation: -90,
+        circumference: 180,
+        cutout: 55,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    };
+  
+    /* config chart 3 (disco)*/
+    let config3 = {
+      type: "doughnut",
+      data: data3,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        circumference: 360,
+        cutout: 55,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    };
+  
+    /* config chart 4 (visão geral)*/
+    const config4 = {
+      type: "line",
+      data: data4,
+      options: {
+        responsive: true,
+        smooth: true,
+        lineTension: 0.5,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    };
+  
+    window.onload = DescriptografiaJWT();
+  
+    window.onload = preenchimentoNome();
+  </script>
 </html>
 
-<script>
-  /* Setup KPI CPU (chart1)*/
-  const labels1 = ["Mhz Utilizado", "Mhz Livre"];
-
-  const data1 = {
-    labels: labels1,
-    datasets: [
-      {
-        label: "CPU",
-        backgroundColor: ["#17EBE6", "#e0e0e0"],
-        data: [],
-      },
-    ],
-  };
-
-  /* Setup KPI RAM (chart2)*/
-  const labels2 = ["GBs Utilizado", "GBs Livre"];
-
-  const data2 = {
-    labels: labels2,
-    datasets: [
-      {
-        label: "RAM",
-        backgroundColor: ["#17EBE6", "#e0e0e0"],
-        data: [],
-      },
-    ],
-  };
-
-  /* Setup KPI Disco (chart3)*/
-  const labels3 = ["GBs Utilizado", "GBs Livre"];
-
-  let data3 = {
-    labels: labels3,
-    datasets: [
-      {
-        backgroundColor: ["#17EBE6", "#e0e0e0"],
-        data: [],
-      },
-    ],
-  };
-
-  /* Setup visão geral (chart4)*/
-  const labels4 = [];
-
-  const data4 = {
-    labels: labels4,
-    datasets: [
-      {
-        label: "CPU",
-        borderColor: ["#009492"],
-        backgroundColor: "rgba(0, 148, 146, 0.5)",
-        data: [],
-        fill: true,
-      },
-
-      {
-        label: "RAM",
-        borderColor: ["#17EBE6"],
-        backgroundColor: "rgba(23, 235, 230, 0.5)",
-        data: [],
-        fill: true,
-      },
-
-      {
-        label: "Disco",
-        borderColor: ["#174366"],
-        backgroundColor: "rgba(23, 67, 102, 0.5)",
-        data: [],
-        fill: true,
-      },
-    ],
-  };
-
-  /* config chart 1 (CPU)*/
-  const config1 = {
-    type: "doughnut",
-    data: data1,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      rotation: -90,
-      circumference: 180,
-      cutout: 55,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-    },
-  };
-
-  /* config chart 2 (RAM)*/
-  const config2 = {
-    type: "doughnut",
-    data: data2,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      rotation: -90,
-      circumference: 180,
-      cutout: 55,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-    },
-  };
-
-  /* config chart 3 (disco)*/
-  let config3 = {
-    type: "doughnut",
-    data: data3,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      circumference: 360,
-      cutout: 55,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-    },
-  };
-
-  /* config chart 4 (visão geral)*/
-  const config4 = {
-    type: "line",
-    data: data4,
-    options: {
-      responsive: true,
-      smooth: true,
-      lineTension: 0.5,
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-    },
-  };
-
-  window.onload = DescriptografiaJWT();
-
-  window.onload = preenchimentoNome();
-</script>

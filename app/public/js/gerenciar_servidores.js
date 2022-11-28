@@ -12,52 +12,54 @@ function logout() {
 }
 
 const loadServers = async () => {
-  const token = sessionStorage.getItem("Token");
-  const user = parseJwt(token);
-  console.log(user)
-  const res = await getServers(user.data.fkHospital, token);
-  esconderLoading()
-  if(res.status == 200){
-      let servidores = res.data;
+    const token = sessionStorage.getItem("Token");
+    const user = parseJwt(token);
+    console.log(user)
+    const res = await getServers(user.data.fkHospital, token);
+    esconderLoading()
+    if(res.status == 200){
+        let servidores = res.data;
 
-      const tableBody = document.querySelector("table#table-servers tbody");
-      var count = document.querySelector("h3#count");
-      const dateAtt = document.querySelector("h4#dateAtt");
-      let statusServer = "";
+        const tableBody = document.querySelector("table#table-servers tbody");
+        var count = document.querySelector("h3#count");
+        const dateAtt = document.querySelector("h4#dateAtt");
+        let statusServer = "";
 
-      tableBody.innerHTML = "";
-      
-      servidores.forEach((item, index) => {
-        console.log(item)
-          var date_unformated = item.updatedAt.split('T')[0];
-          
-          var date_unformated_indexed = date_unformated.split('-')
-          var date_join = date_unformated_indexed.reverse().join('/');
-          
+        tableBody.innerHTML = "";
+        if(servidores.length > 0){
+          msg_nenhumServidor_na_Conta.innerHTML = ''
+        } else {
+          msg_nenhumServidor_na_Conta.innerHTML = 'Você não possui servidores cadastrados na conta'
+        }
+        servidores.forEach((item, index) => {
+          console.log(item)
+            var date_unformated = item.updatedAt.split('T')[0];
+            
+            var date_unformated_indexed = date_unformated.split('-')
+            var date_join = date_unformated_indexed.reverse().join('/');
+            
 
-          if (item.isActive == "A"){
-            statusServer = "<button class='button-ativo'><span>Ativo</span></button>"
-          } else {
-            statusServer = "<button class='button-parado'><span>Parado</span></button>"
-          }
-          count.innerHTML = `${res.data.length}`
+            if (item.isActive == "A"){
+              statusServer = "<button class='button-ativo'><span>Ativo</span></button>"
+            } else {
+              statusServer = "<button class='button-parado'><span>Parado</span></button>"
+            }
+            count.innerHTML = `${res.data.length}`
 
-          dateAtt.innerHTML = `${date_join}`
+            dateAtt.innerHTML = `${date_join}`
 
-          tableBody.innerHTML += 
-          `
-          <tr class="${index % 2 == 0 ? "colorBebe": "colorGray"}">
-              <td class="td_status">${statusServer}</td>
-              <td>${item._serialServer}</td>
-              <td class="desassociar_text" onclick="alertarQ('', 'Deseja mesmo desassociar esse servidor do sistema Data Sentry ?', 'warning', 'Sim', 'Não')">Desassociar</td>
-              <td class="stop_text" onclick="alertarQ('', 'Deseja mesmo parar esse servidor ?', 'warning', 'Sim', 'Não')">Stop</td>
-          </tr>     
-          `
+            tableBody.innerHTML += 
+            `
+            <tr class="${index % 2 == 0 ? "colorBebe": "colorGray"}">
+                <td class="td_status">${statusServer}</td>
+                <td>${item._serialServer}</td>
+                <td class="desassociar_text" onclick="alertarQ('', 'Deseja mesmo desassociar esse servidor do sistema Data Sentry ?', 'warning', 'Sim', 'Não')">Desassociar</td>
+                <td class="stop_text" onclick="alertarQ('', 'Deseja mesmo parar esse servidor ?', 'warning', 'Sim', 'Não')">Stop</td>
+            </tr>     
+            `
 
-      });
-
-  }
-
+        });
+    }
 }
 
 function deletarServer(element){
