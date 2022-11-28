@@ -285,8 +285,8 @@ body {
 }
 .area-button{
     display: flex;
-    justify-content: flex-end;
-    padding-right: 20px;
+    justify-content: space-between;
+    /* padding-right: 20px; */
 }
 .graph_treshoulds button{
     display: flex;
