@@ -10,7 +10,7 @@ function alertarQ(title = '', text = '', icon = '', confirmButtonText = '', canc
         iconColor = 'green'
 
     }
-    Swal.fire({
+    return Swal.fire({
         title: title,
         text: text,
         icon: icon,

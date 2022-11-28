@@ -87,10 +87,16 @@ async function getLastsLogsPerDay({
   return await database.execute(query);
 }
 
+async function changeIsActiveServer({idServer, isActive}){
+  const query = `UPDATE Server SET isActive = '${isActive}' WHERE [_serialServer] = '${idServer}';`
+  return await database.execute(query);
+}
+
 module.exports = {
   getPercentagePerComponent,
   getDataChart,
   getPercentageUsePerCompenent,
   getThresholdsBasic,
   getLastsLogsPerDay,
+  changeIsActiveServer,
 };
