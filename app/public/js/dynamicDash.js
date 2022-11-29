@@ -183,9 +183,9 @@ async function loadChartsDISCO(server) {
   );
 
   config7.data.labels = labels7.reverse();
-  config7.data.datasets[0].data = dataDisco[0].map((item) => +item.Uso.split('G')[0] * 10)
+  config7.data.datasets[0].data = dataDisco[0].map((item) => +item.Uso.split('G')[0])
     .reverse();
-    let dataUse = dataDisco[0].map((item) => +item.Uso.split('G')[0] * 10)
+    let dataUse = dataDisco[0].map((item) => +item.Uso.split('G')[0])
     .reverse();
   let threshold = arrayTresholds[0].find((item) => item.Type == "DISCO");
   let lastUse = dataUse.at(-1);
@@ -342,7 +342,7 @@ async function loadKpiDisco(server) {
     )}`;
     dataHtmlDiscoUsoMaximo.innerHTML = `${dataDisco[0][0].MaximoUso}`;
     dataHtmlDiscoPorcentagemUso.innerHTML = `${
-      (+dataDisco[0][0].Percentagem * 10).toFixed(1)
+      (+dataDisco[0][0].Percentagem ).toFixed(1)
     }%`;
   }
 }
@@ -442,20 +442,20 @@ function filterTable(array, triangle = null) {
                   <td>${item.nome}</td>
                   <td>${(item.cpu + "").replace(".", ",")}%</td> 
                   <td>${(item.ram + "").replace(".", ",")}%</td>
-                  <td>
+                  
+                </tr>
+               
+          `;
+  });
+}
+{/* <td>
                   <button
                     class="button_kill"
                     onclick="alertar('', 'Deseja mesmo encerrar esse processo ?', 'warning', 'Sim', 'Não')"
                   >
                     Encerrar
                   </button>
-                </td>
-                </tr>
-               
-          `;
-  });
-}
-
+                </td> */}
 async function getTresholdsBasic(
   idServer,
   token = window.sessionStorage.getItem("Token")
@@ -516,3 +516,8 @@ async function getExcel() {
     }
     throw new Error(res.msg);
 }
+
+
+setInterval(() => {
+  loadDashByServer(serverSerial);
+}, 60*1000);

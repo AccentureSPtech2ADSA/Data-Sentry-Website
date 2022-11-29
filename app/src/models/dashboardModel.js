@@ -43,14 +43,13 @@ async function getLastTimeInserted(server) {
   join ComponentServer cs on cs.[_idComponentServer] = lcpp.fkComponentServer
   where cs.fkServer = '${server}'
   group by  cs.fkServer, lcpp.createdAt 
-  order by lcpp.createdAt desc;`
+  order by lcpp.createdAt desc;`;
   let data = await database.execute(query);
 
-
+  let horarioStart = data.data[0][2].Horario;
   /**
    * @type Date
    */
-  let horarioStart = data.data[0][2].Horario;
   let horarioMiddle = data.data[0][1].Horario;
   let horarioEnd = data.data[0][0].Horario;
 
@@ -78,7 +77,7 @@ async function getLastsLogsPerDay({
   // KPI
   idServer,
   dataInit,
-  dataEnd
+  dataEnd,
 }) {
   console.log(idServer);
   console.log(dataInit);
@@ -87,11 +86,17 @@ async function getLastsLogsPerDay({
   return await database.execute(query);
 }
 
-async function changeIsActiveServer({idServer, isActive}){
-  const query = `UPDATE Server SET isActive = '${isActive}' WHERE [_serialServer] = '${idServer}';`
+async function changeIsActiveServer({ idServer, isActive }) {
+  const query = `UPDATE Server SET isActive = '${isActive}' WHERE [_serialServer] = '${idServer}';`;
   return await database.execute(query);
 }
 
+async function deleteServer({ idServer, isActive }) {
+  if (isActive.toUpperCase() == "D") {
+    const query = `DELETE FROM Server WHERE _serialServer = '${idServer}';`;
+    return await database.execute(query);
+  }
+}
 module.exports = {
   getPercentagePerComponent,
   getDataChart,
@@ -99,4 +104,5 @@ module.exports = {
   getThresholdsBasic,
   getLastsLogsPerDay,
   changeIsActiveServer,
+  deleteServer,
 };
