@@ -48,6 +48,7 @@ function moldarDash(serversData) {
     loadDashByServer(serversData[0]._serialServer);
     let dropdown = document.querySelector("#myDropdown");
     serversData.forEach((server, index) => {
+      
       dropdown.innerHTML += `<a onclick="loadDashByServer('${
         server._serialServer
       }')" >#${server._serialServer} - ${index + 1}</a>`;
@@ -65,6 +66,7 @@ function moldarDash(serversData) {
  * @param {String} server
  */
 async function loadDashByServer(server) {
+  serverSerial = server;
   loadTableProcessPerComponents(server);
 
   document.getElementById("chartDisco").innerHTML = "";
