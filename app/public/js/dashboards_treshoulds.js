@@ -30,7 +30,6 @@ let data5 = {
   ],
 };
 // ---- Configurações do gráfico
-console.log(valorMaximoGb);
 let config5 = {
   type: "line",
   data: data5,

@@ -31,4 +31,9 @@ router.get("/getLastsLogsPerDay/:server", authJwt, (req, res) => {
   dashboardController.getLastsLogsPerDay(req, res);
 });
 
+router.put("/changeIsActiveServer", authJwt, (req, res) => {
+  console.log("estou na rota de changeIsActiveServer da dashboard");
+  dashboardController.changeIsActiveServer(req, res);
+});
+
 module.exports = router;
