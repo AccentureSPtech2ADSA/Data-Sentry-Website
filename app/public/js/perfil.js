@@ -1,15 +1,14 @@
 function enabledisable() {
   id_input2.disabled = !id_input2.disabled
   id_input3.disabled = !id_input3.disabled
-  id_input4.disabled = !id_input4.disabled
-  id_input5.disabled = !id_input5.disabled
   id_input6.disabled = !id_input6.disabled
   id_input7.disabled = !id_input7.disabled
-  id_input8.disabled = !id_input8.disabled
   id_input10.disabled = !id_input10.disabled
   id_input11.disabled = !id_input11.disabled
   id_input12.disabled = !id_input12.disabled
   id_input13.disabled = !id_input13.disabled
+  id_input14.disabled = !id_input14.disabled
+  id_input15.disabled = !id_input15.disabled
 }
 
 function onoff() {
@@ -22,63 +21,58 @@ function onoff() {
 
     document.getElementById("id_input2").style.border = "none"
     document.getElementById("id_input3").style.border = "none"
-    document.getElementById("id_input4").style.border = "none"
-    document.getElementById("id_input5").style.border = "none"
     document.getElementById("id_input6").style.border = "none"
     document.getElementById("id_input7").style.border = "none"
-    document.getElementById("id_input8").style.border = "none"
     document.getElementById("id_input10").style.border = "none"
     document.getElementById("id_input11").style.border = "none"
     document.getElementById("id_input12").style.border = "none"
     document.getElementById("id_input13").style.border = "none"
+    document.getElementById("id_input14").style.border = "none"
+    document.getElementById("id_input15").style.border = "none"
 
     document.getElementById("id_input1").style.margin = "0"
     document.getElementById("id_input3").style.margin = "0"
-    document.getElementById("id_input4").style.margin = "0"
-    document.getElementById("id_input5").style.margin = "0"
     document.getElementById("id_input6").style.margin = "0"
     document.getElementById("id_input7").style.margin = "0"
-    document.getElementById("id_input8").style.margin = "0"
     document.getElementById("id_input10").style.margin = "0"
     document.getElementById("id_input11").style.margin = "0"
     document.getElementById("id_input12").style.margin = "0"
     document.getElementById("id_input13").style.margin = "0"
+    document.getElementById("id_input14").style.margin = "0"
+    document.getElementById("id_input15").style.margin = "0"
 
     document.getElementById("id_input2").style.cursor = "default"
     document.getElementById("id_input3").style.cursor = "default"
-    document.getElementById("id_input4").style.cursor = "default"
-    document.getElementById("id_input5").style.cursor = "default"
     document.getElementById("id_input6").style.cursor = "default"
     document.getElementById("id_input7").style.cursor = "default"
-    document.getElementById("id_input8").style.cursor = "default"
     document.getElementById("id_input10").style.cursor = "default"
     document.getElementById("id_input11").style.cursor = "default"
     document.getElementById("id_input12").style.cursor = "default"
     document.getElementById("id_input13").style.cursor = "default"
+    document.getElementById("id_input14").style.cursor = "default"
+    document.getElementById("id_input15").style.cursor = "default"
 
     document.getElementById("id_input2").style.boxShadow = "none";
     document.getElementById("id_input3").style.boxShadow = "none";
-    document.getElementById("id_input4").style.boxShadow = "none";
-    document.getElementById("id_input5").style.boxShadow = "none";
     document.getElementById("id_input6").style.boxShadow = "none";
     document.getElementById("id_input7").style.boxShadow = "none";
-    document.getElementById("id_input8").style.boxShadow = "none";
     document.getElementById("id_input10").style.boxShadow = "none";
     document.getElementById("id_input11").style.boxShadow = "none";
     document.getElementById("id_input12").style.boxShadow = "none";
     document.getElementById("id_input13").style.boxShadow = "none";
+    document.getElementById("id_input14").style.boxShadow = "none";
+    document.getElementById("id_input15").style.boxShadow = "none";
 
     document.getElementById("id_input2").style.color = "#525252";
     document.getElementById("id_input3").style.color = "#525252";
-    document.getElementById("id_input4").style.color = "#525252";
-    document.getElementById("id_input5").style.color = "#525252";
     document.getElementById("id_input6").style.color = "#525252";
     document.getElementById("id_input7").style.color = "#525252";
-    document.getElementById("id_input8").style.color = "#525252";
     document.getElementById("id_input10").style.color = "#525252";
     document.getElementById("id_input11").style.color = "#525252";
     document.getElementById("id_input12").style.color = "#525252";
     document.getElementById("id_input13").style.color = "#525252";
+    document.getElementById("id_input14").style.color = "#525252";
+    document.getElementById("id_input15").style.color = "#525252";
 
     document.getElementById("onoff").style.backgroundColor = "#15CDD3";
     document.getElementById("onoff").style.color = "white";
@@ -91,63 +85,58 @@ function onoff() {
     document.getElementById("onoff").value = "Salvar";
     document.getElementById("id_input2").style.border = "1px solid grey"
     document.getElementById("id_input3").style.border = "1px solid grey"
-    document.getElementById("id_input4").style.border = "1px solid grey"
-    document.getElementById("id_input5").style.border = "1px solid grey"
     document.getElementById("id_input6").style.border = "1px solid grey"
     document.getElementById("id_input7").style.border = "1px solid grey"
-    document.getElementById("id_input8").style.border = "1px solid grey"
     document.getElementById("id_input10").style.border = "1px solid grey"
     document.getElementById("id_input11").style.border = "1px solid grey"
     document.getElementById("id_input12").style.border = "1px solid grey"
     document.getElementById("id_input13").style.border = "1px solid grey"
+    document.getElementById("id_input14").style.border = "1px solid grey"
+    document.getElementById("id_input15").style.border = "1px solid grey"
 
     document.getElementById("id_input1").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input3").style.margin = "-1px 0 -1px 0"
-    document.getElementById("id_input4").style.margin = "-1px 0 -1px 0"
-    document.getElementById("id_input5").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input6").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input7").style.margin = "-1px 0 -1px 0"
-    document.getElementById("id_input8").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input10").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input11").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input12").style.margin = "-1px 0 -1px 0"
     document.getElementById("id_input13").style.margin = "-1px 0 -1px 0"
+    document.getElementById("id_input14").style.margin = "-1px 0 -1px 0"
+    document.getElementById("id_input15").style.margin = "-1px 0 -1px 0"
 
     document.getElementById("id_input2").style.cursor = "auto"
     document.getElementById("id_input3").style.cursor = "auto"
-    document.getElementById("id_input4").style.cursor = "auto"
-    document.getElementById("id_input5").style.cursor = "auto"
     document.getElementById("id_input6").style.cursor = "auto"
     document.getElementById("id_input7").style.cursor = "auto"
-    document.getElementById("id_input8").style.cursor = "auto"
     document.getElementById("id_input10").style.cursor = "auto"
     document.getElementById("id_input11").style.cursor = "auto"
     document.getElementById("id_input12").style.cursor = "auto"
     document.getElementById("id_input13").style.cursor = "auto"
+    document.getElementById("id_input14").style.cursor = "auto"
+    document.getElementById("id_input15").style.cursor = "auto"
 
     document.getElementById("id_input2").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input3").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
-    document.getElementById("id_input4").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
-    document.getElementById("id_input5").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input6").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input7").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
-    document.getElementById("id_input8").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input10").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input11").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input12").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
     document.getElementById("id_input13").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
+    document.getElementById("id_input14").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
+    document.getElementById("id_input15").style.boxShadow = "8px 8px 18px rgb(221, 221, 221)";
 
     document.getElementById("id_input2").style.color = "black";
     document.getElementById("id_input3").style.color = "black";
-    document.getElementById("id_input4").style.color = "black";
-    document.getElementById("id_input5").style.color = "black";
     document.getElementById("id_input6").style.color = "black";
     document.getElementById("id_input7").style.color = "black";
-    document.getElementById("id_input8").style.color = "black";
     document.getElementById("id_input10").style.color = "black";
     document.getElementById("id_input11").style.color = "black";
     document.getElementById("id_input12").style.color = "black";
     document.getElementById("id_input13").style.color = "black";
+    document.getElementById("id_input14").style.color = "black";
+    document.getElementById("id_input15").style.color = "black";
 
     document.getElementById("onoff").style.color = "white";
     document.getElementById("onoff").style.backgroundColor = "#1A6969";
@@ -183,6 +172,7 @@ function validarPatente() {
     id_blocoEnd1.style.display = "none"
     id_blocoEnd2.style.display = "none"
     id_blocoEnd3.style.display = "none"
+    bloco_complemento_unidade.style.display = "none"
   }
 }
 

@@ -1,4 +1,5 @@
 /* Botão de seleção de servidor */
+window.onload = validacaoLogin();
 const token = window.sessionStorage.getItem('Token');
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
@@ -47,15 +48,15 @@ function searchProcess() {
   }
 }
 
-  function DescriptografiaJWT() {
-    const data = window.sessionStorage.getItem('Token');
-    dadosjwt = parseJwt(data).data;
-  }
+function DescriptografiaJWT() {
+  const data = window.sessionStorage.getItem('Token');
+  dadosjwt = parseJwt(data).data;
+}
 
-  function preenchimentoNome() {
-nomeClinica.innerHTML = "Olá "+dadosjwt.fantasyName;
-  }
+function preenchimentoNome() {
+  nomeClinica.innerHTML = "Olá " + dadosjwt.name;
+}
 
-  function esconderLoading() {
-    div_loading.style.display = "none";
-  }
+function esconderLoading() {
+  div_loading.style.display = "none";
+}

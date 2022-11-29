@@ -1,3 +1,4 @@
+window.onload = validacaoLogin();
 
 function esconderLoading(){
   document.querySelector(`#div_loading`).style.display = "none";
@@ -6,6 +7,7 @@ function esconderLoading(){
 const loadUsers = async () => {
     const token = sessionStorage.getItem("Token");
     const user = parseJwt(token);
+    console.log(user)
     const res = await getListAnalists(user.data.fkHospital, token);
 
     console.log(res);
@@ -28,7 +30,7 @@ const loadUsers = async () => {
             <tr class="${index % 2 == 0 ? "colorBebe": "colorGray"}">
                 <td>${item.email}</td>
                 <td>${item.name}</td>
-                <td><span class="delete" onclick="deletarUser(this)" id='delete-${item.id}'>Deletar</span></td>
+                ${user.data.patent == 'admin' ? `<td><span class="delete" onclick="deletarUser(this)" id='delete-${item.id}'>Deletar</span></td>`: '' }
             </tr>     
             `
         });
@@ -213,4 +215,5 @@ if (data.data.patent == "analist") {
   area_buttons.style.justifyContent = "center";
   area_buttons.style.padding = "0 30px 0 30px"
   area_painel.style.borderRadius = "15px"
+  th_remove.style.display = 'none';
 }
