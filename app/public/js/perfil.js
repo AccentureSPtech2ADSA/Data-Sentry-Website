@@ -1,11 +1,14 @@
 function enabledisable() {
   id_input2.disabled = !id_input2.disabled
   id_input3.disabled = !id_input3.disabled
+  id_input6.disabled = !id_input6.disabled
   id_input7.disabled = !id_input7.disabled
   id_input10.disabled = !id_input10.disabled
   id_input11.disabled = !id_input11.disabled
   id_input12.disabled = !id_input12.disabled
   id_input13.disabled = !id_input13.disabled
+  id_input14.disabled = !id_input14.disabled
+  id_input15.disabled = !id_input15.disabled
 }
 
 function onoff() {
