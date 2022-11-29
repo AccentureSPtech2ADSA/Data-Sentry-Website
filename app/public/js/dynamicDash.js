@@ -269,7 +269,6 @@ async function loadTableProcessPerComponents(server) {
   let dataCpuProcess = await getPercentagePerComponent("CPU", server);
   let tbody = document.querySelector("tbody#tbody-process");
   tbody.innerHTML = "";
-
   dataCpuProcess[0].forEach((item) => {
     let RamProcesso = dataRamProcess[0].find((itemRam) => {
       return itemRam.Processo == item.Processo;
