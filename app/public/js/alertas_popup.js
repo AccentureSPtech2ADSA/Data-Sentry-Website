@@ -94,3 +94,21 @@ function closeMessage(element){
     }
 
 }
+
+async function sendSlack (type, title, message) {
+  let req = await fetch("/dashboard/sendAlertWithSlack", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${window.sessionStorage.getItem('Token')}`,
+    },
+    body: JSON.stringify({
+      type: type,
+      title: title,
+      message: message,
+    }),
+  });
+  let res = await req.json();
+  console.log(res);
+  return res;
+}
