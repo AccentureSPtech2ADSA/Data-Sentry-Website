@@ -94,3 +94,19 @@ function closeMessage(element){
     }
 
 }
+
+async function sendSlack(type, title, message){
+  const { IncomingWebhook } = require('@slack/webhook');
+  const url = process.env.SLACK_WEBHOOK_URL;
+  
+  const webhook = new IncomingWebhook(url);
+  type = 'teste';
+  title = 'tentativa 01';
+  message = 'Hello World';
+
+  (async () => {
+    await webhook.send({
+      text: `${type}/${title}: ${message}`,
+    });
+  })();
+}

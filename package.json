@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AccentureSPtech2ADSA/Data-Sentry-Website/issues"
   },
-  "homepage": "https://github.com/AccentureSPtech2ADSA/Data-Sentry-Website#readme"
+  "homepage": "https://github.com/AccentureSPtech2ADSA/Data-Sentry-Website#readme",
+  "dependencies": {
+    "@slack/webhook": "^6.1.0"
+  }
 }
