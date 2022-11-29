@@ -95,18 +95,20 @@ function closeMessage(element){
 
 }
 
-async function sendSlack(type, title, message){
-  const { IncomingWebhook } = require('@slack/webhook');
-  const url = process.env.SLACK_WEBHOOK_URL;
-  
-  const webhook = new IncomingWebhook(url);
-  type = 'teste';
-  title = 'tentativa 01';
-  message = 'Hello World';
-
-  (async () => {
-    await webhook.send({
-      text: `${type}/${title}: ${message}`,
-    });
-  })();
+async function sendSlack (type, title, message) {
+  let req = await fetch("/dashboard/sendAlertWithSlack", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${window.sessionStorage.getItem('Token')}`,
+    },
+    body: JSON.stringify({
+      type: type,
+      title: title,
+      message: message,
+    }),
+  });
+  let res = await req.json();
+  console.log(res);
+  return res;
 }

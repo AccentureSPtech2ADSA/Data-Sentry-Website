@@ -105,16 +105,16 @@ function loadChartsCPU(server) {
     let lastUse = dataUse.at(-1);
 
     if (lastUse > threshold.AlertHigh90) {
-      let msg = `Seu CPU está acima de 90%.\n Tome cuidado e fique atento nos processos.`;
+      let msg = `Seu CPU está acima de 90%. Tome cuidado e fique atento nos processos.`;
       addMessage("PROBLEMA CPU ACIMA DE 90%!!", msg, "error");
     } else if (lastUse > threshold.WarningHigh80) {
-      let msg = `Seu CPU está acima de 80%.\n Tome cuidado e fique atento nos processos.`;
+      let msg = `Seu CPU está acima de 80%. Tome cuidado e fique atento nos processos.`;
       addMessage("Tome cuidado", msg, "warning");
     } else if (lastUse < threshold.AlertLow10) {
-      let msg = `O último de inserção do componente de CPU ficou abaixo de 10%! Recomendamos que olhe os processos em execução do servidor ${serverSerial} e veja se todos os procesos estão integros!\nDeseja relatar no Slack?`;
+      let msg = `O último de inserção do componente de CPU ficou abaixo de 10%! Recomendamos que olhe os processos em execução do servidor ${serverSerial} e veja se todos os procesos estão integros!Deseja relatar no Slack?`;
       addMessage("CUIDADO! CPU ABAIXO DE 10%", msg, "error");
     } else if (lastUse < threshold.WarningLow20) {
-      let msg = `Seu CPU está abaixo de 20%.\n Tome cuidado e fique atento nos processos.`;
+      let msg = `Seu CPU está abaixo de 20%. Tome cuidado e fique atento nos processos.`;
       addMessage("Tome cuidado", msg, "warning");
     }
     config6.data.datasets[0].data = percentages;
@@ -141,16 +141,16 @@ async function loadChartsRAM(server) {
   let threshold = arrayTresholds[0].find((item) => item.Type == "RAM");
   let lastUse = dataUse.at(-1);
   if (lastUse > threshold.AlertHigh90) {
-    let msg = `Sua memoria RAM está acima de 90%.\n Tome cuidado e fique atento nos processos.`;
+    let msg = `Sua memoria RAM está acima de 90%. Tome cuidado e fique atento nos processos.`;
     addMessage("PROBLEMA RAM ACIMA DE 90%!!", msg, "error");
   } else if (lastUse > threshold.WarningHigh80) {
-    let msg = `Sua memoria RAM está acima de 80%.\n Tome cuidado e fique atento nos processos.`;
+    let msg = `Sua memoria RAM está acima de 80%. Tome cuidado e fique atento nos processos.`;
     addMessage("Tome cuidado", msg, "warning");
   } else if (lastUse < threshold.AlertLow10) {
-    let msg = `O último de inserção do componente de RAM ficou abaixo de 10%! Recomendamos que olhe os processos em execução do servidor ${serverSerial} e veja se todos os procesos estão integros!\nDeseja relatar no Slack?`;
+    let msg = `O último de inserção do componente de RAM ficou abaixo de 10%! Recomendamos que olhe os processos em execução do servidor ${serverSerial} e veja se todos os procesos estão integros!Deseja relatar no Slack?`;
     addMessage("CUIDADO! RAM ABAIXO DE 10%", msg, "error");
   } else if (lastUse < threshold.WarningLow20) {
-    let msg = `Sua memoria RAM está abaixo de 20%.\n Tome cuidado e fique atento nos processos.`;
+    let msg = `Sua memoria RAM está abaixo de 20%. Tome cuidado e fique atento nos processos.`;
     addMessage("Tome cuidado", msg, "warning");
   }
     config5.options.scales.y.max = valorMaximoGb = +dataRam[0][0].MaximoUso.split('G')[0];
@@ -190,16 +190,16 @@ async function loadChartsDISCO(server) {
   let threshold = arrayTresholds[0].find((item) => item.Type == "DISCO");
   let lastUse = dataUse.at(-1);
   if (lastUse > threshold.AlertHigh90) {
-    let msg = `Seu DISCO está acima de 90%.\n Tome cuidado e fique atento nos processos.`;
+    let msg = `Seu DISCO está acima de 90%. Tome cuidado e fique atento nos processos.`;
     addMessage("PROBLEMA DISCO ACIMA DE 90%!!", msg, "error");
   } else if (lastUse > threshold.WarningHigh80) {
-    let msg = `Seu DISCO está acima de 80%.\n Tome cuidado e fique atento nos processos.`;
+    let msg = `Seu DISCO está acima de 80%. Tome cuidado e fique atento nos processos.`;
     addMessage("Tome cuidado", msg, "warning");
   } else if (lastUse < threshold.AlertLow10) {
-    let msg = `O último de inserção do componente de DISCO ficou abaixo de 10%! Recomendamos que olhe os processos em execução do servidor ${serverSerial} e veja se todos os procesos estão integros!\nDeseja relatar no Slack?`;
+    let msg = `O último de inserção do componente de DISCO ficou abaixo de 10%! Recomendamos que olhe os processos em execução do servidor ${serverSerial} e veja se todos os procesos estão integros!Deseja relatar no Slack?`;
     addMessage("CUIDADO! DISCO ABAIXO DE 10%", msg, "error");
   } else if (lastUse < threshold.WarningLow20) {
-    let msg = `Seu DISCO está abaixo de 20%.\n Tome cuidado e fique atento nos processos.`;
+    let msg = `Seu DISCO está abaixo de 20%. Tome cuidado e fique atento nos processos.`;
     addMessage("Tome cuidado", msg, "warning");
   }
   
