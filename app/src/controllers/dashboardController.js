@@ -177,6 +177,10 @@ async function changeIsActiveServer(req, res){
         idServer: idServer,
         isActive: isActive
     };
+    if(isActive == "D"){
+      const deleteResult = await model.deleteServer(parametros);
+      console.dir(deleteResult)
+    }
     const resultchangeIsActiveServer = await model.changeIsActiveServer(
       parametros
     );

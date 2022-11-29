@@ -53,9 +53,9 @@ const loadServers = async () => {
             <tr class="${index % 2 == 0 ? "colorBebe": "colorGray"}">
                 <td class="td_status">${statusServer}</td>
                 <td>${item._serialServer}</td>
-                <td class="associar_text" onclick="associar('${item._serialServer}')">Associar</td>
-                <td class="desassociar_text" onclick="desassociar('${item._serialServer}')">Desassociar</td>
-                <td class="stop_text" onclick="pararServidor('${item._serialServer}')">Stop</td>
+                <td class="associar_text" onclick="associar('${item._serialServer}')">Ligar</td>
+                <td class="desassociar_text" onclick="desassociar('${item._serialServer}')">Apagar</td>
+                <td class="stop_text" onclick="pararServidor('${item._serialServer}')">Parar</td>
             </tr>     
             `
 
